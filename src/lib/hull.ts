@@ -2,8 +2,11 @@ import type { FullThrustShip } from "../schemas/ship.js";
 import { svgLib } from "./svgLib.js";
 
 export const formRows = (ship: FullThrustShip): number[][] | undefined => {
-    if ( (ship.mass !== undefined) && (ship.hull !== undefined) ) {
-        const cf = Math.ceil(ship.mass / 20);
+    if (ship.hull !== undefined) {
+        let cf = 1;
+        if (ship.mass !== undefined) {
+            cf = Math.ceil(ship.mass / 20);
+        }
         const interval = Math.ceil(ship.hull.points / cf);
         const boxes: number[] = [];
         for (let i = 0; i < ship.hull.points; i++) {
