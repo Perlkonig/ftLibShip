@@ -181,7 +181,7 @@ export interface FullThrustShip {
         [k: string]: unknown;
       }
     | {
-        name: "submuntion";
+        name: "submunition";
         leftArc: Arcs;
         numArcs: 3;
         [k: string]: unknown;
