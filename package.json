@@ -16,7 +16,8 @@
     "prebuild": "npm run clean && npm run schemas",
     "postbuild": "shx cp -r src/schemas dist",
     "build": "tsc",
-    "schemas": "json2ts -i src/schemas/ship.json -o src/schemas/ship.d.ts"
+    "schemas": "json2ts -i src/schemas/ship.json -o src/schemas/ship.d.ts",
+    "prepare": "npm run build"
   },
   "author": "Aaron Dalton <aaron@daltons.ca> (https://www.perlkonig.com/)",
   "license": "MIT",
