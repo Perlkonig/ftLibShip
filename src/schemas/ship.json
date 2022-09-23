@@ -372,7 +372,7 @@
                     {
                         "properties": {
                             "name": {
-                                "enum": ["submuntion"]
+                                "enum": ["submunition"]
                             },
                             "leftArc": {
                                 "$ref": "#/definitions/arcs"
