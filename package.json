@@ -2,7 +2,12 @@
   "name": "ftlibship",
   "version": "1.0.0",
   "description": "Library representing the schema/type for a Full Thrust ship description along with utilities for validating and graphically rendering it",
-  "exports": "./index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./schemas": "./dist/schemas/ship.d.ts",
+    "./systems": "./dist/lib/systems/index.js",
+    "./package.json": "./package.json"
+  },
   "engines": {
     "node": ">=14.16"
   },
