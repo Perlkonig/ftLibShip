@@ -79,6 +79,9 @@ import { SpinalWave } from "./spinalWave.js";
 import { Reflex } from "./reflex.js";
 export { SpinalNova, SpinalWave, Reflex };
 
+import { type2name, mod2name } from "./fighters.js";
+export { type2name as fighterType2Name, mod2name as fighterMod2Name };
+
 export const specialsList: string[] = ["hull", "stealth", "streamlining", "armour"];
 
 // Give each system a basic name for sorting and selection
