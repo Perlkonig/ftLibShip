@@ -7,11 +7,6 @@ export interface ISystemSVG {
     width: number;
 };
 
-export interface IShipOutlineSVG extends ISystemSVG {
-    name: string;
-    notes: string;
-}
-
 export const svgLib: ISystemSVG[] = [
     {
         id: "armour",
