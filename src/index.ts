@@ -164,7 +164,7 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
 }
 
 import Ajv from "ajv";
-import schema from "./schemas/ship.json" assert { type: "json" };
+import schema from "./schemas/ship.json";
 
 export interface IValidation {
     valid: boolean;
