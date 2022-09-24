@@ -213,7 +213,8 @@
                                 "enum": ["magazine"]
                             },
                             "id": {
-                                "description": "A unique identifier used to tie this magazine to one or more launchers."
+                                "description": "A unique identifier used to tie this magazine to one or more launchers.",
+                                "type": "string"
                             },
                             "modifier": {
                                 "enum": ["er", "twostage"]

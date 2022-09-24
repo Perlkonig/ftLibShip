@@ -104,9 +104,7 @@ export interface FullThrustShip {
         /**
          * A unique identifier used to tie this magazine to one or more launchers.
          */
-        id?: {
-          [k: string]: unknown;
-        };
+        id?: string;
         modifier?: "er" | "twostage";
         capacity?: number;
         [k: string]: unknown;
