@@ -8,11 +8,7 @@ export type { FullThrustShip } from "./schemas/ship.js";
 import type { FullThrustShip } from "./index.js";
 import { specialsList, getSpecial, getSystem, ISystem } from "./lib/systems/index.js";
 
-export const validate = (shipJson: string): boolean => {
-    return true;
-}
-
-export enum ErrorCode {
+export enum EvalErrorCode {
     NoMass="NOMASS",
     BadMass="BADMASS",
     LowHull="LOWHULL",
@@ -23,13 +19,20 @@ export enum ErrorCode {
     OverCrew="OVERCREW",
     OverSpinal="OVERSPINAL",
     OverTurret="OVERTURRET",
+    OverMass="OVERMASS",
+}
+
+export enum ValErrorCode {
+    BadJSON="BADJSON",
+    BadConstruction="BADCONSTRUCTION",
+    PointsMismatch="POINTSMISMATCH",
 }
 
 export interface IEvaluation {
     mass: number;
     points: number;
     cpv: number;
-    errors: ErrorCode[];
+    errors: EvalErrorCode[];
 }
 
 export const evaluate = (ship: FullThrustShip): IEvaluation => {
@@ -41,7 +44,7 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
     } as IEvaluation;
 
     if ( (! ship.hasOwnProperty("mass")) || (ship.mass === undefined) ) {
-        results.errors.push(ErrorCode.NoMass);
+        results.errors.push(EvalErrorCode.NoMass);
     } else {
         for (const id of specialsList) {
             const obj = getSpecial(id, ship);
@@ -67,12 +70,12 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
 
         // Mass out of range
         if ( (ship.mass === undefined) || (ship.mass < 5) || (ship.mass > 300) ) {
-            results.errors.push(ErrorCode.BadMass);
+            results.errors.push(EvalErrorCode.BadMass);
         }
 
         // Hull strength out of range
         if ( (ship.hull === undefined) || (ship.hull.points === undefined) || (ship.hull.points < (ship.mass * 0.1)) ) {
-            results.errors.push(ErrorCode.LowHull);
+            results.errors.push(EvalErrorCode.LowHull);
         }
 
         // Any armour rows out of range
@@ -80,11 +83,11 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
             const maxArmour = Math.ceil(ship.hull.points / ship.hull.rows);
             if ( (ship.hasOwnProperty("armour")) && (ship.armour.length > 0) ) {
                 if (ship.armour.length > 5) {
-                    results.errors.push(ErrorCode.OverShell);
+                    results.errors.push(EvalErrorCode.OverShell);
                 }
                 for (let i = 0; i < ship.armour.length; i++) {
                     if (ship.armour[i][0] + ship.armour[i][1] > maxArmour) {
-                        results.errors.push(ErrorCode.OverArmour);
+                        results.errors.push(EvalErrorCode.OverArmour);
                     }
                 }
             }
@@ -114,11 +117,11 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
             const maxBerthedTroops = baysTroops * 3;
             const maxAdds = cf + maxBerthedPassengers + maxBerthedTroops;
             if (addDamage > (cf + maxBerthedPassengers)) {
-                results.errors.push(ErrorCode.OverDCP);
+                results.errors.push(EvalErrorCode.OverDCP);
             } else if (addMarines > (cf + maxBerthedTroops)) {
-                results.errors.push(ErrorCode.OverMarine);
+                results.errors.push(EvalErrorCode.OverMarine);
             } else if ((addMarines + addDamage) > maxAdds) {
-                results.errors.push(ErrorCode.OverCrew);
+                results.errors.push(EvalErrorCode.OverCrew);
             }
         }
 
@@ -135,7 +138,7 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
                 }
             }
             if (spinalMass > maxSpinalMass) {
-                results.errors.push(ErrorCode.OverSpinal);
+                results.errors.push(EvalErrorCode.OverSpinal);
             }
         }
 
@@ -149,10 +152,60 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
                 }
             }
             if (turrets > maxTurrets) {
-                results.errors.push(ErrorCode.OverTurret);
+                results.errors.push(EvalErrorCode.OverTurret);
+            }
+        }
+        if (results.mass > ship.mass) {
+            results.errors.push(EvalErrorCode.OverMass);
+        }
+    }
+
+    return results;
+}
+
+import Ajv from "ajv";
+import schema from "./schemas/ship.json" assert { type: "json" };
+
+export interface IValidation {
+    valid: boolean;
+    code?: ValErrorCode;
+    ajvErrors?: Ajv.ErrorObject[];
+    evalErrors?: EvalErrorCode[];
+}
+
+export const validate = (shipJson: string): IValidation => {
+    const results = {
+        valid: true,
+    } as IValidation;
+
+    // Test against schema
+    const ajv = new Ajv.default({allErrors: true});
+    const validate = ajv.compile<FullThrustShip>(schema);
+    const shipObj: FullThrustShip = JSON.parse(shipJson);
+    if (! validate(shipObj)) {
+        results.valid = false;
+        results.code = ValErrorCode.BadJSON;
+        results.ajvErrors = validate.errors!;
+    }
+
+    if (results.valid) {
+        // Evaluate and look for construction errors
+        const evaluation = evaluate(shipObj);
+        if (evaluation.errors.length > 0) {
+            results.valid = false;
+            results.code = ValErrorCode.BadConstruction;
+            results.evalErrors = evaluation.errors;
+        }
+
+        if (results.valid) {
+            // Make sure stated points match evaluated points
+            if ( (shipObj.points !== evaluation.points) || (shipObj.cpv !== evaluation.cpv) ) {
+                results.valid = false;
+                results.code = ValErrorCode.PointsMismatch;
             }
         }
     }
 
     return results;
 }
+
