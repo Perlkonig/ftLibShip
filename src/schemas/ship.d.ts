@@ -185,6 +185,13 @@ export interface FullThrustShip {
         [k: string]: unknown;
       }
     | {
+        name: "pulser";
+        leftArc: Arcs;
+        numArcs: 1 | 3 | 6;
+        range?: "undefined" | "long" | "medium" | "short";
+        [k: string]: unknown;
+      }
+    | {
         name: "beam" | "emp" | "plasmaCannon" | "phaser" | "transporter" | "needle";
         class: 1 | 2 | 3 | 4;
         leftArc: Arcs;
@@ -242,9 +249,11 @@ export interface FullThrustShip {
       }
   )[];
   /**
-   * This property contains all systems that do NOT get checked on threshold rolls.
+   * This property contains all systems that do NOT get checked on threshold rolls. Currently there aren't any.
    */
-  extras?: unknown[];
+  extras?: {
+    [k: string]: unknown;
+  };
   /**
    * There cannot be more fighters than hangars.
    */
@@ -270,10 +279,22 @@ export interface FullThrustShip {
      * Must match a hangar id. Omitted if the fighters are deployed.
      */
     hangar?: string;
+    /**
+     * Only needed during game play to track squadron size over time
+     */
+    number?: number;
+    /**
+     * Only needed during game play and only if you are playing with ace/turkey rules
+     */
+    skill?: "standard" | "ace" | "turkey";
     [k: string]: unknown;
   }[];
   class?: string;
   name?: string;
+  /**
+   * Only needed during actual game play where each ship needs a truly unique ID.
+   */
+  uuid?: string;
   /**
    * Markdown-encoded flavour text attached to this particular ship.
    */

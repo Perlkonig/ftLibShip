@@ -387,6 +387,24 @@
                     {
                         "properties": {
                             "name": {
+                                "enum": ["pulser"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "enum": [1, 3, 6]
+                            },
+                            "range": {
+                                "enum": ["undefined", "long", "medium", "short"],
+                                "default": "undefined"
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
                                 "enum": ["beam", "emp", "plasmaCannon", "phaser", "transporter", "needle"]
                             },
                             "class": {
@@ -526,14 +544,7 @@
             }
         },
         "extras": {
-            "description": "This property contains all systems that do NOT get checked on threshold rolls.",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "oneOf": [
-                    {}
-                ]
-            }
+            "description": "This property contains all systems that do NOT get checked on threshold rolls. Currently there aren't any."
         },
         "fighters": {
             "description": "There cannot be more fighters than hangars.",
@@ -555,6 +566,17 @@
                     "hangar": {
                         "description": "Must match a hangar id. Omitted if the fighters are deployed.",
                         "type": "string"
+                    },
+                    "number": {
+                        "description": "Only needed during game play to track squadron size over time",
+                        "type": "integer",
+                        "minimum": 0,
+                        "default": 6
+                    },
+                    "skill": {
+                        "description": "Only needed during game play and only if you are playing with ace/turkey rules",
+                        "enum": ["standard", "ace", "turkey"],
+                        "default": "standard"
                     }
                 },
                 "required": ["type"]
@@ -564,6 +586,10 @@
             "type": "string"
         },
         "name": {
+            "type": "string"
+        },
+        "uuid": {
+            "description": "Only needed during actual game play where each ship needs a truly unique ID.",
             "type": "string"
         },
         "notes": {
