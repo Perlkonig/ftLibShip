@@ -20,6 +20,7 @@ export enum EvalErrorCode {
     OverSpinal="OVERSPINAL",
     OverTurret="OVERTURRET",
     OverMass="OVERMASS",
+    OverPBL="OVERPBL",
 }
 
 export enum ValErrorCode {
@@ -158,6 +159,27 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
         if (results.mass > ship.mass) {
             results.errors.push(EvalErrorCode.OverMass);
         }
+
+        // Sufficient room for plasma bolt launchers
+        if (ship.systems !== undefined) {
+            const maxPbls = Math.ceil(ship.mass / 50);
+            let pbls = 0;
+            if (ship.weapons !== undefined) {
+                for (const sys of ship.weapons) {
+                    if (sys.name === "pbl") {
+                        pbls++;
+                    }
+                }
+            }
+            if (pbls > maxPbls) {
+                results.errors.push(EvalErrorCode.OverPBL);
+            }
+        }
+
+        if (results.mass > ship.mass) {
+            results.errors.push(EvalErrorCode.OverMass);
+        }
+
     }
 
     return results;

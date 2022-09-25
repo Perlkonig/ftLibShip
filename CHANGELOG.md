@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Somehow "pulsers" never made it into the schema! Added them.
 * Added a `uuid` field to the schema for the use of other tools. It's not needed at the building phase, just at the gameplay phase.
 
+### Fixed
+
+* Plasma bolt launchers are now correctly restricted to one per fifty mass.
+
 ## [v1.0.0] - 2022-09-24
 
 * Initial release of the standalone code. Verified working with the ship builder.
