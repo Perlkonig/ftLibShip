@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Added gameplay-only fields to fighters so their form is codified (`number` and `skill`).
 * Somehow "pulsers" never made it into the schema! Added them.
 * Added a `uuid` field to the schema for the use of other tools. It's not needed at the building phase, just at the gameplay phase.
+* Added a `silhouette` field to the schema.
 
 ### Fixed
 
