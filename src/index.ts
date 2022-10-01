@@ -187,6 +187,8 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
 
 import Ajv from "ajv";
 import schema from "./schemas/ship.json";
+const ajv = new Ajv.default({allErrors: true});
+const ajvValidate = ajv.compile<FullThrustShip>(schema);
 
 export interface IValidation {
     valid: boolean;
@@ -201,13 +203,11 @@ export const validate = (shipJson: string): IValidation => {
     } as IValidation;
 
     // Test against schema
-    const ajv = new Ajv.default({allErrors: true});
-    const validate = ajv.compile<FullThrustShip>(schema);
     const shipObj: FullThrustShip = JSON.parse(shipJson);
-    if (! validate(shipObj)) {
+    if (! ajvValidate(shipObj)) {
         results.valid = false;
         results.code = ValErrorCode.BadJSON;
-        results.ajvErrors = validate.errors!;
+        results.ajvErrors = ajvValidate.errors!;
     }
 
     if (results.valid) {
