@@ -3,12 +3,16 @@ import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 
 export class Screen extends System {
+    public id!: string;
     public advanced = false;
     public area = false;
     public level = 1;
 
     constructor(data: ISystem, ship: FullThrustShip) {
         super(data, ship);
+        if (data.hasOwnProperty("id")) {
+            this.id = data.id as string;
+        }
         if (data.hasOwnProperty("advanced")) {
             this.advanced = data.advanced as boolean;
         }
@@ -58,8 +62,8 @@ export class Screen extends System {
             let screenLevel2 = `<polyline fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" points="378.2,193.5 291.7,280 378.2,366.5"/><polyline fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" points="581.8,193.5 668.3,280 581.8,366.5"/><polyline fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" points="393.5,179.7 480,93.2 566.5,179.7"/><polyline fill="none" stroke="#000000" stroke-width="14" stroke-miterlimit="10" points="393.5,380.3 480,466.8 566.5,380.3"/>`
             let screenLevelComponents = (this.level == 2 ? `${screenLevel1}${screenLevel2}` : `${screenLevel1}`)
             return {
-                id: "screenAA",
-                svg: `<symbol id="svg_screenAA" viewBox="280 80 400 400"><g><rect x="413" y="213" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -57.4011 421.4214)" width="134" height="134"/>${screenLevelComponents}</g></symbol>`,
+                id: `screenAA_${this.id}`,
+                svg: `<symbol id="svg_screenAA_${this.id}" viewBox="280 80 400 400"><g><rect x="413" y="213" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -57.4011 421.4214)" width="134" height="134"/>${screenLevelComponents}</g></symbol>`,
                 height: 1,
                 width: 1
             };
@@ -68,8 +72,8 @@ export class Screen extends System {
             let screenLevel2 = `<polyline fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="704.1,279.5 480,55.4 255.9,279.5"/>`
             let screenLevelComponents = (this.level == 2 ? `${screenLevel1}${screenLevel2}` : `${screenLevel1}`)
             return {
-                id: "screenAdv",
-                svg: `<symbol id="svg_screenAdv" viewBox="250 45 460 460"><g><rect x="387.3" y="280.8" transform="matrix(0.7071 0.7071 -0.7071 0.7071 404.6839 -230.0195)" width="185.5" height="185.5"/>${screenLevelComponents}</g></symbol>`,
+                id: `screenAdv_${this.id}`,
+                svg: `<symbol id="svg_screenAdv_${this.id}" viewBox="250 45 460 460"><g><rect x="387.3" y="280.8" transform="matrix(0.7071 0.7071 -0.7071 0.7071 404.6839 -230.0195)" width="185.5" height="185.5"/>${screenLevelComponents}</g></symbol>`,
                 height: 1,
                 width: 1
             };
@@ -78,8 +82,8 @@ export class Screen extends System {
             let screenLevel2 = `<path fill="none" stroke="#000000" stroke-width="8.3452" stroke-miterlimit="10" d="M409.5,163c0,0,69.4-32.4,140.9,0"/><path fill="none" stroke="#000000" stroke-width="8.3452" stroke-miterlimit="10" d="M409.5,397c0,0,69.4,32.4,140.9,0"/><path fill="none" stroke="#000000" stroke-width="8.3452" stroke-miterlimit="10" d="M357.3,209.5c0,0-32.4,69.4,0,140.9"/><path fill="none" stroke="#000000" stroke-width="8.3452" stroke-miterlimit="10" d="M602.7,209.5c0,0,32.4,69.4,0,140.9"/>`
             let screenLevelComponents = (this.level == 2 ? `${screenLevel1}${screenLevel2}` : `${screenLevel1}`)
             return {
-                id: "screenArea",
-                svg: `<symbol id="svg_screenArea" viewBox="302.5 102.5 355 355"><g><circle cx="480" cy="280" r="63"/>${screenLevelComponents}</g></symbol>`,
+                id: `screenArea_${this.id}`,
+                svg: `<symbol id="svg_screenArea_${this.id}" viewBox="302.5 102.5 355 355"><g><circle cx="480" cy="280" r="63"/>${screenLevelComponents}</g></symbol>`,
                 width: 1,
                 height: 1
             };
@@ -88,8 +92,8 @@ export class Screen extends System {
             let screenLevel2 = `<path fill="none" stroke="#000000" stroke-width="39.3368" stroke-miterlimit="10" d="M290.8,104.7c0,0,186.6-97.4,378.5,0"/>`
             let screenLevelComponents = (this.level == 2 ? `${screenLevel1}${screenLevel2}` : `${screenLevel1}`)
             return {
-                id: "screen",
-                svg: `<symbol id="svg_screen" viewBox="250 40 460 460"><g><circle cx="480" cy="366.8" r="131.8"/>${screenLevelComponents}</g></symbol>`,
+                id: `screen_${this.id}`,
+                svg: `<symbol id="svg_screen_${this.id}" viewBox="250 40 460 460"><g><circle cx="480" cy="366.8" r="131.8"/>${screenLevelComponents}</g></symbol>`,
                 height: 1,
                 width: 1
             };
