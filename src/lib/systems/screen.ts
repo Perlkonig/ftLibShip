@@ -23,7 +23,12 @@ export class Screen extends System {
     }
 
     fullName() {
-        return (this.advanced ? "Advanced " : "") + (this.area ? "Area " : "") + "Defensive Screen";
+        const base = (this.advanced ? "Advanced " : "") + (this.area ? "Area " : "") + "Defensive Screen";
+        if (this.level === 1) {
+            return base + " - Level 1";
+        } else if (this.level === 2) {
+            return base + " - Level 2";
+        }
     }
 
     mass() {
