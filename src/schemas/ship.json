@@ -152,6 +152,9 @@
                             "area": {
                                 "type": "boolean",
                                 "default": false
+                            },
+                            "level": {
+                                "enum": [1, 2]
                             }
                         },
                         "required": ["name"]

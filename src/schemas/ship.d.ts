@@ -63,6 +63,7 @@ export interface FullThrustShip {
         name: "screen";
         advanced?: boolean;
         area?: boolean;
+        level?: 1 | 2;
         [k: string]: unknown;
       }
     | {
