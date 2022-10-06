@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Somehow "pulsers" never made it into the schema! Added them.
 * Added a `uuid` field to the schema for the use of other tools. It's not needed at the building phase, just at the gameplay phase.
 * Added a `silhouette` field to the schema.
+* You can now explicitly assert the level of a specific defensive screen system. I read the rules as saying the number of individual systems determined your screen level (maxing out at 2), but there are other compatible interpretations. Setting the level as `undefined` uses the level 2 glyphs but the level 1 points. Explicitly setting the level will adjust both the glyph and the points.
 
 ### Fixed
 
