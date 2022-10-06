@@ -299,5 +299,9 @@ export interface FullThrustShip {
    * Markdown-encoded flavour text attached to this particular ship.
    */
   notes?: string;
+  /**
+   * The symbol you'd want to represent this ship in a game viewer. It must be a `<symbol>` with a `viewBox` attribute. The `id` attribute is set by the renderer.
+   */
+  silhouette?: string;
   [k: string]: unknown;
 }

@@ -29,6 +29,7 @@ export class Screen extends System {
         } else if (this.level === 2) {
             return base + " - Level 2";
         }
+        return base;
     }
 
     mass() {
