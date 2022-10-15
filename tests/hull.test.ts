@@ -17,7 +17,6 @@ describe("Hull module", () => {
             ],
             weapons: [],
             ordnance: [],
-            extras: [],
             fighters: [],
             layout: {} as any
         };

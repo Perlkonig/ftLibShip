@@ -175,11 +175,6 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
                 results.errors.push(EvalErrorCode.OverPBL);
             }
         }
-
-        if (results.mass > ship.mass) {
-            results.errors.push(EvalErrorCode.OverMass);
-        }
-
     }
 
     return results;
