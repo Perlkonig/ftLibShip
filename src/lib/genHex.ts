@@ -75,14 +75,14 @@ const genSvg = (id: string, lines: IPoint[][], path: string | undefined = undefi
             const pt = arcpt(size / 2, size / 2, rOuter, deg2rad(deg));
             pointsOuter.push(`${pt.x},${pt.y}`);
         }
-        s += `<polygon points="${pointsOuter.join(" ")}" fill="white"  fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`
+        s += `<polygon id="outer" points="${pointsOuter.join(" ")}" fill="white"  fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`
     }
     const pointsInner: string[] = [];
     for (const deg of [60, 120, 180, 240, 300, 360]) {
         const pt = arcpt(size / 2, size / 2, rInner, deg2rad(deg));
         pointsInner.push(`${pt.x},${pt.y}`);
     }
-    s += `<polygon points="${pointsInner.join(" ")}" fill="white" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`
+    s += `<polygon points="${pointsInner.join(" ")}" id="inner" fill="white" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`
     for (const line of lines) {
         s += `<line x1="${line[0].x}" y1="${line[0].y}" x2="${line[1].x}" y2="${line[1].y}" stroke-width="20" stroke-miterlimit="10" stroke="black" />`;
     }
