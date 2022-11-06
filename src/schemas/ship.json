@@ -585,6 +585,32 @@
                 "required": ["type"]
             }
         },
+        "invaders": {
+            "description": "A list of active enemy units currently on the ship.",
+            "type": "array",
+            "items": {
+                "description": "In a two-player game, you can omit the `owner` property.",
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "enum": ["marine", "damageControl"]
+                    },
+                    "owner": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        ]
+                    }
+                },
+                "required": ["type"],
+                "additionalProperties": false
+            }
+        },
         "class": {
             "type": "string"
         },
