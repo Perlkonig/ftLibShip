@@ -3,6 +3,7 @@ export * as hull from "./lib/hull.js";
 export * as systems from "./lib/systems/index.js";
 export * as hexes from "./lib/genHex.js";
 export * as arcs from "./lib/genArcs.js";
+export * from "./lib/render.js";
 export type { FullThrustShip } from "./schemas/ship.js";
 
 import type { FullThrustShip } from "./index.js";

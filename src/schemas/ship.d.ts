@@ -290,6 +290,14 @@ export interface FullThrustShip {
     skill?: "standard" | "ace" | "turkey";
     [k: string]: unknown;
   }[];
+  /**
+   * A list of active enemy units currently on the ship.
+   */
+  invaders?: {
+    type: "marines" | "damageControl";
+    owner?: string | number;
+    [k: string]: unknown;
+  }[];
   class?: string;
   name?: string;
   /**

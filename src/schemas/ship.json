@@ -593,7 +593,7 @@
                 "type": "object",
                 "properties": {
                     "type": {
-                        "enum": ["marine", "damageControl"]
+                        "enum": ["marines", "damageControl"]
                     },
                     "owner": {
                         "oneOf": [
@@ -607,8 +607,7 @@
                         ]
                     }
                 },
-                "required": ["type"],
-                "additionalProperties": false
+                "required": ["type"]
             }
         },
         "class": {
