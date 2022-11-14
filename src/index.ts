@@ -22,6 +22,7 @@ export enum EvalErrorCode {
     OverTurret="OVERTURRET",
     OverMass="OVERMASS",
     OverPBL="OVERPBL",
+    DblUID="DblUID",
 }
 
 export enum ValErrorCode {
@@ -45,6 +46,8 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
         errors: []
     } as IEvaluation;
 
+    const seenUids: Set<string> = new Set<string>();
+
     if ( (! ship.hasOwnProperty("mass")) || (ship.mass === undefined) ) {
         results.errors.push(EvalErrorCode.NoMass);
     } else {
@@ -65,6 +68,11 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
                         results.mass += obj.mass();
                         results.points += obj.points();
                         results.cpv += obj.cpv();
+                        if (seenUids.has(obj.uid)) {
+                            results.errors.push(EvalErrorCode.DblUID);
+                        } else {
+                            seenUids.add(obj.uid);
+                        }
                     }
                 }
             }

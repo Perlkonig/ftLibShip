@@ -129,6 +129,17 @@ describe("Root exports: Evaluate", () => {
         evaluation = evaluate(ship);
         expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverTurret]);
     });
+    it("Error Codes: DblUid", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        for (let sys of ship.systems!) {
+            if (sys.name === "fireControl") {
+                sys.id="duplicate";
+            }
+        }
+        let evaluation = evaluate(ship);
+        expect(evaluation.errors.length).to.equal(1);
+        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.DblUID]);
+    });
 });
 
 describe("Root exports: Validate", () => {
@@ -167,6 +178,6 @@ describe("Root exports: Validate", () => {
 describe("Renderer", () => {
     it("Simple export", () => {
         // console.log(renderSvg(JSON.parse(validTacoma)));
-        console.log(renderUri(JSON.parse(validTacoma)));
+        // console.log(renderUri(JSON.parse(validTacoma)));
     });
 });
