@@ -28,6 +28,10 @@
             "type": "integer",
             "minimum": 5
         },
+        "civilian": {
+            "type": "boolean",
+            "default": false
+        },
         "hull": {
             "type": "object",
             "properties": {

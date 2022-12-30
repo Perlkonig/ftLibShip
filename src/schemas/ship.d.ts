@@ -15,6 +15,7 @@ export interface FullThrustShip {
   points?: number;
   cpv?: number;
   mass?: number;
+  civilian?: boolean;
   hull?: {
     points: number;
     rows: 3 | 4 | 5 | 6;

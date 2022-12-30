@@ -5,7 +5,11 @@ export const formRows = (ship: FullThrustShip): number[][] | undefined => {
     if (ship.hull !== undefined) {
         let cf = 1;
         if (ship.mass !== undefined) {
-            cf = Math.ceil(ship.mass / 20);
+            if ( (ship.civilian !== undefined) && (ship.civilian) ) {
+                cf = Math.ceil(ship.mass / 50);
+            } else {
+                cf = Math.ceil(ship.mass / 20);
+            }
         }
         const interval = Math.ceil(ship.hull.points / cf);
         const boxes: number[] = [];
