@@ -42,7 +42,7 @@ export class Fighters extends System {
         if (data.hasOwnProperty("mods")) {
             let toDel: FighterMod[] = [];
             for (const m of data.mods as FighterMod[]) {
-                if (this.type === "light") {
+                if (this.type.startsWith("light")) {
                     if ( (m === "longRange") || (m === "heavy") || (m === "ftl") ) {
                         toDel.push(m);
                         continue;
