@@ -201,7 +201,7 @@
                                 "enum": ["bay"]
                             },
                             "type": {
-                                "enum": ["cargo", "passenger", "troop"]
+                                "enum": ["cargo", "passenger", "troop", "boat"]
                             },
                             "capacity": {
                                 "type": "number",
@@ -561,7 +561,7 @@
                 "properties": {
                     "type": {
                         "description": "The fighters' base type",
-                        "enum": ["standard", "interceptor", "attack", "torpedo", "graser", "plasma", "MKP", "missile", "multiRole", "light", "lightInterceptor", "lightAttack"],
+                        "enum": ["standard", "interceptor", "attack", "torpedo", "graser", "plasma", "MKP", "missile", "multiRole", "light", "lightInterceptor", "lightAttack", "assault"],
                         "default": "standard"
                     },
                     "mods": {

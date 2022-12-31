@@ -177,7 +177,7 @@ describe("Root exports: Validate", () => {
 
 describe("Renderer", () => {
     it("Simple export", () => {
-        const civilian = `{"name":"HEAVY FREIGHTER","class":"","civilian": true,"mass":120,"cpv":65,"points":75,"hull":{"streamlining":"none","stealth":"0","rows":4,"points":12},"armour":[],"systems":[{"id":"543-d","advanced":false,"thrust":2,"name":"drive"},{"id":"NK1YO","advanced":false,"name":"ftl"},{"type":"cargo","capacity":21,"id":"h-hlN","name":"bay"},{"type":"cargo","capacity":21,"id":"1gDKK","name":"bay"},{"type":"cargo","capacity":21,"id":"Wo-ND","name":"bay"},{"type":"cargo","capacity":20,"id":"FaNhe","name":"bay"}],"weapons":[{"id":"NgZaY","name":"pds"}],"ordnance":[],"extras":[],"fighters":[]}`;
+        const civilian = `{"name":"HEAVY FREIGHTER","class":"","civilian": true,"mass":120,"cpv":65,"points":75,"hull":{"streamlining":"none","stealth":"0","rows":4,"points":12},"armour":[],"systems":[{"id":"543-d","advanced":false,"thrust":2,"name":"drive"},{"id":"NK1YO","advanced":false,"name":"ftl"},{"type":"cargo","capacity":21,"id":"1gDKK","name":"bay"},{"type":"boat","capacity":21,"id":"Wo-ND","name":"bay"},{"type":"cargo","capacity":20,"id":"FaNhe","name":"bay"},{"name":"hangar","id":"LpThm","isRack":false,"critRules":false}],"weapons":[{"id":"NgZaY","name":"pds"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"assault","id":"MG54k","mods":[],"hangar":"LpThm"}]}`;
         console.log(renderSvg(JSON.parse(civilian)));
         // console.log(renderUri(JSON.parse(validTacoma)));
     });

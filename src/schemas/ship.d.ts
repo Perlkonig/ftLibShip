@@ -93,7 +93,7 @@ export interface FullThrustShip {
       }
     | {
         name: "bay";
-        type: "cargo" | "passenger" | "troop";
+        type: "cargo" | "passenger" | "troop" | "boat";
         capacity: number;
         /**
          * A unique identifier used to target this specific bay in orders.
@@ -275,7 +275,8 @@ export interface FullThrustShip {
       | "multiRole"
       | "light"
       | "lightInterceptor"
-      | "lightAttack";
+      | "lightAttack"
+      | "assault";
     mods?: ("heavy" | "fast" | "longRange" | "ftl" | "robot")[];
     /**
      * Must match a hangar id. Omitted if the fighters are deployed.

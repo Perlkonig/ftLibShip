@@ -2,7 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 
-type FighterType = "standard" | "interceptor" | "attack" | "torpedo" | "graser" | "plasma" | "MKP" | "missile" | "multiRole" | "light" | "lightInterceptor" | "lightAttack";
+type FighterType = "standard" | "interceptor" | "attack" | "torpedo" | "graser" | "plasma" | "MKP" | "missile" | "multiRole" | "light" | "lightInterceptor" | "lightAttack" | "assault";
 type FighterMod = "heavy" | "fast" | "longRange" | "ftl" | "robot";
 
 export const type2name: Map<FighterType, string> = new Map([
@@ -18,6 +18,7 @@ export const type2name: Map<FighterType, string> = new Map([
     ["light", "Light Fighter"],
     ["lightInterceptor", "Light Interceptor"],
     ["lightAttack", "Light Attack Fighter"],
+    ["assault", "Assault Shuttles"],
 ]);
 
 export const mod2name: Map<FighterMod, string> = new Map([
@@ -39,13 +40,24 @@ export class Fighters extends System {
             this.type = data.type as FighterType;
         }
         if (data.hasOwnProperty("mods")) {
+            let toDel: FighterMod[] = [];
             for (const m of data.mods as FighterMod[]) {
                 if (this.type === "light") {
                     if ( (m === "longRange") || (m === "heavy") || (m === "ftl") ) {
+                        toDel.push(m);
                         continue;
                     }
                 }
+                // if (this.type === "assault") {
+                //     if (m === "robot") {
+                //         toDel.push(m);
+                //         continue;
+                //     }
+                // }
                 this.mods.add(m);
+            }
+            if (toDel.length > 0) {
+                data.mods = (data.mods as FighterMod[]).filter(m => ! toDel.includes(m))
             }
         }
         if (data.hasOwnProperty("hangar")) {
@@ -69,6 +81,9 @@ export class Fighters extends System {
     points() {
         let base = 0;
         switch (this.type) {
+            case "assault":
+                base += 6;
+                break;
             case "light":
             case "lightInterceptor":
             case "standard":

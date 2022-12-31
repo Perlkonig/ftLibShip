@@ -3,7 +3,7 @@ import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 
 export class Bay extends System {
-    public type: "cargo" | "passenger" | "troop" = "cargo";
+    public type: "cargo" | "passenger" | "troop" | "boat" = "cargo";
     public capacity = 1;
     public id!: string;
 
@@ -13,7 +13,7 @@ export class Bay extends System {
             this.capacity = data.capacity as number;
         }
         if (data.hasOwnProperty("type")) {
-            this.type = data.type as "cargo" | "passenger" | "troop";
+            this.type = data.type as "cargo" | "passenger" | "troop" | "boat";
         }
         if (data.hasOwnProperty("id")) {
             this.id = data.id as string;
@@ -25,6 +25,8 @@ export class Bay extends System {
             return "Cargo Hold";
         } else if (this.type === "passenger") {
             return "Passenger Berth";
+        } else if (this.type === "boat") {
+            return "Boat Bay";
         } else {
             return "Troop Berth";
         }
@@ -39,8 +41,14 @@ export class Bay extends System {
     }
 
     glyph() {
-        const insert = `<text x="480" y="410.75" dominant-baseline="middle" text-anchor="middle" font-size="131.25">${this.capacity}</text>
-        `;
+        let insert = ``;
+        if (this.type === "boat") {
+            insert = `<text x="479.5" y="318.5" dominant-baseline="middle" text-anchor="middle" font-size="100">${this.capacity}</text>
+            `;
+        } else {
+            insert = `<text x="480" y="410.75" dominant-baseline="middle" text-anchor="middle" font-size="131.25">${this.capacity}</text>
+            `;
+        }
         switch (this.type) {
             case "cargo":
                 return {
@@ -60,6 +68,13 @@ export class Bay extends System {
                 return {
                     id: `bayPassenger${this.capacity}`,
                     svg: `<symbol id="svg_bayPassenger${this.capacity}" viewBox="305 17 350 525"><rect x="329.4" y="21" fill="white" stroke="#000000" stroke-width="6.282" stroke-miterlimit="10" width="301.2" height="518.1"/><path d="M427.8,62c12.6-2.1,29.1-3.9,50.1-3.9c25.8,0,44.7,6,56.7,16.8c11.1,9.6,17.7,24.3,17.7,42.3c0,18.3-5.4,32.7-15.6,43.2 c-13.8,14.7-36.3,22.2-61.8,22.2c-7.8,0-15-0.3-21-1.8v81h-26.1V62z M453.9,159.5c5.7,1.5,12.9,2.1,21.6,2.1 c31.5,0,50.7-15.3,50.7-43.2c0-26.7-18.9-39.6-47.7-39.6c-11.4,0-20.1,0.9-24.6,2.1V159.5z"/>${insert}</symbol>`,
+                    height: 3,
+                    width: 2
+                };
+            case "boat":
+                return {
+                    id: `bayBoat${this.capacity}`,
+                    svg: `<symbol id="svg_bayBoat${this.capacity}" viewBox="321.333 40 315.333 473"><g><rect x="415.5" y="222.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="128" height="192"/><polygon fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="479.8,56.8 372.5,199.3 372.5,438.3 449,503.5 511,503.5 586.5,438.3 586.5,199.3"/></g>${insert}</symbol>`,
                     height: 3,
                     width: 2
                 };

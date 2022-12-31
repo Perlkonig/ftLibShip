@@ -75,6 +75,9 @@ export class Hangar extends System {
         }
         if (fighter !== undefined) {
             switch (fighter.type) {
+                case "assault":
+                    insert = `<path d="M470.4,430V303.7h-47.2v-16.9h113.5v16.9h-47.4V430H470.4z"/>`;
+                    break;
                 case "MKP":
                     insert = `<polygon fill="none" stroke="#000000" stroke-width="2.747" stroke-miterlimit="10" points="449.3,473.2 418.6,419.8 449.3,366.4 510.7,366.4 541.4,419.8 510.7,473.2"/><polygon stroke="#000000" stroke-width="0.3924" stroke-miterlimit="10" points="480,418.9 510.2,326.8 449.8,326.8 480,418.9 510.2,326.8 449.8,326.8"/>`;
                     break;
