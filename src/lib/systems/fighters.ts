@@ -128,6 +128,9 @@ export class Fighters extends System {
         let base = 0;
         // +30 across the board
         switch (this.type) {
+            case "assault":
+                base += 36;
+                break;
             case "light":
             case "lightInterceptor":
             case "standard":
