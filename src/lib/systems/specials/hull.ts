@@ -15,18 +15,20 @@ export class Hull extends SpecialSystem {
     }
 
     points() {
-        if (this.ship.hull !== undefined) {
-            if (this.ship.hull.rows === 3) {
-                return this.ship.hull.points * 3;
-            } else if (this.ship.hull.rows === 4) {
-                return this.ship.hull.points * 2;
-            } else if (this.ship.hull.rows === 5) {
-                return Math.round(this.ship.hull.points * 1.5);
-            } else if (this.ship.hull.rows === 6) {
-                return this.ship.hull.points;
-            }
+        if ( (this.ship.hull === undefined) || (this.ship.mass === undefined) ) {
+            return NaN;
         }
-        return NaN;
+        let pts = this.ship.mass;
+        if (this.ship.hull.rows === 3) {
+            pts += this.ship.hull.points * 3;
+        } else if (this.ship.hull.rows === 4) {
+            pts += this.ship.hull.points * 2;
+        } else if (this.ship.hull.rows === 5) {
+            pts += Math.round(this.ship.hull.points * 1.5);
+        } else if (this.ship.hull.rows === 6) {
+            pts += this.ship.hull.points;
+        }
+        return pts;
     }
 
     cpv() {
