@@ -46,6 +46,15 @@ export class Hull extends SpecialSystem {
             const realMass = this.ship.mass - ncmass;
             let cpv = Math.round((realMass * realMass) / 100);
             if (cpv < 1) { cpv = 1; }
+            if (this.ship.hull.rows === 3) {
+                cpv += this.ship.hull.points * 3;
+            } else if (this.ship.hull.rows === 4) {
+                cpv += this.ship.hull.points * 2;
+            } else if (this.ship.hull.rows === 5) {
+                cpv += Math.round(this.ship.hull.points * 1.5);
+            } else if (this.ship.hull.rows === 6) {
+                cpv += this.ship.hull.points;
+            }
             return cpv;
         }
         return NaN;
