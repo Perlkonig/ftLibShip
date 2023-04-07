@@ -15,7 +15,14 @@ export interface FullThrustShip {
   points?: number;
   cpv?: number;
   mass?: number;
+  /**
+   * Crew factors are calculated differently for civilian vs. military vessels.
+   */
   civilian?: boolean;
+  /**
+   * Beta orientation shifts the arcs 30 degrees clockwise, so the F* arcs fire port and the A* arcs fire starboard.
+   */
+  orientation?: "alpha" | "beta";
   hull?: {
     points: number;
     rows: 3 | 4 | 5 | 6;
@@ -99,6 +106,10 @@ export interface FullThrustShip {
          * A unique identifier used to target this specific bay in orders.
          */
         id: string;
+        /**
+         * If given, the mass of the bay is calculated as the product of the capacity and this ratio. If not provided, then the default ratios found in the *Continuum* rules are used.
+         */
+        ratio?: number;
         [k: string]: unknown;
       }
     | {
