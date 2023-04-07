@@ -117,14 +117,18 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
                     addMarines++;
                 } else if (ship.systems[i].name === "bay") {
                     if (ship.systems[i].type === "passenger") {
-                        baysPassengers++;
+                        if (ship.systems[i].capacity !== undefined) {
+                            baysPassengers += ship.systems[i].capacity as number;
+                        }
                     } else if (ship.systems[i].type === "troop") {
-                        baysTroops++;
+                        if (ship.systems[i].capacity !== undefined) {
+                            baysTroops += ship.systems[i].capacity as number;
+                        }
                     }
                 }
             }
-            const maxBerthedPassengers = baysPassengers * 4;
-            const maxBerthedTroops = baysTroops * 3;
+            const maxBerthedPassengers = baysPassengers;
+            const maxBerthedTroops = baysTroops;
             const maxAdds = cf + maxBerthedPassengers + maxBerthedTroops;
             if (addDamage > (cf + maxBerthedPassengers)) {
                 results.errors.push(EvalErrorCode.OverDCP);

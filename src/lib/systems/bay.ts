@@ -6,6 +6,7 @@ export class Bay extends System {
     public type: "cargo" | "passenger" | "troop" | "boat" = "cargo";
     public capacity = 1;
     public id!: string;
+    public ratio?: number;
 
     constructor(data: ISystem, ship: FullThrustShip) {
         super(data, ship);
@@ -17,6 +18,9 @@ export class Bay extends System {
         }
         if (data.hasOwnProperty("id")) {
             this.id = data.id as string;
+        }
+        if (data.hasOwnProperty("ratio")) {
+            this.ratio = data.ratio as number;
         }
     }
 
@@ -33,7 +37,19 @@ export class Bay extends System {
     }
 
     mass() {
-        return this.capacity;
+        let ratio = this.ratio;
+        if (ratio === undefined) {
+            if (this.type === "boat") {
+                ratio = 1.5;
+            } else if (this.type === "cargo") {
+                ratio = 1;
+            } else if (this.type === "passenger") {
+                ratio = 1/4;
+            } else { // troop
+                ratio = 1/3;
+            }
+        }
+        return Math.ceil(this.capacity * ratio);
     }
 
     points() {
