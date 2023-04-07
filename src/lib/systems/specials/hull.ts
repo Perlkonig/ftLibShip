@@ -41,8 +41,11 @@ export class Hull extends SpecialSystem {
         }
         return NaN;
     }
-    
+
     hull_points() {
+        if (this.ship.hull === undefined) {
+            return NaN;
+        }
         if (this.ship.hull.rows === 3) {
             return  this.ship.hull.points * 3;
         } else if (this.ship.hull.rows === 4) {
