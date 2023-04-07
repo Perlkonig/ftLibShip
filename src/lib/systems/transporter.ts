@@ -72,7 +72,7 @@ export class Transporter extends System {
     glyph() {
         let id = `transporter${this.class}${this.leftArc}${this.numArcs}`;
         let insert = `<rect x="162.5" y="162.5" width="275" height="275" fill="white" stroke="black" stroke-width="20" stroke-miterlimit="10" /><text x="300" y="325" stroke="black" fill="black" dominant-baseline="middle" text-anchor="middle" font-size="300">${this.class}</text>`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         return {
             id,
             svg,

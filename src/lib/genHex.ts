@@ -23,11 +23,11 @@ const rInner = 206.1;
 const rOuter = 283;
 const size = Math.round((rOuter * 2) / 100) * 100;
 
-export const genHex = (id: string, numArcs: number = 1, leftArc: Arc, defs: string | undefined = undefined, terminal: string | undefined = undefined) => {
+export const genHex = (orientation: "alpha"|"beta"|undefined, id: string, numArcs: number = 1, leftArc: Arc, defs: string | undefined = undefined, terminal: string | undefined = undefined) => {
     if (numArcs === 6) {
         const allLines: IPoint[][] = [];
         for (const arc of lefts.keys()) {
-            const line = genLine(arc);
+            const line = genLine(orientation, arc);
             if (line !== undefined) {
                 allLines.push(line);
             }
@@ -38,20 +38,20 @@ export const genHex = (id: string, numArcs: number = 1, leftArc: Arc, defs: stri
         const end = arcs[arcs.length - 1];
         const lines: IPoint[][] = [];
         for (const arc of arcs) {
-            const line = genLine(arc);
+            const line = genLine(orientation, arc);
             if (line !== undefined) {
                 lines.push(line);
             } else {
                 console.log(`Could not generate a line for ${arc}`);
             }
         }
-        const lastLine = genLine(end, "R");
+        const lastLine = genLine(orientation, end, "R");
         if (lastLine !== undefined) {
             lines.push(lastLine);
         } else {
             console.log(`Could not generate a line for ${end}`);
         }
-        return genSvg(id, lines, genPath(arcs), defs, terminal)
+        return genSvg(id, lines, genPath(orientation, arcs), defs, terminal)
     }
 };
 
@@ -96,7 +96,7 @@ const genSvg = (id: string, lines: IPoint[][], path: string | undefined = undefi
     return s;
 }
 
-const genLine = (arc: Arc, side: "L"|"R" = "L"): [IPoint, IPoint] | undefined => {
+const genLine = (orientation: "alpha"|"beta"|undefined, arc: Arc, side: "L"|"R" = "L"): [IPoint, IPoint] | undefined => {
     let deg: number | undefined;
     if (side === "L") {
         deg = lefts.get(arc);
@@ -104,6 +104,9 @@ const genLine = (arc: Arc, side: "L"|"R" = "L"): [IPoint, IPoint] | undefined =>
         deg = rights.get(arc);
     }
     if (deg !== undefined) {
+        if ( (orientation !== undefined) && (orientation === "beta") ) {
+            deg += 30;
+        }
         const ptOuter = arcpt(size / 2, size / 2, rOuter, deg2rad(deg));
         const ptInner = arcpt(size / 2, size / 2, rInner, deg2rad(deg));
         return [ptOuter, ptInner];
@@ -143,14 +146,20 @@ const nextArc = (start: Arc, dist: number): Arc | undefined => {
     return undefined;
 }
 
-const genPath = (arcs: Arc[]): string | undefined => {
+const genPath = (orientation: "alpha"|"beta"|undefined, arcs: Arc[]): string | undefined => {
     const points: string[] = [];
     for (const arc of arcs) {
-        const deg = lefts.get(arc)!;
+        let deg = lefts.get(arc)!;
+        if ( (orientation !== undefined) && (orientation === "beta") ) {
+            deg += 30;
+        }
         const pt = arcpt(size / 2, size / 2, rOuter, deg2rad(deg));
         points.push(`${pt.x},${pt.y}`);
     }
-    const finalDeg = rights.get(arcs[arcs.length - 1])!;
+    let finalDeg = rights.get(arcs[arcs.length - 1])!;
+    if ( (orientation !== undefined) && (orientation === "beta") ) {
+        finalDeg += 30;
+    }
     const finalPt = arcpt(size / 2, size / 2, rOuter, deg2rad(finalDeg));
     points.push(`${finalPt.x},${finalPt.y}`);
     return `<polyline points="${points.join(" ")}" stroke-width="20" stroke-miterlimit="10" stroke="black" fill="none" />`;

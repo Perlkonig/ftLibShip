@@ -78,7 +78,7 @@ export class Beam extends System {
 
     glyph() {
         const id = `beam${this.class}${this.leftArc}${this.numArcs}`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, undefined, `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="300">${this.class}</text>`);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="300">${this.class}</text>`);
         return {
             id,
             svg,

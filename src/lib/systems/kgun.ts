@@ -125,7 +125,7 @@ export class Kgun extends System {
             insert = `<line x1="300" y1="478.4878357199728" x2="300" y2="736.6825428220194" stroke-width="20" stroke-miterlimit="10" stroke="black" />` + insert;
         }
         const id = `kgun${this.class}${mod}${this.leftArc}${this.numArcs}`;
-        let svg = genHex(id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genHex(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         // If long range, fill the centre hex
         if (this.modifier === "long") {
             svg = svg.replace(`id="inner" fill="white" fill-opacity="0"`, `id="inner" fill="black" fill-opacity="1"`);

@@ -73,7 +73,7 @@ export class Gravitic extends System {
     glyph() {
         let id = `gravitic${this.class}${this.leftArc}${this.numArcs}`;
         let insert = `<circle cx="300" cy="300" r="167.65" fill="black" /><text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="250" stroke="white" fill="white">${this.class}</text>`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         return {
             id,
             svg,

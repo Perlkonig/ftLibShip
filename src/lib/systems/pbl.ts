@@ -67,7 +67,7 @@ export class Pbl extends System {
         const id = `pbl${this.class}${this.leftArc}${this.numArcs}`;
         const insert = `<use href="#_internalPbl" x="50" y="50" width="500" height="500" /><text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="250" stroke="black" fill="black">${this.class}</text>`;
         const defs = `<symbol id="_internalPbl" viewBox="344 155 272 284"><polygon fill="white" stroke="#000000" stroke-width="12" stroke-miterlimit="10" points="480,165.5 511.3,201.1 557.5,190.7 561.9,237.8 605.4,256.6 581.3,297.4 605.4,338.1 561.9,356.9 557.5,404 511.3,393.7 480,429.2 448.7,393.7 402.5,404 398.1,356.9 354.6,338.1 378.7,297.4 354.6,256.6 398.1,237.8 402.5,190.7 448.7,201.1"/></symbol>`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, defs, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);
         svg = svg.replace(`<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`, "");
         return {
             id,

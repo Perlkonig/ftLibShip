@@ -57,7 +57,7 @@ export class TorpedoPulse extends System {
         }
         const id = `torpedo${mod}${this.leftArc}${this.numArcs}`;
         const insert = `<use href="#_internalTorpedo${mod}" x="125" y="125" width="350" height="350" />`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, defs, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);
         return {
             id,
             svg,

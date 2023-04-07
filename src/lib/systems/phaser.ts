@@ -80,7 +80,7 @@ export class Phaser extends System {
     glyph() {
         let id = `phaser${this.class}${this.leftArc}${this.numArcs}`;
         let insert = `<rect x="162.5" y="162.5" width="275" height="275" fill="black" stroke="black" stroke-width="20" stroke-miterlimit="10" /><text x="300" y="325" stroke="white" fill="white" dominant-baseline="middle" text-anchor="middle" font-size="300">${this.class}</text>`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         return {
             id,
             svg,

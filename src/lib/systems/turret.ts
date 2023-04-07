@@ -102,7 +102,7 @@ export class Turret extends System {
 
     glyph() {
         const id = `turret${this.numArcs}_${this.size}`;
-        let svg = genHex(id, this.numArcs, this.leftArc);
+        let svg = genHex(this.ship.orientation, id, this.numArcs, this.leftArc);
 
         return {
             id,

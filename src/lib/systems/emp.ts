@@ -72,7 +72,7 @@ export class Emp extends System {
     glyph() {
         const roman = ["I", "II", "III", "IV"];
         const id = `emp${this.class}${this.leftArc}${this.numArcs}`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, undefined, `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="200">${roman[this.class - 1]}</text>`);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="200">${roman[this.class - 1]}</text>`);
         return {
             id,
             svg,

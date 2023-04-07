@@ -55,7 +55,7 @@ export class Particle extends System {
         const id = `particle${this.leftArc}${this.numArcs}`;
         const insert = `<use href="#_internalParticle" x="87.5" y="87.5" width="425" height="425"/>`;
         const defs = `<symbol id="_internalParticle" viewBox="369 230 225 102"><path d="M370.8,307h218.3c0,0-31.6,83.1-108.7,83.1S370.8,307,370.8,307z"/><polyline points="436,331 436,231 466,231 466,331"/><polyline points="483,300 421,300 421,285 483,285"/><polyline points="491,331 491,231 521,231 521,331"/><polyline points="538,300 476,300 476,285 538,285"/></symbol>`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, defs, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);
         return {
             id,
             svg,

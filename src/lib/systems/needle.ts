@@ -69,7 +69,7 @@ export class Needle extends System {
         const roman = ["I", "II", "III", "IV"];
         const id = `needle${this.class}${this.leftArc}${this.numArcs}`;
         const insert = `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="200" stroke="white" fill="white">${roman[this.class - 1]}</text>`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         // Fill the inner circle with black
         svg = svg.replace(`<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`, `<circle fill="black" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`);
         return {

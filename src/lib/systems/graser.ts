@@ -134,7 +134,7 @@ export class Graser extends System {
             id = `graser${this.class}Heavy${this.leftArc}${this.numArcs}`;
             insert = `<polygon points="300,506.1 478.48783571997280509800334549218,196.95 121.51216428002719490199665450782,196.95" stroke="black" fill="black" />` + insert;
         }
-        let svg = genArcs(id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         if (! this.heavy) {
             // Fill the inner circle with black
             svg = svg.replace(`<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`, `<circle fill="black" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`);

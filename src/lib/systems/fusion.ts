@@ -38,7 +38,7 @@ export class Fusion extends System {
         const id = `fusion${this.leftArc}${this.numArcs}`;
         const insert = `<use href="#_internalFusion" x="162.5" y="162.5" width="275" height="275" />`;
         const defs = `<symbol id="_internalFusion" viewBox="372 191 221 179"><path fill="white" stroke="#000000" stroke-width="9" stroke-miterlimit="10" d="M587.5,210.3c0-7.6-6.2-13.8-13.8-13.8H391.3c-7.6,0-13.8,6.2-13.8,13.8v140.4c0,7.6,6.2,13.8,13.8,13.8h182.4c7.6,0,13.8-6.2,13.8-13.8V210.3z"/><path fill="white" stroke="#000000" stroke-width="9" stroke-miterlimit="10" d="M568.5,222.8c0-6.2-5-11.3-11.3-11.3H407.8c-6.2,0-11.3,5-11.3,11.3v115.5c0,6.2,5,11.3,11.3,11.3h149.5c6.2,0,11.3-5,11.3-11.3V222.8z"/></symbol>`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, defs, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);
         return {
             id,
             svg,

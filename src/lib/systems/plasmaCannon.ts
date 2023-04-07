@@ -72,7 +72,7 @@ export class PlasmaCannon extends System {
     glyph() {
         let id = `plasmaCannon${this.class}${this.leftArc}${this.numArcs}`;
         let insert = `<circle cx="300" cy="300" r="170" fill="none" stroke="black" stroke-width="20" stroke-miterlimit="10" /><text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="250">${this.class}</text>`;
-        let svg = genArcs(id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         return {
             id,
             svg,
