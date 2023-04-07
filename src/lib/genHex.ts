@@ -32,7 +32,7 @@ export const genHex = (orientation: "alpha"|"beta"|undefined, id: string, numArc
                 allLines.push(line);
             }
         }
-        return genSvg(id, allLines, undefined, defs, terminal);
+        return genSvg(orientation, id, allLines, undefined, defs, terminal);
     } else {
         const arcs = arcList(leftArc, numArcs);
         const end = arcs[arcs.length - 1];
