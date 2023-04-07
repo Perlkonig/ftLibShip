@@ -20,7 +20,7 @@ export interface FullThrustShip {
    */
   civilian?: boolean;
   /**
-   * Beta orientation shifts the arcs 30 degrees clockwise, so the F* arcs fire port and the A* arcs fire starboard.
+   * Beta orientation shifts the arcs 30 degrees clockwise, so the F* arcs fire starboard and the A* arcs fire port.
    */
   orientation?: "alpha" | "beta";
   hull?: {
