@@ -51,7 +51,7 @@ export const genHex = (orientation: "alpha"|"beta"|undefined, id: string, numArc
         } else {
             console.log(`Could not generate a line for ${end}`);
         }
-        return genSvg(id, lines, genPath(orientation, arcs), defs, terminal)
+        return genSvg(orientation, id, lines, genPath(orientation, arcs), defs, terminal)
     }
 };
 
@@ -63,7 +63,11 @@ const arcpt = (cx: number, cy: number, r: number, angle: number): IPoint => {
     return {x, y};
 }
 
-const genSvg = (id: string, lines: IPoint[][], path: string | undefined = undefined, defs: string | undefined = undefined, terminal: string | undefined = undefined): string => {
+const genSvg = (orientation: "alpha"|"beta"|undefined, id: string, lines: IPoint[][], path: string | undefined = undefined, defs: string | undefined = undefined, terminal: string | undefined = undefined): string => {
+    let degs = [60, 120, 180, 240, 300, 360];
+    if ( (orientation !== undefined) && (orientation === "beta") ) {
+        degs = [90, 150, 210, 270, 330, 30];
+    }
     let s = `<symbol id="svg_${id}" viewBox="-1 -1 ${size + 2} ${size + 2}">`;
     if (defs !== undefined) {
         s += `<defs>${defs}</defs>`;
@@ -71,14 +75,14 @@ const genSvg = (id: string, lines: IPoint[][], path: string | undefined = undefi
     s += `<rect x="0" y="0" width="${size}" height="${size}" fill="white" fill-opacity="0" />`;
     if (path === undefined) {
         const pointsOuter: string[] = [];
-        for (const deg of [60, 120, 180, 240, 300, 360]) {
+        for (const deg of degs) {
             const pt = arcpt(size / 2, size / 2, rOuter, deg2rad(deg));
             pointsOuter.push(`${pt.x},${pt.y}`);
         }
         s += `<polygon id="outer" points="${pointsOuter.join(" ")}" fill="white"  fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`
     }
     const pointsInner: string[] = [];
-    for (const deg of [60, 120, 180, 240, 300, 360]) {
+    for (const deg of degs) {
         const pt = arcpt(size / 2, size / 2, rInner, deg2rad(deg));
         pointsInner.push(`${pt.x},${pt.y}`);
     }
