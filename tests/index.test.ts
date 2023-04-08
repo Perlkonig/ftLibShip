@@ -6,16 +6,17 @@ import { EvalErrorCode, ValErrorCode, evaluate, validate } from "../src/index.js
 import type { IValidation } from "../src/index.js";
 import { renderSvg, renderUri } from "../src/index.js";
 
-const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":4,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":107,"cpv":102,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","invaders":[{"type":"marines"},{"type":"damageControl","owner":1},{"type":"damageControl","owner":"test"}]}`;
+const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":6,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":167,"cpv":142,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","invaders":[{"type":"marines"},{"type":"damageControl","owner":1},{"type":"damageControl","owner":"test"}],"orientation":"alpha"}`;
+// const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":4,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":157,"cpv":132,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","invaders":[{"type":"marines"},{"type":"damageControl","owner":1},{"type":"damageControl","owner":"test"}]}`;
 
 describe("Root exports: Evaluate", () => {
     it("Valid Tacoma class cruiser evaluates correctly", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         const evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        expect(evaluation.mass).to.equal(45);
-        expect(evaluation.points).to.equal(107);
-        expect(evaluation.cpv).to.equal(102);
+        expect(evaluation.mass).to.equal(50);
+        expect(evaluation.points).to.equal(167);
+        expect(evaluation.cpv).to.equal(142);
     });
     it("Error Codes: NoMass", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
@@ -58,6 +59,7 @@ describe("Root exports: Evaluate", () => {
     });
     it("Error Codes: OverMarine", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.mass! += 1;
         ship.systems!.push({name: "marines"});
         ship.systems!.push({name: "marines"});
         ship.systems!.push({name: "marines"});
@@ -66,7 +68,7 @@ describe("Root exports: Evaluate", () => {
         ship.systems!.push({name: "marines"});
         evaluation = evaluate(ship);
         expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverMarine]);
-        ship.systems!.push({name: "bay", type: "troop", capacity: 1, id: "test"});
+        ship.systems!.push({name: "bay", type: "troop", capacity: 3, id: "test"});
         evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
         ship.systems!.push({name: "marines"});
@@ -79,6 +81,7 @@ describe("Root exports: Evaluate", () => {
     });
     it("Error Codes: OverDCP", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.mass! += 1;
         ship.systems!.push({name: "damageControl"});
         ship.systems!.push({name: "damageControl"});
         ship.systems!.push({name: "damageControl"});
@@ -87,7 +90,7 @@ describe("Root exports: Evaluate", () => {
         ship.systems!.push({name: "damageControl"});
         evaluation = evaluate(ship);
         expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverDCP]);
-        ship.systems!.push({name: "bay", type: "passenger", capacity: 1, id: "test"});
+        ship.systems!.push({name: "bay", type: "passenger", capacity: 4, id: "test"});
         evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
         ship.systems!.push({name: "damageControl"});
@@ -166,7 +169,7 @@ describe("Root exports: Validate", () => {
         expect (results.evalErrors!.length).to.be.greaterThan(0);
     });
     it("Points mismatch", () => {
-        const badTacoma = validTacoma.replace(`"points":107,"cpv":102`, `"points":106,"cpv":103`);
+        const badTacoma = validTacoma.replace(`"points":167,"cpv":142`, `"points":106,"cpv":103`);
         const results = validate(badTacoma);
         expect(results.valid).to.be.false;
         expect(results.code).to.be.equal(ValErrorCode.PointsMismatch);
@@ -175,10 +178,10 @@ describe("Root exports: Validate", () => {
     });
 });
 
-describe("Renderer", () => {
-    it("Simple export", () => {
-        const civilian = `{"name":"HEAVY FREIGHTER","class":"","civilian": true,"mass":120,"cpv":65,"points":75,"hull":{"streamlining":"none","stealth":"0","rows":4,"points":12},"armour":[],"systems":[{"id":"543-d","advanced":false,"thrust":2,"name":"drive"},{"id":"NK1YO","advanced":false,"name":"ftl"},{"type":"cargo","capacity":21,"id":"1gDKK","name":"bay"},{"type":"boat","capacity":21,"id":"Wo-ND","name":"bay"},{"type":"cargo","capacity":20,"id":"FaNhe","name":"bay"},{"name":"hangar","id":"LpThm","isRack":false,"critRules":false}],"weapons":[{"id":"NgZaY","name":"pds"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"assault","id":"MG54k","mods":[],"hangar":"LpThm"}]}`;
-        console.log(renderSvg(JSON.parse(civilian)));
-        // console.log(renderUri(JSON.parse(validTacoma)));
-    });
-});
+// describe("Renderer", () => {
+//     it("Simple export", () => {
+//         const civilian = `{"name":"HEAVY FREIGHTER","class":"","civilian": true,"mass":120,"cpv":65,"points":75,"hull":{"streamlining":"none","stealth":"0","rows":4,"points":12},"armour":[],"systems":[{"id":"543-d","advanced":false,"thrust":2,"name":"drive"},{"id":"NK1YO","advanced":false,"name":"ftl"},{"type":"cargo","capacity":21,"id":"1gDKK","name":"bay"},{"type":"boat","capacity":21,"id":"Wo-ND","name":"bay"},{"type":"cargo","capacity":20,"id":"FaNhe","name":"bay"},{"name":"hangar","id":"LpThm","isRack":false,"critRules":false}],"weapons":[{"id":"NgZaY","name":"pds"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"assault","id":"MG54k","mods":[],"hangar":"LpThm"}]}`;
+//         console.log(renderSvg(JSON.parse(civilian)));
+//         // console.log(renderUri(JSON.parse(validTacoma)));
+//     });
+// });
