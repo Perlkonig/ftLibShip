@@ -55,6 +55,10 @@ export const genSvg = (ship: FullThrustShip, cellsize: number, dim: {height: num
         totalHeight = cellsize * rows;
 
         let cols = hullRows[0].length;
+        // If there's armour, make sure there's enough room for armour that exceeds hull cols
+        if ( (ship.hasOwnProperty("armour")) && (ship.armour !== undefined) ) {
+            cols = Math.max(cols, ...ship.armour.map(x => x[0] + x[1]));
+        }
         if (ship.hull.stealth === "2") {
             cols++;
         } else if ( (ship.hull.stealth === "1") && (hullRows[1].length === hullRows[0].length) ) {

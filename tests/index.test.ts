@@ -45,17 +45,11 @@ describe("Root exports: Evaluate", () => {
         evaluation = evaluate(ship);
         expect(evaluation.errors).to.have.deep.members([EvalErrorCode.LowHull]);
     });
-    it("Error Codes: OverShell", () => {
-        const ship = JSON.parse(validTacoma) as FullThrustShip;
-        ship.armour = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
-        let evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverShell]);
-    });
     it("Error Codes: OverArmour", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         ship.armour = [[10,0]];
         let evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverArmour, EvalErrorCode.OverMass]);
+        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverMass]);
     });
     it("Error Codes: OverMarine", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
@@ -180,7 +174,7 @@ describe("Root exports: Validate", () => {
 
 // describe("Renderer", () => {
 //     it("Simple export", () => {
-//         const civilian = `{"name":"HEAVY FREIGHTER","class":"","civilian": true,"mass":120,"cpv":65,"points":75,"hull":{"streamlining":"none","stealth":"0","rows":4,"points":12},"armour":[],"systems":[{"id":"543-d","advanced":false,"thrust":2,"name":"drive"},{"id":"NK1YO","advanced":false,"name":"ftl"},{"type":"cargo","capacity":21,"id":"1gDKK","name":"bay"},{"type":"boat","capacity":21,"id":"Wo-ND","name":"bay"},{"type":"cargo","capacity":20,"id":"FaNhe","name":"bay"},{"name":"hangar","id":"LpThm","isRack":false,"critRules":false}],"weapons":[{"id":"NgZaY","name":"pds"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"assault","id":"MG54k","mods":[],"hangar":"LpThm"}]}`;
+//         const civilian = `{"hull":{"points":28,"rows":4,"stealth":"0","streamlining":"none"},"armour":[[9,0]],"systems":[{"name":"drive","thrust":4,"advanced":false,"id":"9q-lH"},{"name":"ftl","advanced":false,"id":"llpza"},{"name":"fireControl","id":"lwHJf"},{"name":"fireControl","id":"Fa6jl"},{"name":"screen","area":false,"advanced":false,"id":"BeUun"},{"name":"screen","area":false,"advanced":false,"id":"Ck7Yk"},{"name":"hangar","id":"5vKqy","isRack":false,"critRules":false},{"name":"hangar","id":"PjteR","isRack":false,"critRules":false},{"name":"hangar","id":"5Dimf","isRack":false,"critRules":false},{"name":"hangar","id":"1guU_","isRack":false,"critRules":false}],"weapons":[{"name":"pds","id":"SR7EN"},{"name":"pds","id":"ssxp6"},{"name":"pds","id":"Vuic4"},{"name":"pds","id":"rurC1"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"3MXwM"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"ajzMP"},{"name":"beam","class":2,"leftArc":"F","numArcs":6,"id":"1-ayT"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"standard","id":"e4P1A","mods":[],"hangar":"5vKqy"},{"name":"fighters","type":"standard","id":"wjlfa","mods":[],"hangar":"PjteR"},{"name":"fighters","type":"standard","id":"9uBl2","mods":[],"hangar":"5Dimf"},{"name":"fighters","type":"standard","id":"MAEY_","mods":[],"hangar":"1guU_"}],"orientation":"alpha","points":479,"cpv":375,"mass":140,"class":"Light Fleet Carrier","name":"Inflexible"}`;
 //         console.log(renderSvg(JSON.parse(civilian)));
 //         // console.log(renderUri(JSON.parse(validTacoma)));
 //     });

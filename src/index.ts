@@ -13,8 +13,6 @@ export enum EvalErrorCode {
     NoMass="NOMASS",
     BadMass="BADMASS",
     LowHull="LOWHULL",
-    OverShell="OVERSHELL",
-    OverArmour="OVERARMOUR",
     OverMarine="OVERMARINE",
     OverDCP="OVERDCP",
     OverCrew="OVERCREW",
@@ -86,21 +84,6 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
         // Hull strength out of range
         if ( (ship.hull === undefined) || (ship.hull.points === undefined) || (ship.hull.points < (ship.mass * 0.1)) ) {
             results.errors.push(EvalErrorCode.LowHull);
-        }
-
-        // Any armour rows out of range
-        if ( (ship.armour !== undefined) && (ship.hull !== undefined) ) {
-            const maxArmour = Math.ceil(ship.hull.points / ship.hull.rows);
-            if ( (ship.hasOwnProperty("armour")) && (ship.armour.length > 0) ) {
-                if (ship.armour.length > 5) {
-                    results.errors.push(EvalErrorCode.OverShell);
-                }
-                for (let i = 0; i < ship.armour.length; i++) {
-                    if (ship.armour[i][0] + ship.armour[i][1] > maxArmour) {
-                        results.errors.push(EvalErrorCode.OverArmour);
-                    }
-                }
-            }
         }
 
         // Sufficient room for DCPs and marines?

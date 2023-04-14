@@ -30,7 +30,7 @@ export interface FullThrustShip {
     streamlining: "none" | "partial" | "full";
   };
   /**
-   * Rows of armour. First element being the innermost layer. No layer can be larger than the first row of hull boxes. The use of 'oneOf' here is for backwards compatibility.
+   * Rows of armour. First element being the innermost layer. The use of 'oneOf' here is for backwards compatibility.
    */
   armour?: [number, number][];
   /**

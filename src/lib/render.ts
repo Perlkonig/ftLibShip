@@ -53,6 +53,10 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
     if ( (ship.hasOwnProperty("hull")) && (ship.hull !== undefined) ) {
         let hullArray = hull.formRows(ship)!;
         let hullCols = hullArray[0].length;
+        // If there's armour, look for situations where there's more armour than hull columns
+        if ( (ship.hasOwnProperty("armour")) && (ship.armour !== undefined) ) {
+            hullCols = Math.max(hullCols, ...ship.armour.map(x => x[0] + x[1]));
+        }
         if (ship.hull.stealth === "2") {
             hullCols++;
         } else if ( (ship.hull.stealth === "1") && (hullArray.length > 1) && (hullArray[1].length === hullArray[0].length) ) {
