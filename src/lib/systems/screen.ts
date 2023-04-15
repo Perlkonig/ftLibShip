@@ -36,15 +36,20 @@ export class Screen extends System {
         if (this.ship.mass !== undefined) {
             let mult = 1;
             if (this.level === 2) { mult = 2; }
+            let mass: number;
             if (this.advanced && this.area) {
-                return Math.round(this.ship.mass * 0.3 * mult);
+                mass = Math.round(this.ship.mass * 0.3);
             } else if (this.advanced) {
-                return Math.round(this.ship.mass * 0.075 * mult);
+                mass = Math.round(this.ship.mass * 0.075);
             } else if (this.area) {
-                return Math.round(this.ship.mass * 0.2 * mult);
+                mass = Math.round(this.ship.mass * 0.2);
             } else {
-                return Math.round(this.ship.mass * 0.05 * mult);
+                mass = Math.round(this.ship.mass * 0.05);
             }
+            if (mass < 3) {
+                mass = 3;
+            }
+            return mass * mult;
         }
         return NaN;
     }

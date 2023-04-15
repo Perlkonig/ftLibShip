@@ -177,7 +177,7 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
 }
 
 import Ajv from "ajv";
-import schema from "./schemas/ship.json"; // assert { type: "json" }; // add assertion to testing, but not to production
+import schema from "./schemas/ship.json" assert { type: "json" }; // add assertion to testing, but not to production
 const ajv = new Ajv.default({allErrors: true});
 const ajvValidate = ajv.compile<FullThrustShip>(schema);
 

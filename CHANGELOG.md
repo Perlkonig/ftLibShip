@@ -5,11 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v2.0.2] - 2023/04/14
+## [v2.0.2] - 2023-04-14
 
 ### Fixed
 
 * I had simply assumed that the maximum amount of armour you could have in any given row was the width of the top row of hull boxes; however, the *Fleet Book 1* rules mention no such restriction, and there are ships in the book that break this rule. The builder will now let you add unlimited armour to any given row.
+* The minimum mass limitation of defensive screens, outlined in *Fleet Book 1*, is finally applied.
 
 ## [v2.0.1] - 2023-04-08
 
