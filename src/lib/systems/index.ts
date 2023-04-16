@@ -78,6 +78,8 @@ import { SpinalNova } from "./spinalNova.js";
 import { SpinalWave } from "./spinalWave.js";
 import { Reflex } from "./reflex.js";
 export { SpinalNova, SpinalWave, Reflex };
+import { Shroud } from "./shroud.js";
+export { Shroud };
 
 import { type2name, mod2name } from "./fighters.js";
 export { type2name as fighterType2Name, mod2name as fighterMod2Name };
@@ -141,10 +143,11 @@ export const sortNames = new Map<string, string>([
     ["spinalNova", "Spinal Mount - Nova Cannon (deprecated)"],
     ["spinalWave", "Spinal Mount - Wave Gun (deprecated)"],
     ["reflex", "Reflex Field (deprecated)"],
+    ["shroud", "Vapour Shroud"],
 ]);
 
 // Put the short code in the appropriate list in whatever order. They get sorted for display.
-export const systemList: string[] = ["reflex", "ortillery", "decoy", "sensors", "cloakDevice", "cloakField", "turret", "launchTube", "hangar", "holofield", "stealthField", "ecm", "damageControl", "marines", "magazine", "bay", "mineLayer", "mineSweeper", "screen", "suicide", "fireControl", "adfc"].sort((a, b) => {
+export const systemList: string[] = ["shroud", "reflex", "ortillery", "decoy", "sensors", "cloakDevice", "cloakField", "turret", "launchTube", "hangar", "holofield", "stealthField", "ecm", "damageControl", "marines", "magazine", "bay", "mineLayer", "mineSweeper", "screen", "suicide", "fireControl", "adfc"].sort((a, b) => {
     if (sortNames.get(a)! > sortNames.get(b)!) {
         return 1;
     } else if (sortNames.get(a)! < sortNames.get(b)!) {
@@ -306,6 +309,8 @@ export const getSystem = (data: ISystem, ship: FullThrustShip): System | undefin
             return new SpinalWave(data, ship);
         case "reflex":
             return new Reflex(data, ship);
+        case "shroud":
+            return new Shroud(data, ship);
         default:
             console.error(`Could not find a system with the name ${data.name}`);
             break;

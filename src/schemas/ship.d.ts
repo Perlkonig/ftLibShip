@@ -85,7 +85,8 @@ export interface FullThrustShip {
           | "cloakDevice"
           | "cloakField"
           | "ortillery"
-          | "reflex";
+          | "reflex"
+          | "shroud";
         [k: string]: unknown;
       }
     | {

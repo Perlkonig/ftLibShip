@@ -172,7 +172,7 @@
                     {
                         "properties": {
                             "name": {
-                                "enum": ["suicide", "mineSweeper", "damageControl", "marines", "stealthField", "holofield", "cloakDevice", "cloakField", "ortillery", "reflex"]
+                                "enum": ["suicide", "mineSweeper", "damageControl", "marines", "stealthField", "holofield", "cloakDevice", "cloakField", "ortillery", "reflex", "shroud"]
                             }
                         },
                         "required": ["name"]
