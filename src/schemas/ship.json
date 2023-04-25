@@ -105,6 +105,13 @@
                             "advanced": {
                                 "type": "boolean",
                                 "default": false
+                            },
+                            "transferMass": {
+                                "description": "Total extra mass an FTL tug drive can transfer. Must be a multiple of 5. Defaults to 0.",
+                                "type": "number",
+                                "minimum": 0,
+                                "multipleOf": 5,
+                                "default": 0
                             }
                         },
                         "required": ["name"]
@@ -207,7 +214,7 @@
                                 "enum": ["bay"]
                             },
                             "type": {
-                                "enum": ["cargo", "passenger", "troop", "boat"]
+                                "enum": ["cargo", "passenger", "troop", "boat", "tender"]
                             },
                             "capacity": {
                                 "type": "number",

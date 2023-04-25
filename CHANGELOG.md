@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.4] - 2023-04-25
+
+### Added
+
+* Added a fourth "Hold or Berth" option called "Tender Bay" (see page 89 of the *Continuum* rules). It looks and works exactly the same as a "Boat Bay" but costs points.
+* Added the option to add FTL tug capacity to any ship.
+
 ## [v2.0.3] - 2023-04-16
 
 ### Added

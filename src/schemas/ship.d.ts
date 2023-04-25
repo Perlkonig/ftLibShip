@@ -46,6 +46,10 @@ export interface FullThrustShip {
     | {
         name: "ftl";
         advanced?: boolean;
+        /**
+         * Total extra mass an FTL tug drive can transfer. Must be a multiple of 5. Defaults to 0.
+         */
+        transferMass?: number;
         [k: string]: unknown;
       }
     | {
@@ -101,7 +105,7 @@ export interface FullThrustShip {
       }
     | {
         name: "bay";
-        type: "cargo" | "passenger" | "troop" | "boat";
+        type: "cargo" | "passenger" | "troop" | "boat" | "tender";
         capacity: number;
         /**
          * A unique identifier used to target this specific bay in orders.

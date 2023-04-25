@@ -3,7 +3,7 @@ import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 
 export class Bay extends System {
-    public type: "cargo" | "passenger" | "troop" | "boat" = "cargo";
+    public type: "cargo" | "passenger" | "troop" | "boat" | "tender" = "cargo";
     public capacity = 1;
     public id!: string;
     public ratio?: number;
@@ -14,7 +14,7 @@ export class Bay extends System {
             this.capacity = data.capacity as number;
         }
         if (data.hasOwnProperty("type")) {
-            this.type = data.type as "cargo" | "passenger" | "troop" | "boat";
+            this.type = data.type as "cargo" | "passenger" | "troop" | "boat" | "tender";
         }
         if (data.hasOwnProperty("id")) {
             this.id = data.id as string;
@@ -31,6 +31,8 @@ export class Bay extends System {
             return "Passenger Berth";
         } else if (this.type === "boat") {
             return "Boat Bay";
+        } else if (this.type === "tender") {
+            return "Tender Bay";
         } else {
             return "Troop Berth";
         }
@@ -39,7 +41,7 @@ export class Bay extends System {
     mass() {
         let ratio = this.ratio;
         if (ratio === undefined) {
-            if (this.type === "boat") {
+            if ( (this.type === "boat") || (this.type === "tender") ) {
                 ratio = 1.5;
             } else if (this.type === "cargo") {
                 ratio = 1;
@@ -53,12 +55,15 @@ export class Bay extends System {
     }
 
     points() {
+        if (this.type === "tender") {
+            return this.mass() * 3;
+        }
         return 0;
     }
 
     glyph() {
         let insert = ``;
-        if (this.type === "boat") {
+        if ( (this.type === "boat") || (this.type === "tender") ) {
             insert = `<text x="479.5" y="318.5" dominant-baseline="middle" text-anchor="middle" font-size="100">${this.capacity}</text>
             `;
         } else {
@@ -94,6 +99,13 @@ export class Bay extends System {
                     height: 3,
                     width: 2
                 };
-        }
+            case "tender":
+                return {
+                    id: `bayTender${this.capacity}`,
+                    svg: `<symbol id="svg_bayTender${this.capacity}" viewBox="321.333 40 315.333 473"><g><rect x="415.5" y="222.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="128" height="192"/><polygon fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="479.8,56.8 372.5,199.3 372.5,438.3 449,503.5 511,503.5 586.5,438.3 586.5,199.3"/></g>${insert}</symbol>`,
+                    height: 3,
+                    width: 2
+                };
+            }
     }
 }
