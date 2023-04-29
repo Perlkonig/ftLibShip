@@ -152,12 +152,19 @@ export interface FullThrustShip {
    */
   ordnance?: (
     | {
-        name: "antiMatterMissile";
+        /**
+         * `amt` is the antimatter missile
+         */
+        name: "amt" | "rocketPod";
+        leftArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
+        numArcs?: 3;
         [k: string]: unknown;
       }
     | {
         name: "missile" | "salvo";
         modifier?: "er" | "twostage";
+        leftArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
+        numArcs?: 3;
         [k: string]: unknown;
       }
     | {
@@ -168,12 +175,6 @@ export interface FullThrustShip {
          * The unique ID of a missile magazine
          */
         magazine?: string;
-        [k: string]: unknown;
-      }
-    | {
-        name: "rocketPod";
-        leftArc: Arcs;
-        numArcs: 3;
         [k: string]: unknown;
       }
   )[];

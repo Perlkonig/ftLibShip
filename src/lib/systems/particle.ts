@@ -16,7 +16,10 @@ export class Particle extends System {
             this.numArcs = data.numArcs as ArcNum;
         }
 
-        if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
+        if ( (this.ship.orientation !== undefined) && (this.ship.orientation === "beta") && (this.numArcs === 2) ) {
+            this.numArcs = 3;
+            data.numArcs = 3;
+        } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
             this.numArcs = 3;
         } else if (this.numArcs > 6) {
             this.numArcs = 6;

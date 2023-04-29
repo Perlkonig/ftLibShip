@@ -3,14 +3,17 @@ import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 import { genArcs } from "../genArcs.js";
 
+// Need to include "A" so it works in beta orientation
+type Arc = "F"|"FS"|"FP"|"A"|"AS"|"AP";
+
 export class RocketPod extends System {
-    public leftArc: "F"|"FP"|"AP" = "FP";
+    public leftArc: Arc = "FP";
     public numArcs = 3;
 
     constructor(data: ISystem, ship: FullThrustShip) {
         super(data, ship);
         if (data.hasOwnProperty("leftArc")) {
-            this.leftArc = data.leftArc as "F"|"FP"|"AP";
+            this.leftArc = data.leftArc as Arc;
         }
     }
 

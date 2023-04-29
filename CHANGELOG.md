@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.1.0] - 2023-04-29
+
+### Changed
+
+* Normalized all the ordnance systems so you can select which three arcs the launcher targets. This change should be backwards compatible.
+
+### Fixed
+
+* Fixed a schema bug that would have caused ships using antimatter missiles to fail to validate. Obviously it's not a popular system! :)
+* The rules have some special "discounts" for some weapons (i.e., beams, Gatling batteries, and twin particle arrays) if they select one of the pairs of "broadside" arcs. While not explicit, it is logical that this only applies in alpha orientation. So the discount and arc auto-selection for those particular weapons have been disabled for ships in beta orientation.
+
 ## [v2.0.4] - 2023-04-25
 
 ### Added

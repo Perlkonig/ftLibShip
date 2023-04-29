@@ -1,15 +1,27 @@
 import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
+import { genArcs } from "../genArcs.js";
+
+// Need to include "A" so it works in beta orientation
+type Arc = "F"|"FS"|"FP"|"A"|"AS"|"AP";
 
 export class Salvo extends System {
     public modifier: "none" | "er" | "twostage" = "none";
+    public leftArc: Arc = "FP";
+    public numArcs = 3;
 
     constructor(data: ISystem, ship: FullThrustShip) {
         super(data, ship);
         if (data.hasOwnProperty("modifier")) {
             this.modifier = data.modifier as "er" | "twostage";
         }
+        if (data.hasOwnProperty("leftArc")) {
+            this.leftArc = data.leftArc as Arc;
+        } else {
+            data.leftArc = "FP";
+        }
+        data.numArcs = 3;
     }
 
     fullName() {
@@ -43,28 +55,33 @@ export class Salvo extends System {
     }
 
     glyph() {
+        let id: string;
+        let defs: string;
+        let defid: string;
         switch (this.modifier) {
             case "er":
-                return {
-                    id: "salvoER",
-                    svg: `<symbol id="svg_salvoER" viewBox="385 85.5 190 190"><g><path fill="none" stroke="#000000" stroke-width="3.5245" stroke-miterlimit="10" d="M480,107.4c-50.6,0-91.6,41-91.6,91.6h36.4 c0-30.5,24.7-55.2,55.2-55.2s55.2,24.7,55.2,55.2h36.4C571.7,148.5,530.7,107.4,480,107.4z"/><line fill="none" stroke="#000000" stroke-width="9.1569" stroke-miterlimit="10" x1="535.3" y1="194.7" x2="571.7" y2="194.7"/><line fill="none" stroke="#000000" stroke-width="9.1569" stroke-miterlimit="10" x1="424.8" y1="194.7" x2="388.3" y2="194.7"/><line fill="none" stroke="#000000" stroke-width="10.5735" stroke-miterlimit="10" x1="507.5" y1="151.3" x2="525.8" y2="119.7"/><line fill="none" stroke="#000000" stroke-width="10.5735" stroke-miterlimit="10" x1="452.3" y1="151.3" x2="434.1" y2="119.7"/></g><circle fill="white" stroke="#000000" stroke-width="3.4671" stroke-miterlimit="10" cx="480" cy="199.1" r="55.2"/><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`,
-                    width: 2,
-                    height: 2
-                };
+                id = `salvoER${this.leftArc}${this.numArcs}`;
+                defid = "_internalSalvoER";
+                defs = `<symbol id="${defid}" viewBox="435.5 153 89 89"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`;
+                break;
             case "twostage":
-                return {
-                    id: "salvoTwoStage",
-                    svg: `<symbol id="svg_salvoTwoStage" viewBox="385 85.5 190 190"><defs><symbol id="_internalMultistage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><g><path fill="none" stroke="#000000" stroke-width="3.5245" stroke-miterlimit="10" d="M480,107.4c-50.6,0-91.6,41-91.6,91.6h36.4 c0-30.5,24.7-55.2,55.2-55.2s55.2,24.7,55.2,55.2h36.4C571.7,148.5,530.7,107.4,480,107.4z"/><line fill="none" stroke="#000000" stroke-width="9.1569" stroke-miterlimit="10" x1="535.3" y1="194.7" x2="571.7" y2="194.7"/><line fill="none" stroke="#000000" stroke-width="9.1569" stroke-miterlimit="10" x1="424.8" y1="194.7" x2="388.3" y2="194.7"/><line fill="none" stroke="#000000" stroke-width="10.5735" stroke-miterlimit="10" x1="507.5" y1="151.3" x2="525.8" y2="119.7"/><line fill="none" stroke="#000000" stroke-width="10.5735" stroke-miterlimit="10" x1="452.3" y1="151.3" x2="434.1" y2="119.7"/></g><circle fill="white" stroke="#000000" stroke-width="3.4671" stroke-miterlimit="10" cx="480" cy="199.1" r="55.2"/><use href="#_internalMultistage" x="435" y="150" width="90" height="90" /></symbol>`,
-                    width: 2,
-                    height: 2
-                };
+                id = `salvoMS${this.leftArc}${this.numArcs}`;
+                defid = "_internalMultistage";
+                defs = `<symbol id="${defid}" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol>`
+                break;
             default:
-                return {
-                    id: "salvo",
-                    svg: `<symbol id="svg_salvo" viewBox="385 85.5 190 190"><g><path fill="none" stroke="#000000" stroke-width="3.5245" stroke-miterlimit="10" d="M480,107.4c-50.6,0-91.6,41-91.6,91.6h36.4 c0-30.5,24.7-55.2,55.2-55.2s55.2,24.7,55.2,55.2h36.4C571.7,148.5,530.7,107.4,480,107.4z"/><line fill="none" stroke="#000000" stroke-width="9.1569" stroke-miterlimit="10" x1="535.3" y1="194.7" x2="571.7" y2="194.7"/><line fill="none" stroke="#000000" stroke-width="9.1569" stroke-miterlimit="10" x1="424.8" y1="194.7" x2="388.3" y2="194.7"/><line fill="none" stroke="#000000" stroke-width="10.5735" stroke-miterlimit="10" x1="507.5" y1="151.3" x2="525.8" y2="119.7"/><line fill="none" stroke="#000000" stroke-width="10.5735" stroke-miterlimit="10" x1="452.3" y1="151.3" x2="434.1" y2="119.7"/></g><circle fill="white" stroke="#000000" stroke-width="3.4671" stroke-miterlimit="10" cx="480" cy="199.1" r="55.2"/><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`,
-                    width: 2,
-                    height: 2
-                };
+                id = `salvo${this.leftArc}${this.numArcs}`;
+                defid = "_internalSalvo";
+                defs = `<symbol id="${defid}" viewBox="435.5 153 89 89"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`;
+                break;
+        }
+        const insert = `<use href="#${defid}" width="350" height="350" x="125" y="115" />`;
+        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);
+        return {
+            id,
+            svg,
+            height: 2,
+            width: 2
         }
    }
 }

@@ -32,7 +32,10 @@ export class Beam extends System {
             // Mutating the original data so the interface works
             data.numArcs = 6;
         } else if (this.class === 2) {
-            if (this.numArcs < 2) {
+            if ( (this.ship.orientation !== undefined) && (this.ship.orientation === "beta") && (this.numArcs < 3) ) {
+                this.numArcs = 3;
+                data.numArcs = 3;
+            } else if (this.numArcs < 2) {
                 this.numArcs = 2;
                 data.numArcs = 2;
             } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {

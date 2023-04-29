@@ -300,20 +300,39 @@
                 "type": "object",
                 "oneOf": [
                     {
+                        "description": "`leftArc` and `numArcs` are not required for backwards compatibility",
                         "properties": {
                             "name": {
-                                "enum": ["antiMatterMissile"]
+                                "description": "`amt` is the antimatter missile",
+                                "enum": ["amt", "rocketPod"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs",
+                                "default": "FP"
+                            },
+                            "numArcs": {
+                                "enum": [3],
+                                "default": 3
                             }
                         },
                         "required": ["name"]
                     },
                     {
+                        "description": "`leftArc` and `numArcs` are not required for backwards compatibility",
                         "properties": {
                             "name": {
                                 "enum": ["missile", "salvo"]
                             },
                             "modifier": {
                                 "enum": ["er", "twostage"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs",
+                                "default": "FP"
+                            },
+                            "numArcs": {
+                                "enum": [3],
+                                "default": 3
                             }
                         },
                         "required": ["name"]
@@ -332,20 +351,6 @@
                             "magazine": {
                                 "description": "The unique ID of a missile magazine",
                                 "type": "string"
-                            }
-                        },
-                        "required": ["name", "leftArc", "numArcs"]
-                    },
-                    {
-                        "properties": {
-                            "name": {
-                                "enum": ["rocketPod"]
-                            },
-                            "leftArc": {
-                                "$ref": "#/definitions/arcs"
-                            },
-                            "numArcs": {
-                                "enum": [3]
                             }
                         },
                         "required": ["name", "leftArc", "numArcs"]
