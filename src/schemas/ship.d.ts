@@ -136,6 +136,7 @@ export interface FullThrustShip {
         name: "turret";
         leftArc: Arcs;
         numArcs: 1 | 2 | 3 | 4 | 5 | 6;
+        facingArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
         /**
          * A list of weapon IDs housed within this turret.
          */

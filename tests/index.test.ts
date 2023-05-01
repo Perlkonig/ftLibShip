@@ -4,7 +4,7 @@ import "mocha";
 import type { FullThrustShip } from "../src/schemas/ship.js";
 import { EvalErrorCode, ValErrorCode, evaluate, validate } from "../src/index.js";
 import type { IValidation } from "../src/index.js";
-import { renderSvg, renderUri } from "../src/index.js";
+import { renderSvg, renderUri, calcRot, rotArc } from "../src/index.js";
 
 const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":6,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":167,"cpv":142,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","invaders":[{"type":"marines"},{"type":"damageControl","owner":1},{"type":"damageControl","owner":"test"}],"orientation":"alpha"}`;
 // const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":4,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":157,"cpv":132,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","invaders":[{"type":"marines"},{"type":"damageControl","owner":1},{"type":"damageControl","owner":"test"}]}`;
@@ -172,10 +172,55 @@ describe("Root exports: Validate", () => {
     });
 });
 
-// describe("Renderer", () => {
-//     it("Simple export", () => {
-//         const civilian = `{"hull":{"points":28,"rows":4,"stealth":"0","streamlining":"none"},"armour":[[9,0]],"systems":[{"name":"drive","thrust":4,"advanced":false,"id":"9q-lH"},{"name":"ftl","advanced":false,"id":"llpza"},{"name":"fireControl","id":"lwHJf"},{"name":"fireControl","id":"Fa6jl"},{"name":"screen","area":false,"advanced":false,"id":"BeUun"},{"name":"screen","area":false,"advanced":false,"id":"Ck7Yk"},{"name":"hangar","id":"5vKqy","isRack":false,"critRules":false},{"name":"hangar","id":"PjteR","isRack":false,"critRules":false},{"name":"hangar","id":"5Dimf","isRack":false,"critRules":false},{"name":"hangar","id":"1guU_","isRack":false,"critRules":false}],"weapons":[{"name":"pds","id":"SR7EN"},{"name":"pds","id":"ssxp6"},{"name":"pds","id":"Vuic4"},{"name":"pds","id":"rurC1"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"3MXwM"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"ajzMP"},{"name":"beam","class":2,"leftArc":"F","numArcs":6,"id":"1-ayT"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"standard","id":"e4P1A","mods":[],"hangar":"5vKqy"},{"name":"fighters","type":"standard","id":"wjlfa","mods":[],"hangar":"PjteR"},{"name":"fighters","type":"standard","id":"9uBl2","mods":[],"hangar":"5Dimf"},{"name":"fighters","type":"standard","id":"MAEY_","mods":[],"hangar":"1guU_"}],"orientation":"alpha","points":479,"cpv":375,"mass":140,"class":"Light Fleet Carrier","name":"Inflexible"}`;
-//         console.log(renderSvg(JSON.parse(civilian)));
-//         // console.log(renderUri(JSON.parse(validTacoma)));
-//     });
-// });
+describe("Renderer", () => {
+    it("Rotational distance calculated correctly", () => {
+        let n = calcRot("F", "F");
+        expect(n).equal(0);
+        n = calcRot("F", "FS");
+        expect(n).equal(1);
+        n = calcRot("F", "AS");
+        expect(n).equal(2);
+        n = calcRot("F", "A");
+        expect(n).equal(3);
+        n = calcRot("F", "AP");
+        expect(n).equal(4);
+        n = calcRot("F", "FP");
+        expect(n).equal(5);
+        n = calcRot("FP", "F");
+        expect(n).equal(1);
+        n = calcRot("FP", "FS");
+        expect(n).equal(2);
+        n = calcRot("FP", "AS");
+        expect(n).equal(3);
+        n = calcRot("FP", "A");
+        expect(n).equal(4);
+        n = calcRot("FP", "AP");
+        expect(n).equal(5);
+        n = calcRot("FP", "FP");
+        expect(n).equal(0);
+    });
+
+    it("Arcs rotate correctly", () => {
+        let arc = rotArc("F", 0);
+        expect(arc).equal("F");
+        arc = rotArc("F", 1);
+        expect(arc).equal("FS");
+        arc = rotArc("F", 2);
+        expect(arc).equal("AS");
+        arc = rotArc("F", 3);
+        expect(arc).equal("A");
+        arc = rotArc("F", 4);
+        expect(arc).equal("AP");
+        arc = rotArc("F", 5);
+        expect(arc).equal("FP");
+        arc = rotArc("F", 6);
+        expect(arc).equal("F");
+        arc = rotArc("F", 7);
+        expect(arc).equal("FS");
+    });
+
+    it("Export", () => {
+        const toExport = `{"hull":{"points":15,"rows":3,"stealth":"0","streamlining":"none"},"armour":[[3,2],[3,0]],"systems":[{"name":"drive","thrust":0,"advanced":false,"id":"Dui3J"}],"weapons":[],"ordnance":[],"extras":[],"fighters":[],"orientation":"alpha","points":121,"cpv":96,"mass":50,"class":"Light Cruiser","name":"Test"}`;
+        console.log(renderSvg(JSON.parse(toExport), {damage: 2, armour: [[1,1],[1,1]]}));
+    });
+});

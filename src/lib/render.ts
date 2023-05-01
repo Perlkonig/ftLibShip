@@ -1,32 +1,6 @@
-import type { FullThrustShip } from "../schemas/ship.js";
+import type { Arcs, FullThrustShip } from "../schemas/ship.js";
 import type { ISystemSVG } from "../index.js";
 import { hull, systems as sysLib, svgLib } from "../index.js";
-
-interface IBuffer {
-    xOffset: number;
-    yOffset: number;
-    width: number;
-    height: number;
-}
-
-const buffInSquare = (glyph: ISystemSVG, size: number, graded: boolean = true): IBuffer => {
-    if ( (graded) && (glyph.width === 1) && (glyph.height === 1) ) {
-        return {
-            xOffset: size / 4,
-            yOffset: size / 4,
-            width: size / 2,
-            height: size / 2
-        };
-    } else {
-        const factor = 0.9;
-        return {
-            xOffset: (size * (1 - factor)) / 2,
-            yOffset: (size * (1 - factor)) / 2,
-            width: size * factor,
-            height: size * factor
-        };
-    }
-}
 
 interface Invader {
     type: "marines"|"damageControl";
@@ -34,23 +8,32 @@ interface Invader {
     obj: sysLib.System;
 }
 
+type SystemID = "_coreBridge" | "_coreLife" | "_corePower" | string;
+
 export interface RenderOpts {
     // Amount of hull damage done
     damage?: number;
     // The amount of damage done to each layer of armour
     // The first row is the innermost layer
-    armour?: number[]
+    // First element is regular armour, second is regenerative armour
+    armour?: [number,number][]
     // List of uids of disabled systems
-    disabled?: string[];
+    disabled?: SystemID[];
+    // List of uids of destroyed systems
+    destroyed?: SystemID[];
+}
+
+interface IWeaponSystem extends sysLib.System {
+    leftArc: Arcs;
 }
 
 export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string | undefined => {
     let svg: string | undefined;
 
-    // Calculate the size of the hull display.
-    // Below a certain threshold, the compact display will be used (drives to the side).
-    // Otherwise we'll go with the fully flexible display with the drives in the bottom.
     if ( (ship.hasOwnProperty("hull")) && (ship.hull !== undefined) ) {
+        // Calculate the size of the hull display.
+        // Below a certain threshold, the compact display will be used (drives to the side).
+        // Otherwise we'll go with the fully flexible display with the drives in the bottom.
         let hullArray = hull.formRows(ship)!;
         let hullCols = hullArray[0].length;
         // If there's armour, look for situations where there's more armour than hull columns
@@ -251,6 +234,21 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         // Core systems
         totalRows += 3;
 
+        // Rotate all weapons contained by turrets
+        for (const t of turrets) {
+            const rotDist = calcRot(t.leftArc, t.facingArc);
+            for (const wid of t.weapons) {
+                if (ship.weapons === undefined) {
+                    throw new Error("No weapons found.");
+                }
+                const sys = weapons.find(x => x.uid === wid) as IWeaponSystem;
+                if (sys === undefined) {
+                    throw new Error(`Weapon id "${wid}" is supposedly housed in turret "${t.uid}", but the weapon could not be found.`);
+                }
+                sys.leftArc = rotArc(sys.leftArc as Arcs, rotDist);
+            }
+        }
+
         const svgCore = svgLib.find(x => x.id === "coreSys")!;
         let sysFtl: sysLib.ISystem | undefined;
         let sysDrive: sysLib.ISystem | undefined;
@@ -302,7 +300,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         svg += `<style type="text/css"><![CDATA[ @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap'); text {font-family: "Roboto";} .futureFont { font-family: "Zen Dots" } .svgInvert { filter: invert(1); } ]]></style>`;
         svg += `<script type="text/javascript"><![CDATA[ function newSize(bb) { var widthTransform = ${pxWidth} * 0.9 / bb.width; var heightTransform = ((${cellsize} * 1.5) * 0.9) / bb.height; var value = widthTransform < heightTransform ? widthTransform : heightTransform; if (value !== Infinity) { return value; } return undefined; } window.addEventListener("load", function() { var namePlate = document.getElementById('_resizeNamePlate'); var npValue = newSize(namePlate.getBBox()); if (npValue !== undefined) { namePlate.setAttribute("transform", "matrix("+npValue+", 0, 0, "+npValue+", 0,0)"); const currx = parseFloat(namePlate.getAttribute("x")); const curry = parseFloat(namePlate.getAttribute("y")); namePlate.setAttribute("x", (currx / npValue).toString()); namePlate.setAttribute("y", (curry / npValue).toString()); } var statPlate = document.getElementById('_resizeStats'); var statValue = newSize(statPlate.getBBox()); if (statValue !== undefined) { statPlate.setAttribute("transform", "matrix("+statValue+", 0, 0, "+statValue+", 0,0)"); const currx = parseFloat(statPlate.getAttribute("x")); const curry = parseFloat(statPlate.getAttribute("y")); statPlate.setAttribute("x", (currx / statValue).toString()); statPlate.setAttribute("y", (curry / statValue).toString()); } }); ]]></script>`;
 
-        svg += hull.genSvg(ship, cellsize);
+        svg += hull.genSvg(ship, {cellsize, hullDamage: opts.damage, armourDamage: opts.armour});
         if (svgFtl !== undefined) {
             svg += svgFtl.svg;
         }
@@ -562,3 +560,69 @@ export const renderUri = (ship: FullThrustShip, opts: RenderOpts = {}): string |
     }
     return undefined;
 };
+
+interface IBuffer {
+    xOffset: number;
+    yOffset: number;
+    width: number;
+    height: number;
+}
+
+const buffInSquare = (glyph: ISystemSVG, size: number, graded: boolean = true): IBuffer => {
+    if ( (graded) && (glyph.width === 1) && (glyph.height === 1) ) {
+        return {
+            xOffset: size / 4,
+            yOffset: size / 4,
+            width: size / 2,
+            height: size / 2
+        };
+    } else {
+        const factor = 0.9;
+        return {
+            xOffset: (size * (1 - factor)) / 2,
+            yOffset: (size * (1 - factor)) / 2,
+            width: size * factor,
+            height: size * factor
+        };
+    }
+}
+
+// Calculates the clockwise distance between two arcs in number of arcs
+export const calcRot = (arc1: Arcs, arc2: Arcs): number => {
+    const dists = new Map<Arcs,number>([
+        ["F", 6],
+        ["FS", 5],
+        ["AS", 4],
+        ["A", 3],
+        ["AP", 2],
+        ["FP", 1],
+    ]);
+    const n1 = dists.get(arc1);
+    const n2 = dists.get(arc2);
+    if ( (n1 === undefined) || (n2 === undefined) ) {
+        throw new Error(`Invalid arc passed: Arc 1: ${arc1}, Arc 2: ${arc2}.`);
+    }
+    let delta = n1 - n2;
+    if (delta < 0) { delta += 6; }
+    return delta;
+}
+
+// Given an arc and a distance, return the new arc
+export const rotArc = (arc: Arcs, dist: number): Arcs => {
+    const nextArcCW = new Map<Arcs,Arcs>([
+        ["F", "FS"],
+        ["FS", "AS"],
+        ["AS", "A"],
+        ["A", "AP"],
+        ["AP", "FP"],
+        ["FP", "F"],
+    ]);
+    if (! nextArcCW.has(arc)) {
+        throw new Error(`Invalid arc passed: ${arc}.`);
+    }
+    let newArc = arc;
+    for (let i = 0; i < dist; i++) {
+        newArc = nextArcCW.get(newArc)!;
+    }
+    return newArc;
+}

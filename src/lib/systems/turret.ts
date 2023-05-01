@@ -5,24 +5,20 @@ import { genHex } from "../genHex.js";
 import { getSystem } from "./index.js";
 
 export class Turret extends System {
+    // Never directly adjust leftArc!
+    // Ideally, I'd set it as private or readonly, but that introduces other problems.
+    // But if you manually adjust it, then relative rotation will break.
     public leftArc: Arc = "F";
     public numArcs: ArcNum = 1;
+    public facingArc: Arc = "F";
     public size: number = 4;
     public weapons: string[] = [];
 
     constructor(data: ISystem, ship: FullThrustShip) {
         super(data, ship);
-        if (data.hasOwnProperty("leftArc")) {
-            this.leftArc = data.leftArc as Arc;
-        }
+
         if (data.hasOwnProperty("numArcs")) {
             this.numArcs = data.numArcs as ArcNum;
-        }
-        if (data.hasOwnProperty("size")) {
-            this.size = data.size as number;
-        }
-        if (data.hasOwnProperty("weapons")) {
-            this.weapons = data.weapons as string[];
         }
 
         // Force leftArcs
@@ -42,6 +38,18 @@ export class Turret extends System {
                 this.leftArc = "AP";
                 data.leftArc = "AP";
                 break;
+        }
+
+        if (data.hasOwnProperty("facingArc")) {
+            this.facingArc = data.facingArc as Arc;
+        } else {
+            this.facingArc = this.leftArc;
+        }
+        if (data.hasOwnProperty("size")) {
+            this.size = data.size as number;
+        }
+        if (data.hasOwnProperty("weapons")) {
+            this.weapons = data.weapons as string[];
         }
     }
 
@@ -101,9 +109,8 @@ export class Turret extends System {
     }
 
     glyph() {
-        const id = `turret${this.numArcs}_${this.size}`;
-        let svg = genHex(this.ship.orientation, id, this.numArcs, this.leftArc);
-
+        const id = `turret${this.facingArc}${this.numArcs}_${this.size}`;
+        let svg = genHex(this.ship.orientation, id, this.numArcs, this.facingArc);
         return {
             id,
             svg,

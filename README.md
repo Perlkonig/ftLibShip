@@ -85,5 +85,7 @@ export interface RenderOpts {
     armour?: number[]
     // List of uids of disabled systems
     disabled?: string[];
+    // List of uids of destroyed systems
+    destroyed?: string[];
 }
 ```
