@@ -74,7 +74,7 @@ Two rendering functions are provided:
 * `renderSvg(ship: FullThrustShip, opts: RenderOpts = {}): string | undefined` takes a ship object and returns the raw SVG code, which is designed to render correctly in all modern browsers.
 * `renderUri(ship: FullThrustShip, opts: RenderOpts = {}): string | undefined` does the same thing but returns the SVG as a [data URI](https://en.wikipedia.org/wiki/Data_URI_scheme), suitable for use in `<img>` and `<button>` tags.
 
-The rendering options are as follows, *but they are not yet actually implemented*:
+The rendering options are as follows:
 
 ```ts
 export interface RenderOpts {
@@ -82,10 +82,15 @@ export interface RenderOpts {
     damage?: number;
     // The amount of damage done to each layer of armour
     // The first row is the innermost layer
-    armour?: number[]
+    // First element is regular armour, second is regenerative armour
+    armour?: [number,number][]
     // List of uids of disabled systems
-    disabled?: string[];
+    disabled?: SystemID[];
     // List of uids of destroyed systems
-    destroyed?: string[];
+    destroyed?: SystemID[];
 }
 ```
+
+To disable core systems, add one of the following strings to `disabled`: `_coreBridge`, `_coreLife`, or `_corePower`. Disabled systems are greyed out. Destroyed systems are almost invisible. Damage is indicated by simply blacking out the hull or armour boxes.
+
+For now, invaders are tracked in the ship JSON itself. I realize this is an inconsistency. I'm considering my options.

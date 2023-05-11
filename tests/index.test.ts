@@ -220,7 +220,7 @@ describe("Renderer", () => {
     });
 
     it("Export", () => {
-        const toExport = `{"hull":{"points":15,"rows":3,"stealth":"0","streamlining":"none"},"armour":[[3,2],[3,0]],"systems":[{"name":"drive","thrust":0,"advanced":false,"id":"Dui3J"}],"weapons":[],"ordnance":[],"extras":[],"fighters":[],"orientation":"alpha","points":121,"cpv":96,"mass":50,"class":"Light Cruiser","name":"Test"}`;
-        console.log(renderSvg(JSON.parse(toExport), {damage: 2, armour: [[1,1],[1,1]]}));
+        const toExport = `{"hull":{"points":15,"rows":3,"stealth":"0","streamlining":"none"},"armour":[[3,2],[3,0]],"systems":[{"name":"drive","thrust":5,"advanced":false,"id":"Dui3J"}],"weapons":[{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1Dc"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1De"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1Dd"}],"ordnance":[],"extras":[],"fighters":[],"orientation":"alpha","points":124,"cpv":99,"mass":50,"class":"Light Cruiser","name":"Test"}`;
+        console.log(renderSvg(JSON.parse(toExport), {damage: 2, armour: [[1,1],[1,1]], disabled: ["_corePower", "5h1Dc"], destroyed: ["5h1De", "Dui3J"]}));
     });
 });

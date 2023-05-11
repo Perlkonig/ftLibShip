@@ -27,7 +27,28 @@ interface IWeaponSystem extends sysLib.System {
     leftArc: Arcs;
 }
 
+interface IDriveSystem extends sysLib.System {
+    thrust: number;
+}
+
 export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string | undefined => {
+
+    // Helper function to simplify flagging destroyed and disabled systems
+    const status = (id: string): "destroyed"|"disabled"|false => {
+        if (opts.destroyed !== undefined) {
+            if (opts.destroyed.includes(id)) {
+                return "destroyed";
+            } else {
+                if (opts.disabled !== undefined) {
+                    if (opts.disabled.includes(id)) {
+                        return "disabled";
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     let svg: string | undefined;
 
     if ( (ship.hasOwnProperty("hull")) && (ship.hull !== undefined) ) {
@@ -144,7 +165,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
             // heading
             totalRows++;
             // Allocate 2x2 squares for each system
-            const sysRows = Math.ceil(systems.length / breakPoint);
+            const sysRows = Math.floor(systems.length / breakPoint);
             totalRows += sysRows * 2;
         }
         // mines
@@ -261,8 +282,16 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
             svgFtl = sysLib.getSystem(sysFtl, ship)!.glyph();
         }
         let svgDrive: ISystemSVG | undefined;
+        let driveID: string | undefined;
         if (sysDrive !== undefined) {
-            svgDrive = sysLib.getSystem(sysDrive, ship)!.glyph();
+            const drive = sysLib.getSystem(sysDrive, ship)! as IDriveSystem;
+            driveID = drive.uid;
+            if (status(drive.uid) === "destroyed") {
+                drive.thrust = 0;
+            } else if (status(drive.uid) === "disabled") {
+                drive.thrust = Math.ceil(drive.thrust / 2);
+            }
+            svgDrive = drive.glyph();
         }
 
         const sysDistinct: ISystemSVG[] = [];
@@ -295,9 +324,17 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         const pxWidth = totalCols * cellsize;
         const pxHeight = totalRows * cellsize;
 
+        // Check for disabled core systems and insert styles to target them
+        let styleInsert = "";
+        if (opts.disabled !== undefined) {
+            for (const s of opts.disabled.filter(x => x.startsWith("_core"))) {
+                styleInsert += `#_internalCore${s.substring(5)} ._rect{fill:red}`;
+            }
+        }
+
         svg = `<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${pxWidth + 2} ${pxHeight + 2}" width="100%" height="100%">`;
         svg += `<defs>`;
-        svg += `<style type="text/css"><![CDATA[ @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap'); text {font-family: "Roboto";} .futureFont { font-family: "Zen Dots" } .svgInvert { filter: invert(1); } ]]></style>`;
+        svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"}.futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5}.destroyed{opacity:0.1}${styleInsert} ]]></style>`;
         svg += `<script type="text/javascript"><![CDATA[ function newSize(bb) { var widthTransform = ${pxWidth} * 0.9 / bb.width; var heightTransform = ((${cellsize} * 1.5) * 0.9) / bb.height; var value = widthTransform < heightTransform ? widthTransform : heightTransform; if (value !== Infinity) { return value; } return undefined; } window.addEventListener("load", function() { var namePlate = document.getElementById('_resizeNamePlate'); var npValue = newSize(namePlate.getBBox()); if (npValue !== undefined) { namePlate.setAttribute("transform", "matrix("+npValue+", 0, 0, "+npValue+", 0,0)"); const currx = parseFloat(namePlate.getAttribute("x")); const curry = parseFloat(namePlate.getAttribute("y")); namePlate.setAttribute("x", (currx / npValue).toString()); namePlate.setAttribute("y", (curry / npValue).toString()); } var statPlate = document.getElementById('_resizeStats'); var statValue = newSize(statPlate.getBBox()); if (statValue !== undefined) { statPlate.setAttribute("transform", "matrix("+statValue+", 0, 0, "+statValue+", 0,0)"); const currx = parseFloat(statPlate.getAttribute("x")); const curry = parseFloat(statPlate.getAttribute("y")); statPlate.setAttribute("x", (currx / statValue).toString()); statPlate.setAttribute("y", (curry / statValue).toString()); } }); ]]></script>`;
 
         svg += hull.genSvg(ship, {cellsize, hullDamage: opts.damage, armourDamage: opts.armour});
@@ -317,7 +354,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         svg += `<rect x="0" y="0" height="${pxHeight}" width="${pxWidth}" stroke="none" fill="white"/>`;
 
         // Set background for footer
-        svg += `<rect x="0" y="${(totalRows - 3) * cellsize}" width="${pxWidth}" height="${cellsize * 3}" stroke="none" fill="black"/>`;
+        svg += `<rect x="0" y="${(totalRows - 3) * cellsize}" width="${pxWidth}" height="${cellsize * 3}" stroke="none" fill="white"/>`;
 
         //Name plate with special ID so it can be autosized.
         svg += `<text id="_resizeNamePlate" x="${cellsize * 0.2}" y="${cellsize * 0.75}" dominant-baseline="middle" font-size="${cellsize}" class="futureFont">${ship.class} "${ship.name}"</text>`;
@@ -341,7 +378,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 const realCol = i % breakPoint;
                 const sys = sorted[i];
                 const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                svg += `<use id="${sys.uid}" href="#svg_${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                svg += `<use id="${sys.uid}" href="#svg_${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid)===false ? "" : ` class="${status(sys.uid)}"`} />`;
             }
             currRow += Math.ceil(sorted.length / breakPoint) * 2;
         }
@@ -381,7 +418,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 const realCol = i % breakPoint;
                 const sys = sorted[i];
                 const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                svg += `<use id="${sys.uid}" href="#svg_${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                svg += `<use id="${sys.uid}" href="#svg_${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid)===false ? "" : ` class="${status(sys.uid)}"`} />`;
             }
 
             currRow += Math.ceil(sorted.length / breakPoint) * 2;
@@ -404,7 +441,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                     const realCol = i % breakPoint;
                     const sys = feeding[i];
                     const buff = buffInSquare(sys.glyph(), cellsize * 2, true);
-                    svg += `<use id="${sys.uid}" href="#svg_${sys.glyph().id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                    svg += `<use id="${sys.uid}" href="#svg_${sys.glyph().id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid)===false ? "" : ` class="${status(sys.uid)}"`} />`;
                 }
                 for (let i = 0; i < mag.capacity; i++) {
                     const realI = i + feeding.length;
@@ -412,7 +449,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                     const realCol = realI % breakPoint;
                     const glyph = mag.missileGlyph();
                     const buff = buffInSquare(glyph, cellsize * 2, false);
-                    svg += `<use href="#svg_${glyph.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                    svg += `<use href="#svg_${glyph.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(mag.uid)===false ? "" : ` class="${status(mag.uid)}"`} />`;
                 }
 
                 currRow += Math.ceil((feeding.length + mag.capacity) / breakPoint) * 2;
@@ -444,7 +481,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                     const realCol = i % breakPoint;
                     const sys = sorted[i];
                     const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                    svg += `<use id="${sys.uid}" href="#svg_${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                    svg += `<use id="${sys.uid}" href="#svg_${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid)===false ? "" : ` class="${status(sys.uid)}"`} />`;
                 }
 
                 currRow += Math.ceil(sorted.length / breakPoint) * 2;
@@ -465,7 +502,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 }
                 // First add the turret glyph
                 const buff = buffInSquare(turret.glyph(), cellsize * 2, true);
-                svg += `<use id="${turret.uid}" href="#svg_${turret.glyph().id}" x="${buff.xOffset}" y="${(currRow * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                svg += `<use id="${turret.uid}" href="#svg_${turret.glyph().id}" x="${buff.xOffset}" y="${(currRow * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(turret.uid)===false ? "" : ` class="${status(turret.uid)}"`} />`;
 
                 for (let i = 0; i < turret.weapons.length; i++) {
                     const realI = i + 1;
@@ -474,7 +511,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                     const weapon = weapons.find(x => x.uid === turret.weapons[i])!;
                     const glyph = weapon.glyph()!;
                     const buff = buffInSquare(glyph, cellsize * 2, false);
-                    svg += `<use id="${weapon.uid}" href="#svg_${glyph.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                    svg += `<use id="${weapon.uid}" href="#svg_${glyph.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(weapon.uid)===false ? "" : ` class="${status(weapon.uid)}"`} />`;
                 }
 
                 currRow += Math.ceil((turret.weapons.length + 1) / breakPoint) * 2;
@@ -524,9 +561,9 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 svg += `<use id="_ftl" href="#svg_${svgFtl.id}" x="${pxWidth - (cellsize * 3)}" y="${hullStart * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}" />`;
             }
             if (svgDrive !== undefined) {
-                svg += `<use id="_drive" href="#svg_${svgDrive.id}" x="${pxWidth - (cellsize * 3)}" y="${(hullStart + 2) * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}" />`;
+                svg += `<use id="_drive" href="#svg_${svgDrive.id}" x="${pxWidth - (cellsize * 3)}" y="${(hullStart + 2) * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${status(driveID!) === false ? "" : ` class="${status(driveID!)}"`} />`;
             }
-            svg += `<use id="_core" href="#svg_${svgCore.id}" x="${pxWidth * 0.05}" y="${(currRow * cellsize) + ((cellsize * 3) * 0.05)}" width="${pxWidth * 0.9}" height="${(cellsize * 3) * 0.9}" class="svgInvert" />`;
+            svg += `<use id="_core" href="#svg_${svgCore.id}" x="${pxWidth * 0.05}" y="${(currRow * cellsize) + ((cellsize * 3) * 0.05)}" width="${pxWidth * 0.9}" height="${(cellsize * 3) * 0.9}" />`;
         } else {
             let svgCombined = "";
             let startX = 0;
@@ -537,11 +574,11 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 groupWidth += 2;
             }
             if (svgDrive !== undefined) {
-                svgCombined += `<use id="_drive" href="#svg_${svgDrive.id}" x="${startX}" y="0" width="${cellsize * 2}" height="${cellsize * 2}" />`;
+                svgCombined += `<use id="_drive" href="#svg_${svgDrive.id}" x="${startX}" y="0" width="${cellsize * 2}" height="${cellsize * 2}"${status(driveID!) === false ? "" : ` class="${status(driveID!)}"`} />`;
             }
             svgCombined += `<use id="_core" href="#svg_${svgCore.id}" x="${startX + (cellsize * 3)}" y="0" width="${cellsize * 6}" height="${cellsize * 2}" />`;
             svg += `<symbol id="_internalLinearCombined" viewBox="-1 -1 ${(groupWidth * cellsize) + 2} ${(cellsize * 2) + 2}">` + svgCombined + `</symbol>`;
-            svg += `<use href="#_internalLinearCombined" x="0" y="${currRow * cellsize}" height="${cellsize * 3}" width="${pxWidth}" class="svgInvert" />`;
+            svg += `<use href="#_internalLinearCombined" x="0" y="${currRow * cellsize}" height="${cellsize * 3}" width="${pxWidth}" />`;
         }
 
         //SSD outline, done last so it overlaps the heading backgrounds.
