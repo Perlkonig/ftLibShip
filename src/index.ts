@@ -21,6 +21,7 @@ export enum EvalErrorCode {
     OverMass="OVERMASS",
     OverPBL="OVERPBL",
     DblUID="DblUID",
+    FlawedUnderMass="FlawedUnderMass",
 }
 
 export enum ValErrorCode {
@@ -169,6 +170,16 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
             }
             if (pbls > maxPbls) {
                 results.errors.push(EvalErrorCode.OverPBL);
+            }
+        }
+
+        // Handle "flawed" design
+        if (ship.flawed !== undefined && ship.flawed) {
+            if (ship.mass < 60) {
+                results.errors.push(EvalErrorCode.FlawedUnderMass);
+            } else {
+                results.points = Math.ceil(results.points * 0.8);
+                results.cpv = Math.ceil(results.cpv * 0.8);
             }
         }
     }

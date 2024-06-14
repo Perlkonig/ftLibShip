@@ -80,6 +80,8 @@ import { Reflex } from "./reflex.js";
 export { SpinalNova, SpinalWave, Reflex };
 import { Shroud } from "./shroud.js";
 export { Shroud };
+import { Flawed } from "./flawed.js";
+export { Flawed };
 
 import { type2name, mod2name } from "./fighters.js";
 export { type2name as fighterType2Name, mod2name as fighterMod2Name };
@@ -311,6 +313,8 @@ export const getSystem = (data: ISystem, ship: FullThrustShip): System | undefin
             return new Reflex(data, ship);
         case "shroud":
             return new Shroud(data, ship);
+        case "flawed":
+            return new Flawed(data, ship);
         default:
             console.error(`Could not find a system with the name ${data.name}`);
             break;

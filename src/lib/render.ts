@@ -1,6 +1,7 @@
 import type { Arcs, FullThrustShip } from "../schemas/ship.js";
 import type { ISystemSVG } from "../index.js";
 import { hull, systems as sysLib, svgLib } from "../index.js";
+import { Flawed } from "./systems/flawed.js";
 
 interface Invader {
     type: "marines"|"damageControl";
@@ -11,6 +12,10 @@ interface Invader {
 type SystemID = "_coreBridge" | "_coreLife" | "_corePower" | string;
 
 export interface RenderOpts {
+    // If true, strips the scripts and introductory lines
+    minimal?: boolean;
+    // If provided, adds an id element to the rendered SVG
+    id?: string;
     // Amount of hull damage done
     damage?: number;
     // The amount of damage done to each layer of armour
@@ -32,7 +37,6 @@ interface IDriveSystem extends sysLib.System {
 }
 
 export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string | undefined => {
-
     // Helper function to simplify flagging destroyed and disabled systems
     const status = (id: string): "destroyed"|"disabled"|false => {
         if (opts.destroyed !== undefined) {
@@ -80,6 +84,9 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         const turrets: sysLib.Turret[] = [];
         const mines: sysLib.MineLayer[] = [];
         const magazines: sysLib.Magazine[] = [];
+        if (ship.flawed !== undefined && ship.flawed) {
+            systems.push(new Flawed({name: "_flawed"}, ship));
+        }
         if ( (ship.hasOwnProperty("systems")) && (ship.systems !== undefined) ) {
             for (const s of ship.systems) {
                 if ( (s.name === "drive") || (s.name === "ftl") ) {
@@ -165,7 +172,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
             // heading
             totalRows++;
             // Allocate 2x2 squares for each system
-            const sysRows = Math.floor(systems.length / breakPoint);
+            const sysRows = Math.ceil(systems.length / breakPoint);
             totalRows += sysRows * 2;
         }
         // mines
@@ -332,10 +339,17 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
             }
         }
 
-        svg = `<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${pxWidth + 2} ${pxHeight + 2}" width="100%" height="100%">`;
+        svg = "";
+        if (! opts.minimal) {
+            svg += `<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`
+        }
+
+        svg += `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${pxWidth + 2} ${pxHeight + 2}" width="100%" height="100%"${! opts.minimal ? ` onload="resizePlates()"` : ""}${opts.id ? ` id="${opts.id}"` : ""}>`;
         svg += `<defs>`;
         svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"}.futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5}.destroyed{opacity:0.1}${styleInsert} ]]></style>`;
-        svg += `<script type="text/javascript"><![CDATA[ function newSize(bb) { var widthTransform = ${pxWidth} * 0.9 / bb.width; var heightTransform = ((${cellsize} * 1.5) * 0.9) / bb.height; var value = widthTransform < heightTransform ? widthTransform : heightTransform; if (value !== Infinity) { return value; } return undefined; } window.addEventListener("load", function() { var namePlate = document.getElementById('_resizeNamePlate'); var npValue = newSize(namePlate.getBBox()); if (npValue !== undefined) { namePlate.setAttribute("transform", "matrix("+npValue+", 0, 0, "+npValue+", 0,0)"); const currx = parseFloat(namePlate.getAttribute("x")); const curry = parseFloat(namePlate.getAttribute("y")); namePlate.setAttribute("x", (currx / npValue).toString()); namePlate.setAttribute("y", (curry / npValue).toString()); } var statPlate = document.getElementById('_resizeStats'); var statValue = newSize(statPlate.getBBox()); if (statValue !== undefined) { statPlate.setAttribute("transform", "matrix("+statValue+", 0, 0, "+statValue+", 0,0)"); const currx = parseFloat(statPlate.getAttribute("x")); const curry = parseFloat(statPlate.getAttribute("y")); statPlate.setAttribute("x", (currx / statValue).toString()); statPlate.setAttribute("y", (curry / statValue).toString()); } }); ]]></script>`;
+        if (! opts.minimal) {
+            svg += `<script type="text/javascript"><![CDATA[ function newSize(bb) { var widthTransform = ${pxWidth} * 0.9 / bb.width; var heightTransform = ((${cellsize} * 1.5) * 0.9) / bb.height; var value = widthTransform < heightTransform ? widthTransform : heightTransform; if (value !== Infinity) { return value; } return undefined; } function resizePlates() { var namePlate = document.getElementById('_resizeNamePlate'); var npValue = newSize(namePlate.getBBox()); if (npValue !== undefined) { namePlate.setAttribute("transform", "matrix("+npValue+", 0, 0, "+npValue+", 0,0)"); const currx = parseFloat(namePlate.getAttribute("x")); const curry = parseFloat(namePlate.getAttribute("y")); namePlate.setAttribute("x", (currx / npValue).toString()); namePlate.setAttribute("y", (curry / npValue).toString()); } var statPlate = document.getElementById('_resizeStats'); var statValue = newSize(statPlate.getBBox()); if (statValue !== undefined) { statPlate.setAttribute("transform", "matrix("+statValue+", 0, 0, "+statValue+", 0,0)"); const currx = parseFloat(statPlate.getAttribute("x")); const curry = parseFloat(statPlate.getAttribute("y")); statPlate.setAttribute("x", (currx / statValue).toString()); statPlate.setAttribute("y", (curry / statValue).toString()); } } ]]></script>`;
+        }
 
         svg += hull.genSvg(ship, {cellsize, hullDamage: opts.damage, armourDamage: opts.armour});
         if (svgFtl !== undefined) {

@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2024-06-14
+
+### Added
+
+* Added `flawed` property. Can only be applied to ships of mass 60+. Discounts points by 20% (see *Continuum* rules, page 113).
+
+### Fixed
+
+* Fixed a math problem that sometimes caused the bottom of an SSD to get cut off.
+
+### Changed
+
+* Moved the plate resizing into the `onload` event of the tag so hopefully it will trigger in more scenarios.
+* Expanded K-guns to support arbitrarily high classes.
+
 ## [2.2.0] - 2023-05-11
 
 ### Added

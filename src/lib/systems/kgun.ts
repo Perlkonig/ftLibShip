@@ -3,7 +3,7 @@ import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genHex } from "../genHex.js";
 
-type Class = 1|2|3|4|5|6;
+type Class = number;
 
 export class Kgun extends System {
     public class: Class = 1;
@@ -23,9 +23,9 @@ export class Kgun extends System {
         if (this.class < 1) {
             this.class = 1;
             data.class = 1;
-        } else if (this.class > 6) {
-            this.class = 6;
-            data.class = 6;
+        // } else if (this.class > 6) {
+        //     this.class = 6;
+        //     data.class = 6;
         }
 
         if (data.hasOwnProperty("leftArc")) {
@@ -47,10 +47,7 @@ export class Kgun extends System {
                     data.numArcs = 2;
                 }
                 break;
-            case 3:
-            case 4:
-            case 5:
-            case 6:
+            default:
                 this.numArcs = 1;
                 data.numArcs = 1;
                 break;
@@ -62,51 +59,30 @@ export class Kgun extends System {
     }
 
     mass() {
+        let base: number;
+        switch (this.class) {
+            case 1:
+                base = 2;
+                break;
+            case 2:
+                base = 3 + (this.numArcs - 1);
+                break;
+            default:
+                base = 5 + (3 * (this.class - 3));
+                break;
+        }
+
         if (this.modifier === "short") {
             switch (this.class) {
                 case 1:
                     return 1.5;
-                case 2:
-                    return 2;
-                case 3:
-                    return 3;
-                case 4:
-                    return 4;
-                case 5:
-                    return 6;
-                case 6:
-                    return 7;
+                default:
+                    return Math.ceil(base / 2);
             }
         } else if (this.modifier === "long") {
-            switch (this.class) {
-                case 1:
-                    return 4;
-                case 2:
-                    return 6 + (2 * (this.numArcs - 1));
-                case 3:
-                    return 10;
-                case 4:
-                    return 16;
-                case 5:
-                    return 22;
-                case 6:
-                    return 28;
-            }
+            return base * 2;
         } else {
-            switch (this.class) {
-                case 1:
-                    return 2;
-                case 2:
-                    return 3 + (this.numArcs - 1);
-                case 3:
-                    return 5;
-                case 4:
-                    return 8;
-                case 5:
-                    return 11;
-                case 6:
-                    return 14;
-            }
+            return base;
         }
     }
 
