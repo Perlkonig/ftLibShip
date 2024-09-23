@@ -1,15 +1,15 @@
 {
     "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js"],
     "compilerOptions": {
-      "target": "es2018",
-      "module": "NodeNext",
-      "moduleResolution": "NodeNext",
-      "declaration": true, // generate .d.ts files
-      "sourceMap": false,
-      "outDir": "dist", // output compiled js, d.ts, and source map to dist folder
-      "strict": true,
-      "esModuleInterop": true,
-      "strictNullChecks": true,
-      "resolveJsonModule": true
+        "target": "es2018",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "declaration": true, // generate .d.ts files
+        "sourceMap": false,
+        "outDir": "dist", // output compiled js, d.ts, and source map to dist folder
+        "strict": true,
+        "esModuleInterop": true,
+        "strictNullChecks": true,
+        "resolveJsonModule": true
     }
 }

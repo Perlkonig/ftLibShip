@@ -39,21 +39,27 @@ export class LaunchTube extends System {
 
     glyph() {
         if (this.hasCatapult) {
-            const id = this.ship.hashseed === undefined ? `catapult` : fnv.hash(`catapult`).hex();
+            const id =
+                this.ship.hashseed === undefined
+                    ? `catapult`
+                    : fnv.hash(`catapult`).hex();
             return {
                 id,
                 svg: `<symbol id="${id}" viewBox="-1 -1 602 602"><defs><symbol id="_internalLaunchTube" viewBox="220 20 520 520"><circle fill="white" stroke="#000000" stroke-width="10.9646" stroke-miterlimit="10" cx="480" cy="280" r="251.1"/><polygon fill="black" stroke="#000000" stroke-width="10.5236" stroke-miterlimit="10" points="480,93.6 543.2,280 606.4,466.4 480,466.4 353.6,466.4 416.8,280"/></symbol></defs><polygon points="441.5,545.0851892709961 158.50000000000006,545.0851892709961 17,300.00000000000006 158.4999999999999,54.914810729003904 441.5,54.914810729003875 583,299.99999999999994" fill="white" stroke="#000000" stroke-width="10" stroke-miterlimit="10"/><use href="#_internalLaunchTube" x="100" y="100" width="400" height="400" /></symbol>`,
                 height: 2,
-                width: 2
+                width: 2,
             };
         } else {
-            const id = this.ship.hashseed === undefined ? `launchTube` : fnv.hash(`launchTube`).hex();
+            const id =
+                this.ship.hashseed === undefined
+                    ? `launchTube`
+                    : fnv.hash(`launchTube`).hex();
             return {
                 id,
                 svg: `<symbol id="${id}" viewBox="220 20 520 520"><circle fill="white" stroke="#000000" stroke-width="10.9646" stroke-miterlimit="10" cx="480" cy="280" r="251.1"/><polygon fill="black" stroke="#000000" stroke-width="10.5236" stroke-miterlimit="10" points="480,93.6 543.2,280 606.4,466.4 480,466.4 353.6,466.4 416.8,280"/></symbol>`,
                 height: 2,
-                width: 2
+                width: 2,
             };
         }
-   }
+    }
 }

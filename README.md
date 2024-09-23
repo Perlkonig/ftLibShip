@@ -6,9 +6,9 @@ This is a TypeScript library representing the schema/type for a Full Thrust ship
 
 This library is intended for three primary uses:
 
-1)  The schema is the authoritative description of what a "ship" can and should contain.
-2)  The `validate` and `evaluate` functions let you ensure a ship meets the minimum criteria.
-3)  The `render` function will produce a consistent, readable, high-quality SVG of any given ship.
+1.  The schema is the authoritative description of what a "ship" can and should contain.
+2.  The `validate` and `evaluate` functions let you ensure a ship meets the minimum criteria.
+3.  The `render` function will produce a consistent, readable, high-quality SVG of any given ship.
 
 ### Schema
 
@@ -45,23 +45,23 @@ export interface IValidation {
 }
 
 export enum ValErrorCode {
-    BadJSON="BADJSON",
-    BadConstruction="BADCONSTRUCTION",
-    PointsMismatch="POINTSMISMATCH",
+    BadJSON = "BADJSON",
+    BadConstruction = "BADCONSTRUCTION",
+    PointsMismatch = "POINTSMISMATCH",
 }
 
 export enum EvalErrorCode {
-    NoMass="NOMASS",
-    BadMass="BADMASS",
-    LowHull="LOWHULL",
-    OverMarine="OVERMARINE",
-    OverDCP="OVERDCP",
-    OverCrew="OVERCREW",
-    OverSpinal="OVERSPINAL",
-    OverTurret="OVERTURRET",
-    OverMass="OVERMASS",
-    OverPBL="OVERPBL",
-    DblUID="DblUID",
+    NoMass = "NOMASS",
+    BadMass = "BADMASS",
+    LowHull = "LOWHULL",
+    OverMarine = "OVERMARINE",
+    OverDCP = "OVERDCP",
+    OverCrew = "OVERCREW",
+    OverSpinal = "OVERSPINAL",
+    OverTurret = "OVERTURRET",
+    OverMass = "OVERMASS",
+    OverPBL = "OVERPBL",
+    DblUID = "DblUID",
 }
 ```
 
@@ -71,8 +71,8 @@ So a `validate` is considered passed if `valid` is `true`. An `evaluate` is cons
 
 Two rendering functions are provided:
 
-* `renderSvg(ship: FullThrustShip, opts: RenderOpts = {}): string | undefined` takes a ship object and returns the raw SVG code, which is designed to render correctly in all modern browsers.
-* `renderUri(ship: FullThrustShip, opts: RenderOpts = {}): string | undefined` does the same thing but returns the SVG as a [data URI](https://en.wikipedia.org/wiki/Data_URI_scheme), suitable for use in `<img>` and `<button>` tags.
+-   `renderSvg(ship: FullThrustShip, opts: RenderOpts = {}): string | undefined` takes a ship object and returns the raw SVG code, which is designed to render correctly in all modern browsers.
+-   `renderUri(ship: FullThrustShip, opts: RenderOpts = {}): string | undefined` does the same thing but returns the SVG as a [data URI](https://en.wikipedia.org/wiki/Data_URI_scheme), suitable for use in `<img>` and `<button>` tags.
 
 The rendering options are as follows:
 
@@ -83,7 +83,7 @@ export interface RenderOpts {
     // The amount of damage done to each layer of armour
     // The first row is the innermost layer
     // First element is regular armour, second is regenerative armour
-    armour?: [number,number][]
+    armour?: [number, number][];
     // List of uids of disabled systems
     disabled?: SystemID[];
     // List of uids of destroyed systems

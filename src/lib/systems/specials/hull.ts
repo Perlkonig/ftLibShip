@@ -15,10 +15,10 @@ export class Hull extends SpecialSystem {
     }
 
     points() {
-        if ( (this.ship.hull === undefined) || (this.ship.mass === undefined) ) {
+        if (this.ship.hull === undefined || this.ship.mass === undefined) {
             return NaN;
         }
-        return (this.ship.mass + this.hull_points());
+        return this.ship.mass + this.hull_points();
     }
 
     cpv() {
@@ -35,7 +35,9 @@ export class Hull extends SpecialSystem {
         if (this.ship.mass !== undefined) {
             const realMass = this.ship.mass - ncmass;
             let cpv = Math.round((realMass * realMass) / 100);
-            if (cpv < 1) { cpv = 1; }
+            if (cpv < 1) {
+                cpv = 1;
+            }
             cpv += this.hull_points();
             return cpv;
         }
@@ -47,7 +49,7 @@ export class Hull extends SpecialSystem {
             return NaN;
         }
         if (this.ship.hull.rows === 3) {
-            return  this.ship.hull.points * 3;
+            return this.ship.hull.points * 3;
         } else if (this.ship.hull.rows === 4) {
             return this.ship.hull.points * 2;
         } else if (this.ship.hull.rows === 5) {

@@ -25,7 +25,7 @@ export class Pulser extends System {
             data.numArcs = 1;
         } else if (this.numArcs === 2) {
             this.numArcs = 3;
-        } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
+        } else if (this.numArcs > 3 && this.numArcs < 6) {
             this.numArcs = 6;
         } else if (this.numArcs > 6) {
             this.numArcs = 6;
@@ -84,7 +84,7 @@ export class Pulser extends System {
         let insert = "";
         const arcs = arcList(this.leftArc, this.numArcs);
         for (const pair of points) {
-            if (! arcs.includes(pair[0])) {
+            if (!arcs.includes(pair[0])) {
                 insert += `<polygon points="${pair[1]}" stroke="black" fill="black"/>`;
             }
         }
@@ -93,7 +93,7 @@ export class Pulser extends System {
             id,
             svg,
             height: 2,
-            width: 2
-        }
+            width: 2,
+        };
     }
 }

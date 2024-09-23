@@ -34,20 +34,26 @@ export class FireControl extends System {
 
     glyph() {
         if (this.advanced) {
-            const id = this.ship.hashseed === undefined ? `afcs` : fnv.hash(`afcs`).hex();
+            const id =
+                this.ship.hashseed === undefined
+                    ? `afcs`
+                    : fnv.hash(`afcs`).hex();
             return {
                 id,
                 svg: `<symbol id="${id}" viewBox="271 -31.25 415 622.5"><rect x="287" y="32" fill="white" stroke="#000000" stroke-width="28" stroke-miterlimit="10" width="384" height="497"/><circle stroke="#000000" stroke-width="13.7436" stroke-miterlimit="10" cx="480" cy="353" r="75.1"/><circle stroke="#000000" stroke-width="13.7436" stroke-miterlimit="10" cx="480" cy="196" r="75.1"/></symbol>`,
                 height: 1.5,
-                width: 1
+                width: 1,
             };
         } else {
-            const id = this.ship.hashseed === undefined ? `fireControl` : fnv.hash(`fireControl`).hex();
+            const id =
+                this.ship.hashseed === undefined
+                    ? `fireControl`
+                    : fnv.hash(`fireControl`).hex();
             return {
                 id,
                 svg: `<symbol id="${id}" viewBox="274 75 411 411"><rect x="287.5" y="88.5" fill="white" stroke="#000000" stroke-width="25" stroke-miterlimit="10" width="384" height="384"/><circle stroke="#000000" stroke-width="22.2545" stroke-miterlimit="10" cx="480" cy="280" r="121.6"/></symbol>`,
                 height: 1,
-                width: 1
+                width: 1,
             };
         }
     }

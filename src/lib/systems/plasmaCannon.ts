@@ -4,7 +4,7 @@ import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
 import fnv from "fnv-plus";
 
-type Class = 1|2|3|4;
+type Class = 1 | 2 | 3 | 4;
 
 export class PlasmaCannon extends System {
     public class: Class = 1;
@@ -32,7 +32,7 @@ export class PlasmaCannon extends System {
             if (this.numArcs < 3) {
                 this.numArcs = 3;
                 data.numArcs = 3;
-            } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
+            } else if (this.numArcs > 3 && this.numArcs < 6) {
                 this.numArcs = 3;
             } else if (this.numArcs > 6) {
                 this.numArcs = 6;
@@ -60,9 +60,9 @@ export class PlasmaCannon extends System {
                     return 6;
                 }
             case 3:
-                return 8 + (2 * (this.numArcs - 1));
+                return 8 + 2 * (this.numArcs - 1);
             case 4:
-                return 16 + (4 * (this.numArcs - 1));
+                return 16 + 4 * (this.numArcs - 1);
         }
     }
 
@@ -77,12 +77,19 @@ export class PlasmaCannon extends System {
             id = fnv.hash(id).hex();
         }
         let insert = `<circle cx="300" cy="300" r="170" fill="none" stroke="black" stroke-width="20" stroke-miterlimit="10" /><text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="250">${this.class}</text>`;
-        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.leftArc,
+            undefined,
+            insert
+        );
         return {
             id,
             svg,
             height: 2,
-            width: 2
-        }
+            width: 2,
+        };
     }
 }

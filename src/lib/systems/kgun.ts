@@ -24,9 +24,9 @@ export class Kgun extends System {
         if (this.class < 1) {
             this.class = 1;
             data.class = 1;
-        // } else if (this.class > 6) {
-        //     this.class = 6;
-        //     data.class = 6;
+            // } else if (this.class > 6) {
+            //     this.class = 6;
+            //     data.class = 6;
         }
 
         if (data.hasOwnProperty("leftArc")) {
@@ -69,7 +69,7 @@ export class Kgun extends System {
                 base = 3 + (this.numArcs - 1);
                 break;
             default:
-                base = 5 + (3 * (this.class - 3));
+                base = 5 + 3 * (this.class - 3);
                 break;
         }
 
@@ -99,27 +99,42 @@ export class Kgun extends System {
             insert = `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="300" stroke="white" fill="white">${this.class}</text>`;
         } else if (this.modifier === "short") {
             mod = "S";
-            insert = `<line x1="300" y1="478.4878357199728" x2="300" y2="736.6825428220194" stroke-width="20" stroke-miterlimit="10" stroke="black" />` + insert;
+            insert =
+                `<line x1="300" y1="478.4878357199728" x2="300" y2="736.6825428220194" stroke-width="20" stroke-miterlimit="10" stroke="black" />` +
+                insert;
         }
         let id = `kgun${this.class}${mod}${this.leftArc}${this.numArcs}`;
         if (this.ship.hashseed !== undefined) {
             fnv.seed(this.ship.hashseed);
             id = fnv.hash(id).hex();
         }
-        let svg = genHex(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genHex(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.leftArc,
+            undefined,
+            insert
+        );
         // If long range, fill the centre hex
         if (this.modifier === "long") {
-            svg = svg.replace(`id="inner" fill="white" fill-opacity="0"`, `id="inner" fill="black" fill-opacity="1"`);
-        // If short range, change the viewbox
+            svg = svg.replace(
+                `id="inner" fill="white" fill-opacity="0"`,
+                `id="inner" fill="black" fill-opacity="1"`
+            );
+            // If short range, change the viewbox
         } else if (this.modifier === "short") {
-            svg = svg.replace(`viewBox="-1 -1 602 602"`, `viewBox="-26 24 652 652"`);
+            svg = svg.replace(
+                `viewBox="-1 -1 602 602"`,
+                `viewBox="-26 24 652 652"`
+            );
         }
 
         return {
             id,
             svg,
             height: 2,
-            width: 2
-        }
+            width: 2,
+        };
     }
 }

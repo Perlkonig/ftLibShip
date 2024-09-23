@@ -35,7 +35,9 @@ export class Hangar extends System {
             return 6;
         } else {
             if (this.ship.systems !== undefined) {
-                const idx = this.ship.systems.findIndex(x => x.name === "launchTube");
+                const idx = this.ship.systems.findIndex(
+                    (x) => x.name === "launchTube"
+                );
                 if (idx !== -1) {
                     return 6;
                 } else {
@@ -65,7 +67,7 @@ export class Hangar extends System {
     glyph() {
         let fighter: any;
         if (this.ship.fighters !== undefined) {
-            fighter = this.ship.fighters.find(x => x.hangar === this.id);
+            fighter = this.ship.fighters.find((x) => x.hangar === this.id);
         }
         let insert = "";
         let mod = "";
@@ -126,7 +128,7 @@ export class Hangar extends System {
             id,
             svg,
             height: 3,
-            width: 2
+            width: 2,
         };
-   }
+    }
 }

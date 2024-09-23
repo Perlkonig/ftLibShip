@@ -7,7 +7,7 @@ export const formRows = (ship: FullThrustShip): number[][] | undefined => {
     if (ship.hull !== undefined) {
         let cf = 1;
         if (ship.mass !== undefined) {
-            if ( (ship.civilian !== undefined) && (ship.civilian) ) {
+            if (ship.civilian !== undefined && ship.civilian) {
                 cf = Math.ceil(ship.mass / 50);
             } else {
                 cf = Math.ceil(ship.mass / 20);
@@ -16,7 +16,7 @@ export const formRows = (ship: FullThrustShip): number[][] | undefined => {
         const interval = Math.ceil(ship.hull.points / cf);
         const boxes: number[] = [];
         for (let i = 0; i < ship.hull.points; i++) {
-            if ( ((i + 1) % interval === 0) || (i === ship.hull.points - 1) ) {
+            if ((i + 1) % interval === 0 || i === ship.hull.points - 1) {
                 boxes.push(1);
             } else {
                 boxes.push(0);
@@ -26,7 +26,9 @@ export const formRows = (ship: FullThrustShip): number[][] | undefined => {
         let baselen = Math.floor(ship.hull.points / ship.hull.rows);
         let delta = ship.hull.points % ship.hull.rows;
         for (let i = 0; i < ship.hull.rows; i++) {
-            if (baselen > boxes.length) { baselen = boxes.length; }
+            if (baselen > boxes.length) {
+                baselen = boxes.length;
+            }
             const node = boxes.splice(0, baselen);
             if (delta > 0) {
                 node.push(...boxes.splice(0, 1));
@@ -44,17 +46,20 @@ export interface IRenderOpts {
     dim?: {
         height: number;
         width: number;
-    }
+    };
     hullDamage?: number;
     // first row is innermost row of armour
     // first element of each row is regular armour, second is regenerative armour
-    armourDamage?: [number,number][];
+    armourDamage?: [number, number][];
 }
 
-export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefined => {
+export const genSvg = (
+    ship: FullThrustShip,
+    opts: IRenderOpts
+): string | undefined => {
     const { cellsize, dim, hullDamage, armourDamage } = opts;
     const hullRows = formRows(ship);
-    if ( (hullRows === undefined) || (ship.hull === undefined) ) {
+    if (hullRows === undefined || ship.hull === undefined) {
         return undefined;
     }
     // apply hull damage
@@ -77,33 +82,38 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
         totalWidth = dim.width;
     } else {
         let rows = hullRows.length;
-        if ( (ship.hasOwnProperty("armour")) && (ship.armour !== undefined) ) {
+        if (ship.hasOwnProperty("armour") && ship.armour !== undefined) {
             rows += ship.armour.length;
         }
         totalHeight = cellsize * rows;
 
         let cols = hullRows[0].length;
         // If there's armour, make sure there's enough room for armour that exceeds hull cols
-        if ( (ship.hasOwnProperty("armour")) && (ship.armour !== undefined) ) {
-            cols = Math.max(cols, ...ship.armour.map(x => x[0] + x[1]));
+        if (ship.hasOwnProperty("armour") && ship.armour !== undefined) {
+            cols = Math.max(cols, ...ship.armour.map((x) => x[0] + x[1]));
         }
         if (ship.hull.stealth === "2") {
             cols++;
-        } else if ( (ship.hull.stealth === "1") && (hullRows[1].length === hullRows[0].length) ) {
+        } else if (
+            ship.hull.stealth === "1" &&
+            hullRows[1].length === hullRows[0].length
+        ) {
             cols++;
         }
         totalWidth = cellsize * cols;
     }
 
     const blocksHigh = Math.floor(totalHeight / cellsize);
-    const svgHull = svgLib.find(x => x.id === "hull")!;
-    const svgHullCrew = svgLib.find(x => x.id === "hullCrew")!;
-    const svgHullDmgd = svgLib.find(x => x.id === "hullDamaged")!;
-    const svgArmour = svgLib.find(x => x.id === "armour")!;
-    const svgArmourDmgd = svgLib.find(x => x.id === "armourDamaged")!;
-    const svgArmourRegen = svgLib.find(x => x.id === "armourRegen")!;
-    const svgArmourRegenDmgd = svgLib.find(x => x.id === "armourRegenDamaged")!;
-    const svgStealth = svgLib.find(x => x.id === "stealthHull")!;
+    const svgHull = svgLib.find((x) => x.id === "hull")!;
+    const svgHullCrew = svgLib.find((x) => x.id === "hullCrew")!;
+    const svgHullDmgd = svgLib.find((x) => x.id === "hullDamaged")!;
+    const svgArmour = svgLib.find((x) => x.id === "armour")!;
+    const svgArmourDmgd = svgLib.find((x) => x.id === "armourDamaged")!;
+    const svgArmourRegen = svgLib.find((x) => x.id === "armourRegen")!;
+    const svgArmourRegenDmgd = svgLib.find(
+        (x) => x.id === "armourRegenDamaged"
+    )!;
+    const svgStealth = svgLib.find((x) => x.id === "stealthHull")!;
     let hullid = "_ssdHull";
     if (ship.hashseed !== undefined) {
         fnv.seed(ship.hashseed);
@@ -119,7 +129,11 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
     if (hullDamage !== undefined) {
         s += svgHullDmgd.svg;
     }
-    if ( (ship.hasOwnProperty("armour")) && (ship.armour !== undefined) && (ship.armour.length > 0) ) {
+    if (
+        ship.hasOwnProperty("armour") &&
+        ship.armour !== undefined &&
+        ship.armour.length > 0
+    ) {
         s += svgArmour.svg;
         s += svgArmourRegen.svg;
     }
@@ -138,31 +152,30 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
             const x = col * cellsize;
             let id = "hull";
             let width = svgHull.width * cellsize;
-            let height = svgHull.height * cellsize
+            let height = svgHull.height * cellsize;
             if (boxes[col] === 1) {
                 id = "hullCrew";
                 width = svgHullCrew.width * cellsize;
-                height = svgHullCrew.height * cellsize
+                height = svgHullCrew.height * cellsize;
             } else if (boxes[col] === 2) {
                 id = "hullDamaged";
                 width = svgHullDmgd.width * cellsize;
-                height = svgHullDmgd.height * cellsize
+                height = svgHullDmgd.height * cellsize;
             }
             s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
-
         }
         if (
-                ( (ship.hull.stealth === "2") &&
-                    ( (hullRows.length - (row + 1) === 2) ||
-                    (hullRows.length - (row + 1) === 0) ) ) ||
-                ( (ship.hull.stealth === "1") &&
-                    ( (hullRows.length - (row + 1) === 1)) ) ) {
-                s += `<use href="#stealthHull" x="${boxes.length * cellsize}" y="${y}" width="${svgStealth.width * cellsize}" height="${svgStealth.height * cellsize}" />`;
+            (ship.hull.stealth === "2" &&
+                (hullRows.length - (row + 1) === 2 ||
+                    hullRows.length - (row + 1) === 0)) ||
+            (ship.hull.stealth === "1" && hullRows.length - (row + 1) === 1)
+        ) {
+            s += `<use href="#stealthHull" x="${boxes.length * cellsize}" y="${y}" width="${svgStealth.width * cellsize}" height="${svgStealth.height * cellsize}" />`;
         }
     }
 
     // Armour circles
-    if ( (ship.armour !== undefined) && (ship.armour.length > 0) ) {
+    if (ship.armour !== undefined && ship.armour.length > 0) {
         for (let row = 0; row < ship.armour.length; row++) {
             let applied = 0;
             let appliedRegen = 0;
@@ -199,4 +212,4 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
     }
     s += `</symbol>`;
     return s;
-}
+};

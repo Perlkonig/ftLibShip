@@ -2,7 +2,20 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 
-type FighterType = "standard" | "interceptor" | "attack" | "torpedo" | "graser" | "plasma" | "MKP" | "missile" | "multiRole" | "light" | "lightInterceptor" | "lightAttack" | "assault";
+type FighterType =
+    | "standard"
+    | "interceptor"
+    | "attack"
+    | "torpedo"
+    | "graser"
+    | "plasma"
+    | "MKP"
+    | "missile"
+    | "multiRole"
+    | "light"
+    | "lightInterceptor"
+    | "lightAttack"
+    | "assault";
 type FighterMod = "heavy" | "fast" | "longRange" | "ftl" | "robot";
 
 export const type2name: Map<FighterType, string> = new Map([
@@ -43,7 +56,7 @@ export class Fighters extends System {
             let toDel: FighterMod[] = [];
             for (const m of data.mods as FighterMod[]) {
                 if (this.type.startsWith("light")) {
-                    if ( (m === "longRange") || (m === "heavy") || (m === "ftl") ) {
+                    if (m === "longRange" || m === "heavy" || m === "ftl") {
                         toDel.push(m);
                         continue;
                     }
@@ -57,7 +70,9 @@ export class Fighters extends System {
                 this.mods.add(m);
             }
             if (toDel.length > 0) {
-                data.mods = (data.mods as FighterMod[]).filter(m => ! toDel.includes(m))
+                data.mods = (data.mods as FighterMod[]).filter(
+                    (m) => !toDel.includes(m)
+                );
             }
         }
         if (data.hasOwnProperty("hangar")) {
@@ -70,7 +85,7 @@ export class Fighters extends System {
         for (const m of this.mods) {
             name.push(mod2name.get(m)!);
         }
-        name.push(type2name.get(this.type)!)
+        name.push(type2name.get(this.type)!);
         return name.join(" ");
     }
 
@@ -172,8 +187,7 @@ export class Fighters extends System {
         return base;
     }
 
-
     glyph() {
         return undefined;
-   }
+    }
 }

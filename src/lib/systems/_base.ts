@@ -2,13 +2,13 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { nanoid } from "nanoid";
 import type { ISystemSVG } from "../svgLib.js";
 
-export type Arc = "F"|"FS"|"FP"|"A"|"AS"|"AP";
-export type ArcNum = 1|2|3|4|5|6;
+export type Arc = "F" | "FS" | "FP" | "A" | "AS" | "AP";
+export type ArcNum = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface ISystem {
     name: string;
     [k: string]: unknown;
-};
+}
 
 export abstract class System {
     public readonly name: string;
@@ -17,7 +17,7 @@ export abstract class System {
 
     constructor(data: ISystem, ship: FullThrustShip) {
         this.name = data.name;
-        if ( (data.hasOwnProperty("id")) && (data.id !== undefined) ) {
+        if (data.hasOwnProperty("id") && data.id !== undefined) {
             this.uid = data.id as string;
         } else {
             this.uid = nanoid(5);

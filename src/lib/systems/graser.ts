@@ -4,7 +4,7 @@ import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
 import fnv from "fnv-plus";
 
-type Class = 1|2|3|4;
+type Class = 1 | 2 | 3 | 4;
 
 export class Graser extends System {
     public class: Class = 1;
@@ -30,7 +30,7 @@ export class Graser extends System {
         } else if (this.class > 4) {
             this.class = 4;
         }
-        if ( (this.heavy) && (this.class > 3) ) {
+        if (this.heavy && this.class > 3) {
             this.class = 3;
             data.class = 3;
         }
@@ -47,7 +47,7 @@ export class Graser extends System {
             if (this.heavy) {
                 if (this.numArcs === 2) {
                     this.numArcs = 3;
-                } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
+                } else if (this.numArcs > 3 && this.numArcs < 6) {
                     this.numArcs = 6;
                 } else if (this.numArcs > 6) {
                     this.numArcs = 6;
@@ -57,18 +57,18 @@ export class Graser extends System {
                 if (this.numArcs < 3) {
                     this.numArcs = 3;
                     data.numArcs = 3;
-                } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
+                } else if (this.numArcs > 3 && this.numArcs < 6) {
                     this.numArcs = 6;
                 } else if (this.numArcs > 6) {
                     this.numArcs = 6;
                     data.numArcs = 6;
                 }
             }
-        } else if ( (this.class === 2) && (! this.heavy) ) {
+        } else if (this.class === 2 && !this.heavy) {
             if (this.numArcs < 3) {
                 this.numArcs = 3;
                 data.numArcs = 3;
-            } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
+            } else if (this.numArcs > 3 && this.numArcs < 6) {
                 this.numArcs = 3;
             } else if (this.numArcs > 6) {
                 this.numArcs = 6;
@@ -92,9 +92,9 @@ export class Graser extends System {
                     return 4;
                 }
             } else if (this.class === 2) {
-                return 9 + (3 * (this.numArcs - 1));
+                return 9 + 3 * (this.numArcs - 1);
             } else {
-                return 24 + (6 * (this.numArcs - 1));
+                return 24 + 6 * (this.numArcs - 1);
             }
         } else {
             if (this.class === 1) {
@@ -110,9 +110,9 @@ export class Graser extends System {
                     return 6;
                 }
             } else if (this.class === 3) {
-                return 8 + (2 * (this.numArcs - 1));
+                return 8 + 2 * (this.numArcs - 1);
             } else {
-                return 16 + (4 * (this.numArcs - 1));
+                return 16 + 4 * (this.numArcs - 1);
             }
         }
     }
@@ -128,27 +128,41 @@ export class Graser extends System {
     glyph() {
         let id = `graser${this.class}${this.leftArc}${this.numArcs}`;
         let insert = `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="300" stroke="white" fill="white">${this.class}</text>`;
-        if ( (this.heavy) && (this.highIntensity) ) {
+        if (this.heavy && this.highIntensity) {
             id = `graser${this.class}HeavyHI${this.leftArc}${this.numArcs}`;
-            insert = `<polygon points="300,506.1 478.48783571997280509800334549218,196.95 121.51216428002719490199665450782,196.95" stroke="black" fill="#808080" />` + insert;
+            insert =
+                `<polygon points="300,506.1 478.48783571997280509800334549218,196.95 121.51216428002719490199665450782,196.95" stroke="black" fill="#808080" />` +
+                insert;
         } else if (this.heavy) {
             id = `graser${this.class}Heavy${this.leftArc}${this.numArcs}`;
-            insert = `<polygon points="300,506.1 478.48783571997280509800334549218,196.95 121.51216428002719490199665450782,196.95" stroke="black" fill="black" />` + insert;
+            insert =
+                `<polygon points="300,506.1 478.48783571997280509800334549218,196.95 121.51216428002719490199665450782,196.95" stroke="black" fill="black" />` +
+                insert;
         }
         if (this.ship.hashseed !== undefined) {
             fnv.seed(this.ship.hashseed);
             id = fnv.hash(id).hex();
         }
-        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
-        if (! this.heavy) {
+        let svg = genArcs(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.leftArc,
+            undefined,
+            insert
+        );
+        if (!this.heavy) {
             // Fill the inner circle with black
-            svg = svg.replace(`<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`, `<circle fill="black" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`);
+            svg = svg.replace(
+                `<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`,
+                `<circle fill="black" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`
+            );
         }
         return {
             id,
             svg,
             height: 2,
-            width: 2
-        }
+            width: 2,
+        };
     }
 }

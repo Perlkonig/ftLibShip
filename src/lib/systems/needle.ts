@@ -4,7 +4,7 @@ import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
 import fnv from "fnv-plus";
 
-type Class = 1|2|3|4;
+type Class = 1 | 2 | 3 | 4;
 
 export class Needle extends System {
     public class: Class = 1;
@@ -54,11 +54,11 @@ export class Needle extends System {
                     return 3;
                 }
             case 2:
-                return 4 + (2 * (this.numArcs - 1));
+                return 4 + 2 * (this.numArcs - 1);
             case 3:
-                return 8 + (4 * (this.numArcs - 1));
+                return 8 + 4 * (this.numArcs - 1);
             case 4:
-                return 16 + (8 * (this.numArcs - 1));
+                return 16 + 8 * (this.numArcs - 1);
         }
     }
 
@@ -74,14 +74,24 @@ export class Needle extends System {
             id = fnv.hash(id).hex();
         }
         const insert = `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="200" stroke="white" fill="white">${roman[this.class - 1]}</text>`;
-        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.leftArc,
+            undefined,
+            insert
+        );
         // Fill the inner circle with black
-        svg = svg.replace(`<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`, `<circle fill="black" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`);
+        svg = svg.replace(
+            `<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`,
+            `<circle fill="black" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="300" cy="300" r="206.1"/>`
+        );
         return {
             id,
             svg,
             height: 2,
-            width: 2
-        }
+            width: 2,
+        };
     }
 }

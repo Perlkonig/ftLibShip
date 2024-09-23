@@ -9,7 +9,6 @@ import type { ISystem } from "./_base.js";
 import fnv from "fnv-plus";
 
 export class Flawed extends System {
-
     constructor(data: ISystem, ship: FullThrustShip) {
         super(data, ship);
     }
@@ -38,6 +37,6 @@ export class Flawed extends System {
             svg,
             height: 2,
             width: 2,
-        }
+        };
     }
 }

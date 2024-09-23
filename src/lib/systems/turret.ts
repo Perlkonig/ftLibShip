@@ -59,12 +59,12 @@ export class Turret extends System {
         for (const id of this.weapons) {
             let obj: any = undefined;
             if (this.ship.ordnance !== undefined) {
-                let idx = this.ship.ordnance.findIndex(x => x.id === id);
+                let idx = this.ship.ordnance.findIndex((x) => x.id === id);
                 if (idx !== -1) {
                     obj = this.ship.ordnance[idx];
                 } else {
                     if (this.ship.weapons !== undefined) {
-                        idx = this.ship.weapons.findIndex(x => x.id === id);
+                        idx = this.ship.weapons.findIndex((x) => x.id === id);
                         if (idx !== -1) {
                             obj = this.ship.weapons[idx];
                         }
@@ -82,7 +82,7 @@ export class Turret extends System {
             mass += sys.mass();
         }
         return mass;
-    }
+    };
 
     fullName() {
         return `Turret`;
@@ -115,12 +115,17 @@ export class Turret extends System {
             fnv.seed(this.ship.hashseed);
             id = fnv.hash(id).hex();
         }
-        let svg = genHex(this.ship.orientation, id, this.numArcs, this.facingArc);
+        let svg = genHex(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.facingArc
+        );
         return {
             id,
             svg,
             height: this.size,
-            width: this.size
-        }
+            width: this.size,
+        };
     }
 }

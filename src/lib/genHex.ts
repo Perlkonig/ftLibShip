@@ -1,5 +1,8 @@
 type Arc = "F" | "FS" | "AS" | "A" | "AP" | "FP";
-interface IPoint { x: number; y: number }
+interface IPoint {
+    x: number;
+    y: number;
+}
 
 export const lefts = new Map<Arc, number>([
     ["F", 240],
@@ -7,7 +10,7 @@ export const lefts = new Map<Arc, number>([
     ["AS", 0],
     ["A", 60],
     ["AP", 120],
-    ["FP", 180]
+    ["FP", 180],
 ]);
 export const rights = new Map<Arc, number>([
     ["F", 300],
@@ -15,7 +18,7 @@ export const rights = new Map<Arc, number>([
     ["AS", 60],
     ["A", 120],
     ["AP", 180],
-    ["FP", 240]
+    ["FP", 240],
 ]);
 
 // These values are hard coded to produce 600x600 final glyphs
@@ -23,7 +26,14 @@ const rInner = 206.1;
 const rOuter = 283;
 const size = Math.round((rOuter * 2) / 100) * 100;
 
-export const genHex = (orientation: "alpha"|"beta"|undefined, id: string, numArcs: number = 1, leftArc: Arc, defs: string | undefined = undefined, terminal: string | undefined = undefined) => {
+export const genHex = (
+    orientation: "alpha" | "beta" | undefined,
+    id: string,
+    numArcs: number = 1,
+    leftArc: Arc,
+    defs: string | undefined = undefined,
+    terminal: string | undefined = undefined
+) => {
     if (numArcs === 6) {
         const allLines: IPoint[][] = [];
         for (const arc of lefts.keys()) {
@@ -51,21 +61,37 @@ export const genHex = (orientation: "alpha"|"beta"|undefined, id: string, numArc
         } else {
             console.log(`Could not generate a line for ${end}`);
         }
-        return genSvg(orientation, id, lines, genPath(orientation, arcs), defs, terminal)
+        return genSvg(
+            orientation,
+            id,
+            lines,
+            genPath(orientation, arcs),
+            defs,
+            terminal
+        );
     }
 };
 
-const deg2rad = (deg: number) => { return deg * Math.PI / 180; }
+const deg2rad = (deg: number) => {
+    return (deg * Math.PI) / 180;
+};
 
 const arcpt = (cx: number, cy: number, r: number, angle: number): IPoint => {
-    const x = cx + (r * Math.cos(angle));
-    const y = cy + (r * Math.sin(angle));
-    return {x, y};
-}
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    return { x, y };
+};
 
-const genSvg = (orientation: "alpha"|"beta"|undefined, id: string, lines: IPoint[][], path: string | undefined = undefined, defs: string | undefined = undefined, terminal: string | undefined = undefined): string => {
+const genSvg = (
+    orientation: "alpha" | "beta" | undefined,
+    id: string,
+    lines: IPoint[][],
+    path: string | undefined = undefined,
+    defs: string | undefined = undefined,
+    terminal: string | undefined = undefined
+): string => {
     let degs = [60, 120, 180, 240, 300, 360];
-    if ( (orientation !== undefined) && (orientation === "beta") ) {
+    if (orientation !== undefined && orientation === "beta") {
         degs = [90, 150, 210, 270, 330, 30];
     }
     let s = `<symbol id="${id}" viewBox="-1 -1 ${size + 2} ${size + 2}">`;
@@ -79,14 +105,14 @@ const genSvg = (orientation: "alpha"|"beta"|undefined, id: string, lines: IPoint
             const pt = arcpt(size / 2, size / 2, rOuter, deg2rad(deg));
             pointsOuter.push(`${pt.x},${pt.y}`);
         }
-        s += `<polygon id="outer" points="${pointsOuter.join(" ")}" fill="white"  fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`
+        s += `<polygon id="outer" points="${pointsOuter.join(" ")}" fill="white"  fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`;
     }
     const pointsInner: string[] = [];
     for (const deg of degs) {
         const pt = arcpt(size / 2, size / 2, rInner, deg2rad(deg));
         pointsInner.push(`${pt.x},${pt.y}`);
     }
-    s += `<polygon points="${pointsInner.join(" ")}" id="inner" fill="white" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`
+    s += `<polygon points="${pointsInner.join(" ")}" id="inner" fill="white" fill-opacity="0" stroke="#000000" stroke-width="20" stroke-miterlimit="10"/>`;
     for (const line of lines) {
         s += `<line x1="${line[0].x}" y1="${line[0].y}" x2="${line[1].x}" y2="${line[1].y}" stroke-width="20" stroke-miterlimit="10" stroke="black" />`;
     }
@@ -98,9 +124,13 @@ const genSvg = (orientation: "alpha"|"beta"|undefined, id: string, lines: IPoint
     }
     s += `</symbol>`;
     return s;
-}
+};
 
-const genLine = (orientation: "alpha"|"beta"|undefined, arc: Arc, side: "L"|"R" = "L"): [IPoint, IPoint] | undefined => {
+const genLine = (
+    orientation: "alpha" | "beta" | undefined,
+    arc: Arc,
+    side: "L" | "R" = "L"
+): [IPoint, IPoint] | undefined => {
     let deg: number | undefined;
     if (side === "L") {
         deg = lefts.get(arc);
@@ -108,7 +138,7 @@ const genLine = (orientation: "alpha"|"beta"|undefined, arc: Arc, side: "L"|"R" 
         deg = rights.get(arc);
     }
     if (deg !== undefined) {
-        if ( (orientation !== undefined) && (orientation === "beta") ) {
+        if (orientation !== undefined && orientation === "beta") {
             deg += 30;
         }
         const ptOuter = arcpt(size / 2, size / 2, rOuter, deg2rad(deg));
@@ -118,7 +148,7 @@ const genLine = (orientation: "alpha"|"beta"|undefined, arc: Arc, side: "L"|"R" 
         console.log(`Could not get degrees for ${arc}${side}`);
     }
     return undefined;
-}
+};
 
 export const arcList = (start: Arc, dist: number): Arc[] => {
     const list = [start];
@@ -129,42 +159,47 @@ export const arcList = (start: Arc, dist: number): Arc[] => {
         }
     }
     return list;
-}
+};
 
 const nextArc = (start: Arc, dist: number): Arc | undefined => {
     let deg = lefts.get(start);
     if (deg !== undefined) {
-        let newdeg = deg + (dist * 60);
+        let newdeg = deg + dist * 60;
         while (newdeg >= 360) {
             newdeg -= 360;
         }
-        const next = [...lefts.entries()].find(kv => kv[1] === newdeg);
+        const next = [...lefts.entries()].find((kv) => kv[1] === newdeg);
         if (next !== undefined) {
             return next[0];
         } else {
-            console.log(`Could not find the next arc: ${start} + ${dist}, ${deg} -> ${newdeg}`);
+            console.log(
+                `Could not find the next arc: ${start} + ${dist}, ${deg} -> ${newdeg}`
+            );
         }
     } else {
         console.log(`Could not get degrees for starting arc ${start}`);
     }
     return undefined;
-}
+};
 
-const genPath = (orientation: "alpha"|"beta"|undefined, arcs: Arc[]): string | undefined => {
+const genPath = (
+    orientation: "alpha" | "beta" | undefined,
+    arcs: Arc[]
+): string | undefined => {
     const points: string[] = [];
     for (const arc of arcs) {
         let deg = lefts.get(arc)!;
-        if ( (orientation !== undefined) && (orientation === "beta") ) {
+        if (orientation !== undefined && orientation === "beta") {
             deg += 30;
         }
         const pt = arcpt(size / 2, size / 2, rOuter, deg2rad(deg));
         points.push(`${pt.x},${pt.y}`);
     }
     let finalDeg = rights.get(arcs[arcs.length - 1])!;
-    if ( (orientation !== undefined) && (orientation === "beta") ) {
+    if (orientation !== undefined && orientation === "beta") {
         finalDeg += 30;
     }
     const finalPt = arcpt(size / 2, size / 2, rOuter, deg2rad(finalDeg));
     points.push(`${finalPt.x},${finalPt.y}`);
     return `<polyline points="${points.join(" ")}" stroke-width="20" stroke-miterlimit="10" stroke="black" fill="none" />`;
-}
+};

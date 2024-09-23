@@ -2,7 +2,12 @@ import { expect } from "chai";
 import "mocha";
 
 import type { FullThrustShip } from "../src/schemas/ship.js";
-import { EvalErrorCode, ValErrorCode, evaluate, validate } from "../src/index.js";
+import {
+    EvalErrorCode,
+    ValErrorCode,
+    evaluate,
+    validate,
+} from "../src/index.js";
 import type { IValidation } from "../src/index.js";
 import { renderSvg, renderUri, calcRot, rotArc } from "../src/index.js";
 import { Kgun } from "../src/lib/systems/kgun.js";
@@ -32,10 +37,16 @@ describe("Root exports: Evaluate", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         ship.mass = 1;
         let evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.BadMass, EvalErrorCode.OverMass]);
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.BadMass,
+            EvalErrorCode.OverMass,
+        ]);
         ship.mass = 301;
         evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.BadMass, EvalErrorCode.LowHull]);
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.BadMass,
+            EvalErrorCode.LowHull,
+        ]);
     });
     it("Error Codes: LowHull", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
@@ -48,90 +59,115 @@ describe("Root exports: Evaluate", () => {
     });
     it("Error Codes: OverArmour", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
-        ship.armour = [[10,0]];
+        ship.armour = [[10, 0]];
         let evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverMass]);
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.OverMass,
+        ]);
     });
     it("Error Codes: OverMarine", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         ship.mass! += 1;
-        ship.systems!.push({name: "marines"});
-        ship.systems!.push({name: "marines"});
-        ship.systems!.push({name: "marines"});
+        ship.systems!.push({ name: "marines" });
+        ship.systems!.push({ name: "marines" });
+        ship.systems!.push({ name: "marines" });
         let evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        ship.systems!.push({name: "marines"});
+        ship.systems!.push({ name: "marines" });
         evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverMarine]);
-        ship.systems!.push({name: "bay", type: "troop", capacity: 3, id: "test"});
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.OverMarine,
+        ]);
+        ship.systems!.push({
+            name: "bay",
+            type: "troop",
+            capacity: 3,
+            id: "test",
+        });
         evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        ship.systems!.push({name: "marines"});
-        ship.systems!.push({name: "marines"});
+        ship.systems!.push({ name: "marines" });
+        ship.systems!.push({ name: "marines" });
         evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        ship.systems!.push({name: "marines"});
+        ship.systems!.push({ name: "marines" });
         evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverMarine]);
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.OverMarine,
+        ]);
     });
     it("Error Codes: OverDCP", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         ship.mass! += 1;
-        ship.systems!.push({name: "damageControl"});
-        ship.systems!.push({name: "damageControl"});
-        ship.systems!.push({name: "damageControl"});
+        ship.systems!.push({ name: "damageControl" });
+        ship.systems!.push({ name: "damageControl" });
+        ship.systems!.push({ name: "damageControl" });
         let evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        ship.systems!.push({name: "damageControl"});
+        ship.systems!.push({ name: "damageControl" });
         evaluation = evaluate(ship);
         expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverDCP]);
-        ship.systems!.push({name: "bay", type: "passenger", capacity: 4, id: "test"});
+        ship.systems!.push({
+            name: "bay",
+            type: "passenger",
+            capacity: 4,
+            id: "test",
+        });
         evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        ship.systems!.push({name: "damageControl"});
-        ship.systems!.push({name: "damageControl"});
-        ship.systems!.push({name: "damageControl"});
+        ship.systems!.push({ name: "damageControl" });
+        ship.systems!.push({ name: "damageControl" });
+        ship.systems!.push({ name: "damageControl" });
         evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        ship.systems!.push({name: "damageControl"});
+        ship.systems!.push({ name: "damageControl" });
         evaluation = evaluate(ship);
         expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverDCP]);
     });
     it("Error Codes: OverCrew", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
-        ship.systems!.push({name: "damageControl"});
-        ship.systems!.push({name: "damageControl"});
-        ship.systems!.push({name: "marines"});
+        ship.systems!.push({ name: "damageControl" });
+        ship.systems!.push({ name: "damageControl" });
+        ship.systems!.push({ name: "marines" });
         let evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        ship.systems!.push({name: "marines"});
+        ship.systems!.push({ name: "marines" });
         evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverCrew]);
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.OverCrew,
+        ]);
     });
     it("Error Codes: OverSpinal", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
-        ship.weapons!.push({name: "spinalBeam", range: "medium"})
+        ship.weapons!.push({ name: "spinalBeam", range: "medium" });
         let evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(1);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverMass]);
-        ship.weapons!.push({name: "spinalBeam", range: "short"})
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.OverMass,
+        ]);
+        ship.weapons!.push({ name: "spinalBeam", range: "short" });
         evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverSpinal, EvalErrorCode.OverMass]);
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.OverSpinal,
+            EvalErrorCode.OverMass,
+        ]);
     });
     it("Error Codes: OverTurret", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
-        ship.systems!.push({name: "turret", leftArc: "F", numArcs: 1})
+        ship.systems!.push({ name: "turret", leftArc: "F", numArcs: 1 });
         let evaluation = evaluate(ship);
         expect(evaluation.errors.length).to.equal(0);
-        ship.systems!.push({name: "turret", leftArc: "F", numArcs: 1})
+        ship.systems!.push({ name: "turret", leftArc: "F", numArcs: 1 });
         evaluation = evaluate(ship);
-        expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverTurret]);
+        expect(evaluation.errors).to.have.deep.members([
+            EvalErrorCode.OverTurret,
+        ]);
     });
     it("Error Codes: DblUid", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         for (let sys of ship.systems!) {
             if (sys.name === "fireControl") {
-                sys.id="duplicate";
+                sys.id = "duplicate";
             }
         }
         let evaluation = evaluate(ship);
@@ -141,7 +177,7 @@ describe("Root exports: Evaluate", () => {
 });
 
 describe("Root exports: Validate", () => {
-    it ("All good", () => {
+    it("All good", () => {
         const results = validate(validTacoma);
         expect(results.valid).to.be.true;
         expect(results.ajvErrors).to.be.undefined;
@@ -152,19 +188,25 @@ describe("Root exports: Validate", () => {
         expect(results.valid).to.be.false;
         expect(results.code).to.be.equal(ValErrorCode.BadJSON);
         expect(results.ajvErrors).not.to.be.undefined;
-        expect (results.ajvErrors!.length).to.be.greaterThan(0);
+        expect(results.ajvErrors!.length).to.be.greaterThan(0);
     });
     it("Bad construction", () => {
-        const badTacoma = validTacoma.replace(`"armour":[]`, `"armour": [[10,10]]`);
+        const badTacoma = validTacoma.replace(
+            `"armour":[]`,
+            `"armour": [[10,10]]`
+        );
         const results = validate(badTacoma);
         expect(results.valid).to.be.false;
         expect(results.code).to.be.equal(ValErrorCode.BadConstruction);
         expect(results.ajvErrors).to.be.undefined;
-        expect(results.evalErrors).not.to.be.undefined
-        expect (results.evalErrors!.length).to.be.greaterThan(0);
+        expect(results.evalErrors).not.to.be.undefined;
+        expect(results.evalErrors!.length).to.be.greaterThan(0);
     });
     it("Points mismatch", () => {
-        const badTacoma = validTacoma.replace(`"points":167,"cpv":142`, `"points":106,"cpv":103`);
+        const badTacoma = validTacoma.replace(
+            `"points":167,"cpv":142`,
+            `"points":106,"cpv":103`
+        );
         const results = validate(badTacoma);
         expect(results.valid).to.be.false;
         expect(results.code).to.be.equal(ValErrorCode.PointsMismatch);
@@ -224,35 +266,41 @@ describe("Renderer", () => {
         // const toExport = `{"hull":{"points":15,"rows":3,"stealth":"0","streamlining":"none"},"armour":[[3,2],[3,0]],"systems":[{"name":"drive","thrust":5,"advanced":false,"id":"Dui3J"}],"weapons":[{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1Dc"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1De"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1Dd"}],"ordnance":[],"extras":[],"fighters":[],"orientation":"alpha","points":124,"cpv":99,"mass":50,"class":"Light Cruiser","name":"Test"}`;
         const ship = JSON.parse(validKonstantin) as FullThrustShip;
         ship.flawed = true;
-        console.log(renderSvg(ship, {damage: 2, /*armour: [[1,1],[1,1]],*/ disabled: ["_corePower", "Vj_AN"], destroyed: ["Ds8zO", "C6rZc"]}));
+        console.log(
+            renderSvg(ship, {
+                damage: 2,
+                /*armour: [[1,1],[1,1]],*/ disabled: ["_corePower", "Vj_AN"],
+                destroyed: ["Ds8zO", "C6rZc"],
+            })
+        );
     });
 });
 
 describe("Mass calculations", () => {
     it("K-guns", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
-        const kgun = {name: "kgun", modifier: "none", class: 1};
+        const kgun = { name: "kgun", modifier: "none", class: 1 };
         let mass = new Kgun(kgun, ship).mass();
         expect(mass).equal(2);
-        mass = new Kgun({...kgun, class: 2, numArcs: 1}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 2, numArcs: 1 }, ship).mass();
         expect(mass).equal(3);
-        mass = new Kgun({...kgun, class: 3}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 3 }, ship).mass();
         expect(mass).equal(5);
-        mass = new Kgun({...kgun, class: 4}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 4 }, ship).mass();
         expect(mass).equal(8);
-        mass = new Kgun({...kgun, class: 5}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 5 }, ship).mass();
         expect(mass).equal(11);
-        mass = new Kgun({...kgun, class: 6}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 6 }, ship).mass();
         expect(mass).equal(14);
-        mass = new Kgun({...kgun, class: 7}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 7 }, ship).mass();
         expect(mass).equal(17);
-        mass = new Kgun({...kgun, class: 8}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 8 }, ship).mass();
         expect(mass).equal(20);
-        mass = new Kgun({...kgun, class: 9}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 9 }, ship).mass();
         expect(mass).equal(23);
-        mass = new Kgun({...kgun, class: 10}, ship).mass();
+        mass = new Kgun({ ...kgun, class: 10 }, ship).mass();
         expect(mass).equal(26);
-        mass = new Kgun({...kgun, modifier: "short"}, ship).mass();
+        mass = new Kgun({ ...kgun, modifier: "short" }, ship).mass();
         expect(mass).equal(1.5);
     });
 });
@@ -262,7 +310,9 @@ describe("Flawed designs", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         ship.flawed = true;
         const results = evaluate(ship);
-        expect(results.errors).to.have.deep.members([EvalErrorCode.FlawedUnderMass]);
+        expect(results.errors).to.have.deep.members([
+            EvalErrorCode.FlawedUnderMass,
+        ]);
     });
     it("Correctly applied", () => {
         const ship = JSON.parse(validKonstantin) as FullThrustShip;

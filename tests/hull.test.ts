@@ -6,19 +6,19 @@ import type { FullThrustShip } from "../src/schemas/ship.js";
 describe("Hull module", () => {
     it("`formRows` returns something with blank ship", () => {
         const startShip: FullThrustShip = {
-            hull: {points: 1, rows: 4, stealth: "0", streamlining: "none"},
+            hull: { points: 1, rows: 4, stealth: "0", streamlining: "none" },
             armour: [] as [number, number][],
             systems: [
                 {
                     name: "drive",
                     thrust: 0,
-                    advanced: false
-                }
+                    advanced: false,
+                },
             ],
             weapons: [],
             ordnance: [],
             fighters: [],
-            layout: {} as any
+            layout: {} as any,
         };
         const hullArray = formRows(startShip);
         expect(hullArray).not.to.be.undefined;

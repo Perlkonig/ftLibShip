@@ -7,27 +7,32 @@ export * from "./lib/render.js";
 export type { FullThrustShip } from "./schemas/ship.js";
 
 import type { FullThrustShip } from "./index.js";
-import { specialsList, getSpecial, getSystem, ISystem } from "./lib/systems/index.js";
+import {
+    specialsList,
+    getSpecial,
+    getSystem,
+    ISystem,
+} from "./lib/systems/index.js";
 
 export enum EvalErrorCode {
-    NoMass="NOMASS",
-    BadMass="BADMASS",
-    LowHull="LOWHULL",
-    OverMarine="OVERMARINE",
-    OverDCP="OVERDCP",
-    OverCrew="OVERCREW",
-    OverSpinal="OVERSPINAL",
-    OverTurret="OVERTURRET",
-    OverMass="OVERMASS",
-    OverPBL="OVERPBL",
-    DblUID="DblUID",
-    FlawedUnderMass="FlawedUnderMass",
+    NoMass = "NOMASS",
+    BadMass = "BADMASS",
+    LowHull = "LOWHULL",
+    OverMarine = "OVERMARINE",
+    OverDCP = "OVERDCP",
+    OverCrew = "OVERCREW",
+    OverSpinal = "OVERSPINAL",
+    OverTurret = "OVERTURRET",
+    OverMass = "OVERMASS",
+    OverPBL = "OVERPBL",
+    DblUID = "DblUID",
+    FlawedUnderMass = "FlawedUnderMass",
 }
 
 export enum ValErrorCode {
-    BadJSON="BADJSON",
-    BadConstruction="BADCONSTRUCTION",
-    PointsMismatch="POINTSMISMATCH",
+    BadJSON = "BADJSON",
+    BadConstruction = "BADCONSTRUCTION",
+    PointsMismatch = "POINTSMISMATCH",
 }
 
 export interface IEvaluation {
@@ -42,12 +47,12 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
         mass: 0,
         points: 0,
         cpv: 0,
-        errors: []
+        errors: [],
     } as IEvaluation;
 
     const seenUids: Set<string> = new Set<string>();
 
-    if ( (! ship.hasOwnProperty("mass")) || (ship.mass === undefined) ) {
+    if (!ship.hasOwnProperty("mass") || ship.mass === undefined) {
         results.errors.push(EvalErrorCode.NoMass);
     } else {
         for (const id of specialsList) {
@@ -78,12 +83,16 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
         }
 
         // Mass out of range
-        if ( (ship.mass === undefined) || (ship.mass < 5) || (ship.mass > 300) ) {
+        if (ship.mass === undefined || ship.mass < 5 || ship.mass > 300) {
             results.errors.push(EvalErrorCode.BadMass);
         }
 
         // Hull strength out of range
-        if ( (ship.hull === undefined) || (ship.hull.points === undefined) || (ship.hull.points < (ship.mass * 0.1)) ) {
+        if (
+            ship.hull === undefined ||
+            ship.hull.points === undefined ||
+            ship.hull.points < ship.mass * 0.1
+        ) {
             results.errors.push(EvalErrorCode.LowHull);
         }
 
@@ -102,7 +111,8 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
                 } else if (ship.systems[i].name === "bay") {
                     if (ship.systems[i].type === "passenger") {
                         if (ship.systems[i].capacity !== undefined) {
-                            baysPassengers += ship.systems[i].capacity as number;
+                            baysPassengers += ship.systems[i]
+                                .capacity as number;
                         }
                     } else if (ship.systems[i].type === "troop") {
                         if (ship.systems[i].capacity !== undefined) {
@@ -114,11 +124,11 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
             const maxBerthedPassengers = baysPassengers;
             const maxBerthedTroops = baysTroops;
             const maxAdds = cf + maxBerthedPassengers + maxBerthedTroops;
-            if (addDamage > (cf + maxBerthedPassengers)) {
+            if (addDamage > cf + maxBerthedPassengers) {
                 results.errors.push(EvalErrorCode.OverDCP);
-            } else if (addMarines > (cf + maxBerthedTroops)) {
+            } else if (addMarines > cf + maxBerthedTroops) {
                 results.errors.push(EvalErrorCode.OverMarine);
-            } else if ((addMarines + addDamage) > maxAdds) {
+            } else if (addMarines + addDamage > maxAdds) {
                 results.errors.push(EvalErrorCode.OverCrew);
             }
         }
@@ -185,11 +195,11 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
     }
 
     return results;
-}
+};
 
 import Ajv from "ajv";
 import schema from "./schemas/ship.json" assert { type: "json" }; // add assertion to testing, but not to production
-const ajv = new Ajv.default({allErrors: true});
+const ajv = new Ajv.default({ allErrors: true });
 const ajvValidate = ajv.compile<FullThrustShip>(schema);
 
 export interface IValidation {
@@ -206,7 +216,7 @@ export const validate = (shipJson: string): IValidation => {
 
     // Test against schema
     const shipObj: FullThrustShip = JSON.parse(shipJson);
-    if (! ajvValidate(shipObj)) {
+    if (!ajvValidate(shipObj)) {
         results.valid = false;
         results.code = ValErrorCode.BadJSON;
         results.ajvErrors = ajvValidate.errors!;
@@ -223,7 +233,10 @@ export const validate = (shipJson: string): IValidation => {
 
         if (results.valid) {
             // Make sure stated points match evaluated points
-            if ( (shipObj.points !== evaluation.points) || (shipObj.cpv !== evaluation.cpv) ) {
+            if (
+                shipObj.points !== evaluation.points ||
+                shipObj.cpv !== evaluation.cpv
+            ) {
                 results.valid = false;
                 results.code = ValErrorCode.PointsMismatch;
             }
@@ -231,5 +244,4 @@ export const validate = (shipJson: string): IValidation => {
     }
 
     return results;
-}
-
+};

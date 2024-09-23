@@ -46,12 +46,19 @@ export class Ads extends System {
         }
         const defs = `<symbol id="_internalPDS" viewBox="378 178 204 204"><path d="M480,193.3c-27.8,0-52.6,13.1-68.4,33.5L480,280l68.4-53.3C532.6,206.4,507.8,193.3,480,193.3z"/><path d="M480,280l-68.4,53.3c15.9,20.4,40.6,33.5,68.4,33.5s52.6-13.1,68.4-33.5L480,280z"/></symbol>`;
         const insert = `<use href="#_internalPDS" x="50" y="50" width="500" height="500" />`;
-        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);
+        let svg = genArcs(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.leftArc,
+            defs,
+            insert
+        );
         return {
             id,
             svg,
             height: 1,
-            width: 1
-        }
+            width: 1,
+        };
     }
 }

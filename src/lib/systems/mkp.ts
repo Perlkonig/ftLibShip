@@ -39,7 +39,7 @@ export class Mkp extends System {
             id,
             svg,
             height: 2,
-            width: 2
-        }
+            width: 2,
+        };
     }
 }

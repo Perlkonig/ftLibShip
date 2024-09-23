@@ -4,7 +4,7 @@ import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
 import fnv from "fnv-plus";
 
-type Class = 1|2|3|4;
+type Class = 1 | 2 | 3 | 4;
 
 export class Beam extends System {
     public class: Class = 1;
@@ -33,19 +33,23 @@ export class Beam extends System {
             // Mutating the original data so the interface works
             data.numArcs = 6;
         } else if (this.class === 2) {
-            if ( (this.ship.orientation !== undefined) && (this.ship.orientation === "beta") && (this.numArcs < 3) ) {
+            if (
+                this.ship.orientation !== undefined &&
+                this.ship.orientation === "beta" &&
+                this.numArcs < 3
+            ) {
                 this.numArcs = 3;
                 data.numArcs = 3;
             } else if (this.numArcs < 2) {
                 this.numArcs = 2;
                 data.numArcs = 2;
-            } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
+            } else if (this.numArcs > 3 && this.numArcs < 6) {
                 this.numArcs = 3;
             } else if (this.numArcs > 6) {
                 this.numArcs = 6;
                 data.numArcs = 6;
             } else if (this.numArcs === 2) {
-                if ( (this.leftArc !== "AP") && (this.leftArc !== "FS") ) {
+                if (this.leftArc !== "AP" && this.leftArc !== "FS") {
                     this.leftArc = "AP";
                     data.leftArc = "AP";
                 }
@@ -72,7 +76,7 @@ export class Beam extends System {
             case 3:
                 return 4 + (this.numArcs - 1);
             case 4:
-                return 8 + (2 * (this.numArcs - 1));
+                return 8 + 2 * (this.numArcs - 1);
         }
     }
 
@@ -86,12 +90,19 @@ export class Beam extends System {
             fnv.seed(this.ship.hashseed);
             id = fnv.hash(id).hex();
         }
-        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="300">${this.class}</text>`);
+        let svg = genArcs(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.leftArc,
+            undefined,
+            `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="300">${this.class}</text>`
+        );
         return {
             id,
             svg,
             height: 2,
-            width: 2
-        }
+            width: 2,
+        };
     }
 }

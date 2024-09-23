@@ -4,7 +4,7 @@ import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
 import fnv from "fnv-plus";
 
-type Class = 1|2|3;
+type Class = 1 | 2 | 3;
 
 export class Gravitic extends System {
     public class: Class = 1;
@@ -42,7 +42,7 @@ export class Gravitic extends System {
             if (this.numArcs < 3) {
                 this.numArcs = 3;
                 data.numArcs = 3;
-            } else if ( (this.numArcs > 3) && (this.numArcs < 6) ) {
+            } else if (this.numArcs > 3 && this.numArcs < 6) {
                 this.numArcs = 3;
             }
         }
@@ -78,12 +78,19 @@ export class Gravitic extends System {
             id = fnv.hash(id).hex();
         }
         let insert = `<circle cx="300" cy="300" r="167.65" fill="black" /><text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="250" stroke="white" fill="white">${this.class}</text>`;
-        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
+        let svg = genArcs(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.leftArc,
+            undefined,
+            insert
+        );
         return {
             id,
             svg,
             height: 2,
-            width: 2
-        }
+            width: 2,
+        };
     }
 }

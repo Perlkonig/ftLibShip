@@ -5,7 +5,7 @@ import { genArcs } from "../genArcs.js";
 import fnv from "fnv-plus";
 
 // Need to include "A" so it works in beta orientation
-type Arc = "F"|"FS"|"FP"|"A"|"AS"|"AP";
+type Arc = "F" | "FS" | "FP" | "A" | "AS" | "AP";
 
 export class Salvo extends System {
     public modifier: "none" | "er" | "twostage" = "none";
@@ -68,7 +68,7 @@ export class Salvo extends System {
             case "twostage":
                 id = `salvoMS${this.leftArc}${this.numArcs}`;
                 defid = "_internalMultistage";
-                defs = `<symbol id="${defid}" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol>`
+                defs = `<symbol id="${defid}" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol>`;
                 break;
             default:
                 id = `salvo${this.leftArc}${this.numArcs}`;
@@ -81,12 +81,19 @@ export class Salvo extends System {
             id = fnv.hash(id).hex();
         }
         const insert = `<use href="#${defid}" width="350" height="350" x="125" y="115" />`;
-        let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);
+        let svg = genArcs(
+            this.ship.orientation,
+            id,
+            this.numArcs,
+            this.leftArc,
+            defs,
+            insert
+        );
         return {
             id,
             svg,
             height: 2,
-            width: 2
-        }
-   }
+            width: 2,
+        };
+    }
 }

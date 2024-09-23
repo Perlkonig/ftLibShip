@@ -1,5 +1,8 @@
 type Arc = "F" | "FS" | "AS" | "A" | "AP" | "FP";
-interface IPoint { x: number; y: number }
+interface IPoint {
+    x: number;
+    y: number;
+}
 
 export const lefts = new Map<Arc, number>([
     ["F", 240],
@@ -7,7 +10,7 @@ export const lefts = new Map<Arc, number>([
     ["AS", 0],
     ["A", 60],
     ["AP", 120],
-    ["FP", 180]
+    ["FP", 180],
 ]);
 export const rights = new Map<Arc, number>([
     ["F", 300],
@@ -15,7 +18,7 @@ export const rights = new Map<Arc, number>([
     ["AS", 60],
     ["A", 120],
     ["AP", 180],
-    ["FP", 240]
+    ["FP", 240],
 ]);
 
 // These values are hard coded to produce 600x600 final glyphs
@@ -23,7 +26,14 @@ const rInner = 206.1;
 const rOuter = 283;
 const size = Math.round((rOuter * 2) / 100) * 100;
 
-export const genArcs = (orientation: "alpha"|"beta"|undefined, id: string, numArcs: number = 1, leftArc: Arc, defs: string | undefined = undefined, terminal: string | undefined = undefined) => {
+export const genArcs = (
+    orientation: "alpha" | "beta" | undefined,
+    id: string,
+    numArcs: number = 1,
+    leftArc: Arc,
+    defs: string | undefined = undefined,
+    terminal: string | undefined = undefined
+) => {
     if (numArcs === 6) {
         const allLines: IPoint[][] = [];
         for (const arc of lefts.keys()) {
@@ -51,28 +61,42 @@ export const genArcs = (orientation: "alpha"|"beta"|undefined, id: string, numAr
         } else {
             console.log(`Could not generate a line for ${end}`);
         }
-        return genSvg(id, lines, genPath(orientation, leftArc, end), defs, terminal)
+        return genSvg(
+            id,
+            lines,
+            genPath(orientation, leftArc, end),
+            defs,
+            terminal
+        );
     }
 };
 
-const deg2rad = (deg: number) => { return deg * Math.PI / 180; }
+const deg2rad = (deg: number) => {
+    return (deg * Math.PI) / 180;
+};
 
 const arcpt = (cx: number, cy: number, r: number, angle: number): IPoint => {
-    const x = cx + (r * Math.cos(angle));
-    const y = cy + (r * Math.sin(angle));
-    return {x, y};
-}
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    return { x, y };
+};
 
-const genSvg = (id: string, lines: IPoint[][], path: string | undefined = undefined, defs: string | undefined = undefined, terminal: string | undefined = undefined): string => {
+const genSvg = (
+    id: string,
+    lines: IPoint[][],
+    path: string | undefined = undefined,
+    defs: string | undefined = undefined,
+    terminal: string | undefined = undefined
+): string => {
     let s = `<symbol id="${id}" viewBox="-1 -1 ${size + 2} ${size + 2}">`;
     if (defs !== undefined) {
         s += `<defs>${defs}</defs>`;
     }
     // s += `<rect x="0" y="0" width="${size}" height="${size}" fill="white" />`;
     if (path === undefined) {
-        s += `<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="${size / 2}" cy="${size / 2}" r="${rOuter}"/>`
+        s += `<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="${size / 2}" cy="${size / 2}" r="${rOuter}"/>`;
     }
-    s += `<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="${size / 2}" cy="${size / 2}" r="${rInner}"/>`
+    s += `<circle fill="white" stroke="#000000" stroke-width="20" stroke-miterlimit="10" cx="${size / 2}" cy="${size / 2}" r="${rInner}"/>`;
     for (const line of lines) {
         s += `<line x1="${line[0].x}" y1="${line[0].y}" x2="${line[1].x}" y2="${line[1].y}" stroke-width="20" stroke-miterlimit="10" stroke="black" />`;
     }
@@ -84,9 +108,13 @@ const genSvg = (id: string, lines: IPoint[][], path: string | undefined = undefi
     }
     s += `</symbol>`;
     return s;
-}
+};
 
-const genLine = (orientation: "alpha"|"beta"|undefined, arc: Arc, side: "L"|"R" = "L"): [IPoint, IPoint] | undefined => {
+const genLine = (
+    orientation: "alpha" | "beta" | undefined,
+    arc: Arc,
+    side: "L" | "R" = "L"
+): [IPoint, IPoint] | undefined => {
     let deg: number | undefined;
     if (side === "L") {
         deg = lefts.get(arc);
@@ -94,7 +122,7 @@ const genLine = (orientation: "alpha"|"beta"|undefined, arc: Arc, side: "L"|"R" 
         deg = rights.get(arc);
     }
     if (deg !== undefined) {
-        if ( (orientation !== undefined) && (orientation === "beta") ) {
+        if (orientation !== undefined && orientation === "beta") {
             deg += 30;
         }
         const ptOuter = arcpt(size / 2, size / 2, rOuter, deg2rad(deg));
@@ -104,7 +132,7 @@ const genLine = (orientation: "alpha"|"beta"|undefined, arc: Arc, side: "L"|"R" 
         console.log(`Could not get degrees for ${arc}${side}`);
     }
     return undefined;
-}
+};
 
 export const arcList = (start: Arc, dist: number): Arc[] => {
     const list = [start];
@@ -115,36 +143,44 @@ export const arcList = (start: Arc, dist: number): Arc[] => {
         }
     }
     return list;
-}
+};
 
 const nextArc = (start: Arc, dist: number): Arc | undefined => {
     let deg = lefts.get(start);
     if (deg !== undefined) {
-        let newdeg = deg + (dist * 60);
+        let newdeg = deg + dist * 60;
         while (newdeg >= 360) {
             newdeg -= 360;
         }
-        const next = [...rights.entries()].find(kv => kv[1] === newdeg);
+        const next = [...rights.entries()].find((kv) => kv[1] === newdeg);
         if (next !== undefined) {
             return next[0];
         } else {
-            console.log(`Could not find the next arc: ${start} + ${dist}, ${deg} -> ${newdeg}`);
+            console.log(
+                `Could not find the next arc: ${start} + ${dist}, ${deg} -> ${newdeg}`
+            );
         }
     } else {
         console.log(`Could not get degrees for starting arc ${start}`);
     }
     return undefined;
-}
+};
 
-const genPath = (orientation: "alpha"|"beta"|undefined, left: Arc, right: Arc): string | undefined => {
+const genPath = (
+    orientation: "alpha" | "beta" | undefined,
+    left: Arc,
+    right: Arc
+): string | undefined => {
     let lArc = lefts.get(left);
     let rArc = rights.get(right);
-    if ( (lArc !== undefined) && (rArc !== undefined) ) {
-        if ( (orientation !== undefined) && (orientation === "beta") ) {
+    if (lArc !== undefined && rArc !== undefined) {
+        if (orientation !== undefined && orientation === "beta") {
             lArc += 30;
             rArc += 30;
         }
-        if (lArc > rArc) { rArc += 360; }
+        if (lArc > rArc) {
+            rArc += 360;
+        }
         let large = 0;
         const sweep = 1;
         if (Math.abs(lArc - rArc) > 180) {
@@ -157,4 +193,4 @@ const genPath = (orientation: "alpha"|"beta"|undefined, left: Arc, right: Arc): 
         console.log(`One of these arcs were undefined: ${lArc}, ${rArc}`);
     }
     return undefined;
-}
+};

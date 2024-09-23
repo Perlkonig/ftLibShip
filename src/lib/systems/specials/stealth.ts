@@ -11,8 +11,10 @@ export class Stealth extends SpecialSystem {
     }
 
     points() {
-        if ( (this.ship.armour !== undefined) && (this.ship.hull !== undefined) ) {
-            const armourBoxes = this.ship.armour.reduce((acc, curr) => {return acc + curr[0] + curr[1]}, 0);
+        if (this.ship.armour !== undefined && this.ship.hull !== undefined) {
+            const armourBoxes = this.ship.armour.reduce((acc, curr) => {
+                return acc + curr[0] + curr[1];
+            }, 0);
             const allBoxes = armourBoxes + this.ship.hull.points;
             if (this.ship.hull.stealth === "1") {
                 return allBoxes * 2;

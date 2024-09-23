@@ -8,7 +8,9 @@ export class Armour extends SpecialSystem {
 
     mass() {
         if (this.ship.armour !== undefined) {
-            return this.ship.armour.reduce((acc, curr) => {return acc + curr[0] + curr[1]}, 0);
+            return this.ship.armour.reduce((acc, curr) => {
+                return acc + curr[0] + curr[1];
+            }, 0);
         }
         return NaN;
     }

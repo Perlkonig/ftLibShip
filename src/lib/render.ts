@@ -6,8 +6,8 @@ import { nanoid } from "nanoid";
 import fnv from "fnv-plus";
 
 interface Invader {
-    type: "marines"|"damageControl";
-    owner?: number|string;
+    type: "marines" | "damageControl";
+    owner?: number | string;
     obj: sysLib.System;
 }
 
@@ -23,7 +23,7 @@ export interface RenderOpts {
     // The amount of damage done to each layer of armour
     // The first row is the innermost layer
     // First element is regular armour, second is regenerative armour
-    armour?: [number,number][]
+    armour?: [number, number][];
     // List of uids of disabled systems
     disabled?: SystemID[];
     // List of uids of destroyed systems
@@ -38,10 +38,12 @@ interface IDriveSystem extends sysLib.System {
     thrust: number;
 }
 
-export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string | undefined => {
-
+export const renderSvg = (
+    ship: FullThrustShip,
+    opts: RenderOpts = {}
+): string | undefined => {
     // Helper function to simplify flagging destroyed and disabled systems
-    const status = (id: string): "destroyed"|"disabled"|false => {
+    const status = (id: string): "destroyed" | "disabled" | false => {
         if (opts.destroyed !== undefined) {
             if (opts.destroyed.includes(id)) {
                 return "destroyed";
@@ -54,32 +56,44 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
             }
         }
         return false;
-    }
+    };
 
     let svg: string | undefined;
-    if (!("hashseed" in ship) || ship.hashseed === null || ship.hashseed === undefined || typeof ship.hashseed !== "string") {
+    if (
+        !("hashseed" in ship) ||
+        ship.hashseed === null ||
+        ship.hashseed === undefined ||
+        typeof ship.hashseed !== "string"
+    ) {
         ship.hashseed = nanoid();
     }
     fnv.seed(ship.hashseed);
 
-    if ( (ship.hasOwnProperty("hull")) && (ship.hull !== undefined) ) {
+    if (ship.hasOwnProperty("hull") && ship.hull !== undefined) {
         // Calculate the size of the hull display.
         // Below a certain threshold, the compact display will be used (drives to the side).
         // Otherwise we'll go with the fully flexible display with the drives in the bottom.
         let hullArray = hull.formRows(ship)!;
         let hullCols = hullArray[0].length;
         // If there's armour, look for situations where there's more armour than hull columns
-        if ( (ship.hasOwnProperty("armour")) && (ship.armour !== undefined) ) {
-            hullCols = Math.max(hullCols, ...ship.armour.map(x => x[0] + x[1]));
+        if (ship.hasOwnProperty("armour") && ship.armour !== undefined) {
+            hullCols = Math.max(
+                hullCols,
+                ...ship.armour.map((x) => x[0] + x[1])
+            );
         }
         if (ship.hull.stealth === "2") {
             hullCols++;
-        } else if ( (ship.hull.stealth === "1") && (hullArray.length > 1) && (hullArray[1].length === hullArray[0].length) ) {
+        } else if (
+            ship.hull.stealth === "1" &&
+            hullArray.length > 1 &&
+            hullArray[1].length === hullArray[0].length
+        ) {
             hullCols++;
         }
 
         let hullRows = hullArray.length;
-        if ( (ship.hasOwnProperty("armour")) && (ship.armour !== undefined) ) {
+        if (ship.hasOwnProperty("armour") && ship.armour !== undefined) {
             hullRows += ship.armour.length;
         }
         if (hullRows < 4) {
@@ -92,11 +106,11 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         const mines: sysLib.MineLayer[] = [];
         const magazines: sysLib.Magazine[] = [];
         if (ship.flawed !== undefined && ship.flawed) {
-            systems.push(new Flawed({name: "_flawed"}, ship));
+            systems.push(new Flawed({ name: "_flawed" }, ship));
         }
-        if ( (ship.hasOwnProperty("systems")) && (ship.systems !== undefined) ) {
+        if (ship.hasOwnProperty("systems") && ship.systems !== undefined) {
             for (const s of ship.systems) {
-                if ( (s.name === "drive") || (s.name === "ftl") ) {
+                if (s.name === "drive" || s.name === "ftl") {
                     continue;
                 }
                 const obj = sysLib.getSystem(s, ship);
@@ -117,12 +131,12 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         // Get a list of ordnance
         const ordnance: sysLib.System[] = [];
         const launchers: sysLib.SalvoLauncher[] = [];
-        if ( (ship.hasOwnProperty("ordnance")) && (ship.ordnance !== undefined) ) {
+        if (ship.hasOwnProperty("ordnance") && ship.ordnance !== undefined) {
             for (const s of ship.ordnance) {
                 const obj = sysLib.getSystem(s, ship);
                 if (obj !== undefined) {
                     if (obj.name === "salvoLauncher") {
-                        launchers.push(obj as sysLib.SalvoLauncher)
+                        launchers.push(obj as sysLib.SalvoLauncher);
                     } else {
                         ordnance.push(obj);
                     }
@@ -132,7 +146,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
 
         // Get a list of weapons
         const weapons: sysLib.System[] = [];
-        if ( (ship.hasOwnProperty("weapons")) && (ship.weapons !== undefined) ) {
+        if (ship.hasOwnProperty("weapons") && ship.weapons !== undefined) {
             for (const s of ship.weapons) {
                 const obj = sysLib.getSystem(s, ship);
                 if (obj !== undefined) {
@@ -143,16 +157,16 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
 
         // Get a list of invaders
         const invaders: Invader[] = [];
-        if ( (ship.hasOwnProperty("invaders")) && (ship.invaders !== undefined) ) {
+        if (ship.hasOwnProperty("invaders") && ship.invaders !== undefined) {
             for (const i of ship.invaders) {
                 let obj: sysLib.System | undefined;
                 if (i.type === "damageControl") {
-                    obj = sysLib.getSystem({name: "damageControl"}, ship);
+                    obj = sysLib.getSystem({ name: "damageControl" }, ship);
                 } else if (i.type === "marines") {
-                    obj = sysLib.getSystem({name: "marines"}, ship);
+                    obj = sysLib.getSystem({ name: "marines" }, ship);
                 }
                 if (obj !== undefined) {
-                    invaders.push({...i, obj});
+                    invaders.push({ ...i, obj });
                 }
             }
         }
@@ -276,20 +290,22 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 if (ship.weapons === undefined) {
                     throw new Error("No weapons found.");
                 }
-                const sys = weapons.find(x => x.uid === wid) as IWeaponSystem;
+                const sys = weapons.find((x) => x.uid === wid) as IWeaponSystem;
                 if (sys === undefined) {
-                    throw new Error(`Weapon id "${wid}" is supposedly housed in turret "${t.uid}", but the weapon could not be found.`);
+                    throw new Error(
+                        `Weapon id "${wid}" is supposedly housed in turret "${t.uid}", but the weapon could not be found.`
+                    );
                 }
                 sys.leftArc = rotArc(sys.leftArc as Arcs, rotDist);
             }
         }
 
-        const svgCore = svgLib.find(x => x.id === "coreSys")!;
+        const svgCore = svgLib.find((x) => x.id === "coreSys")!;
         let sysFtl: sysLib.ISystem | undefined;
         let sysDrive: sysLib.ISystem | undefined;
-        if ( (ship.hasOwnProperty("systems")) && (ship.systems !== undefined) ) {
-            sysFtl = ship.systems.find(x => x.name === "ftl");
-            sysDrive = ship.systems.find(x => x.name === "drive")!;
+        if (ship.hasOwnProperty("systems") && ship.systems !== undefined) {
+            sysFtl = ship.systems.find((x) => x.name === "ftl");
+            sysDrive = ship.systems.find((x) => x.name === "drive")!;
         }
         let svgFtl: ISystemSVG | undefined;
         if (sysFtl !== undefined) {
@@ -309,24 +325,33 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         }
 
         const sysDistinct: ISystemSVG[] = [];
-        for (const set of [systems, turrets, mines, magazines, ordnance, launchers, weapons, invaders.map(x => x.obj)]) {
+        for (const set of [
+            systems,
+            turrets,
+            mines,
+            magazines,
+            ordnance,
+            launchers,
+            weapons,
+            invaders.map((x) => x.obj),
+        ]) {
             for (const sys of set) {
                 const svg = sys.glyph();
                 if (svg !== undefined) {
-                    const idx = sysDistinct.findIndex(x => x.id === svg.id);
+                    const idx = sysDistinct.findIndex((x) => x.id === svg.id);
                     if (idx === -1) {
                         sysDistinct.push(svg);
                     }
                 }
                 if (sys.name === "mineLayer") {
                     const glyph = (sys as sysLib.MineLayer).individualMine();
-                    const idx = sysDistinct.findIndex(x => x.id === glyph.id);
+                    const idx = sysDistinct.findIndex((x) => x.id === glyph.id);
                     if (idx === -1) {
                         sysDistinct.push(glyph);
                     }
                 } else if (sys.name === "magazine") {
                     const glyph = (sys as sysLib.Magazine).missileGlyph();
-                    const idx = sysDistinct.findIndex(x => x.id === glyph.id);
+                    const idx = sysDistinct.findIndex((x) => x.id === glyph.id);
                     if (idx === -1) {
                         sysDistinct.push(glyph);
                     }
@@ -341,32 +366,38 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         // Check for disabled core systems and insert styles to target them
         let styleInsert = "";
         if (opts.disabled !== undefined) {
-            for (const s of opts.disabled.filter(x => x.startsWith("_core"))) {
+            for (const s of opts.disabled.filter((x) =>
+                x.startsWith("_core")
+            )) {
                 styleInsert += `#_internalCore${s.substring(5)} ._rect{fill:red}`;
             }
         }
 
         svg = "";
-        if (! opts.minimal) {
-            svg += `<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`
+        if (!opts.minimal) {
+            svg += `<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`;
         }
 
         let functionName = "resizePlates";
         if (ship.hashseed !== undefined) {
             functionName = `resize_${fnv.hash(functionName).hex()}`;
         }
-        svg += `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${pxWidth + 2} ${pxHeight + 2}" width="100%" height="100%"${! opts.minimal ? ` onload="${functionName}()"` : ""}${opts.id ? ` id="${opts.id}"` : ""}>`;
+        svg += `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${pxWidth + 2} ${pxHeight + 2}" width="100%" height="100%"${!opts.minimal ? ` onload="${functionName}()"` : ""}${opts.id ? ` id="${opts.id}"` : ""}>`;
         svg += `<defs>`;
         let resizeid = "_resizeNamePlate";
         if (ship.hashseed !== undefined) {
             resizeid = fnv.hash(resizeid).hex();
         }
         svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"}.futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5}.destroyed{opacity:0.1}${styleInsert} ]]></style>`;
-        if (! opts.minimal) {
+        if (!opts.minimal) {
             svg += `<script type="text/javascript"><![CDATA[ function newSize(bb) { var widthTransform = ${pxWidth} * 0.9 / bb.width; var heightTransform = ((${cellsize} * 1.5) * 0.9) / bb.height; var value = widthTransform < heightTransform ? widthTransform : heightTransform; if (value !== Infinity) { return value; } return undefined; } function ${functionName}() { var namePlate = document.getElementById('${resizeid}'); var npValue = newSize(namePlate.getBBox()); if (npValue !== undefined) { namePlate.setAttribute("transform", "matrix("+npValue+", 0, 0, "+npValue+", 0,0)"); const currx = parseFloat(namePlate.getAttribute("x")); const curry = parseFloat(namePlate.getAttribute("y")); namePlate.setAttribute("x", (currx / npValue).toString()); namePlate.setAttribute("y", (curry / npValue).toString()); } var statPlate = document.getElementById('_resizeStats'); var statValue = newSize(statPlate.getBBox()); if (statValue !== undefined) { statPlate.setAttribute("transform", "matrix("+statValue+", 0, 0, "+statValue+", 0,0)"); const currx = parseFloat(statPlate.getAttribute("x")); const curry = parseFloat(statPlate.getAttribute("y")); statPlate.setAttribute("x", (currx / statValue).toString()); statPlate.setAttribute("y", (curry / statValue).toString()); } } ]]></script>`;
         }
 
-        svg += hull.genSvg(ship, {cellsize, hullDamage: opts.damage, armourDamage: opts.armour});
+        svg += hull.genSvg(ship, {
+            cellsize,
+            hullDamage: opts.damage,
+            armourDamage: opts.armour,
+        });
         if (svgFtl !== undefined) {
             svg += svgFtl.svg;
         }
@@ -393,7 +424,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         // systems
         if (systems.length > 0) {
             // name plate
-            svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Systems</text>`;
+            svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Systems</text>`;
             currRow++;
             const sorted = [...systems].sort((a, b) => {
                 if (a.name === b.name) {
@@ -407,7 +438,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 const realCol = i % breakPoint;
                 const sys = sorted[i];
                 const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid)===false ? "" : ` class="${status(sys.uid)}"`} />`;
+                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid) === false ? "" : ` class="${status(sys.uid)}"`} />`;
             }
             currRow += Math.ceil(sorted.length / breakPoint) * 2;
         }
@@ -415,7 +446,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         // Mines
         if (mines.length > 0) {
             // name plate
-            svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Mines</text>`;
+            svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Mines</text>`;
             currRow++;
             let numMines = 0;
             for (const s of mines) {
@@ -424,9 +455,13 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
             for (let i = 0; i < numMines; i++) {
                 const realRow = Math.floor(i / totalCols);
                 const realCol = i % totalCols;
-                const buff = buffInSquare(mines[0].individualMine(), cellsize, false);
+                const buff = buffInSquare(
+                    mines[0].individualMine(),
+                    cellsize,
+                    false
+                );
                 const individualID = mines[0].individualMine().id;
-                svg += `<use href="#${individualID}" x="${(realCol * cellsize) + buff.xOffset}" y="${((currRow + realRow) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                svg += `<use href="#${individualID}" x="${realCol * cellsize + buff.xOffset}" y="${(currRow + realRow) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
             }
             currRow += Math.ceil(numMines / totalCols);
         }
@@ -434,7 +469,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         // Ordnance
         if (ordnance.length > 0) {
             // name plate
-            svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Ordnance</text>`;
+            svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Ordnance</text>`;
             currRow++;
             const sorted = [...ordnance].sort((a, b) => {
                 if (a.name === b.name) {
@@ -448,7 +483,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 const realCol = i % breakPoint;
                 const sys = sorted[i];
                 const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid)===false ? "" : ` class="${status(sys.uid)}"`} />`;
+                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid) === false ? "" : ` class="${status(sys.uid)}"`} />`;
             }
 
             currRow += Math.ceil(sorted.length / breakPoint) * 2;
@@ -458,7 +493,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         if (magazines.length > 0) {
             for (const mag of magazines) {
                 // name plate
-                svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Magazine</text>`;
+                svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Magazine</text>`;
                 currRow++;
                 const feeding: sysLib.SalvoLauncher[] = [];
                 for (const l of launchers) {
@@ -471,7 +506,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                     const realCol = i % breakPoint;
                     const sys = feeding[i];
                     const buff = buffInSquare(sys.glyph(), cellsize * 2, true);
-                    svg += `<use id="${sys.uid}" href="#${sys.glyph().id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid)===false ? "" : ` class="${status(sys.uid)}"`} />`;
+                    svg += `<use id="${sys.uid}" href="#${sys.glyph().id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid) === false ? "" : ` class="${status(sys.uid)}"`} />`;
                 }
                 for (let i = 0; i < mag.capacity; i++) {
                     const realI = i + feeding.length;
@@ -479,10 +514,11 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                     const realCol = realI % breakPoint;
                     const glyph = mag.missileGlyph();
                     const buff = buffInSquare(glyph, cellsize * 2, false);
-                    svg += `<use href="#${glyph.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(mag.uid)===false ? "" : ` class="${status(mag.uid)}"`} />`;
+                    svg += `<use href="#${glyph.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(mag.uid) === false ? "" : ` class="${status(mag.uid)}"`} />`;
                 }
 
-                currRow += Math.ceil((feeding.length + mag.capacity) / breakPoint) * 2;
+                currRow +=
+                    Math.ceil((feeding.length + mag.capacity) / breakPoint) * 2;
             }
         }
 
@@ -490,13 +526,13 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         if (weapons.length > 0) {
             const freeWeapons: sysLib.System[] = [];
             for (const w of weapons) {
-                if (! turretedIds.has(w.uid)) {
+                if (!turretedIds.has(w.uid)) {
                     freeWeapons.push(w);
                 }
             }
             if (freeWeapons.length > 0) {
                 // name plate
-                svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Weapons</text>`;
+                svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Weapons</text>`;
                 currRow++;
 
                 const sorted = [...freeWeapons].sort((a, b) => {
@@ -511,7 +547,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                     const realCol = i % breakPoint;
                     const sys = sorted[i];
                     const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                    svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid)===false ? "" : ` class="${status(sys.uid)}"`} />`;
+                    svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid) === false ? "" : ` class="${status(sys.uid)}"`} />`;
                 }
 
                 currRow += Math.ceil(sorted.length / breakPoint) * 2;
@@ -522,7 +558,7 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
         if (turrets.length > 0) {
             for (const turret of turrets) {
                 // name plate
-                svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Turret</text>`;
+                svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Turret</text>`;
                 currRow++;
                 const hosting: sysLib.System[] = [];
                 for (const w of weapons) {
@@ -532,28 +568,31 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 }
                 // First add the turret glyph
                 const buff = buffInSquare(turret.glyph(), cellsize * 2, true);
-                svg += `<use id="${turret.uid}" href="#${turret.glyph().id}" x="${buff.xOffset}" y="${(currRow * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(turret.uid)===false ? "" : ` class="${status(turret.uid)}"`} />`;
+                svg += `<use id="${turret.uid}" href="#${turret.glyph().id}" x="${buff.xOffset}" y="${currRow * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(turret.uid) === false ? "" : ` class="${status(turret.uid)}"`} />`;
 
                 for (let i = 0; i < turret.weapons.length; i++) {
                     const realI = i + 1;
                     const realRow = Math.floor(realI / breakPoint);
                     const realCol = realI % breakPoint;
-                    const weapon = weapons.find(x => x.uid === turret.weapons[i])!;
+                    const weapon = weapons.find(
+                        (x) => x.uid === turret.weapons[i]
+                    )!;
                     const glyph = weapon.glyph()!;
                     const buff = buffInSquare(glyph, cellsize * 2, false);
-                    svg += `<use id="${weapon.uid}" href="#${glyph.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(weapon.uid)===false ? "" : ` class="${status(weapon.uid)}"`} />`;
+                    svg += `<use id="${weapon.uid}" href="#${glyph.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(weapon.uid) === false ? "" : ` class="${status(weapon.uid)}"`} />`;
                 }
 
-                currRow += Math.ceil((turret.weapons.length + 1) / breakPoint) * 2;
+                currRow +=
+                    Math.ceil((turret.weapons.length + 1) / breakPoint) * 2;
             }
         }
 
         // invaders
         if (invaders.length > 0) {
             // name plate
-            svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Invaders</text>`;
+            svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Invaders</text>`;
             currRow++;
-            const sorted = [...invaders.map(x => x.obj)].sort((a, b) => {
+            const sorted = [...invaders.map((x) => x.obj)].sort((a, b) => {
                 if (a.name === b.name) {
                     return a.fullName().localeCompare(b.fullName());
                 } else {
@@ -565,14 +604,14 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
                 const realCol = i % breakPoint;
                 const sys = sorted[i];
                 const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${((realCol * 2) * cellsize) + buff.xOffset}" y="${((currRow + (realRow * 2)) * cellsize) + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
             }
             currRow += Math.ceil(sorted.length / breakPoint) * 2;
         }
 
         // Hull
         // name plate
-        svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Hull</text>`;
+        svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Hull</text>`;
         currRow++;
 
         const hullStart = currRow;
@@ -585,19 +624,19 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
 
         // Stats
         // Give text node special ID for autosizing
-        svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text id="_resizeStats" x="${cellsize * 0.2}" y="${(currRow * cellsize) + (cellsize / 2)}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Mass: ${ship.mass} NPV: ${ship.points} CPV: ${ship.cpv}</text>`;
+        svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text id="_resizeStats" x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Mass: ${ship.mass} NPV: ${ship.points} CPV: ${ship.cpv}</text>`;
         currRow++;
 
         // Drives & Core
         // Background fill now in the SVG itself so I can change it programmatically.
         if (compact) {
             if (svgFtl !== undefined) {
-                svg += `<use id="_ftl" href="#${svgFtl.id}" x="${pxWidth - (cellsize * 3)}" y="${hullStart * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}" />`;
+                svg += `<use id="_ftl" href="#${svgFtl.id}" x="${pxWidth - cellsize * 3}" y="${hullStart * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}" />`;
             }
             if (svgDrive !== undefined) {
-                svg += `<use id="_drive" href="#${svgDrive.id}" x="${pxWidth - (cellsize * 3)}" y="${(hullStart + 2) * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${status(driveID!) === false ? "" : ` class="${status(driveID!)}"`} />`;
+                svg += `<use id="_drive" href="#${svgDrive.id}" x="${pxWidth - cellsize * 3}" y="${(hullStart + 2) * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${status(driveID!) === false ? "" : ` class="${status(driveID!)}"`} />`;
             }
-            svg += `<use id="_core" href="#${svgCore.id}" x="${pxWidth * 0.05}" y="${(currRow * cellsize) + ((cellsize * 3) * 0.05)}" width="${pxWidth * 0.9}" height="${(cellsize * 3) * 0.9}" />`;
+            svg += `<use id="_core" href="#${svgCore.id}" x="${pxWidth * 0.05}" y="${currRow * cellsize + cellsize * 3 * 0.05}" width="${pxWidth * 0.9}" height="${cellsize * 3 * 0.9}" />`;
         } else {
             let svgCombined = "";
             let startX = 0;
@@ -614,8 +653,11 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
             if (ship.hashseed !== undefined) {
                 overallid = fnv.hash(overallid).hex();
             }
-            svgCombined += `<use id="_core" href="#${svgCore.id}" x="${startX + (cellsize * 3)}" y="0" width="${cellsize * 6}" height="${cellsize * 2}" />`;
-            svg += `<symbol id="${overallid}" viewBox="-1 -1 ${(groupWidth * cellsize) + 2} ${(cellsize * 2) + 2}">` + svgCombined + `</symbol>`;
+            svgCombined += `<use id="_core" href="#${svgCore.id}" x="${startX + cellsize * 3}" y="0" width="${cellsize * 6}" height="${cellsize * 2}" />`;
+            svg +=
+                `<symbol id="${overallid}" viewBox="-1 -1 ${groupWidth * cellsize + 2} ${cellsize * 2 + 2}">` +
+                svgCombined +
+                `</symbol>`;
             svg += `<use href="#${overallid}" x="0" y="${currRow * cellsize}" height="${cellsize * 3}" width="${pxWidth}" />`;
         }
 
@@ -628,10 +670,13 @@ export const renderSvg = (ship: FullThrustShip, opts: RenderOpts = {}): string |
     return svg;
 };
 
-export const renderUri = (ship: FullThrustShip, opts: RenderOpts = {}): string | undefined => {
+export const renderUri = (
+    ship: FullThrustShip,
+    opts: RenderOpts = {}
+): string | undefined => {
     const svg = renderSvg(ship, opts);
     if (svg !== undefined) {
-        return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`
+        return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
     }
     return undefined;
 };
@@ -643,13 +688,17 @@ interface IBuffer {
     height: number;
 }
 
-const buffInSquare = (glyph: ISystemSVG, size: number, graded: boolean = true): IBuffer => {
-    if ( (graded) && (glyph.width === 1) && (glyph.height === 1) ) {
+const buffInSquare = (
+    glyph: ISystemSVG,
+    size: number,
+    graded: boolean = true
+): IBuffer => {
+    if (graded && glyph.width === 1 && glyph.height === 1) {
         return {
             xOffset: size / 4,
             yOffset: size / 4,
             width: size / 2,
-            height: size / 2
+            height: size / 2,
         };
     } else {
         const factor = 0.9;
@@ -657,14 +706,14 @@ const buffInSquare = (glyph: ISystemSVG, size: number, graded: boolean = true): 
             xOffset: (size * (1 - factor)) / 2,
             yOffset: (size * (1 - factor)) / 2,
             width: size * factor,
-            height: size * factor
+            height: size * factor,
         };
     }
-}
+};
 
 // Calculates the clockwise distance between two arcs in number of arcs
 export const calcRot = (arc1: Arcs, arc2: Arcs): number => {
-    const dists = new Map<Arcs,number>([
+    const dists = new Map<Arcs, number>([
         ["F", 6],
         ["FS", 5],
         ["AS", 4],
@@ -674,17 +723,19 @@ export const calcRot = (arc1: Arcs, arc2: Arcs): number => {
     ]);
     const n1 = dists.get(arc1);
     const n2 = dists.get(arc2);
-    if ( (n1 === undefined) || (n2 === undefined) ) {
+    if (n1 === undefined || n2 === undefined) {
         throw new Error(`Invalid arc passed: Arc 1: ${arc1}, Arc 2: ${arc2}.`);
     }
     let delta = n1 - n2;
-    if (delta < 0) { delta += 6; }
+    if (delta < 0) {
+        delta += 6;
+    }
     return delta;
-}
+};
 
 // Given an arc and a distance, return the new arc
 export const rotArc = (arc: Arcs, dist: number): Arcs => {
-    const nextArcCW = new Map<Arcs,Arcs>([
+    const nextArcCW = new Map<Arcs, Arcs>([
         ["F", "FS"],
         ["FS", "AS"],
         ["AS", "A"],
@@ -692,7 +743,7 @@ export const rotArc = (arc: Arcs, dist: number): Arcs => {
         ["AP", "FP"],
         ["FP", "F"],
     ]);
-    if (! nextArcCW.has(arc)) {
+    if (!nextArcCW.has(arc)) {
         throw new Error(`Invalid arc passed: ${arc}.`);
     }
     let newArc = arc;
@@ -700,4 +751,4 @@ export const rotArc = (arc: Arcs, dist: number): Arcs => {
         newArc = nextArcCW.get(newArc)!;
     }
     return newArc;
-}
+};
