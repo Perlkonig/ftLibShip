@@ -382,15 +382,17 @@ export const renderSvg = (
         if (ship.hashseed !== undefined) {
             functionName = `resize_${fnv.hash(functionName).hex()}`;
         }
-        svg += `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${pxWidth + 2} ${pxHeight + 2}" width="100%" height="100%"${!opts.minimal ? ` onload="${functionName}()"` : ""}${opts.id ? ` id="${opts.id}"` : ""}>`;
+        svg += `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${pxWidth + 2} ${pxHeight + 2}" width="100%" height="100%"${!opts.minimal ? ` onload="${functionName}()" onresize="${functionName}()"` : ""}${opts.id ? ` id="${opts.id}"` : ""}>`;
         svg += `<defs>`;
-        let resizeid = "_resizeNamePlate";
+        let resizePlateId = "_resizeNamePlate";
+        let resizeStatsId = "_resizeStats";
         if (ship.hashseed !== undefined) {
-            resizeid = fnv.hash(resizeid).hex();
+            resizePlateId = fnv.hash(resizePlateId).hex();
+            resizeStatsId = fnv.hash(resizeStatsId).hex();
         }
         svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"}.futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5}.destroyed{opacity:0.1}${styleInsert} ]]></style>`;
         if (!opts.minimal) {
-            svg += `<script type="text/javascript"><![CDATA[ function newSize(bb) { var widthTransform = ${pxWidth} * 0.9 / bb.width; var heightTransform = ((${cellsize} * 1.5) * 0.9) / bb.height; var value = widthTransform < heightTransform ? widthTransform : heightTransform; if (value !== Infinity) { return value; } return undefined; } function ${functionName}() { var namePlate = document.getElementById('${resizeid}'); var npValue = newSize(namePlate.getBBox()); if (npValue !== undefined) { namePlate.setAttribute("transform", "matrix("+npValue+", 0, 0, "+npValue+", 0,0)"); const currx = parseFloat(namePlate.getAttribute("x")); const curry = parseFloat(namePlate.getAttribute("y")); namePlate.setAttribute("x", (currx / npValue).toString()); namePlate.setAttribute("y", (curry / npValue).toString()); } var statPlate = document.getElementById('_resizeStats'); var statValue = newSize(statPlate.getBBox()); if (statValue !== undefined) { statPlate.setAttribute("transform", "matrix("+statValue+", 0, 0, "+statValue+", 0,0)"); const currx = parseFloat(statPlate.getAttribute("x")); const curry = parseFloat(statPlate.getAttribute("y")); statPlate.setAttribute("x", (currx / statValue).toString()); statPlate.setAttribute("y", (curry / statValue).toString()); } } ]]></script>`;
+            svg += `<script type="text/javascript"><![CDATA[ function newSize(bb) { var widthTransform = ${pxWidth} * 0.9 / bb.width; var heightTransform = ((${cellsize} * 1.5) * 0.9) / bb.height; var value = widthTransform < heightTransform ? widthTransform : heightTransform; if (value !== Infinity) { return value; } return undefined; } function ${functionName}() { var namePlate = document.getElementById('${resizePlateId}'); var npValue = newSize(namePlate.getBBox()); if (npValue !== undefined) { namePlate.setAttribute("transform", "matrix("+npValue+", 0, 0, "+npValue+", 0,0)"); } var statPlate = document.getElementById('${resizeStatsId}'); var statValue = newSize(statPlate.getBBox()); if (statValue !== undefined) { statPlate.setAttribute("transform", "matrix("+statValue+", 0, 0, "+statValue+", 0,0)"); } } ]]></script>`;
         }
 
         svg += hull.genSvg(ship, {
@@ -417,7 +419,7 @@ export const renderSvg = (
         svg += `<rect x="0" y="${(totalRows - 3) * cellsize}" width="${pxWidth}" height="${cellsize * 3}" stroke="none" fill="white"/>`;
 
         //Name plate with special ID so it can be autosized.
-        svg += `<text id="${resizeid}" x="${cellsize * 0.2}" y="${cellsize * 0.75}" dominant-baseline="middle" font-size="${cellsize}" class="futureFont">${ship.class} "${ship.name}"</text>`;
+        svg += `<text id="${resizePlateId}" x="${cellsize * 0.2}" y="${cellsize * 0.75}" dominant-baseline="middle" font-size="${cellsize}" class="futureFont">${ship.class} "${ship.name}"</text>`;
 
         let currRow = 1.5;
 

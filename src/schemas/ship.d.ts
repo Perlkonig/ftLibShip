@@ -12,344 +12,333 @@ export type Numarcs = number;
  * Representation of a valid Full Thrust ship
  */
 export interface FullThrustShip {
-    points?: number;
-    cpv?: number;
-    mass?: number;
-    /**
-     * Crew factors are calculated differently for civilian vs. military vessels.
-     */
-    civilian?: boolean;
-    /**
-     * Beta orientation shifts the arcs 30 degrees clockwise.
-     */
-    orientation?: "alpha" | "beta";
-    /**
-     * Indicates a 'flawed design,' making the ship fragile but cheaper.
-     */
-    flawed?: boolean;
-    hull?: {
-        points: number;
-        rows: 3 | 4 | 5 | 6;
-        stealth: "0" | "1" | "2";
-        streamlining: "none" | "partial" | "full";
-    };
-    /**
-     * Rows of armour. First element being the innermost layer. The use of 'oneOf' here is for backwards compatibility.
-     */
-    armour?: [number, number][];
-    /**
-     * This property contains all systems that get checked on threshold rolls but that are not used during the 'fire' or 'ordnance' phases of play.
-     */
-    systems?: (
-        | {
-              name: "drive";
-              advanced?: boolean;
-              thrust: number;
-              [k: string]: unknown;
-          }
-        | {
-              name: "ftl";
-              advanced?: boolean;
-              /**
-               * Total extra mass an FTL tug drive can transfer. Must be a multiple of 5. Defaults to 0.
-               */
-              transferMass?: number;
-              [k: string]: unknown;
-          }
-        | {
-              name: "fireControl" | "adfc" | "sensors";
-              advanced?: boolean;
-              [k: string]: unknown;
-          }
-        | {
-              name: "hangar";
-              isRack?: boolean;
-              /**
-               * A unique identifier used to target this hangar in orders and in the `fighters` property.
-               */
-              id: string;
-              [k: string]: unknown;
-          }
-        | {
-              name: "launchTube";
-              catapult?: boolean;
-              [k: string]: unknown;
-          }
-        | {
-              name: "screen";
-              advanced?: boolean;
-              area?: boolean;
-              level?: 1 | 2;
-              [k: string]: unknown;
-          }
-        | {
-              name:
-                  | "suicide"
-                  | "mineSweeper"
-                  | "damageControl"
-                  | "marines"
-                  | "stealthField"
-                  | "holofield"
-                  | "cloakDevice"
-                  | "cloakField"
-                  | "ortillery"
-                  | "reflex"
-                  | "shroud";
-              [k: string]: unknown;
-          }
-        | {
-              name: "mineLayer";
-              capacity?: number;
-              [k: string]: unknown;
-          }
-        | {
-              name: "decoy";
-              type?: "cruiser" | "capital";
-              [k: string]: unknown;
-          }
-        | {
-              name: "bay";
-              type: "cargo" | "passenger" | "troop" | "boat" | "tender";
-              capacity: number;
-              /**
-               * A unique identifier used to target this specific bay in orders.
-               */
-              id: string;
-              /**
-               * If given, the mass of the bay is calculated as the product of the capacity and this ratio. If not provided, then the default ratios found in the *Continuum* rules are used.
-               */
-              ratio?: number;
-              [k: string]: unknown;
-          }
-        | {
-              name: "magazine";
-              /**
-               * A unique identifier used to tie this magazine to one or more launchers.
-               */
-              id?: string;
-              modifier?: "er" | "twostage";
-              capacity?: number;
-              [k: string]: unknown;
-          }
-        | {
-              name: "ecm";
-              area?: boolean;
-              [k: string]: unknown;
-          }
-        | {
-              name: "turret";
-              leftArc: Arcs;
-              numArcs: 1 | 2 | 3 | 4 | 5 | 6;
-              facingArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
-              /**
-               * A list of weapon IDs housed within this turret.
-               */
-              weapons?: string[];
-              /**
-               * Purely used by SSD generators to size the turret relative to other systems. Turret glyphs are always square.
-               */
-              size?: number;
-              [k: string]: unknown;
-          }
-    )[];
-    /**
-     * This property contains all systems that get deployed during the 'ordnance' phase of play. These systems are also checked on threshold rolls.
-     */
-    ordnance?: (
-        | {
-              /**
-               * `amt` is the antimatter missile
-               */
-              name: "amt" | "rocketPod";
-              leftArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
-              numArcs?: 3;
-              [k: string]: unknown;
-          }
-        | {
-              name: "missile" | "salvo";
-              modifier?: "er" | "twostage";
-              leftArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
-              numArcs?: 3;
-              [k: string]: unknown;
-          }
-        | {
-              name: "salvoLauncher";
-              leftArc: Arcs;
-              numArcs: 3;
-              /**
-               * The unique ID of a missile magazine
-               */
-              magazine?: string;
-              [k: string]: unknown;
-          }
-    )[];
-    /**
-     * This property contains all systems that players can trigger during the 'fire' phase of play. These systems are also checked on threshold rolls.
-     */
-    weapons?: (
-        | {
-              name:
-                  | "pds"
-                  | "scatterGun"
-                  | "grapeshot"
-                  | "spinalNova"
-                  | "spinalWave";
-              [k: string]: unknown;
-          }
-        | {
-              name: "spinalBeam" | "spinalPlasma" | "spinalSingularity";
-              range: "short" | "medium" | "long";
-              [k: string]: unknown;
-          }
-        | {
-              name: "ads";
-              leftArc: Arcs;
-              numArcs: 3 | 6;
-              [k: string]: unknown;
-          }
-        | {
-              name: "submunition";
-              leftArc: Arcs;
-              numArcs: 3;
-              [k: string]: unknown;
-          }
-        | {
-              name: "pulser";
-              leftArc: Arcs;
-              numArcs: 1 | 3 | 6;
-              range?: "undefined" | "long" | "medium" | "short";
-              [k: string]: unknown;
-          }
-        | {
-              name:
-                  | "beam"
-                  | "emp"
-                  | "plasmaCannon"
-                  | "phaser"
-                  | "transporter"
-                  | "needle";
-              class: 1 | 2 | 3 | 4;
-              leftArc: Arcs;
-              numArcs: Numarcs;
-              [k: string]: unknown;
-          }
-        | {
-              name: "graser";
-              heavy?: boolean;
-              highIntensity?: boolean;
-              class: 1 | 2 | 3 | 4;
-              leftArc: Arcs;
-              numArcs: Numarcs;
-              [k: string]: unknown;
-          }
-        | {
-              name: "gatling" | "particle" | "meson" | "fusion";
-              leftArc: Arcs;
-              numArcs: Numarcs;
-              [k: string]: unknown;
-          }
-        | {
-              name: "torpedoPulse";
-              modifier?: "short" | "long";
-              leftArc: Arcs;
-              numArcs: Numarcs;
-              [k: string]: unknown;
-          }
-        | {
-              name: "kgun";
-              class: 1 | 2 | 3 | 4 | 5 | 6;
-              modifier?: "short" | "long";
-              leftArc: Arcs;
-              numArcs: Numarcs;
-              [k: string]: unknown;
-          }
-        | {
-              name: "gravitic";
-              class: 1 | 2 | 3;
-              leftArc: Arcs;
-              numArcs: Numarcs;
-              [k: string]: unknown;
-          }
-        | {
-              name: "pbl";
-              class: 1 | 2 | 3 | 4 | 5 | 6;
-              leftArc: Arcs;
-              numArcs: Numarcs;
-              [k: string]: unknown;
-          }
-        | {
-              name: "mkp";
-              arc: Arcs;
-              [k: string]: unknown;
-          }
-    )[];
-    /**
-     * This property contains all systems that do NOT get checked on threshold rolls. Currently there aren't any.
-     */
-    extras?: {
+  points?: number;
+  cpv?: number;
+  mass?: number;
+  /**
+   * Crew factors are calculated differently for civilian vs. military vessels.
+   */
+  civilian?: boolean;
+  /**
+   * Beta orientation shifts the arcs 30 degrees clockwise.
+   */
+  orientation?: "alpha" | "beta";
+  /**
+   * Indicates a 'flawed design,' making the ship fragile but cheaper.
+   */
+  flawed?: boolean;
+  hull?: {
+    points: number;
+    rows: 3 | 4 | 5 | 6;
+    stealth: "0" | "1" | "2";
+    streamlining: "none" | "partial" | "full";
+  };
+  /**
+   * Rows of armour. First element being the innermost layer. The use of 'oneOf' here is for backwards compatibility.
+   */
+  armour?: [number, number][];
+  /**
+   * This property contains all systems that get checked on threshold rolls but that are not used during the 'fire' or 'ordnance' phases of play.
+   */
+  systems?: (
+    | {
+        name: "drive";
+        advanced?: boolean;
+        thrust: number;
         [k: string]: unknown;
-    };
-    /**
-     * There cannot be more fighters than hangars.
-     */
-    fighters?: {
+      }
+    | {
+        name: "ftl";
+        advanced?: boolean;
         /**
-         * The fighters' base type
+         * Total extra mass an FTL tug drive can transfer. Must be a multiple of 5. Defaults to 0.
          */
-        type:
-            | "standard"
-            | "interceptor"
-            | "attack"
-            | "torpedo"
-            | "graser"
-            | "plasma"
-            | "MKP"
-            | "missile"
-            | "multiRole"
-            | "light"
-            | "lightInterceptor"
-            | "lightAttack"
-            | "assault";
-        mods?: ("heavy" | "fast" | "longRange" | "ftl" | "robot")[];
-        /**
-         * Must match a hangar id. Omitted if the fighters are deployed.
-         */
-        hangar?: string;
-        /**
-         * Only needed during game play to track squadron size over time
-         */
-        number?: number;
-        /**
-         * Only needed during game play and only if you are playing with ace/turkey rules
-         */
-        skill?: "standard" | "ace" | "turkey";
+        transferMass?: number;
         [k: string]: unknown;
-    }[];
-    /**
-     * A list of active enemy units currently on the ship.
-     */
-    invaders?: {
-        type: "marines" | "damageControl";
-        owner?: string | number;
+      }
+    | {
+        name: "fireControl" | "adfc" | "sensors";
+        advanced?: boolean;
         [k: string]: unknown;
-    }[];
-    class?: string;
-    name?: string;
-    /**
-     * Only needed during actual game play where each ship needs a truly unique ID.
-     */
-    uuid?: string;
-    /**
-     * Markdown-encoded flavour text attached to this particular ship.
-     */
-    notes?: string;
-    /**
-     * The symbol you'd want to represent this ship in a game viewer. It must be a `<symbol>` with a `viewBox` attribute. The `id` attribute is set by the renderer.
-     */
-    silhouette?: string;
-    /**
-     * Used to generate unique IDs, necessary when presenting multiple SSDs on the same page. If not provided, one will be randomly generated.
-     */
-    hashseed?: string;
+      }
+    | {
+        name: "hangar";
+        isRack?: boolean;
+        /**
+         * A unique identifier used to target this hangar in orders and in the `fighters` property.
+         */
+        id: string;
+        [k: string]: unknown;
+      }
+    | {
+        name: "launchTube";
+        catapult?: boolean;
+        [k: string]: unknown;
+      }
+    | {
+        name: "screen";
+        advanced?: boolean;
+        area?: boolean;
+        level?: 1 | 2;
+        [k: string]: unknown;
+      }
+    | {
+        name:
+          | "suicide"
+          | "mineSweeper"
+          | "damageControl"
+          | "marines"
+          | "stealthField"
+          | "holofield"
+          | "cloakDevice"
+          | "cloakField"
+          | "ortillery"
+          | "reflex"
+          | "shroud";
+        [k: string]: unknown;
+      }
+    | {
+        name: "mineLayer";
+        capacity?: number;
+        [k: string]: unknown;
+      }
+    | {
+        name: "decoy";
+        type?: "cruiser" | "capital";
+        [k: string]: unknown;
+      }
+    | {
+        name: "bay";
+        type: "cargo" | "passenger" | "troop" | "boat" | "tender";
+        capacity: number;
+        /**
+         * A unique identifier used to target this specific bay in orders.
+         */
+        id: string;
+        /**
+         * If given, the mass of the bay is calculated as the product of the capacity and this ratio. If not provided, then the default ratios found in the *Continuum* rules are used.
+         */
+        ratio?: number;
+        [k: string]: unknown;
+      }
+    | {
+        name: "magazine";
+        /**
+         * A unique identifier used to tie this magazine to one or more launchers.
+         */
+        id?: string;
+        modifier?: "er" | "twostage";
+        capacity?: number;
+        [k: string]: unknown;
+      }
+    | {
+        name: "ecm";
+        area?: boolean;
+        [k: string]: unknown;
+      }
+    | {
+        name: "turret";
+        leftArc: Arcs;
+        numArcs: 1 | 2 | 3 | 4 | 5 | 6;
+        facingArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
+        /**
+         * A list of weapon IDs housed within this turret.
+         */
+        weapons?: string[];
+        /**
+         * Purely used by SSD generators to size the turret relative to other systems. Turret glyphs are always square.
+         */
+        size?: number;
+        [k: string]: unknown;
+      }
+  )[];
+  /**
+   * This property contains all systems that get deployed during the 'ordnance' phase of play. These systems are also checked on threshold rolls.
+   */
+  ordnance?: (
+    | {
+        /**
+         * `amt` is the antimatter missile
+         */
+        name: "amt" | "rocketPod";
+        leftArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
+        numArcs?: 3;
+        [k: string]: unknown;
+      }
+    | {
+        name: "missile" | "salvo";
+        modifier?: "er" | "twostage";
+        leftArc?: "F" | "FS" | "FP" | "A" | "AS" | "AP";
+        numArcs?: 3;
+        [k: string]: unknown;
+      }
+    | {
+        name: "salvoLauncher";
+        leftArc: Arcs;
+        numArcs: 3;
+        /**
+         * The unique ID of a missile magazine
+         */
+        magazine?: string;
+        [k: string]: unknown;
+      }
+  )[];
+  /**
+   * This property contains all systems that players can trigger during the 'fire' phase of play. These systems are also checked on threshold rolls.
+   */
+  weapons?: (
+    | {
+        name: "pds" | "scatterGun" | "grapeshot" | "spinalNova" | "spinalWave";
+        [k: string]: unknown;
+      }
+    | {
+        name: "spinalBeam" | "spinalPlasma" | "spinalSingularity";
+        range: "short" | "medium" | "long";
+        [k: string]: unknown;
+      }
+    | {
+        name: "ads";
+        leftArc: Arcs;
+        numArcs: 3 | 6;
+        [k: string]: unknown;
+      }
+    | {
+        name: "submunition";
+        leftArc: Arcs;
+        numArcs: 3;
+        [k: string]: unknown;
+      }
+    | {
+        name: "pulser";
+        leftArc: Arcs;
+        numArcs: 1 | 3 | 6;
+        range?: "undefined" | "long" | "medium" | "short";
+        [k: string]: unknown;
+      }
+    | {
+        name: "beam" | "emp" | "plasmaCannon" | "phaser" | "transporter" | "needle";
+        class: 1 | 2 | 3 | 4;
+        leftArc: Arcs;
+        numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "graser";
+        heavy?: boolean;
+        highIntensity?: boolean;
+        class: 1 | 2 | 3 | 4;
+        leftArc: Arcs;
+        numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "gatling" | "particle" | "meson" | "fusion";
+        leftArc: Arcs;
+        numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "torpedoPulse";
+        modifier?: "short" | "long";
+        leftArc: Arcs;
+        numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "kgun";
+        class: 1 | 2 | 3 | 4 | 5 | 6;
+        modifier?: "short" | "long";
+        leftArc: Arcs;
+        numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "gravitic";
+        class: 1 | 2 | 3;
+        leftArc: Arcs;
+        numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "pbl";
+        class: 1 | 2 | 3 | 4 | 5 | 6;
+        leftArc: Arcs;
+        numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "mkp";
+        arc: Arcs;
+        [k: string]: unknown;
+      }
+  )[];
+  /**
+   * This property contains all systems that do NOT get checked on threshold rolls. Currently there aren't any.
+   */
+  extras?: {
     [k: string]: unknown;
+  };
+  /**
+   * There cannot be more fighters than hangars.
+   */
+  fighters?: {
+    /**
+     * The fighters' base type
+     */
+    type:
+      | "standard"
+      | "interceptor"
+      | "attack"
+      | "torpedo"
+      | "graser"
+      | "plasma"
+      | "MKP"
+      | "missile"
+      | "multiRole"
+      | "light"
+      | "lightInterceptor"
+      | "lightAttack"
+      | "assault";
+    mods?: ("heavy" | "fast" | "longRange" | "ftl" | "robot")[];
+    /**
+     * Must match a hangar id. Omitted if the fighters are deployed.
+     */
+    hangar?: string;
+    /**
+     * Only needed during game play to track squadron size over time
+     */
+    number?: number;
+    /**
+     * Only needed during game play and only if you are playing with ace/turkey rules
+     */
+    skill?: "standard" | "ace" | "turkey";
+    [k: string]: unknown;
+  }[];
+  /**
+   * A list of active enemy units currently on the ship.
+   */
+  invaders?: {
+    type: "marines" | "damageControl";
+    owner?: string | number;
+    [k: string]: unknown;
+  }[];
+  class?: string;
+  name?: string;
+  /**
+   * Only needed during actual game play where each ship needs a truly unique ID.
+   */
+  uuid?: string;
+  /**
+   * Markdown-encoded flavour text attached to this particular ship.
+   */
+  notes?: string;
+  /**
+   * The symbol you'd want to represent this ship in a game viewer. It must be a `<symbol>` with a `viewBox` attribute. The `id` attribute is set by the renderer.
+   */
+  silhouette?: string;
+  /**
+   * Used to generate unique IDs, necessary when presenting multiple SSDs on the same page. If not provided, one will be randomly generated.
+   */
+  hashseed?: string;
+  [k: string]: unknown;
 }
