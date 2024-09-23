@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 import type { ISystemSVG } from "../svgLib.js";
+import fnv from "fnv-plus";
 
 export class Magazine extends System {
     public modifier: "none" | "er" | "twostage" = "none";
@@ -53,23 +54,26 @@ export class Magazine extends System {
 
     missileGlyph(): ISystemSVG {
         if (this.modifier === "er") {
+            const id = this.ship.hashseed === undefined ? `individualSalvoER` : fnv.hash(`individualSalvoER`).hex();
             return {
-                id: `individualSalvoER`,
-                svg: `<symbol id="svg_individualSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`,
+                id,
+                svg: `<symbol id="${id}" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`,
                 width: 1,
                 height: 1
             };
         } else if (this.modifier === "twostage") {
+            const id = this.ship.hashseed === undefined ? `individualSalvoMS` : fnv.hash(`individualSalvoMS`).hex();
             return {
-                id: `individualSalvoMS`,
-                svg: `<symbol id="svg_individualSalvoMS" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol>`,
+                id,
+                svg: `<symbol id="${id}" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol>`,
                 width: 1,
                 height: 1
             };
         } else {
+            const id = this.ship.hashseed === undefined ? `individualSalvo` : fnv.hash(`individualSalvo`).hex();
             return {
-                id: `individualSalvo`,
-                svg: `<symbol id="svg_individualSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`,
+                id,
+                svg: `<symbol id="${id}" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`,
                 width: 1,
                 height: 1
             };
@@ -81,68 +85,78 @@ export class Magazine extends System {
         if (capacity > 9) {
             capacity = 9;
         }
+        let id: string;
         if (this.modifier === "er") {
             switch (capacity) {
                 case 1:
+                    id = this.ship.hashseed === undefined ? `magazineER1` : fnv.hash(`magazineER1`).hex();
                     return {
-                        id: "magazineER1",
-                        svg: `<symbol id="svg_magazineER2" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /></symbol>`,
                         width: 2,
                         height: 1
                     };
                 case 2:
+                    id = this.ship.hashseed === undefined ? `magazineER2` : fnv.hash(`magazineER2`).hex();
                     return {
-                        id: "magazineER2",
-                        svg: `<symbol id="svg_magazineER2" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /></symbol>`,
                         width: 2,
                         height: 1
                     };
                 case 3:
+                    id = this.ship.hashseed === undefined ? `magazineER3` : fnv.hash(`magazineER3`).hex();
                     return {
-                        id: "magazineER3",
-                        svg: `<symbol id="svg_magazineER3" viewBox="-1 -1 32 12"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="10" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 12"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="10" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 1
                     };
                 case 4:
+                    id = this.ship.hashseed === undefined ? `magazineER4` : fnv.hash(`magazineER4`).hex();
                     return {
-                        id: "magazineER4",
-                        svg: `<symbol id="svg_magazineER4" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 5:
+                    id = this.ship.hashseed === undefined ? `magazineER5` : fnv.hash(`magazineER5`).hex();
                     return {
-                        id: "magazineER5",
-                        svg: `<symbol id="svg_magazineER5" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 6:
+                    id = this.ship.hashseed === undefined ? `magazineER6` : fnv.hash(`magazineER6`).hex();
                     return {
-                        id: "magazineER6",
-                        svg: `<symbol id="svg_magazineER6" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 7:
+                    id = this.ship.hashseed === undefined ? `magazineER7` : fnv.hash(`magazineER7`).hex();
                     return {
-                        id: "magazineER7",
-                        svg: `<symbol id="svg_magazineER7" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };
                 case 8:
+                    id = this.ship.hashseed === undefined ? `magazineER8` : fnv.hash(`magazineER8`).hex();
                     return {
-                        id: "magazineER8",
-                        svg: `<symbol id="svg_magazineER8" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="20" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="20" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };
                 case 9:
+                    id = this.ship.hashseed === undefined ? `magazineER9` : fnv.hash(`magazineER9`).hex();
                     return {
-                        id: "magazineER9",
-                        svg: `<symbol id="svg_magazineER9" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="20" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="20" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoER" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="black" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoER" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoER" x="0" y="20" width="10" height="10" /><use href="#_internalSalvoER" x="10" y="20" width="10" height="10" /><use href="#_internalSalvoER" x="20" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };
@@ -150,65 +164,74 @@ export class Magazine extends System {
         } else if (this.modifier === "twostage") {
             switch (capacity) {
                 case 1:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage1` : fnv.hash(`magazineTwoStage1`).hex();
                     return {
-                        id: "magazineTwoStage2",
-                        svg: `<symbol id="svg_magazineTwoStage2" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /></symbol>`,
                         width: 2,
                         height: 1
                     };
                 case 2:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage2` : fnv.hash(`magazineTwoStage2`).hex();
                     return {
-                        id: "magazineTwoStage2",
-                        svg: `<symbol id="svg_magazineTwoStage2" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /></symbol>`,
                         width: 2,
                         height: 1
                     };
                 case 3:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage3` : fnv.hash(`magazineTwoStage3`).hex();
                     return {
-                        id: "magazineTwoStage3",
-                        svg: `<symbol id="svg_magazineTwoStage3" viewBox="-1 -1 32 12"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="10" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 12"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="10" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 1
                     };
                 case 4:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage4` : fnv.hash(`magazineTwoStage4`).hex();
                     return {
-                        id: "magazineTwoStage4",
-                        svg: `<symbol id="svg_magazineTwoStage4" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 5:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage5` : fnv.hash(`magazineTwoStage5`).hex();
                     return {
-                        id: "magazineTwoStage5",
-                        svg: `<symbol id="svg_magazineTwoStage5" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 6:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage6` : fnv.hash(`magazineTwoStage6`).hex();
                     return {
-                        id: "magazineTwoStage6",
-                        svg: `<symbol id="svg_magazineTwoStage6" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 7:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage7` : fnv.hash(`magazineTwoStage7`).hex();
                     return {
-                        id: "magazineTwoStage7",
-                        svg: `<symbol id="svg_magazineTwoStage7" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };
                 case 8:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage8` : fnv.hash(`magazineTwoStage8`).hex();
                     return {
-                        id: "magazineTwoStage8",
-                        svg: `<symbol id="svg_magazineTwoStage8" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="20" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="20" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };
                 case 9:
+                    id = this.ship.hashseed === undefined ? `magazineTwoStage9` : fnv.hash(`magazineTwoStage9`).hex();
                     return {
-                        id: "magazineTwoStage9",
-                        svg: `<symbol id="svg_magazineTwoStage9" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="20" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="20" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvoTwoStage" viewBox="405 279 150 150"><polygon fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" points="433.7,375.5 480,285.5 526.3,375.5 495.4,361.7 526.3,420.5 480,390.3 433.7,420.5 464,361.7"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvoTwoStage" x="0" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="0" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="10" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="0" y="20" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="10" y="20" width="10" height="10" /><use href="#_internalSalvoTwoStage" x="20" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };
@@ -216,65 +239,74 @@ export class Magazine extends System {
         } else {
             switch (capacity) {
                 case 1:
+                    id = this.ship.hashseed === undefined ? `magazine1` : fnv.hash(`magazine1`).hex();
                     return {
-                        id: "magazine1",
-                        svg: `<symbol id="svg_magazine2" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /></symbol>`,
                         width: 2,
                         height: 1
                     };
                 case 2:
+                    id = this.ship.hashseed === undefined ? `magazine2` : fnv.hash(`magazine2`).hex();
                     return {
-                        id: "magazine2",
-                        svg: `<symbol id="svg_magazine2" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 22 12"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="20" height="10" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /></symbol>`,
                         width: 2,
                         height: 1
                     };
                 case 3:
+                    id = this.ship.hashseed === undefined ? `magazine3` : fnv.hash(`magazine3`).hex();
                     return {
-                        id: "magazine3",
-                        svg: `<symbol id="svg_magazine3" viewBox="-1 -1 32 12"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="10" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 12"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="10" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 1
                     };
                 case 4:
+                    id = this.ship.hashseed === undefined ? `magazine4` : fnv.hash(`magazine4`).hex();
                     return {
-                        id: "magazine4",
-                        svg: `<symbol id="svg_magazine4" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 5:
+                    id = this.ship.hashseed === undefined ? `magazine5` : fnv.hash(`magazine5`).hex();
                     return {
-                        id: "magazine5",
-                        svg: `<symbol id="svg_magazine5" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 6:
+                    id = this.ship.hashseed === undefined ? `magazine6` : fnv.hash(`magazine6`).hex();
                     return {
-                        id: "magazine6",
-                        svg: `<symbol id="svg_magazine6" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /><use href="#_internalSalvo" x="20" y="10" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 22"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="20" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /><use href="#_internalSalvo" x="20" y="10" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 2
                     };
                 case 7:
+                    id = this.ship.hashseed === undefined ? `magazine7` : fnv.hash(`magazine7`).hex();
                     return {
-                        id: "magazine7",
-                        svg: `<symbol id="svg_magazine7" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /><use href="#_internalSalvo" x="20" y="10" width="10" height="10" /><use href="#_internalSalvo" x="0" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /><use href="#_internalSalvo" x="20" y="10" width="10" height="10" /><use href="#_internalSalvo" x="0" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };
                 case 8:
+                    id = this.ship.hashseed === undefined ? `magazine8` : fnv.hash(`magazine8`).hex();
                     return {
-                        id: "magazine8",
-                        svg: `<symbol id="svg_magazine8" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /><use href="#_internalSalvo" x="20" y="10" width="10" height="10" /><use href="#_internalSalvo" x="0" y="20" width="10" height="10" /><use href="#_internalSalvo" x="10" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /><use href="#_internalSalvo" x="20" y="10" width="10" height="10" /><use href="#_internalSalvo" x="0" y="20" width="10" height="10" /><use href="#_internalSalvo" x="10" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };
                 case 9:
+                    id = this.ship.hashseed === undefined ? `magazine9` : fnv.hash(`magazine9`).hex();
                     return {
-                        id: "magazine9",
-                        svg: `<symbol id="svg_magazine9" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /><use href="#_internalSalvo" x="20" y="10" width="10" height="10" /><use href="#_internalSalvo" x="0" y="20" width="10" height="10" /><use href="#_internalSalvo" x="10" y="20" width="10" height="10" /><use href="#_internalSalvo" x="20" y="20" width="10" height="10" /></symbol>`,
+                        id,
+                        svg: `<symbol id="${id}" viewBox="-1 -1 32 32"><defs><symbol id="_internalSalvo" viewBox="430.5 148 99 99"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol></defs><rect x="0" y="0" width="30" height="30" stroke="black" fill="white" /><use href="#_internalSalvo" x="0" y="0" width="10" height="10" /><use href="#_internalSalvo" x="10" y="0" width="10" height="10" /><use href="#_internalSalvo" x="20" y="0" width="10" height="10" /><use href="#_internalSalvo" x="0" y="10" width="10" height="10" /><use href="#_internalSalvo" x="10" y="10" width="10" height="10" /><use href="#_internalSalvo" x="20" y="10" width="10" height="10" /><use href="#_internalSalvo" x="0" y="20" width="10" height="10" /><use href="#_internalSalvo" x="10" y="20" width="10" height="10" /><use href="#_internalSalvo" x="20" y="20" width="10" height="10" /></symbol>`,
                         width: 3,
                         height: 3
                     };

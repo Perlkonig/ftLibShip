@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 // Need to include "A" so it works in beta orientation
 type Arc = "F"|"FS"|"FP"|"A"|"AS"|"AP";
@@ -74,6 +75,10 @@ export class Salvo extends System {
                 defid = "_internalSalvo";
                 defs = `<symbol id="${defid}" viewBox="435.5 153 89 89"><polygon stroke="#000000" fill="white" stroke-width="4.1006" stroke-miterlimit="10" points="480,161.2 501.3,237 480,223.7 458.6,237"/></symbol>`;
                 break;
+        }
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
         }
         const insert = `<use href="#${defid}" width="350" height="350" x="125" y="115" />`;
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);

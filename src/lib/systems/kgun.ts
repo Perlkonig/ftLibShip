@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genHex } from "../genHex.js";
+import fnv from "fnv-plus";
 
 type Class = number;
 
@@ -100,7 +101,11 @@ export class Kgun extends System {
             mod = "S";
             insert = `<line x1="300" y1="478.4878357199728" x2="300" y2="736.6825428220194" stroke-width="20" stroke-miterlimit="10" stroke="black" />` + insert;
         }
-        const id = `kgun${this.class}${mod}${this.leftArc}${this.numArcs}`;
+        let id = `kgun${this.class}${mod}${this.leftArc}${this.numArcs}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         let svg = genHex(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         // If long range, fill the centre hex
         if (this.modifier === "long") {

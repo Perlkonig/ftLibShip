@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 type Class = 1|2|3|4;
 
@@ -80,7 +81,11 @@ export class Beam extends System {
     }
 
     glyph() {
-        const id = `beam${this.class}${this.leftArc}${this.numArcs}`;
+        let id = `beam${this.class}${this.leftArc}${this.numArcs}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="300">${this.class}</text>`);
         return {
             id,

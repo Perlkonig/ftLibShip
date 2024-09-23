@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 type Class = 1|2|3|4;
 
@@ -133,6 +134,10 @@ export class Graser extends System {
         } else if (this.heavy) {
             id = `graser${this.class}Heavy${this.leftArc}${this.numArcs}`;
             insert = `<polygon points="300,506.1 478.48783571997280509800334549218,196.95 121.51216428002719490199665450782,196.95" stroke="black" fill="black" />` + insert;
+        }
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
         }
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         if (! this.heavy) {

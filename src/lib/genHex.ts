@@ -68,7 +68,7 @@ const genSvg = (orientation: "alpha"|"beta"|undefined, id: string, lines: IPoint
     if ( (orientation !== undefined) && (orientation === "beta") ) {
         degs = [90, 150, 210, 270, 330, 30];
     }
-    let s = `<symbol id="svg_${id}" viewBox="-1 -1 ${size + 2} ${size + 2}">`;
+    let s = `<symbol id="${id}" viewBox="-1 -1 ${size + 2} ${size + 2}">`;
     if (defs !== undefined) {
         s += `<defs>${defs}</defs>`;
     }

@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 // Need to include "A" so it works in beta orientation
 type Arc = "F"|"FS"|"FP"|"A"|"AS"|"AP";
@@ -74,6 +75,10 @@ export class Missile extends System {
                 defid = `_internalMissile`;
                 defs = `<symbol id="${defid}" viewBox="286.5 85 386 386"><polygon fill="white" stroke="#000000" stroke-width="12.7306" stroke-miterlimit="10" points="514.6,306.2 514.6,134.7 480,96.3  445.4,134.7 445.4,306.2 347.6,413.6 434.3,413.6 450.1,432.1 450.1,463.7 509.9,463.7 509.9,432.1 525.7,413.6 612.4,413.6"/></symbol>`
                 break;
+        }
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
         }
         const insert = `<use href="#${defid}" width="350" height="350" x="125" y="115" />`;
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);

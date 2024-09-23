@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 type Class = 1|2|3|4;
 
@@ -67,7 +68,11 @@ export class Needle extends System {
 
     glyph() {
         const roman = ["I", "II", "III", "IV"];
-        const id = `needle${this.class}${this.leftArc}${this.numArcs}`;
+        let id = `needle${this.class}${this.leftArc}${this.numArcs}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         const insert = `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="200" stroke="white" fill="white">${roman[this.class - 1]}</text>`;
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         // Fill the inner circle with black

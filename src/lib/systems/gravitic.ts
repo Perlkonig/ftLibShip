@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 type Class = 1|2|3;
 
@@ -72,6 +73,10 @@ export class Gravitic extends System {
 
     glyph() {
         let id = `gravitic${this.class}${this.leftArc}${this.numArcs}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         let insert = `<circle cx="300" cy="300" r="167.65" fill="black" /><text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="250" stroke="white" fill="white">${this.class}</text>`;
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, undefined, insert);
         return {

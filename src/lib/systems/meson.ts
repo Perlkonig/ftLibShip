@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 export class Meson extends System {
     public leftArc: Arc = "F";
@@ -47,7 +48,11 @@ export class Meson extends System {
     }
 
     glyph() {
-        const id = `meson${this.leftArc}${this.numArcs}`;
+        let id = `meson${this.leftArc}${this.numArcs}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         const insert = `<use href="#_internalMeson" x="87.5" y="87.5" width="425" height="425"/>`;
         const defs = `<symbol id="_internalMeson" viewBox="369 230 225 102"><path d="M370.8,307h218.3c0,0-31.6,83.1-108.7,83.1S370.8,307,370.8,307z"/><rect x="464" y="231" width="30" height="100"/><rect x="449" y="285" width="62" height="15"/></symbol>`;
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);

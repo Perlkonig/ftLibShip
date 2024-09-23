@@ -1,4 +1,6 @@
 import type { FullThrustShip } from "../schemas/ship.js";
+import fnv from "fnv-plus";
+import { nanoid } from "nanoid";
 import { svgLib } from "./svgLib.js";
 
 export const formRows = (ship: FullThrustShip): number[][] | undefined => {
@@ -102,7 +104,12 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
     const svgArmourRegen = svgLib.find(x => x.id === "armourRegen")!;
     const svgArmourRegenDmgd = svgLib.find(x => x.id === "armourRegenDamaged")!;
     const svgStealth = svgLib.find(x => x.id === "stealthHull")!;
-    let s = `<symbol id="_ssdHull" viewBox="-1 -1 ${totalWidth + 2} ${totalHeight + 2}">`;
+    let hullid = "_ssdHull";
+    if (ship.hashseed !== undefined) {
+        fnv.seed(ship.hashseed);
+        hullid = fnv.hash("_ssdHull").hex();
+    }
+    let s = `<symbol id="${hullid}" viewBox="-1 -1 ${totalWidth + 2} ${totalHeight + 2}">`;
     s += `<defs>`;
     if (ship.hull.stealth !== "0") {
         s += svgStealth.svg;
@@ -141,7 +148,7 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
                 width = svgHullDmgd.width * cellsize;
                 height = svgHullDmgd.height * cellsize
             }
-            s += `<use href="#svg_${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
+            s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
 
         }
         if (
@@ -150,7 +157,7 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
                     (hullRows.length - (row + 1) === 0) ) ) ||
                 ( (ship.hull.stealth === "1") &&
                     ( (hullRows.length - (row + 1) === 1)) ) ) {
-                s += `<use href="#svg_stealthHull" x="${boxes.length * cellsize}" y="${y}" width="${svgStealth.width * cellsize}" height="${svgStealth.height * cellsize}" />`;
+                s += `<use href="#stealthHull" x="${boxes.length * cellsize}" y="${y}" width="${svgStealth.width * cellsize}" height="${svgStealth.height * cellsize}" />`;
         }
     }
 
@@ -174,7 +181,7 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
                     id = "armourDamaged";
                     applied--;
                 }
-                s += `<use href="#svg_${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
+                s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
             }
             const offset = ship.armour[row][0];
             for (let col = 0; col < ship.armour[row][1]; col++) {
@@ -186,7 +193,7 @@ export const genSvg = (ship: FullThrustShip, opts: IRenderOpts): string | undefi
                     id = "armourRegenDamaged";
                     appliedRegen--;
                 }
-                s += `<use href="#svg_${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
+                s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
             }
         }
     }

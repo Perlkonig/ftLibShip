@@ -1,6 +1,6 @@
 {
   "name": "ftlibship",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Library representing the schema/type for a Full Thrust ship description along with utilities for validating and graphically rendering it",
   "exports": "./dist/index.js",
   "engines": {
@@ -25,10 +25,12 @@
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.3.4",
+    "@types/fnv-plus": "^1.3.2",
     "@types/mocha": "^10.0.1",
     "chai": "^4.3.7",
     "json-schema-to-typescript": "^12.0.0",
     "mocha": "^10.2.0",
+    "prettier": "^3.3.3",
     "rimraf": "^4.4.1",
     "shx": "^0.3.4",
     "ts-node": "^10.9.1",
@@ -36,6 +38,7 @@
   },
   "dependencies": {
     "ajv": "^8.12.0",
+    "fnv-plus": "^1.3.1",
     "nanoid": "^4.0.2"
   }
 }

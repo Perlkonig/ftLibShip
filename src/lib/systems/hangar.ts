@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
 import { type2name } from "./fighters.js";
+import fnv from "fnv-plus";
 
 export class Hangar extends System {
     public id!: string;
@@ -115,8 +116,12 @@ export class Hangar extends System {
                     break;
             }
         }
-        let svg = `<symbol id="svg_hangar${mod}" viewBox="320 35.75 319 478.5">${rack}<polygon fill="white" stroke="#000000" stroke-width="12.221" stroke-miterlimit="10" points="480,63.6 553.4,280 626.8,496.4 480,496.4 333.2,496.4 406.6,280"/>${insert}</symbol>`;
         let id = `hangar${mod}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
+        let svg = `<symbol id="${id}" viewBox="320 35.75 319 478.5">${rack}<polygon fill="white" stroke="#000000" stroke-width="12.221" stroke-miterlimit="10" points="480,63.6 553.4,280 626.8,496.4 480,496.4 333.2,496.4 406.6,280"/>${insert}</symbol>`;
         return {
             id,
             svg,

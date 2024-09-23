@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 export class Gatling extends System {
     public leftArc: Arc = "F";
@@ -55,7 +56,11 @@ export class Gatling extends System {
     }
 
     glyph() {
-        const id = `gatling${this.leftArc}${this.numArcs}`;
+        let id = `gatling${this.leftArc}${this.numArcs}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         const insert = `<use href="#_internalGatling" x="87.5" y="87.5" width="425" height="425"/>`;
         const defs = `<symbol id="_internalGatling" viewBox="369 230 225 102"><path d="M370.8,307h218.3c0,0-31.6,83.1-108.7,83.1S370.8,307,370.8,307z"/><polyline points="436,331 436,231 466,231 466,331"/><polyline points="483,300 421,300 421,285 483,285"/><polyline points="491,331 491,231 521,231 521,331"/><polyline points="538,300 476,300 476,285 538,285"/><polyline points="546,331 546,231 576,231 576,331"/><polyline points="593,300 531,300 531,285 593,285"/><polyline points="417,331 417,231 387,231 387,331"/><polyline points="370,300 432,300 432,285 370,285"/></symbol>`;
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);

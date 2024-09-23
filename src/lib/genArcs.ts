@@ -64,7 +64,7 @@ const arcpt = (cx: number, cy: number, r: number, angle: number): IPoint => {
 }
 
 const genSvg = (id: string, lines: IPoint[][], path: string | undefined = undefined, defs: string | undefined = undefined, terminal: string | undefined = undefined): string => {
-    let s = `<symbol id="svg_${id}" viewBox="-1 -1 ${size + 2} ${size + 2}">`;
+    let s = `<symbol id="${id}" viewBox="-1 -1 ${size + 2} ${size + 2}">`;
     if (defs !== undefined) {
         s += `<defs>${defs}</defs>`;
     }

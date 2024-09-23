@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 export class TorpedoPulse extends System {
     public leftArc: Arc = "F";
@@ -55,7 +56,11 @@ export class TorpedoPulse extends System {
             mod = "S";
             defs = `<symbol id="_internalTorpedoS" viewBox="420 87 120 390"><rect x="430" y="96.4" fill="none" stroke="#000000" stroke-width="15.6192" stroke-miterlimit="10" width="100.1" height="371.1"/><path d="M427,93v189h106V93H427z M475.6,257.3c-12.9,0-27-3.8-34.1-8.5l4.4-14.5c7.7,4.8,19.1,8.7,31,8.7c17.7,0,28-9.3,28-22.8c0-12.5-7.1-19.7-25.2-26.6c-21.8-7.7-35.3-19.1-35.3-37.9c0-20.8,17.3-36.3,43.3-36.3c13.7,0,23.6,3.2,29.6,6.5l-4.8,14.1c-4.4-2.4-13.3-6.4-25.4-6.4c-18.3,0-25.2,10.9-25.2,20c0,12.5,8.1,18.7,26.6,25.8c22.6,8.7,34.1,19.6,34.1,39.3C522.5,239.4,507.2,257.3,475.6,257.3z"/></symbol>`
         }
-        const id = `torpedo${mod}${this.leftArc}${this.numArcs}`;
+        let id = `torpedo${mod}${this.leftArc}${this.numArcs}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         const insert = `<use href="#_internalTorpedo${mod}" x="125" y="125" width="350" height="350" />`;
         let svg = genArcs(this.ship.orientation, id, this.numArcs, this.leftArc, defs, insert);
         return {

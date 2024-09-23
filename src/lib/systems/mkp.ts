@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc } from "./_base.js";
 import { genArcs } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 export class Mkp extends System {
     public arc: Arc = "F";
@@ -26,7 +27,11 @@ export class Mkp extends System {
     }
 
     glyph() {
-        const id = `mkp${this.arc}`;
+        let id = `mkp${this.arc}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         const insert = `<use href="#_internalMkp" x="150" y="150" width="300" height="300"/>`;
         const defs = `<symbol id="_internalMkp" viewBox="290 92 380 380"><g><polygon fill="white" stroke="#000000" stroke-width="7" stroke-miterlimit="10" points="401.7,467.5 323.5,331.5 401.7,195.5  558.3,195.5 636.5,331.5 558.3,467.5"/><polygon stroke="#000000" stroke-miterlimit="10" points="480,329.3 556.9,94.5 403.1,94.5 480,329.3 556.9,94.5 403.1,94.5"/></g></symbol>`;
         let svg = genArcs(this.ship.orientation, id, 1, this.arc, defs, insert);

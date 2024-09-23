@@ -2,6 +2,7 @@ import type { FullThrustShip } from "../../schemas/ship.js";
 import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { arcList } from "../genArcs.js";
+import fnv from "fnv-plus";
 
 type Range = "undefined" | "long" | "medium" | "short";
 
@@ -75,7 +76,11 @@ export class Pulser extends System {
             ["FP", "54.9148,158.5 136.6098,300 218.3048,158.5"],
         ];
 
-        const id = `pulser${this.leftArc}${this.numArcs}`;
+        let id = `pulser${this.leftArc}${this.numArcs}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         let insert = "";
         const arcs = arcList(this.leftArc, this.numArcs);
         for (const pair of points) {
@@ -83,7 +88,7 @@ export class Pulser extends System {
                 insert += `<polygon points="${pair[1]}" stroke="black" fill="black"/>`;
             }
         }
-        let svg = `<symbol id="svg_${id}" viewBox="-1 -1 602 602"><polygon points="54.9148,158.5 545.0852,158.5 300,583" stroke-width="10" stroke="black" fill="white"/><polygon points="54.9148,441.5 545.0852,441.5 300,17" stroke-width="10" stroke="black" fill="none"/>${insert}</symbol>`;
+        let svg = `<symbol id="${id}" viewBox="-1 -1 602 602"><polygon points="54.9148,158.5 545.0852,158.5 300,583" stroke-width="10" stroke="black" fill="white"/><polygon points="54.9148,441.5 545.0852,441.5 300,17" stroke-width="10" stroke="black" fill="none"/>${insert}</symbol>`;
         return {
             id,
             svg,

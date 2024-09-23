@@ -336,5 +336,9 @@ export interface FullThrustShip {
    * The symbol you'd want to represent this ship in a game viewer. It must be a `<symbol>` with a `viewBox` attribute. The `id` attribute is set by the renderer.
    */
   silhouette?: string;
+  /**
+   * Used to generate unique IDs, necessary when presenting multiple SSDs on the same page. If not provided, one will be randomly generated.
+   */
+  hashseed?: string;
   [k: string]: unknown;
 }

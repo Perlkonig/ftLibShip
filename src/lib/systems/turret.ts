@@ -3,6 +3,7 @@ import { System } from "./_base.js";
 import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genHex } from "../genHex.js";
 import { getSystem } from "./index.js";
+import fnv from "fnv-plus";
 
 export class Turret extends System {
     // Never directly adjust leftArc!
@@ -109,7 +110,11 @@ export class Turret extends System {
     }
 
     glyph() {
-        const id = `turret${this.facingArc}${this.numArcs}_${this.size}`;
+        let id = `turret${this.facingArc}${this.numArcs}_${this.size}`;
+        if (this.ship.hashseed !== undefined) {
+            fnv.seed(this.ship.hashseed);
+            id = fnv.hash(id).hex();
+        }
         let svg = genHex(this.ship.orientation, id, this.numArcs, this.facingArc);
         return {
             id,
