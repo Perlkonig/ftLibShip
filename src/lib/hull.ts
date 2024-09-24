@@ -104,16 +104,16 @@ export const genSvg = (
     }
 
     const blocksHigh = Math.floor(totalHeight / cellsize);
-    const svgHull = svgLib.find((x) => x.id === "hull")!;
-    const svgHullCrew = svgLib.find((x) => x.id === "hullCrew")!;
-    const svgHullDmgd = svgLib.find((x) => x.id === "hullDamaged")!;
-    const svgArmour = svgLib.find((x) => x.id === "armour")!;
-    const svgArmourDmgd = svgLib.find((x) => x.id === "armourDamaged")!;
-    const svgArmourRegen = svgLib.find((x) => x.id === "armourRegen")!;
+    const svgHull = svgLib.find((x) => x.id === "svglib_hull")!;
+    const svgHullCrew = svgLib.find((x) => x.id === "svglib_hullCrew")!;
+    const svgHullDmgd = svgLib.find((x) => x.id === "svglib_hullDamaged")!;
+    const svgArmour = svgLib.find((x) => x.id === "svglib_armour")!;
+    const svgArmourDmgd = svgLib.find((x) => x.id === "svglib_armourDamaged")!;
+    const svgArmourRegen = svgLib.find((x) => x.id === "svglib_armourRegen")!;
     const svgArmourRegenDmgd = svgLib.find(
-        (x) => x.id === "armourRegenDamaged"
+        (x) => x.id === "svglib_armourRegenDamaged"
     )!;
-    const svgStealth = svgLib.find((x) => x.id === "stealthHull")!;
+    const svgStealth = svgLib.find((x) => x.id === "svglib_stealthHull")!;
     let hullid = "_ssdHull";
     if (ship.hashseed !== undefined) {
         fnv.seed(ship.hashseed);
@@ -150,15 +150,15 @@ export const genSvg = (
         const y = (blocksHigh - (row + 1)) * cellsize;
         for (let col = 0; col < boxes.length; col++) {
             const x = col * cellsize;
-            let id = "hull";
+            let id = "svglib_hull";
             let width = svgHull.width * cellsize;
             let height = svgHull.height * cellsize;
             if (boxes[col] === 1) {
-                id = "hullCrew";
+                id = "svglib_hullCrew";
                 width = svgHullCrew.width * cellsize;
                 height = svgHullCrew.height * cellsize;
             } else if (boxes[col] === 2) {
-                id = "hullDamaged";
+                id = "svglib_hullDamaged";
                 width = svgHullDmgd.width * cellsize;
                 height = svgHullDmgd.height * cellsize;
             }
@@ -170,7 +170,7 @@ export const genSvg = (
                     hullRows.length - (row + 1) === 0)) ||
             (ship.hull.stealth === "1" && hullRows.length - (row + 1) === 1)
         ) {
-            s += `<use href="#stealthHull" x="${boxes.length * cellsize}" y="${y}" width="${svgStealth.width * cellsize}" height="${svgStealth.height * cellsize}" />`;
+            s += `<use href="#${svgStealth.id}" x="${boxes.length * cellsize}" y="${y}" width="${svgStealth.width * cellsize}" height="${svgStealth.height * cellsize}" />`;
         }
     }
 
@@ -189,9 +189,9 @@ export const genSvg = (
                 const x = col * cellsize;
                 const width = svgArmour.width * cellsize;
                 const height = svgArmour.height * cellsize;
-                let id = "armour";
+                let id = "svglib_armour";
                 if (applied > 0) {
-                    id = "armourDamaged";
+                    id = "svglib_armourDamaged";
                     applied--;
                 }
                 s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
@@ -201,9 +201,9 @@ export const genSvg = (
                 const x = (col + offset) * cellsize;
                 const width = svgArmourRegen.width * cellsize;
                 const height = svgArmourRegen.height * cellsize;
-                let id = "armourRegen";
+                let id = "svglib_armourRegen";
                 if (appliedRegen > 0) {
-                    id = "armourRegenDamaged";
+                    id = "svglib_armourRegenDamaged";
                     appliedRegen--;
                 }
                 s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
