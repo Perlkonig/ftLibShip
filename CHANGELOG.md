@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 -   Fundamentally changed the way SVGs are structured (primarily the ID fields) to ensure uniqueness when presenting multiple SSDs on the same page.
+-   Tweaked title resizing script to work better.
 
 ## [2.3.0] - 2024-06-14
 
