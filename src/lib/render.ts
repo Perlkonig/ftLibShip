@@ -35,6 +35,8 @@ export interface RenderOpts {
     // if provided, gives absolute position in svg tag itself
     x?: number;
     y?: number;
+    // whether to invert the footer
+    invertFooter?: boolean;
 }
 
 interface IWeaponSystem extends sysLib.System {
@@ -77,6 +79,9 @@ export const renderSvg = (
     fnv.seed(ship.hashseed);
     if (opts.id === undefined) {
         opts.id = nanoDivId();
+    }
+    if (opts.invertFooter === undefined) {
+        opts.invertFooter = false;
     }
 
     if (ship.hasOwnProperty("hull") && ship.hull !== undefined) {
@@ -400,7 +405,7 @@ export const renderSvg = (
             resizePlateId = fnv.hash(resizePlateId).hex();
             resizeStatsId = fnv.hash(resizeStatsId).hex();
         }
-        svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"}.futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5}.destroyed{opacity:0.1}${styleInsert} ]]></style>`;
+        svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"} .futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5} .destroyed{opacity:0.1}${styleInsert} .svgInvert { filter: invert(1); } ]]></style>`;
         if (!opts.minimal) {
             svg += `<script type="text/javascript"><![CDATA[
             function ${functionName}() {
@@ -460,7 +465,7 @@ export const renderSvg = (
         svg += `<rect x="0" y="0" height="${pxHeight}" width="${pxWidth}" stroke="none" fill="white"/>`;
 
         // Set background for footer
-        svg += `<rect x="0" y="${(totalRows - 3) * cellsize}" width="${pxWidth}" height="${cellsize * 3}" stroke="none" fill="white"/>`;
+        svg += `<rect x="0" y="${(totalRows - 3) * cellsize}" width="${pxWidth}" height="${cellsize * 3}" stroke="none" fill="${opts.invertFooter ? "black" : "white"}"/>`;
 
         //Name plate with special ID so it can be autosized.
         svg += `<text id="${resizePlateId}" x="${cellsize * 0.2}" y="${cellsize * 0.75}" dominant-baseline="middle" font-size="${cellsize}" class="futureFont">${ship.class} "${ship.name}"</text>`;
@@ -682,7 +687,7 @@ export const renderSvg = (
             if (svgDrive !== undefined) {
                 svg += `<use id="_drive" href="#${svgDrive.id}" x="${pxWidth - cellsize * 3}" y="${(hullStart + 2) * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${status(driveID!) === false ? "" : ` class="${status(driveID!)}"`} />`;
             }
-            svg += `<use id="_core" href="#${svgCore.id}" x="${pxWidth * 0.05}" y="${currRow * cellsize + cellsize * 3 * 0.05}" width="${pxWidth * 0.9}" height="${cellsize * 3 * 0.9}" />`;
+            svg += `<use id="_core" href="#${svgCore.id}" x="${pxWidth * 0.05}" y="${currRow * cellsize + cellsize * 3 * 0.05}" width="${pxWidth * 0.9}" height="${cellsize * 3 * 0.9}" class="${opts.invertFooter ? "svgInvert" : ""}" />`;
         } else {
             let svgCombined = "";
             let startX = 0;
@@ -704,7 +709,7 @@ export const renderSvg = (
                 `<symbol id="${overallid}" viewBox="-1 -1 ${groupWidth * cellsize + 2} ${cellsize * 2 + 2}">` +
                 svgCombined +
                 `</symbol>`;
-            svg += `<use href="#${overallid}" x="0" y="${currRow * cellsize}" height="${cellsize * 3}" width="${pxWidth}" />`;
+            svg += `<use href="#${overallid}" x="0" y="${currRow * cellsize}" height="${cellsize * 3}" width="${pxWidth}" class="${opts.invertFooter ? "svgInvert" : ""}" />`;
         }
 
         //SSD outline, done last so it overlaps the heading backgrounds.
