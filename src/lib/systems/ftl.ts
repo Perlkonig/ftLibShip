@@ -34,7 +34,7 @@ export class Ftl extends System {
             if (this.transferMass > 0) {
                 tug = Math.round(this.transferMass / 5);
             }
-            return Math.round(this.ship.mass * 0.1) + tug;
+            return Math.max(1, Math.round(this.ship.mass * 0.1) + tug);
         }
         return NaN;
     }

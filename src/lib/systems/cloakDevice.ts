@@ -18,7 +18,7 @@ export class CloakDevice extends System {
 
     points() {
         if (this.ship.mass !== undefined) {
-            return Math.round(this.ship.mass / 2);
+            return Math.max(1, Math.round(this.ship.mass / 2));
         }
         return NaN;
     }

@@ -26,7 +26,10 @@ export class Drive extends System {
 
     mass() {
         if (this.ship.mass !== undefined && this.thrust !== undefined) {
-            return Math.round(this.ship.mass * 0.05 * (this.thrust as number));
+            if (this.thrust > 0) {
+                return Math.max(1, Math.round(this.ship.mass * 0.05 * (this.thrust as number)));
+            }
+            return 0;
         }
         return NaN;
     }

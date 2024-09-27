@@ -14,7 +14,7 @@ export class StealthField extends System {
 
     mass() {
         if (this.ship.mass !== undefined) {
-            return Math.round(this.ship.mass * 0.05);
+            return Math.max(1, Math.round(this.ship.mass * 0.05));
         } else {
             return NaN;
         }

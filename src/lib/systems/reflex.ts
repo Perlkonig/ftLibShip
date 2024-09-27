@@ -14,7 +14,7 @@ export class Reflex extends System {
 
     mass() {
         if (this.ship.mass !== undefined) {
-            return Math.round(this.ship.mass * 0.1);
+            return Math.max(1, Math.round(this.ship.mass * 0.1));
         }
         return NaN;
     }
