@@ -62,6 +62,8 @@ export enum EvalErrorCode {
     OverMass = "OVERMASS",
     OverPBL = "OVERPBL",
     DblUID = "DblUID",
+    FlawedUnderMass = "FlawedUnderMass",
+    UnknownSystem = "UNKNOWNSYSTEM",
 }
 ```
 
@@ -88,9 +90,11 @@ export interface RenderOpts {
     disabled?: SystemID[];
     // List of uids of destroyed systems
     destroyed?: SystemID[];
+    // Active enemy boarding parties on the ship
+    invaders?: { type: "marines" | "damageControl"; owner?: string | number }[];
 }
 ```
 
-To disable core systems, add one of the following strings to `disabled`: `_coreBridge`, `_coreLife`, or `_corePower`. Disabled systems are greyed out. Destroyed systems are almost invisible. Damage is indicated by simply blacking out the hull or armour boxes.
+To disable core systems, add one of the following strings to `disabled`: `_coreBridge`, `_coreLife`, or `_corePower`. Disabled systems are greyed out. Destroyed systems are almost invisible. Damage is indicated by simply blacking out the hull or armour boxes. Pass active boarding parties via `invaders` in render options (not on the ship object).
 
-For now, invaders are tracked in the ship JSON itself. I realize this is an inconsistency. I'm considering my options.
+Run `npm run render-demo` after building to write a showcase SVG (`scratch.svg` by default) covering all render options for visual inspection.

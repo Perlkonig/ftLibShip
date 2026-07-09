@@ -67,15 +67,14 @@ export class Phaser extends System {
     }
 
     points() {
-        let sys: any;
-        if (this.ship.systems !== undefined) {
-            sys = this.ship.systems.find((x) => x.name === "fireControl");
-        }
-        if (
-            sys !== undefined &&
-            sys.hasOwnProperty("advanced") &&
-            sys.advanced
-        ) {
+        const hasAdvancedFc =
+            this.ship.systems?.some(
+                (x) =>
+                    x.name === "fireControl" &&
+                    x.hasOwnProperty("advanced") &&
+                    x.advanced
+            ) ?? false;
+        if (hasAdvancedFc) {
             return this.mass() * 6;
         } else {
             return this.mass() * 3 + 2;

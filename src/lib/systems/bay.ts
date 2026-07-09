@@ -130,8 +130,8 @@ export class Bay extends System {
                         ? `bayTender${this.capacity}`
                         : fnv.hash(`bayTender${this.capacity}`).hex();
                 return {
-                    id: `bayTender${this.capacity}`,
-                    svg: `<symbol id="svg_bayTender${this.capacity}" viewBox="321.333 40 315.333 473"><g><rect x="415.5" y="222.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="128" height="192"/><polygon fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="479.8,56.8 372.5,199.3 372.5,438.3 449,503.5 511,503.5 586.5,438.3 586.5,199.3"/></g>${insert}</symbol>`,
+                    id,
+                    svg: `<symbol id="${id}" viewBox="321.333 40 315.333 473"><g><rect x="415.5" y="222.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="128" height="192"/><polygon fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="479.8,56.8 372.5,199.3 372.5,438.3 449,503.5 511,503.5 586.5,438.3 586.5,199.3"/></g>${insert}</symbol>`,
                     height: 3,
                     width: 2,
                 };

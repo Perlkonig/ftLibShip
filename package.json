@@ -1,6 +1,6 @@
 {
     "name": "ftlibship",
-    "version": "2.4.2",
+    "version": "3.0.0",
     "description": "Library representing the schema/type for a Full Thrust ship description along with utilities for validating and graphically rendering it",
     "exports": "./dist/index.js",
     "engines": {
@@ -20,7 +20,8 @@
         "schemas": "json2ts -i src/schemas/ship.json -o src/schemas/ship.d.ts",
         "prepare": "npm run build",
         "format": "prettier --write .",
-        "test": "mocha -r ts-node/register tests/**/*.test.ts"
+        "test": "mocha -r ts-node/register tests/**/*.test.ts",
+        "render-demo": "node --loader ts-node/esm scripts/render-demo.ts"
     },
     "author": "Aaron Dalton <aaron@daltons.ca> (https://www.perlkonig.com/)",
     "license": "MIT",

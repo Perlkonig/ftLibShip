@@ -5,6 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2026-07-09
+
+### Removed
+
+-   Removed `invaders` from the ship JSON schema and `FullThrustShip` type. Boarding parties are game-time state and do not belong on a ship design.
+
+### Changed
+
+-   Invaders are now passed via `RenderOpts.invaders` when calling `renderSvg()` or `renderUri()`, alongside `damage`, `armour`, `disabled`, and `destroyed`.
+
+### Fixed
+
+-   Fixed `validate()` throwing on malformed JSON strings; it now returns `{ valid: false, code: BadJSON }` as documented.
+-   Fixed civilian crew-factor mismatch in `evaluate()` — DCP and marine limits now use 1 crew factor per 50 mass for civilian ships, matching hull rendering.
+-   Fixed tender bay SVG symbol IDs using inconsistent hardcoded values; tender bays now use the same hashed ID pattern as other bay types, preventing collisions when multiple SSDs appear on one page.
+-   Fixed `renderSvg()` mutating the input ship object (hashseed, weapon arcs, drive thrust); the ship is now deep-cloned before rendering.
+-   Fixed disabled core systems (`_coreBridge`, `_coreLife`, `_corePower`) not showing when marked disabled — CSS cannot reach inside SVG `<use>` shadow trees, so disabled cores now get inline `fill="red"` on the symbol markup.
+-   Fixed `renderSvg()` ignoring `disabled` when `destroyed` was omitted from `RenderOpts`.
+-   Fixed FTL drive not receiving disabled/destroyed styling when listed in `RenderOpts`.
+-   Fixed phaser point calculation only checking the first fire control; any advanced fire control on the ship now applies.
+-   Fixed unknown system names in ship JSON being silently skipped during `evaluate()`; they now produce `UnknownSystem` errors.
+-   Fixed `Turret.mass()` returning `undefined` (and propagating `NaN`) for invalid `numArcs` values.
+-   Fixed invader `owner` not being rendered on the SSD when provided in `RenderOpts.invaders`.
+-   Fixed duplicate nested `_internal*` glyph symbol IDs when multiple ordnance or magazine glyphs appear on one SSD; inner IDs are now scoped per outer symbol so `<use href>` resolves correctly.
+
+### Migration
+
+Before (v2.x):
+
+```ts
+ship.invaders = [{ type: "marines" }, { type: "damageControl", owner: 1 }];
+renderSvg(ship);
+```
+
+After (v3.0.0):
+
+```ts
+renderSvg(ship, {
+    invaders: [{ type: "marines" }, { type: "damageControl", owner: 1 }],
+});
+```
+
+Remove any `invaders` field from persisted ship JSON. ftShipBuilder and other consumers should store boarding-party state separately and pass it at render time.
+
 ## [2.4.2] - 2024-09-27
 
 ### Fixed

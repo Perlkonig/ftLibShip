@@ -4,14 +4,18 @@ import { hull, systems as sysLib, svgLib } from "../index.js";
 import { Flawed } from "./systems/flawed.js";
 import { nanoid } from "nanoid";
 import fnv from "fnv-plus";
+import { scopeInternalIds } from "./scopeInternalIds.js";
 import { customAlphabet } from "nanoid";
 const nanoDivId = customAlphabet(
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 );
 
-interface Invader {
+export interface InvaderEntry {
     type: "marines" | "damageControl";
     owner?: number | string;
+}
+
+interface Invader extends InvaderEntry {
     obj: sysLib.System;
 }
 
@@ -32,6 +36,8 @@ export interface RenderOpts {
     disabled?: SystemID[];
     // List of uids of destroyed systems
     destroyed?: SystemID[];
+    // Active enemy boarding parties on the ship
+    invaders?: InvaderEntry[];
     // if provided, gives absolute position in svg tag itself
     x?: number;
     y?: number;
@@ -47,22 +53,43 @@ interface IDriveSystem extends sysLib.System {
     thrust: number;
 }
 
+const applyDisabledCoreSvg = (
+    coreSvg: string,
+    disabled?: SystemID[]
+): string => {
+    if (disabled === undefined) {
+        return coreSvg;
+    }
+    let result = coreSvg;
+    for (const s of disabled.filter((x) => x.startsWith("_core"))) {
+        const groupId = `_internalCore${s.substring(5)}`;
+        result = result.replace(
+            new RegExp(`(<g id="${groupId}">)([\\s\\S]*?)(</g>)`),
+            (_match, open: string, content: string, close: string) => {
+                const updated = content.replace(
+                    /class="_rect"/g,
+                    'class="_rect" fill="red"'
+                );
+                return open + updated + close;
+            }
+        );
+    }
+    return result;
+};
+
 export const renderSvg = (
     ship: FullThrustShip,
     opts: RenderOpts = {}
 ): string | undefined => {
+    ship = JSON.parse(JSON.stringify(ship)) as FullThrustShip;
+
     // Helper function to simplify flagging destroyed and disabled systems
     const status = (id: string): "destroyed" | "disabled" | false => {
-        if (opts.destroyed !== undefined) {
-            if (opts.destroyed.includes(id)) {
-                return "destroyed";
-            } else {
-                if (opts.disabled !== undefined) {
-                    if (opts.disabled.includes(id)) {
-                        return "disabled";
-                    }
-                }
-            }
+        if (opts.destroyed !== undefined && opts.destroyed.includes(id)) {
+            return "destroyed";
+        }
+        if (opts.disabled !== undefined && opts.disabled.includes(id)) {
+            return "disabled";
         }
         return false;
     };
@@ -172,8 +199,8 @@ export const renderSvg = (
 
         // Get a list of invaders
         const invaders: Invader[] = [];
-        if (ship.hasOwnProperty("invaders") && ship.invaders !== undefined) {
-            for (const i of ship.invaders) {
+        if (opts.invaders !== undefined) {
+            for (const i of opts.invaders) {
                 let obj: sysLib.System | undefined;
                 if (i.type === "damageControl") {
                     obj = sysLib.getSystem({ name: "damageControl" }, ship);
@@ -323,8 +350,11 @@ export const renderSvg = (
             sysDrive = ship.systems.find((x) => x.name === "drive")!;
         }
         let svgFtl: ISystemSVG | undefined;
+        let ftlID: string | undefined;
         if (sysFtl !== undefined) {
-            svgFtl = sysLib.getSystem(sysFtl, ship)!.glyph();
+            const ftl = sysLib.getSystem(sysFtl, ship)!;
+            ftlID = ftl.uid;
+            svgFtl = ftl.glyph();
         }
         let svgDrive: ISystemSVG | undefined;
         let driveID: string | undefined;
@@ -378,15 +408,7 @@ export const renderSvg = (
         const pxWidth = totalCols * cellsize;
         const pxHeight = totalRows * cellsize;
 
-        // Check for disabled core systems and insert styles to target them
-        let styleInsert = "";
-        if (opts.disabled !== undefined) {
-            for (const s of opts.disabled.filter((x) =>
-                x.startsWith("_core")
-            )) {
-                styleInsert += `#_internalCore${s.substring(5)} ._rect{fill:red}`;
-            }
-        }
+        const coreSvg = applyDisabledCoreSvg(svgCore.svg, opts.disabled);
 
         svg = "";
         if (!opts.minimal) {
@@ -405,7 +427,7 @@ export const renderSvg = (
             resizePlateId = fnv.hash(resizePlateId).hex();
             resizeStatsId = fnv.hash(resizeStatsId).hex();
         }
-        svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"} .futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5} .destroyed{opacity:0.1}${styleInsert} .svgInvert { filter: invert(1); } ]]></style>`;
+        svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"} .futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5} .destroyed{opacity:0.1} .svgInvert { filter: invert(1); } ]]></style>`;
         if (!opts.minimal) {
             svg += `<script type="text/javascript"><![CDATA[
             function ${functionName}() {
@@ -455,9 +477,9 @@ export const renderSvg = (
         if (svgDrive !== undefined) {
             svg += svgDrive.svg;
         }
-        svg += svgCore.svg;
+        svg += coreSvg;
         for (const symbol of sysDistinct) {
-            svg += symbol.svg;
+            svg += scopeInternalIds(symbol.id, symbol.svg);
         }
         svg += `</defs>`;
 
@@ -643,19 +665,28 @@ export const renderSvg = (
             // name plate
             svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Invaders</text>`;
             currRow++;
-            const sorted = [...invaders.map((x) => x.obj)].sort((a, b) => {
-                if (a.name === b.name) {
-                    return a.fullName().localeCompare(b.fullName());
+            const sorted = [...invaders].sort((a, b) => {
+                if (a.obj.name === b.obj.name) {
+                    return a.obj
+                        .fullName()
+                        .localeCompare(b.obj.fullName());
                 } else {
-                    return a.name.localeCompare(b.name);
+                    return a.obj.name.localeCompare(b.obj.name);
                 }
             });
             for (let i = 0; i < sorted.length; i++) {
                 const realRow = Math.floor(i / breakPoint);
                 const realCol = i % breakPoint;
-                const sys = sorted[i];
+                const inv = sorted[i];
+                const sys = inv.obj;
                 const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+                const x = realCol * 2 * cellsize + buff.xOffset;
+                const y =
+                    (currRow + realRow * 2) * cellsize + buff.yOffset;
+                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${x}" y="${y}" width="${buff.width}" height="${buff.height}" />`;
+                if (inv.owner !== undefined) {
+                    svg += `<text x="${x + buff.width / 2}" y="${y + buff.height - cellsize * 0.15}" dominant-baseline="auto" text-anchor="middle" font-size="${cellsize * 0.35}">${inv.owner}</text>`;
+                }
             }
             currRow += Math.ceil(sorted.length / breakPoint) * 2;
         }
@@ -682,7 +713,7 @@ export const renderSvg = (
         // Background fill now in the SVG itself so I can change it programmatically.
         if (compact) {
             if (svgFtl !== undefined) {
-                svg += `<use id="_ftl" href="#${svgFtl.id}" x="${pxWidth - cellsize * 3}" y="${hullStart * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}" />`;
+                svg += `<use id="_ftl" href="#${svgFtl.id}" x="${pxWidth - cellsize * 3}" y="${hullStart * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${status(ftlID!) === false ? "" : ` class="${status(ftlID!)}"`} />`;
             }
             if (svgDrive !== undefined) {
                 svg += `<use id="_drive" href="#${svgDrive.id}" x="${pxWidth - cellsize * 3}" y="${(hullStart + 2) * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${status(driveID!) === false ? "" : ` class="${status(driveID!)}"`} />`;
@@ -693,7 +724,7 @@ export const renderSvg = (
             let startX = 0;
             let groupWidth = 9;
             if (svgFtl !== undefined) {
-                svgCombined += `<use id="_ftl" href="#${svgFtl.id}" x="0" y="0" width="${cellsize * 2}" height="${cellsize * 2}" />`;
+                svgCombined += `<use id="_ftl" href="#${svgFtl.id}" x="0" y="0" width="${cellsize * 2}" height="${cellsize * 2}"${status(ftlID!) === false ? "" : ` class="${status(ftlID!)}"`} />`;
                 startX = cellsize * 2;
                 groupWidth += 2;
             }

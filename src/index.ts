@@ -27,6 +27,7 @@ export enum EvalErrorCode {
     OverPBL = "OVERPBL",
     DblUID = "DblUID",
     FlawedUnderMass = "FlawedUnderMass",
+    UnknownSystem = "UNKNOWNSYSTEM",
 }
 
 export enum ValErrorCode {
@@ -68,7 +69,9 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
             if (ship.hasOwnProperty(group)) {
                 for (const sys of ship[group] as ISystem[]) {
                     const obj = getSystem(sys, ship);
-                    if (obj !== undefined) {
+                    if (obj === undefined) {
+                        results.errors.push(EvalErrorCode.UnknownSystem);
+                    } else {
                         results.mass += obj.mass();
                         results.points += obj.points();
                         results.cpv += obj.cpv();
@@ -98,7 +101,10 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
 
         // Sufficient room for DCPs and marines?
         if (ship.systems !== undefined) {
-            const cf = Math.ceil(ship.mass / 20);
+            const cf =
+                ship.civilian !== undefined && ship.civilian
+                    ? Math.ceil(ship.mass / 50)
+                    : Math.ceil(ship.mass / 20);
             let baysPassengers = 0;
             let baysTroops = 0;
             let addMarines = 0;
@@ -198,7 +204,16 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
 };
 
 import Ajv from "ajv";
-import schema from "./schemas/ship.json" assert { type: "json" }; // add assertion to testing, but not to production
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const schema = JSON.parse(
+    readFileSync(
+        join(dirname(fileURLToPath(import.meta.url)), "schemas", "ship.json"),
+        "utf-8"
+    )
+);
 const ajv = new Ajv.default({ allErrors: true });
 const ajvValidate = ajv.compile<FullThrustShip>(schema);
 
@@ -214,8 +229,16 @@ export const validate = (shipJson: string): IValidation => {
         valid: true,
     } as IValidation;
 
-    // Test against schema
-    const shipObj: FullThrustShip = JSON.parse(shipJson);
+    let shipObj: FullThrustShip;
+    try {
+        shipObj = JSON.parse(shipJson);
+    } catch {
+        return {
+            valid: false,
+            code: ValErrorCode.BadJSON,
+        };
+    }
+
     if (!ajvValidate(shipObj)) {
         results.valid = false;
         results.code = ValErrorCode.BadJSON;

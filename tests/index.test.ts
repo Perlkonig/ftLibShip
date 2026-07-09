@@ -10,9 +10,12 @@ import {
 } from "../src/index.js";
 import type { IValidation } from "../src/index.js";
 import { renderSvg, renderUri, calcRot, rotArc } from "../src/index.js";
+import { scopeInternalIds } from "../src/lib/scopeInternalIds.js";
 import { Kgun } from "../src/lib/systems/kgun.js";
+import { Phaser } from "../src/lib/systems/phaser.js";
+import { Turret } from "../src/lib/systems/turret.js";
 
-const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":6,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":167,"cpv":142,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","invaders":[{"type":"marines"},{"type":"damageControl","owner":1},{"type":"damageControl","owner":"test"}],"orientation":"alpha"}`;
+const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":6,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":167,"cpv":142,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","orientation":"alpha"}`;
 const validKonstantin = `{"hull":{"points":72,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":2,"advanced":false,"id":"q7Leg"},{"name":"ftl","advanced":false,"id":"ldkgq"},{"name":"screen","area":false,"advanced":false,"id":"xv2qU"},{"name":"screen","area":false,"advanced":false,"id":"ZqYDP"},{"name":"fireControl","id":"mdpi2"},{"name":"fireControl","id":"IqDbI"},{"name":"hangar","id":"EQ2W6","isRack":false,"critRules":false},{"name":"hangar","id":"sw_ET","isRack":false,"critRules":false},{"name":"hangar","id":"DRonE","isRack":false,"critRules":false},{"name":"hangar","id":"5hxLH","isRack":false,"critRules":false},{"name":"hangar","id":"FJl7X","isRack":false,"critRules":false},{"name":"hangar","id":"I4LWH","isRack":false,"critRules":false}],"weapons":[{"name":"pds","id":"l5LdK"},{"name":"pds","id":"vwGAa"},{"name":"pds","id":"gh3ru"},{"name":"pds","id":"aDMFK"},{"name":"pds","id":"IpY96"},{"name":"pds","id":"25H7F"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"BepZp"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"Ds8zO"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"Vj_AN"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"ERb4o"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Ve2aC"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"C6rZc"},{"name":"beam","class":3,"leftArc":"AP","numArcs":3,"id":"r34r8"},{"name":"beam","class":3,"leftArc":"FP","numArcs":3,"id":"1mABJ"},{"name":"beam","class":3,"leftArc":"FP","numArcs":3,"id":"xjptS"},{"name":"beam","class":3,"leftArc":"F","numArcs":3,"id":"7fLe0"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"standard","id":"lgrLB","mods":[],"hangar":"EQ2W6"},{"name":"fighters","type":"standard","id":"4xXE-","mods":[],"hangar":"sw_ET"},{"name":"fighters","type":"standard","id":"viaG3","mods":[],"hangar":"DRonE"},{"name":"fighters","type":"standard","id":"pdLwG","mods":[],"hangar":"5hxLH"},{"name":"fighters","type":"standard","id":"brJEp","mods":[],"hangar":"FJl7X"},{"name":"fighters","type":"standard","id":"ykKy1","mods":[],"hangar":"I4LWH"}],"orientation":"alpha","points":842,"cpv":840,"mass":240,"class":"Attack Carrier","name":"Konstantin"}`;
 
 describe("Root exports: Evaluate", () => {
@@ -124,6 +127,17 @@ describe("Root exports: Evaluate", () => {
         evaluation = evaluate(ship);
         expect(evaluation.errors).to.have.deep.members([EvalErrorCode.OverDCP]);
     });
+    it("Error Codes: OverDCP on civilian ship", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.civilian = true;
+        ship.mass = 100;
+        ship.systems!.push(
+            { name: "damageControl" },
+            { name: "damageControl" },
+            { name: "damageControl" }
+        );
+        expect(evaluate(ship).errors).to.include(EvalErrorCode.OverDCP);
+    });
     it("Error Codes: OverCrew", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         ship.systems!.push({ name: "damageControl" });
@@ -174,6 +188,12 @@ describe("Root exports: Evaluate", () => {
         expect(evaluation.errors.length).to.equal(1);
         expect(evaluation.errors).to.have.deep.members([EvalErrorCode.DblUID]);
     });
+    it("Error Codes: UnknownSystem", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.systems!.push({ name: "notARealSystem" } as never);
+        const evaluation = evaluate(ship);
+        expect(evaluation.errors).to.include(EvalErrorCode.UnknownSystem);
+    });
 });
 
 describe("Root exports: Validate", () => {
@@ -189,6 +209,12 @@ describe("Root exports: Validate", () => {
         expect(results.code).to.be.equal(ValErrorCode.BadJSON);
         expect(results.ajvErrors).not.to.be.undefined;
         expect(results.ajvErrors!.length).to.be.greaterThan(0);
+    });
+    it("Bad JSON syntax", () => {
+        const results = validate("{not json");
+        expect(results.valid).to.be.false;
+        expect(results.code).to.be.equal(ValErrorCode.BadJSON);
+        expect(results.ajvErrors).to.be.undefined;
     });
     it("Bad construction", () => {
         const badTacoma = validTacoma.replace(
@@ -262,17 +288,102 @@ describe("Renderer", () => {
         expect(arc).equal("FS");
     });
 
-    it("Export", () => {
-        // const toExport = `{"hull":{"points":15,"rows":3,"stealth":"0","streamlining":"none"},"armour":[[3,2],[3,0]],"systems":[{"name":"drive","thrust":5,"advanced":false,"id":"Dui3J"}],"weapons":[{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1Dc"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1De"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"5h1Dd"}],"ordnance":[],"extras":[],"fighters":[],"orientation":"alpha","points":124,"cpv":99,"mass":50,"class":"Light Cruiser","name":"Test"}`;
+    it("RenderOpts produce expected SVG markers", () => {
         const ship = JSON.parse(validKonstantin) as FullThrustShip;
         ship.flawed = true;
-        console.log(
-            renderSvg(ship, {
-                damage: 2,
-                /*armour: [[1,1],[1,1]],*/ disabled: ["_corePower", "Vj_AN"],
-                destroyed: ["Ds8zO", "C6rZc"],
-            })
+        ship.armour = [[3, 2], [2, 0]];
+        ship.hashseed = "demo";
+        const svg = renderSvg(ship, {
+            damage: 2,
+            armour: [
+                [1, 1],
+                [1, 0],
+            ],
+            disabled: ["_corePower", "Vj_AN"],
+            destroyed: ["Ds8zO", "C6rZc"],
+            invaders: [
+                { type: "marines" },
+                { type: "damageControl", owner: 1 },
+            ],
+            invertFooter: true,
+        });
+        expect(svg).to.be.a("string");
+        expect(svg).to.include("Invaders");
+        expect(svg).to.include("svglib_hullDamaged");
+        expect(svg).to.include('class="disabled"');
+        expect(svg).to.include('class="destroyed"');
+        expect(svg).to.include("svgInvert");
+        expect(svg).to.match(
+            /id="_internalCorePower"[\s\S]*?class="_rect" fill="red"/
         );
+    });
+
+    it("disabled without destroyed still applies styling", () => {
+        const ship = JSON.parse(validKonstantin) as FullThrustShip;
+        const svg = renderSvg(ship, { disabled: ["Vj_AN"] });
+        expect(svg).to.include('class="disabled"');
+    });
+
+    it("invader owner is rendered", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        const svg = renderSvg(ship, {
+            invaders: [{ type: "damageControl", owner: "P2" }],
+        });
+        expect(svg).to.include(">P2<");
+    });
+
+    it("renderSvg does not mutate input ship", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        const before = JSON.stringify(ship);
+        renderSvg(ship, { damage: 1 });
+        expect(JSON.stringify(ship)).to.equal(before);
+    });
+
+    it("renderUri returns a data URI", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        const uri = renderUri(ship);
+        expect(uri).to.match(/^data:image\/svg\+xml/);
+    });
+
+    it("scopeInternalIds namespaces nested symbol ids and hrefs", () => {
+        const svg = `<symbol id="outer"><defs><symbol id="_internalFoo" viewBox="0 0 1 1"/><symbol id="_internalFooBar" viewBox="0 0 1 1"/></defs><use href="#_internalFooBar"/><use href="#_internalFoo"/></symbol>`;
+        const scoped = scopeInternalIds("outer", svg);
+        expect(scoped).to.include('id="outer_internalFooBar"');
+        expect(scoped).to.include('id="outer_internalFoo"');
+        expect(scoped).to.include('href="#outer_internalFooBar"');
+        expect(scoped).to.include('href="#outer_internalFoo"');
+        expect(scoped).not.to.include('id="_internalFoo"');
+        expect(scoped).not.to.include('href="#_internalFoo"');
+    });
+
+    it("renderSvg output has no duplicate element ids", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.systems = [
+            { name: "drive", thrust: 6, advanced: false, id: "CX-A9" },
+            { name: "ftl", advanced: false, id: "O_hFB" },
+            {
+                name: "magazine",
+                capacity: 2,
+                modifier: "er",
+                id: "mag1",
+            },
+            {
+                name: "magazine",
+                capacity: 3,
+                modifier: "er",
+                id: "mag2",
+            },
+        ];
+        ship.weapons = [
+            { name: "ads", leftArc: "F", numArcs: 3, id: "ads1" },
+            { name: "ads", leftArc: "FP", numArcs: 3, id: "ads2" },
+        ];
+        ship.ordnance = [{ name: "salvo", modifier: "er", id: "salvo1" }];
+        const svg = renderSvg(ship);
+        expect(svg).to.be.a("string");
+        const ids = [...svg!.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
+        const dupes = ids.filter((id, i) => ids.indexOf(id) !== i);
+        expect(dupes).to.deep.equal([]);
     });
 });
 
@@ -302,6 +413,27 @@ describe("Mass calculations", () => {
         expect(mass).equal(26);
         mass = new Kgun({ ...kgun, modifier: "short" }, ship).mass();
         expect(mass).equal(1.5);
+    });
+    it("Phasers use any advanced fire control", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.systems = [
+            { name: "fireControl", id: "standard" },
+            { name: "fireControl", advanced: true, id: "advanced" },
+        ];
+        const phaser = new Phaser(
+            { name: "phaser", class: 1, numArcs: 3 },
+            ship
+        );
+        expect(phaser.mass()).to.equal(1);
+        expect(phaser.points()).to.equal(6);
+    });
+    it("Turret mass handles invalid numArcs", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        const turret = new Turret(
+            { name: "turret", numArcs: 99 as 1, weapons: [] },
+            ship
+        );
+        expect(turret.mass()).to.equal(0);
     });
 });
 

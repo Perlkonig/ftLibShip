@@ -102,6 +102,8 @@ export class Turret extends System {
                 return Math.ceil(this.getHousedMass() / 3);
             case 6:
                 return Math.ceil(this.getHousedMass() / 2);
+            default:
+                return Math.ceil(this.getHousedMass() / 2);
         }
     }
 
