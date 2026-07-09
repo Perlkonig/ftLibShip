@@ -204,16 +204,7 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
 };
 
 import Ajv from "ajv";
-import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const schema = JSON.parse(
-    readFileSync(
-        join(dirname(fileURLToPath(import.meta.url)), "schemas", "ship.json"),
-        "utf-8"
-    )
-);
+import schema from "./schemas/shipSchema.js";
 const ajv = new Ajv.default({ allErrors: true });
 const ajvValidate = ajv.compile<FullThrustShip>(schema);
 

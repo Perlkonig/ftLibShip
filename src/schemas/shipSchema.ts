@@ -1,0 +1,711 @@
+// Auto-generated from ship.json — do not edit
+export default {
+    "$schema": "http://json-schema.org/schema#",
+    "$id": "https://www.abstractplay.com/schemas/fullthrust/ship/1-0-0.json#",
+    "title": "Full Thrust Ship",
+    "description": "Representation of a valid Full Thrust ship",
+    "definitions": {
+        "arcs": {
+            "enum": ["F", "FS", "FP", "A", "AS", "AP"]
+        },
+        "numarcs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6,
+            "default": 1
+        }
+    },
+    "type": "object",
+    "properties": {
+        "points": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "cpv": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "mass": {
+            "type": "integer",
+            "minimum": 5
+        },
+        "civilian": {
+            "description": "Crew factors are calculated differently for civilian vs. military vessels.",
+            "type": "boolean",
+            "default": false
+        },
+        "orientation": {
+            "description": "Beta orientation shifts the arcs 30 degrees clockwise.",
+            "enum": ["alpha", "beta"],
+            "default": "alpha"
+        },
+        "flawed": {
+            "description": "Indicates a 'flawed design,' making the ship fragile but cheaper.",
+            "type": "boolean",
+            "default": false
+        },
+        "hull": {
+            "type": "object",
+            "properties": {
+                "points": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "rows": {
+                    "enum": [3, 4, 5, 6],
+                    "default": 4
+                },
+                "stealth": {
+                    "enum": ["0", "1", "2"],
+                    "default": "0"
+                },
+                "streamlining": {
+                    "enum": ["none", "partial", "full"],
+                    "default": "none"
+                }
+            },
+            "required": ["points", "rows", "stealth", "streamlining"],
+            "additionalProperties": false
+        },
+        "armour": {
+            "description": "Rows of armour. First element being the innermost layer. The use of 'oneOf' here is for backwards compatibility.",
+            "type": "array",
+            "items": {
+                "description": "The first element is standard armour, the second is regenerative.",
+                "type": "array",
+                "items": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "minItems": 2,
+                "maxItems": 2
+            }
+        },
+        "systems": {
+            "description": "This property contains all systems that get checked on threshold rolls but that are not used during the 'fire' or 'ordnance' phases of play.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "anyOf": [
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["drive"]
+                            },
+                            "advanced": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "thrust": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        },
+                        "required": ["name", "thrust"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["ftl"]
+                            },
+                            "advanced": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "transferMass": {
+                                "description": "Total extra mass an FTL tug drive can transfer. Must be a multiple of 5. Defaults to 0.",
+                                "type": "number",
+                                "minimum": 0,
+                                "multipleOf": 5,
+                                "default": 0
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["fireControl", "adfc", "sensors"]
+                            },
+                            "advanced": {
+                                "type": "boolean",
+                                "default": false
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["hangar"]
+                            },
+                            "isRack": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "id": {
+                                "description": "A unique identifier used to target this hangar in orders and in the `fighters` property.",
+                                "type": "string"
+                            }
+                        },
+                        "required": ["name", "id"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["launchTube"]
+                            },
+                            "catapult": {
+                                "type": "boolean",
+                                "default": false
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["screen"]
+                            },
+                            "advanced": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "area": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "level": {
+                                "enum": [1, 2]
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": [
+                                    "suicide",
+                                    "mineSweeper",
+                                    "damageControl",
+                                    "marines",
+                                    "stealthField",
+                                    "holofield",
+                                    "cloakDevice",
+                                    "cloakField",
+                                    "ortillery",
+                                    "reflex",
+                                    "shroud"
+                                ]
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["mineLayer"]
+                            },
+                            "capacity": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "default": 2
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["decoy"]
+                            },
+                            "type": {
+                                "enum": ["cruiser", "capital"]
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["bay"]
+                            },
+                            "type": {
+                                "enum": [
+                                    "cargo",
+                                    "passenger",
+                                    "troop",
+                                    "boat",
+                                    "tender"
+                                ]
+                            },
+                            "capacity": {
+                                "type": "number",
+                                "minimum": 1
+                            },
+                            "id": {
+                                "description": "A unique identifier used to target this specific bay in orders.",
+                                "type": "string"
+                            },
+                            "ratio": {
+                                "description": "If given, the mass of the bay is calculated as the product of the capacity and this ratio. If not provided, then the default ratios found in the *Continuum* rules are used.",
+                                "type": "number"
+                            }
+                        },
+                        "required": ["name", "type", "capacity", "id"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["magazine"]
+                            },
+                            "id": {
+                                "description": "A unique identifier used to tie this magazine to one or more launchers.",
+                                "type": "string"
+                            },
+                            "modifier": {
+                                "enum": ["er", "twostage"]
+                            },
+                            "capacity": {
+                                "type": "integer",
+                                "minimum": 2
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["ecm"]
+                            },
+                            "area": {
+                                "type": "boolean",
+                                "default": false
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["turret"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "enum": [1, 2, 3, 4, 5, 6],
+                                "default": 1
+                            },
+                            "facingArc": {
+                                "description": "",
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "weapons": {
+                                "description": "A list of weapon IDs housed within this turret.",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "size": {
+                                "description": "Purely used by SSD generators to size the turret relative to other systems. Turret glyphs are always square.",
+                                "type": "integer",
+                                "minimum": 4,
+                                "default": 4
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    }
+                ]
+            }
+        },
+        "ordnance": {
+            "description": "This property contains all systems that get deployed during the 'ordnance' phase of play. These systems are also checked on threshold rolls.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "oneOf": [
+                    {
+                        "description": "`leftArc` and `numArcs` are not required for backwards compatibility",
+                        "properties": {
+                            "name": {
+                                "description": "`amt` is the antimatter missile",
+                                "enum": ["amt", "rocketPod"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs",
+                                "default": "FP"
+                            },
+                            "numArcs": {
+                                "enum": [3],
+                                "default": 3
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "description": "`leftArc` and `numArcs` are not required for backwards compatibility",
+                        "properties": {
+                            "name": {
+                                "enum": ["missile", "salvo"]
+                            },
+                            "modifier": {
+                                "enum": ["er", "twostage"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs",
+                                "default": "FP"
+                            },
+                            "numArcs": {
+                                "enum": [3],
+                                "default": 3
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["salvoLauncher"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "enum": [3]
+                            },
+                            "magazine": {
+                                "description": "The unique ID of a missile magazine",
+                                "type": "string"
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    }
+                ]
+            }
+        },
+        "weapons": {
+            "description": "This property contains all systems that players can trigger during the 'fire' phase of play. These systems are also checked on threshold rolls.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "oneOf": [
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": [
+                                    "pds",
+                                    "scatterGun",
+                                    "grapeshot",
+                                    "spinalNova",
+                                    "spinalWave"
+                                ]
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": [
+                                    "spinalBeam",
+                                    "spinalPlasma",
+                                    "spinalSingularity"
+                                ]
+                            },
+                            "range": {
+                                "enum": ["short", "medium", "long"],
+                                "default": "short"
+                            }
+                        },
+                        "required": ["name", "range"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["ads"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "enum": [3, 6],
+                                "default": 3
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["submunition"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "enum": [3]
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["pulser"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "enum": [1, 3, 6]
+                            },
+                            "range": {
+                                "enum": [
+                                    "undefined",
+                                    "long",
+                                    "medium",
+                                    "short"
+                                ],
+                                "default": "undefined"
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": [
+                                    "beam",
+                                    "emp",
+                                    "plasmaCannon",
+                                    "phaser",
+                                    "transporter",
+                                    "needle"
+                                ]
+                            },
+                            "class": {
+                                "enum": [1, 2, 3, 4]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "class", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["graser"]
+                            },
+                            "heavy": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "highIntensity": {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "class": {
+                                "enum": [1, 2, 3, 4]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "class", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": [
+                                    "gatling",
+                                    "particle",
+                                    "meson",
+                                    "fusion"
+                                ]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["torpedoPulse"]
+                            },
+                            "modifier": {
+                                "enum": ["short", "long"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["kgun"]
+                            },
+                            "class": {
+                                "enum": [1, 2, 3, 4, 5, 6]
+                            },
+                            "modifier": {
+                                "enum": ["short", "long"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "class", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["gravitic"]
+                            },
+                            "class": {
+                                "enum": [1, 2, 3]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "class", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["pbl"]
+                            },
+                            "class": {
+                                "enum": [1, 2, 3, 4, 5, 6]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "class", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["mkp"]
+                            },
+                            "arc": {
+                                "$ref": "#/definitions/arcs"
+                            }
+                        },
+                        "required": ["name", "arc"]
+                    }
+                ]
+            }
+        },
+        "extras": {
+            "description": "This property contains all systems that do NOT get checked on threshold rolls. Currently there aren't any."
+        },
+        "fighters": {
+            "description": "There cannot be more fighters than hangars.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "The fighters' base type",
+                        "enum": [
+                            "standard",
+                            "interceptor",
+                            "attack",
+                            "torpedo",
+                            "graser",
+                            "plasma",
+                            "MKP",
+                            "missile",
+                            "multiRole",
+                            "light",
+                            "lightInterceptor",
+                            "lightAttack",
+                            "assault"
+                        ],
+                        "default": "standard"
+                    },
+                    "mods": {
+                        "type": "array",
+                        "items": {
+                            "enum": [
+                                "heavy",
+                                "fast",
+                                "longRange",
+                                "ftl",
+                                "robot"
+                            ]
+                        }
+                    },
+                    "hangar": {
+                        "description": "Must match a hangar id. Omitted if the fighters are deployed.",
+                        "type": "string"
+                    },
+                    "number": {
+                        "description": "Only needed during game play to track squadron size over time",
+                        "type": "integer",
+                        "minimum": 0,
+                        "default": 6
+                    },
+                    "skill": {
+                        "description": "Only needed during game play and only if you are playing with ace/turkey rules",
+                        "enum": ["standard", "ace", "turkey"],
+                        "default": "standard"
+                    }
+                },
+                "required": ["type"]
+            }
+        },
+        "class": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "uuid": {
+            "description": "Only needed during actual game play where each ship needs a truly unique ID.",
+            "type": "string"
+        },
+        "notes": {
+            "description": "Markdown-encoded flavour text attached to this particular ship.",
+            "type": "string"
+        },
+        "silhouette": {
+            "description": "The symbol you'd want to represent this ship in a game viewer. It must be a `<symbol>` with a `viewBox` attribute. The `id` attribute is set by the renderer.",
+            "type": "string"
+        },
+        "hashseed": {
+            "description": "Used to generate unique IDs, necessary when presenting multiple SSDs on the same page. If not provided, one will be randomly generated.",
+            "type": "string"
+        }
+    }
+} as const;
