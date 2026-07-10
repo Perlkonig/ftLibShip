@@ -5,6 +5,16 @@ import { Flawed } from "./systems/flawed.js";
 import { nanoid } from "nanoid";
 import fnv from "fnv-plus";
 import { scopeInternalIds } from "./scopeInternalIds.js";
+import { buildEmbeddedResizeScript } from "./resizeSsdTitles.js";
+
+export {
+    resizeSsdTitles,
+    buildEmbeddedResizeScript,
+    buildFleetHtmlResizeScript,
+    computeFitScale,
+    parseSsdViewBox,
+    SSD_LAYOUT_CELLSIZE,
+} from "./resizeSsdTitles.js";
 import { customAlphabet } from "nanoid";
 const nanoDivId = customAlphabet(
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -415,10 +425,6 @@ export const renderSvg = (
             svg += `<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`;
         }
 
-        let functionName = "resizePlates";
-        if (ship.hashseed !== undefined) {
-            functionName = `resize_${fnv.hash(functionName).hex()}`;
-        }
         svg += `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${pxWidth + 2} ${pxHeight + 2}"${opts.x !== undefined ? ` x="${opts.x}"` : ""}${opts.y !== undefined ? ` y="${opts.y}"` : ""} width="100%" height="100%"${opts.id ? ` id="${opts.id}"` : ""}>`;
         svg += `<defs>`;
         let resizePlateId = "_resizeNamePlate";
@@ -427,43 +433,11 @@ export const renderSvg = (
             resizePlateId = fnv.hash(resizePlateId).hex();
             resizeStatsId = fnv.hash(resizeStatsId).hex();
         }
+        const namePlateX = cellsize * 0.2;
+        const namePlateY = cellsize * 0.75;
         svg += `<style type="text/css"><![CDATA[ @import url(https://fonts.googleapis.com/css2?family=Zen+Dots&family=Roboto&display=swap);text{font-family:"Roboto"} .futureFont{font-family:"Zen Dots"}.disabled{opacity:0.5} .destroyed{opacity:0.1} .svgInvert { filter: invert(1); } ]]></style>`;
         if (!opts.minimal) {
-            svg += `<script type="text/javascript"><![CDATA[
-            function ${functionName}() {
-                const fullEle = document.getElementById("${opts.id}");
-                if (fullEle !== null) {
-                    const fullBB = fullEle.getBoundingClientRect();
-                    const maxWidth = fullBB.width * 0.9;
-                    const namePlate = document.getElementById("${resizePlateId}");
-                    if (namePlate !== null) {
-                        const npBB = namePlate.getBoundingClientRect();
-                        const npValue = maxWidth / npBB.width;
-                        if (npValue !== Infinity) {
-                            const curr = parseFloat(namePlate.getAttribute("font-size"));
-                            namePlate.setAttribute("font-size", curr * npValue);
-                        }
-                    } else {
-                        console.log("Could not find an element with the ID ${resizePlateId}")
-                    }
-                    const statPlate = document.getElementById("${resizeStatsId}");
-                    if (statPlate !== null) {
-                        const statBB = statPlate.getBoundingClientRect();
-                        if (statBB.width > fullBB.width) {
-                            const statValue = maxWidth / statBB.width;
-                            if (statValue !== Infinity) {
-                                const curr = parseFloat(statPlate.getAttribute("font-size"));
-                                statPlate.setAttribute("font-size", curr * statValue);
-                            }
-                        }
-                    } else {
-                        console.log("Could not find an element with the ID ${resizeStatsId}")
-                    }
-                }
-            }
-            window.setTimeout(${functionName}, 1000);
-            window.addEventListener("resize", ${functionName})
-           ]]></script>`;
+            svg += buildEmbeddedResizeScript();
         }
 
         svg += hull.genSvg(ship, {
@@ -490,7 +464,7 @@ export const renderSvg = (
         svg += `<rect x="0" y="${(totalRows - 3) * cellsize}" width="${pxWidth}" height="${cellsize * 3}" stroke="none" fill="${opts.invertFooter ? "black" : "white"}"/>`;
 
         //Name plate with special ID so it can be autosized.
-        svg += `<text id="${resizePlateId}" x="${cellsize * 0.2}" y="${cellsize * 0.75}" dominant-baseline="middle" font-size="${cellsize}" class="futureFont">${ship.class} "${ship.name}"</text>`;
+        svg += `<text id="${resizePlateId}" data-ft-role="nameplate" data-ft-orig-x="${namePlateX}" data-ft-orig-y="${namePlateY}" x="${namePlateX}" y="${namePlateY}" dominant-baseline="middle" font-size="${cellsize}" class="futureFont">${ship.class} "${ship.name}"</text>`;
 
         let currRow = 1.5;
 
@@ -706,7 +680,9 @@ export const renderSvg = (
 
         // Stats
         // Give text node special ID for autosizing
-        svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text id="${resizeStatsId}" x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Mass: ${ship.mass} NPV: ${ship.points} CPV: ${ship.cpv}</text>`;
+        const statsX = cellsize * 0.2;
+        const statsY = currRow * cellsize + cellsize / 2;
+        svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text id="${resizeStatsId}" data-ft-role="stats" data-ft-orig-x="${statsX}" data-ft-orig-y="${statsY}" x="${statsX}" y="${statsY}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Mass: ${ship.mass} NPV: ${ship.points} CPV: ${ship.cpv}</text>`;
         currRow++;
 
         // Drives & Core
