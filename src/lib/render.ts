@@ -87,6 +87,29 @@ const applyDisabledCoreSvg = (
     return result;
 };
 
+const applyDamagedDriveSvg = (driveSvg: string): string => {
+    return driveSvg.replace(
+        /(<text[^>]*font-size="400")/,
+        '$1 fill="red"'
+    );
+};
+
+const damagedDriveThrust = (
+    thrust: number,
+    driveStatus: "destroyed" | "disabled" | false
+): { thrust: number; damaged: boolean } => {
+    if (driveStatus === "destroyed") {
+        return { thrust: 0, damaged: true };
+    }
+    if (driveStatus === "disabled") {
+        if (thrust <= 1) {
+            return { thrust: 0, damaged: true };
+        }
+        return { thrust: Math.floor(thrust / 2), damaged: true };
+    }
+    return { thrust, damaged: false };
+};
+
 export const renderSvg = (
     ship: FullThrustShip,
     opts: RenderOpts = {}
@@ -371,12 +394,18 @@ export const renderSvg = (
         if (sysDrive !== undefined) {
             const drive = sysLib.getSystem(sysDrive, ship)! as IDriveSystem;
             driveID = drive.uid;
-            if (status(drive.uid) === "destroyed") {
-                drive.thrust = 0;
-            } else if (status(drive.uid) === "disabled") {
-                drive.thrust = Math.ceil(drive.thrust / 2);
+            const originalThrust = drive.thrust;
+            const { thrust, damaged } = damagedDriveThrust(
+                originalThrust,
+                status(drive.uid)
+            );
+            drive.thrust = thrust;
+            const glyph = drive.glyph();
+            if (glyph !== undefined) {
+                svgDrive = damaged
+                    ? { ...glyph, svg: applyDamagedDriveSvg(glyph.svg) }
+                    : glyph;
             }
-            svgDrive = drive.glyph();
         }
 
         const sysDistinct: ISystemSVG[] = [];

@@ -324,6 +324,27 @@ describe("Renderer", () => {
         expect(svg).to.include('class="disabled"');
     });
 
+    it("damaged drive shows halved thrust in red", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        const svg = renderSvg(ship, { disabled: ["CX-A9"] });
+        expect(svg).to.match(/font-size="400" fill="red"[^>]*>3</);
+    });
+
+    it("damaged thrust-1 drive shows 0 in red", () => {
+        const ship = JSON.parse(validKonstantin) as FullThrustShip;
+        const drive = ship.systems!.find((s) => s.name === "drive")!;
+        drive.thrust = 1;
+        const svg = renderSvg(ship, { disabled: ["q7Leg"] });
+        expect(svg).to.match(/font-size="400" fill="red"[^>]*>0</);
+    });
+
+    it("destroyed drive shows 0 thrust in red", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        const svg = renderSvg(ship, { destroyed: ["CX-A9"] });
+        expect(svg).to.match(/font-size="400" fill="red"[^>]*>0</);
+        expect(svg).to.include('class="destroyed"');
+    });
+
     it("invader owner is rendered", () => {
         const ship = JSON.parse(validTacoma) as FullThrustShip;
         const svg = renderSvg(ship, {
