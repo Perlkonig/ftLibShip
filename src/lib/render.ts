@@ -31,6 +31,9 @@ interface Invader extends InvaderEntry {
 
 type SystemID = "_coreBridge" | "_coreLife" | "_corePower" | string;
 
+/** Per armour row: [regularDamaged, [regenDamaged, regenLost]] (innermost row first). */
+export type ArmourRowRenderDamage = [number, [number, number]];
+
 export interface RenderOpts {
     // If true, strips the scripts and introductory lines
     minimal?: boolean;
@@ -40,13 +43,17 @@ export interface RenderOpts {
     damage?: number;
     // The amount of damage done to each layer of armour
     // The first row is the innermost layer
-    // First element is regular armour, second is regenerative armour
-    armour?: [number, number][];
+    // First element is regular armour damage; second is [regen damaged, regen lost]
+    armour?: ArmourRowRenderDamage[];
     // List of uids of disabled systems
     disabled?: SystemID[];
     // List of uids of destroyed systems
     destroyed?: SystemID[];
-    // Active enemy boarding parties on the ship
+    /** Absent friendly marines or hired damageControl sent to board other ships */
+    deployed?: SystemID[];
+    /** Built-in DCP absent from this ship; hull stars greyed from end of track */
+    deployedBuiltinDcp?: number;
+    /** Enemy marines or DCP that have boarded this ship (display only) */
     invaders?: InvaderEntry[];
     // if provided, gives absolute position in svg tag itself
     x?: number;
@@ -125,6 +132,17 @@ export const renderSvg = (
             return "disabled";
         }
         return false;
+    };
+
+    const renderClass = (id: string): string => {
+        const s = status(id);
+        if (s !== false) {
+            return ` class="${s}"`;
+        }
+        if (opts.deployed !== undefined && opts.deployed.includes(id)) {
+            return ` class="disabled"`;
+        }
+        return "";
     };
 
     let svg: string | undefined;
@@ -473,6 +491,7 @@ export const renderSvg = (
             cellsize,
             hullDamage: opts.damage,
             armourDamage: opts.armour,
+            deployedBuiltinDcp: opts.deployedBuiltinDcp,
         });
         if (svgFtl !== undefined) {
             svg += svgFtl.svg;
@@ -514,7 +533,7 @@ export const renderSvg = (
                 const realCol = i % breakPoint;
                 const sys = sorted[i];
                 const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid) === false ? "" : ` class="${status(sys.uid)}"`} />`;
+                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(sys.uid)} />`;
             }
             currRow += Math.ceil(sorted.length / breakPoint) * 2;
         }
@@ -559,7 +578,7 @@ export const renderSvg = (
                 const realCol = i % breakPoint;
                 const sys = sorted[i];
                 const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid) === false ? "" : ` class="${status(sys.uid)}"`} />`;
+                svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(sys.uid)} />`;
             }
 
             currRow += Math.ceil(sorted.length / breakPoint) * 2;
@@ -582,7 +601,7 @@ export const renderSvg = (
                     const realCol = i % breakPoint;
                     const sys = feeding[i];
                     const buff = buffInSquare(sys.glyph(), cellsize * 2, true);
-                    svg += `<use id="${sys.uid}" href="#${sys.glyph().id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid) === false ? "" : ` class="${status(sys.uid)}"`} />`;
+                    svg += `<use id="${sys.uid}" href="#${sys.glyph().id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(sys.uid)} />`;
                 }
                 for (let i = 0; i < mag.capacity; i++) {
                     const realI = i + feeding.length;
@@ -590,7 +609,7 @@ export const renderSvg = (
                     const realCol = realI % breakPoint;
                     const glyph = mag.missileGlyph();
                     const buff = buffInSquare(glyph, cellsize * 2, false);
-                    svg += `<use href="#${glyph.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(mag.uid) === false ? "" : ` class="${status(mag.uid)}"`} />`;
+                    svg += `<use href="#${glyph.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(mag.uid)} />`;
                 }
 
                 currRow +=
@@ -623,7 +642,7 @@ export const renderSvg = (
                     const realCol = i % breakPoint;
                     const sys = sorted[i];
                     const buff = buffInSquare(sys.glyph()!, cellsize * 2, true);
-                    svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(sys.uid) === false ? "" : ` class="${status(sys.uid)}"`} />`;
+                    svg += `<use id="${sys.uid}" href="#${sys.glyph()!.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(sys.uid)} />`;
                 }
 
                 currRow += Math.ceil(sorted.length / breakPoint) * 2;
@@ -644,7 +663,7 @@ export const renderSvg = (
                 }
                 // First add the turret glyph
                 const buff = buffInSquare(turret.glyph(), cellsize * 2, true);
-                svg += `<use id="${turret.uid}" href="#${turret.glyph().id}" x="${buff.xOffset}" y="${currRow * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(turret.uid) === false ? "" : ` class="${status(turret.uid)}"`} />`;
+                svg += `<use id="${turret.uid}" href="#${turret.glyph().id}" x="${buff.xOffset}" y="${currRow * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(turret.uid)} />`;
 
                 for (let i = 0; i < turret.weapons.length; i++) {
                     const realI = i + 1;
@@ -655,7 +674,7 @@ export const renderSvg = (
                     )!;
                     const glyph = weapon.glyph()!;
                     const buff = buffInSquare(glyph, cellsize * 2, false);
-                    svg += `<use id="${weapon.uid}" href="#${glyph.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${status(weapon.uid) === false ? "" : ` class="${status(weapon.uid)}"`} />`;
+                    svg += `<use id="${weapon.uid}" href="#${glyph.id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(weapon.uid)} />`;
                 }
 
                 currRow +=
@@ -718,10 +737,10 @@ export const renderSvg = (
         // Background fill now in the SVG itself so I can change it programmatically.
         if (compact) {
             if (svgFtl !== undefined) {
-                svg += `<use id="_ftl" href="#${svgFtl.id}" x="${pxWidth - cellsize * 3}" y="${hullStart * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${status(ftlID!) === false ? "" : ` class="${status(ftlID!)}"`} />`;
+                svg += `<use id="_ftl" href="#${svgFtl.id}" x="${pxWidth - cellsize * 3}" y="${hullStart * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${renderClass(ftlID!)} />`;
             }
             if (svgDrive !== undefined) {
-                svg += `<use id="_drive" href="#${svgDrive.id}" x="${pxWidth - cellsize * 3}" y="${(hullStart + 2) * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${status(driveID!) === false ? "" : ` class="${status(driveID!)}"`} />`;
+                svg += `<use id="_drive" href="#${svgDrive.id}" x="${pxWidth - cellsize * 3}" y="${(hullStart + 2) * cellsize}" width="${cellsize * 2}" height="${cellsize * 2}"${renderClass(driveID!)} />`;
             }
             svg += `<use id="_core" href="#${svgCore.id}" x="${pxWidth * 0.05}" y="${currRow * cellsize + cellsize * 3 * 0.05}" width="${pxWidth * 0.9}" height="${cellsize * 3 * 0.9}" class="${opts.invertFooter ? "svgInvert" : ""}" />`;
         } else {
@@ -729,12 +748,12 @@ export const renderSvg = (
             let startX = 0;
             let groupWidth = 9;
             if (svgFtl !== undefined) {
-                svgCombined += `<use id="_ftl" href="#${svgFtl.id}" x="0" y="0" width="${cellsize * 2}" height="${cellsize * 2}"${status(ftlID!) === false ? "" : ` class="${status(ftlID!)}"`} />`;
+                svgCombined += `<use id="_ftl" href="#${svgFtl.id}" x="0" y="0" width="${cellsize * 2}" height="${cellsize * 2}"${renderClass(ftlID!)} />`;
                 startX = cellsize * 2;
                 groupWidth += 2;
             }
             if (svgDrive !== undefined) {
-                svgCombined += `<use id="_drive" href="#${svgDrive.id}" x="${startX}" y="0" width="${cellsize * 2}" height="${cellsize * 2}"${status(driveID!) === false ? "" : ` class="${status(driveID!)}"`} />`;
+                svgCombined += `<use id="_drive" href="#${svgDrive.id}" x="${startX}" y="0" width="${cellsize * 2}" height="${cellsize * 2}"${renderClass(driveID!)} />`;
             }
             let overallid = "_internalLinearCombined";
             if (ship.hashseed !== undefined) {

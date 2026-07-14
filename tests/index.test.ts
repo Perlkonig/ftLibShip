@@ -296,8 +296,8 @@ describe("Renderer", () => {
         const svg = renderSvg(ship, {
             damage: 2,
             armour: [
-                [1, 1],
-                [1, 0],
+                [1, [1, 1]],
+                [1, [0, 0]],
             ],
             disabled: ["_corePower", "Vj_AN"],
             destroyed: ["Ds8zO", "C6rZc"],
@@ -316,6 +316,8 @@ describe("Renderer", () => {
         expect(svg).to.match(
             /id="_internalCorePower"[\s\S]*?class="_rect" fill="red"/
         );
+        expect(svg).to.include("svglib_armourRegenLost");
+        expect(svg).to.include("svglib_armourRegenDamaged");
     });
 
     it("disabled without destroyed still applies styling", () => {
@@ -351,6 +353,23 @@ describe("Renderer", () => {
             invaders: [{ type: "damageControl", owner: "P2" }],
         });
         expect(svg).to.include(">P2<");
+    });
+
+    it("deployed systems and builtin DCP render greyed", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.systems!.push(
+            { name: "damageControl", id: "dcp1" },
+            { name: "marines", id: "m1" }
+        );
+        const svg = renderSvg(ship, {
+            deployed: ["dcp1", "m1"],
+            deployedBuiltinDcp: 1,
+        });
+        expect(svg).to.match(/id="dcp1"[^>]*class="disabled"/);
+        expect(svg).to.match(/id="m1"[^>]*class="disabled"/);
+        expect(svg).to.match(
+            /href="#svglib_hullCrew"[^>]*class="disabled"/
+        );
     });
 
     it("renderSvg does not mutate input ship", () => {

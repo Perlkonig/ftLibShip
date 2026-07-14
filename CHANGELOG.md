@@ -5,7 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.0.3] - 2026-07-13
+## [4.0.0] - 2026-07-13
+
+### Added
+
+-   `crewFactor()` and `dcpAvailability()` to report available DCP from crew factor, hull damage, lost hired `damageControl` systems (`RenderOpts.disabled` and `RenderOpts.destroyed` treated as equivalent), and absent friendly parties (`RenderOpts.deployed`, `RenderOpts.deployedBuiltinDcp`). Built-in DCP absence greys hull stars from the end of the damage track. `RenderOpts.invaders` (enemy aboard) is display-only and does not affect `dcpAvailability`.
+-   `RenderOpts.deployed` and `RenderOpts.deployedBuiltinDcp` grey absent friendly marines/DCP on the SSD.
+-   Permanently lost regenerative armour renders in red (`svglib_armourRegenLost`). Repairable regenerative damage remains black.
+
+### Changed
+
+-   **Breaking:** `RenderOpts.armour` regen damage is now `[regenDamaged, regenLost]` per row instead of a single count. Migrate `[regular, n]` to `[regular, [n, 0]]`. Rows are innermost first; lost regen boxes are marked left-to-right before damaged regen boxes.
 
 ### Fixed
 

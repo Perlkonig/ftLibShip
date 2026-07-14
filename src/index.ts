@@ -4,6 +4,14 @@ export * as systems from "./lib/systems/index.js";
 export * as hexes from "./lib/genHex.js";
 export * as arcs from "./lib/genArcs.js";
 export * from "./lib/render.js";
+export {
+    crewFactor,
+    dcpAvailability,
+    applyDeployedBuiltinDcp,
+    hullDcpGrid,
+    type IDcpAvailability,
+    type IDcpState,
+} from "./lib/crew.js";
 export type { FullThrustShip } from "./schemas/ship.js";
 
 import type { FullThrustShip } from "./index.js";
@@ -13,6 +21,7 @@ import {
     getSystem,
     ISystem,
 } from "./lib/systems/index.js";
+import { crewFactor } from "./lib/crew.js";
 
 export enum EvalErrorCode {
     NoMass = "NOMASS",
@@ -101,10 +110,7 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
 
         // Sufficient room for DCPs and marines?
         if (ship.systems !== undefined) {
-            const cf =
-                ship.civilian !== undefined && ship.civilian
-                    ? Math.ceil(ship.mass / 50)
-                    : Math.ceil(ship.mass / 20);
+            const cf = crewFactor(ship);
             let baysPassengers = 0;
             let baysTroops = 0;
             let addMarines = 0;

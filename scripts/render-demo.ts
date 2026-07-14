@@ -19,8 +19,8 @@ ship.hashseed = "render-demo";
 const svg = renderSvg(ship, {
     damage: 4,
     armour: [
-        [2, 1],
-        [1, 0],
+        [2, [1, 1]],
+        [1, [0, 0]],
     ],
     disabled: ["_corePower", "Vj_AN"],
     destroyed: ["Ds8zO", "C6rZc"],

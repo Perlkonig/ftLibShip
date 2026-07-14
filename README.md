@@ -69,6 +69,33 @@ export enum EvalErrorCode {
 
 So a `validate` is considered passed if `valid` is `true`. An `evaluate` is considered passed if `errors` is empty.
 
+### Crew factor and DCP availability
+
+`crewFactor(ship)` returns the ship's crew factor from mass (military: 1 per 20 mass; civilian: 1 per 50 mass). This matches the hull-star placement in rendered SSDs.
+
+`dcpAvailability(ship, state?)` reports how many damage control parties are available on this ship. Pass the same `damage`, `disabled`, `destroyed`, `deployed`, and `deployedBuiltinDcp` fields you use for `renderSvg()`.
+
+```ts
+import { crewFactor, dcpAvailability, renderSvg } from "ftlibship";
+
+const opts = {
+    damage: 2,
+    deployed: ["extraDcp1"],
+    deployedBuiltinDcp: 1,
+};
+const dcp = dcpAvailability(ship, opts);
+// dcp.available — present builtin stars plus hired DCP not lost or absent
+const svg = renderSvg(ship, opts);
+```
+
+`dcpAvailability` returns `{ crewFactor, builtin, builtinDeployed, hired, hiredAvailable, hiredDeployed, available }`.
+
+**Deployed (absent friendly):** `deployed` lists system ids of your marines or hired `damageControl` sent to board other ships. `deployedBuiltinDcp` is how many built-in DCP are absent; hull stars grey from the **end** of the damage track so threshold damage from the start hits present stars first. Both reduce `dcpAvailability`.
+
+**Invaders (enemy aboard):** `invaders` lists enemy marines or DCP on **this** ship (Invaders section on the SSD). Display only — does **not** affect `dcpAvailability`.
+
+**Lost vs absent vs enemy:** Hired `damageControl` and `marines` use `disabled`/`destroyed` when permanently lost (instantly gone, not repairable). Use `deployed` when away on a friendly boarding mission. Use `invaders` for enemy parties aboard. This differs from the main drive, where `disabled` means damaged (half thrust) and `destroyed` means thrust 0.
+
 ### Rendering
 
 Two rendering functions are provided:
@@ -84,17 +111,21 @@ export interface RenderOpts {
     damage?: number;
     // The amount of damage done to each layer of armour
     // The first row is the innermost layer
-    // First element is regular armour, second is regenerative armour
-    armour?: [number, number][];
+    // First element is regular armour damage; second is [regen damaged, regen lost]
+    armour?: [number, [number, number]][];
     // List of uids of disabled systems
     disabled?: SystemID[];
     // List of uids of destroyed systems
     destroyed?: SystemID[];
-    // Active enemy boarding parties on the ship
+    // Absent friendly marines or hired damageControl (sent to other ships)
+    deployed?: SystemID[];
+    // Built-in DCP absent; hull stars greyed from end of track
+    deployedBuiltinDcp?: number;
+    // Enemy marines or DCP aboard this ship (display only)
     invaders?: { type: "marines" | "damageControl"; owner?: string | number }[];
 }
 ```
 
-To disable core systems, add one of the following strings to `disabled`: `_coreBridge`, `_coreLife`, or `_corePower`. Disabled systems are greyed out. Destroyed systems are almost invisible. Damage is indicated by simply blacking out the hull or armour boxes. Pass active boarding parties via `invaders` in render options (not on the ship object).
+To disable core systems, add one of the following strings to `disabled`: `_coreBridge`, `_coreLife`, or `_corePower`. Disabled systems are greyed out. Destroyed systems are almost invisible. Absent friendly parties (`deployed`, `deployedBuiltinDcp`) are greyed out. Hull and regular armour damage is indicated by blacking out boxes. Regenerative armour uses black for repairable damage and red for permanently lost boxes (left-to-right within each regen row). Enemy boarding parties use `invaders` (not on the ship object).
 
 Run `npm run render-demo` after building to write a showcase SVG (`scratch.svg` by default) covering all render options for visual inspection.

@@ -1,6 +1,6 @@
 {
     "name": "ftlibship",
-    "version": "3.0.3",
+    "version": "4.0.0",
     "description": "Library representing the schema/type for a Full Thrust ship description along with utilities for validating and graphically rendering it",
     "exports": "./dist/index.js",
     "engines": {
@@ -36,6 +36,7 @@
         "rimraf": "^4.4.1",
         "shx": "^0.3.4",
         "ts-node": "^10.9.1",
+        "tsx": "^4.23.1",
         "typescript": "^5.0.4"
     },
     "dependencies": {

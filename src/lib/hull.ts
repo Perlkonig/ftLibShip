@@ -2,17 +2,13 @@ import type { FullThrustShip } from "../schemas/ship.js";
 import fnv from "fnv-plus";
 import { nanoid } from "nanoid";
 import { svgLib } from "./svgLib.js";
+import { crewFactor, applyHullDamage, hullDcpGrid } from "./crew.js";
+
+export { crewFactor, applyHullDamage, applyDeployedBuiltinDcp, hullDcpGrid } from "./crew.js";
 
 export const formRows = (ship: FullThrustShip): number[][] | undefined => {
     if (ship.hull !== undefined) {
-        let cf = 1;
-        if (ship.mass !== undefined) {
-            if (ship.civilian !== undefined && ship.civilian) {
-                cf = Math.ceil(ship.mass / 50);
-            } else {
-                cf = Math.ceil(ship.mass / 20);
-            }
-        }
+        const cf = crewFactor(ship);
         const interval = Math.ceil(ship.hull.points / cf);
         const boxes: number[] = [];
         for (let i = 0; i < ship.hull.points; i++) {
@@ -49,30 +45,23 @@ export interface IRenderOpts {
     };
     hullDamage?: number;
     // first row is innermost row of armour
-    // first element of each row is regular armour, second is regenerative armour
-    armourDamage?: [number, number][];
+    // first element of each row is regular armour damage;
+    // second is [regenerative damaged, regenerative lost]
+    armourDamage?: [number, [number, number]][];
+    deployedBuiltinDcp?: number;
 }
 
 export const genSvg = (
     ship: FullThrustShip,
     opts: IRenderOpts
 ): string | undefined => {
-    const { cellsize, dim, hullDamage, armourDamage } = opts;
-    const hullRows = formRows(ship);
+    const { cellsize, dim, hullDamage, armourDamage, deployedBuiltinDcp } = opts;
+    const hullRows = hullDcpGrid(ship, {
+        damage: hullDamage,
+        deployedBuiltinDcp,
+    });
     if (hullRows === undefined || ship.hull === undefined) {
         return undefined;
-    }
-    // apply hull damage
-    if (hullDamage !== undefined) {
-        let applied = hullDamage;
-        for (let row = 0; row < hullRows.length; row++) {
-            for (let col = 0; col < hullRows[row].length; col++) {
-                if (applied > 0) {
-                    hullRows[row][col] = 2;
-                    applied--;
-                }
-            }
-        }
     }
 
     let totalHeight: number;
@@ -113,6 +102,9 @@ export const genSvg = (
     const svgArmourRegenDmgd = svgLib.find(
         (x) => x.id === "svglib_armourRegenDamaged"
     )!;
+    const svgArmourRegenLost = svgLib.find(
+        (x) => x.id === "svglib_armourRegenLost"
+    )!;
     const svgStealth = svgLib.find((x) => x.id === "svglib_stealthHull")!;
     let hullid = "_ssdHull";
     if (ship.hashseed !== undefined) {
@@ -140,6 +132,7 @@ export const genSvg = (
     if (armourDamage !== undefined) {
         s += svgArmourDmgd.svg;
         s += svgArmourRegenDmgd.svg;
+        s += svgArmourRegenLost.svg;
     }
     s += `</defs>`;
 
@@ -153,16 +146,22 @@ export const genSvg = (
             let id = "svglib_hull";
             let width = svgHull.width * cellsize;
             let height = svgHull.height * cellsize;
+            let crewClass = "";
             if (boxes[col] === 1) {
                 id = "svglib_hullCrew";
                 width = svgHullCrew.width * cellsize;
                 height = svgHullCrew.height * cellsize;
+            } else if (boxes[col] === 3) {
+                id = "svglib_hullCrew";
+                width = svgHullCrew.width * cellsize;
+                height = svgHullCrew.height * cellsize;
+                crewClass = ` class="disabled"`;
             } else if (boxes[col] === 2) {
                 id = "svglib_hullDamaged";
                 width = svgHullDmgd.width * cellsize;
                 height = svgHullDmgd.height * cellsize;
             }
-            s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
+            s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}"${crewClass} />`;
         }
         if (
             (ship.hull.stealth === "2" &&
@@ -178,10 +177,13 @@ export const genSvg = (
     if (ship.armour !== undefined && ship.armour.length > 0) {
         for (let row = 0; row < ship.armour.length; row++) {
             let applied = 0;
-            let appliedRegen = 0;
+            let appliedRegenDamaged = 0;
+            let appliedRegenLost = 0;
             if (armourDamage !== undefined) {
                 if (row + 1 <= armourDamage.length) {
-                    [applied, appliedRegen] = armourDamage[row];
+                    const [regular, regen] = armourDamage[row];
+                    applied = regular;
+                    [appliedRegenDamaged, appliedRegenLost] = regen;
                 }
             }
             const y = (blocksHigh - (ship.hull.rows + 1) - row) * cellsize;
@@ -202,9 +204,12 @@ export const genSvg = (
                 const width = svgArmourRegen.width * cellsize;
                 const height = svgArmourRegen.height * cellsize;
                 let id = "svglib_armourRegen";
-                if (appliedRegen > 0) {
+                if (appliedRegenLost > 0) {
+                    id = "svglib_armourRegenLost";
+                    appliedRegenLost--;
+                } else if (appliedRegenDamaged > 0) {
                     id = "svglib_armourRegenDamaged";
-                    appliedRegen--;
+                    appliedRegenDamaged--;
                 }
                 s += `<use href="#${id}" x="${x}" y="${y}" width="${width}" height="${height}" />`;
             }
