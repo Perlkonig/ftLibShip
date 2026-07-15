@@ -12,6 +12,18 @@ export {
     type IDcpAvailability,
     type IDcpState,
 } from "./lib/crew.js";
+export {
+    resolveHangarOccupancy,
+    dockFighterInHangar,
+    deployFighterFromHangar,
+    fighterSquadrons,
+    HangarDockError,
+    type HangarState,
+    type HangarOccupancy,
+    type ResolvedHangarOccupancy,
+    type FighterSkill,
+    type FighterType,
+} from "./lib/fighters.js";
 export type { FullThrustShip } from "./schemas/ship.js";
 
 import type { FullThrustShip } from "./index.js";

@@ -6,6 +6,9 @@ import { nanoid } from "nanoid";
 import fnv from "fnv-plus";
 import { scopeInternalIds } from "./scopeInternalIds.js";
 import { buildEmbeddedResizeScript } from "./resizeSsdTitles.js";
+import { Hangar } from "./systems/hangar.js";
+import { resolveHangarOccupancy } from "./fighters.js";
+import type { HangarState } from "./fighters.js";
 
 export {
     resizeSsdTitles,
@@ -72,6 +75,8 @@ export interface RenderOpts {
     invaders?: InvaderEntry[];
     /** Remaining ammunition per mineLayer or magazine id. Omitted ids render at full design capacity. */
     ammunition?: AmmunitionRemaining;
+    /** Per-hangar fighter occupancy overriding design-time `fighters[].hangar` linkage. */
+    hangars?: HangarState;
     // if provided, gives absolute position in svg tag itself
     x?: number;
     y?: number;
@@ -450,6 +455,16 @@ export const renderSvg = (
                 svgDrive = damaged
                     ? { ...glyph, svg: applyDamagedDriveSvg(glyph.svg) }
                     : glyph;
+            }
+        }
+
+        for (const sys of systems) {
+            if (sys.name === "hangar") {
+                (sys as Hangar).occupancy = resolveHangarOccupancy(
+                    sys.uid,
+                    ship,
+                    opts.hangars
+                );
             }
         }
 
