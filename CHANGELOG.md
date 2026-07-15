@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `crewFactor()` and `dcpAvailability()` to report available DCP from crew factor, hull damage, lost hired `damageControl` systems (`RenderOpts.disabled` and `RenderOpts.destroyed` treated as equivalent), and absent friendly parties (`RenderOpts.deployed`, `RenderOpts.deployedBuiltinDcp`). Built-in DCP absence greys hull stars from the end of the damage track. `RenderOpts.invaders` (enemy aboard) is display-only and does not affect `dcpAvailability`.
 -   `RenderOpts.deployed` and `RenderOpts.deployedBuiltinDcp` grey absent friendly marines/DCP on the SSD.
 -   Permanently lost regenerative armour renders in red (`svglib_armourRegenLost`). Repairable regenerative damage remains black.
+-   `RenderOpts.ammunition` sets remaining mines or missiles per `mineLayer` or `magazine` system id; the Mines and Magazine SSD sections render fewer icons as ammo is consumed. Omitted ids default to full design capacity. Exported `resolveAmmunitionRemaining()` applies the same clamping logic.
 
 ### Changed
 

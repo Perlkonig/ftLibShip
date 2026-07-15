@@ -34,6 +34,21 @@ type SystemID = "_coreBridge" | "_coreLife" | "_corePower" | string;
 /** Per armour row: [regularDamaged, [regenDamaged, regenLost]] (innermost row first). */
 export type ArmourRowRenderDamage = [number, [number, number]];
 
+/** Remaining mines or missiles per mineLayer / magazine system id. */
+export type AmmunitionRemaining = Partial<Record<SystemID, number>>;
+
+export const resolveAmmunitionRemaining = (
+    capacity: number,
+    uid: string,
+    ammunition?: AmmunitionRemaining
+): number => {
+    const raw = ammunition?.[uid];
+    if (raw === undefined) {
+        return capacity;
+    }
+    return Math.max(0, Math.min(capacity, raw));
+};
+
 export interface RenderOpts {
     // If true, strips the scripts and introductory lines
     minimal?: boolean;
@@ -55,6 +70,8 @@ export interface RenderOpts {
     deployedBuiltinDcp?: number;
     /** Enemy marines or DCP that have boarded this ship (display only) */
     invaders?: InvaderEntry[];
+    /** Remaining ammunition per mineLayer or magazine id. Omitted ids render at full design capacity. */
+    ammunition?: AmmunitionRemaining;
     // if provided, gives absolute position in svg tag itself
     x?: number;
     y?: number;
@@ -295,7 +312,11 @@ export const renderSvg = (
             totalRows++;
             let numMines = 0;
             for (const ml of mines) {
-                numMines += ml.capacity;
+                numMines += resolveAmmunitionRemaining(
+                    ml.capacity,
+                    ml.uid,
+                    opts.ammunition
+                );
             }
             // These are 1x1 glyphs so...
             const mineRows = Math.ceil(numMines / totalCols);
@@ -321,7 +342,13 @@ export const renderSvg = (
                     }
                 }
                 // Add the number of launchers and the number of missiles to determine how many rows are needed
-                const numEntries = feeding.length + m.capacity;
+                const numEntries =
+                    feeding.length +
+                    resolveAmmunitionRemaining(
+                        m.capacity,
+                        m.uid,
+                        opts.ammunition
+                    );
                 const magRows = Math.ceil(numEntries / breakPoint);
                 totalRows += magRows * 2;
             }
@@ -544,19 +571,28 @@ export const renderSvg = (
             svg += `<rect x="0" y="${currRow * cellsize}" width="${pxWidth}" height="${cellsize}" stroke="none" fill="#c0c0c0"/><text x="${cellsize * 0.2}" y="${currRow * cellsize + cellsize / 2}" dominant-baseline="middle" font-size="${cellsize / 2}" class="futureFont">Mines</text>`;
             currRow++;
             let numMines = 0;
-            for (const s of mines) {
-                numMines += s.capacity;
-            }
-            for (let i = 0; i < numMines; i++) {
-                const realRow = Math.floor(i / totalCols);
-                const realCol = i % totalCols;
-                const buff = buffInSquare(
-                    mines[0].individualMine(),
-                    cellsize,
-                    false
+            for (const ml of mines) {
+                numMines += resolveAmmunitionRemaining(
+                    ml.capacity,
+                    ml.uid,
+                    opts.ammunition
                 );
-                const individualID = mines[0].individualMine().id;
-                svg += `<use href="#${individualID}" x="${realCol * cellsize + buff.xOffset}" y="${(currRow + realRow) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}" />`;
+            }
+            let mineIndex = 0;
+            for (const ml of mines) {
+                const remaining = resolveAmmunitionRemaining(
+                    ml.capacity,
+                    ml.uid,
+                    opts.ammunition
+                );
+                const individualMine = ml.individualMine();
+                for (let i = 0; i < remaining; i++) {
+                    const realRow = Math.floor(mineIndex / totalCols);
+                    const realCol = mineIndex % totalCols;
+                    const buff = buffInSquare(individualMine, cellsize, false);
+                    svg += `<use href="#${individualMine.id}" x="${realCol * cellsize + buff.xOffset}" y="${(currRow + realRow) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(ml.uid)} />`;
+                    mineIndex++;
+                }
             }
             currRow += Math.ceil(numMines / totalCols);
         }
@@ -603,7 +639,12 @@ export const renderSvg = (
                     const buff = buffInSquare(sys.glyph(), cellsize * 2, true);
                     svg += `<use id="${sys.uid}" href="#${sys.glyph().id}" x="${realCol * 2 * cellsize + buff.xOffset}" y="${(currRow + realRow * 2) * cellsize + buff.yOffset}" width="${buff.width}" height="${buff.height}"${renderClass(sys.uid)} />`;
                 }
-                for (let i = 0; i < mag.capacity; i++) {
+                const missileCount = resolveAmmunitionRemaining(
+                    mag.capacity,
+                    mag.uid,
+                    opts.ammunition
+                );
+                for (let i = 0; i < missileCount; i++) {
                     const realI = i + feeding.length;
                     const realRow = Math.floor(realI / breakPoint);
                     const realCol = realI % breakPoint;
@@ -613,7 +654,8 @@ export const renderSvg = (
                 }
 
                 currRow +=
-                    Math.ceil((feeding.length + mag.capacity) / breakPoint) * 2;
+                    Math.ceil((feeding.length + missileCount) / breakPoint) *
+                    2;
             }
         }
 

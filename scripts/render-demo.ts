@@ -15,6 +15,19 @@ ship.armour = [
     [2, 0],
 ];
 ship.hashseed = "render-demo";
+ship.systems!.push(
+    { name: "mineLayer", capacity: 4, id: "minesA" },
+    { name: "magazine", capacity: 6, id: "mag1" }
+);
+ship.ordnance = [
+    {
+        name: "salvoLauncher",
+        leftArc: "FP",
+        numArcs: 3,
+        magazine: "mag1",
+        id: "salvoL1",
+    },
+];
 
 const svg = renderSvg(ship, {
     damage: 4,
@@ -22,6 +35,10 @@ const svg = renderSvg(ship, {
         [2, [1, 1]],
         [1, [0, 0]],
     ],
+    ammunition: {
+        minesA: 2,
+        mag1: 2,
+    },
     disabled: ["_corePower", "Vj_AN"],
     destroyed: ["Ds8zO", "C6rZc"],
     invaders: [

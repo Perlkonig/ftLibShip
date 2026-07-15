@@ -9,7 +9,7 @@ import {
     validate,
 } from "../src/index.js";
 import type { IValidation } from "../src/index.js";
-import { renderSvg, renderUri, calcRot, rotArc } from "../src/index.js";
+import { renderSvg, renderUri, calcRot, rotArc, resolveAmmunitionRemaining } from "../src/index.js";
 import { scopeInternalIds } from "../src/lib/scopeInternalIds.js";
 import { Kgun } from "../src/lib/systems/kgun.js";
 import { Phaser } from "../src/lib/systems/phaser.js";
@@ -318,6 +318,47 @@ describe("Renderer", () => {
         );
         expect(svg).to.include("svglib_armourRegenLost");
         expect(svg).to.include("svglib_armourRegenDamaged");
+    });
+
+    it("ammunition reduces mine and magazine icons on SSD", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.systems!.push(
+            { name: "mineLayer", capacity: 4, id: "minesA" },
+            { name: "magazine", capacity: 3, id: "mag1" }
+        );
+        ship.ordnance = [
+            {
+                name: "salvoLauncher",
+                leftArc: "FP",
+                numArcs: 3,
+                magazine: "mag1",
+                id: "launch1",
+            },
+        ];
+        const sectionUseCount = (
+            svg: string,
+            heading: string,
+            nextHeading: string
+        ) => {
+            const start = svg.indexOf(heading);
+            const end = svg.indexOf(nextHeading, start + 1);
+            const section = svg.slice(start, end > start ? end : undefined);
+            return (section.match(/<use /g) ?? []).length;
+        };
+        const full = renderSvg(ship)!;
+        const partial = renderSvg(ship, {
+            ammunition: { minesA: 2, mag1: 1 },
+        })!;
+        expect(sectionUseCount(full, ">Mines<", ">Magazine<")).to.equal(4);
+        expect(sectionUseCount(partial, ">Mines<", ">Magazine<")).to.equal(2);
+        expect(sectionUseCount(full, ">Magazine<", ">Weapons<")).to.equal(4);
+        expect(sectionUseCount(partial, ">Magazine<", ">Weapons<")).to.equal(2);
+        expect(resolveAmmunitionRemaining(4, "minesA", { minesA: 99 })).to.equal(
+            4
+        );
+        expect(resolveAmmunitionRemaining(4, "minesA", { minesA: -1 })).to.equal(
+            0
+        );
     });
 
     it("disabled without destroyed still applies styling", () => {
