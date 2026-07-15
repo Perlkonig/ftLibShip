@@ -21,7 +21,8 @@
         "prepare": "npm run build",
         "format": "prettier --write .",
         "test": "mocha -r ts-node/register tests/**/*.test.ts",
-        "render-demo": "node --loader ts-node/esm scripts/render-demo.ts"
+        "render-demo": "node --loader ts-node/esm scripts/render-demo.ts",
+        "icon-sheet": "npx tsx scripts/generate-icon-sheet.ts"
     },
     "author": "Aaron Dalton <aaron@daltons.ca> (https://www.perlkonig.com/)",
     "license": "MIT",

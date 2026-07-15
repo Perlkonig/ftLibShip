@@ -131,3 +131,8 @@ export interface RenderOpts {
 To disable core systems, add one of the following strings to `disabled`: `_coreBridge`, `_coreLife`, or `_corePower`. Disabled systems are greyed out. Destroyed systems are almost invisible. Absent friendly parties (`deployed`, `deployedBuiltinDcp`) are greyed out. Hull and regular armour damage is indicated by blacking out boxes. Regenerative armour uses black for repairable damage and red for permanently lost boxes (left-to-right within each regen row). Enemy boarding parties use `invaders` (not on the ship object). Pass `ammunition` with remaining mine/missile counts per `mineLayer` or `magazine` system id; omitted ids render at full design capacity.
 
 Run `npm run render-demo` after building to write a showcase SVG (`scratch.svg` by default) covering all render options for visual inspection.
+
+### SSD icon reference
+
+A contact sheet of all canonical SSD system icons is in [docs/ssd-icon-sheet.svg](docs/ssd-icon-sheet.svg).
+Regenerate after glyph changes with `npm run icon-sheet`.

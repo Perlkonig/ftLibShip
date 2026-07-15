@@ -1,0 +1,608 @@
+import type { FullThrustShip } from "../schemas/ship.js";
+import type { ISystemSVG } from "./svgLib.js";
+import { svgLib } from "./svgLib.js";
+import { type2name } from "./systems/fighters.js";
+import { Hangar } from "./systems/hangar.js";
+import {
+    getSystem,
+    ordnanceList,
+    systemList,
+    weaponList,
+} from "./systems/index.js";
+import type { ISystem, System } from "./systems/_base.js";
+import { Flawed } from "./systems/flawed.js";
+import { MineLayer } from "./systems/mineLayer.js";
+import { Magazine } from "./systems/magazine.js";
+import { Pulser } from "./systems/pulser.js";
+import type { ResolvedHangarOccupancy } from "./fighters.js";
+
+export type IconSheetGroup =
+    | "Hull and armour"
+    | "Propulsion"
+    | "Systems"
+    | "Ordnance"
+    | "Weapons"
+    | "Fighter bays and wings"
+    | "Auxiliary";
+
+export const GROUP_ORDER: IconSheetGroup[] = [
+    "Hull and armour",
+    "Propulsion",
+    "Systems",
+    "Ordnance",
+    "Weapons",
+    "Fighter bays and wings",
+    "Auxiliary",
+];
+
+const COLUMNS = 8;
+const CELL_SIZE = 100;
+const HEADER_HEIGHT = 40;
+const H_PADDING = 8;
+const LABEL_FONT_SIZE = 10;
+const LABEL_LINE_HEIGHT = 12;
+const LABEL_GAP = 4;
+const LABEL_BOTTOM_PAD = 4;
+const MAX_LABEL_CHARS_PER_LINE = 12;
+
+const SYSTEMS_EXCLUDE = new Set(["hangar", "launchTube", "turret"]);
+
+interface IconSheetEntry {
+    group: IconSheetGroup;
+    label: string;
+    glyph: ISystemSVG;
+    graded: boolean;
+}
+
+const escapeXml = (value: string): string =>
+    value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+
+/** Word-wrap a label to fit within one icon sheet cell. Exported for tests. */
+export const wrapIconSheetLabel = (
+    label: string,
+    maxChars: number = MAX_LABEL_CHARS_PER_LINE
+): string[] => {
+    const words = label.split(/\s+/).filter((w) => w.length > 0);
+    if (words.length === 0) {
+        return [""];
+    }
+
+    const lines: string[] = [];
+    let current = "";
+
+    const pushLongWord = (word: string) => {
+        for (let i = 0; i < word.length; i += maxChars) {
+            lines.push(word.slice(i, i + maxChars));
+        }
+    };
+
+    for (const word of words) {
+        const candidate = current ? `${current} ${word}` : word;
+        if (candidate.length <= maxChars) {
+            current = candidate;
+            continue;
+        }
+        if (current) {
+            lines.push(current);
+            current = "";
+        }
+        if (word.length <= maxChars) {
+            current = word;
+        } else {
+            pushLongWord(word);
+        }
+    }
+    if (current) {
+        lines.push(current);
+    }
+    return lines;
+};
+
+const labelAreaHeight = (lineCount: number): number =>
+    LABEL_GAP + lineCount * LABEL_LINE_HEIGHT + LABEL_BOTTOM_PAD;
+
+const rowHeightForLines = (maxLines: number): number =>
+    CELL_SIZE + labelAreaHeight(maxLines);
+
+const renderLabel = (
+    x: number,
+    iconY: number,
+    label: string
+): { svg: string; lines: string[] } => {
+    const lines = wrapIconSheetLabel(label);
+    const textX = x + CELL_SIZE / 2;
+    const startY = iconY + CELL_SIZE + LABEL_GAP + LABEL_FONT_SIZE;
+    let svg = `<text x="${textX}" y="${startY}" text-anchor="middle" font-size="${LABEL_FONT_SIZE}">`;
+    for (let i = 0; i < lines.length; i++) {
+        const dy = i === 0 ? 0 : LABEL_LINE_HEIGHT;
+        svg += `<tspan x="${textX}" dy="${dy}">${escapeXml(lines[i])}</tspan>`;
+    }
+    svg += `</text>`;
+    return { svg, lines };
+};
+
+const stubShip = (): FullThrustShip =>
+    ({
+        mass: 50,
+        hashseed: "icon-sheet",
+        hull: { points: 15, rows: 4, stealth: "0", streamlining: "none" },
+        armour: [],
+        systems: [],
+        weapons: [],
+        ordnance: [],
+        points: 100,
+        cpv: 80,
+        name: "Icon Sheet Stub",
+    }) as FullThrustShip;
+
+const buffInSquare = (
+    glyph: ISystemSVG,
+    size: number,
+    graded: boolean
+): { xOffset: number; yOffset: number; width: number; height: number } => {
+    if (graded && glyph.width === 1 && glyph.height === 1) {
+        return {
+            xOffset: size / 4,
+            yOffset: size / 4,
+            width: size / 2,
+            height: size / 2,
+        };
+    }
+    const factor = 0.9;
+    return {
+        xOffset: (size * (1 - factor)) / 2,
+        yOffset: (size * (1 - factor)) / 2,
+        width: size * factor,
+        height: size * factor,
+    };
+};
+
+class CatalogBuilder {
+    private readonly ship: FullThrustShip;
+    private readonly entries: IconSheetEntry[] = [];
+    private readonly labels = new Set<string>();
+
+    constructor(ship: FullThrustShip) {
+        this.ship = ship;
+    }
+
+    addGlyph(
+        group: IconSheetGroup,
+        label: string,
+        glyph: ISystemSVG | undefined,
+        graded = true
+    ): void {
+        if (glyph === undefined || this.labels.has(label)) {
+            return;
+        }
+        this.labels.add(label);
+        this.entries.push({ group, label, glyph, graded });
+    }
+
+    addSystem(
+        group: IconSheetGroup,
+        data: ISystem,
+        options?: {
+            label?: string;
+            graded?: boolean;
+            prepare?: (sys: System) => void;
+        }
+    ): void {
+        const sys = getSystem(data, this.ship);
+        if (sys === undefined) {
+            return;
+        }
+        options?.prepare?.(sys);
+        const label = options?.label ?? sys.fullName();
+        this.addGlyph(group, label, sys.glyph(), options?.graded ?? true);
+    }
+
+    build(): IconSheetEntry[] {
+        return this.entries;
+    }
+}
+
+const defaultArcWeapon = (
+    name: string,
+    extra: Record<string, unknown> = {}
+): ISystem => ({
+    name,
+    id: `icon_${name}`,
+    leftArc: "F",
+    numArcs: 6,
+    class: 1,
+    ...extra,
+});
+
+const systemConfigs = (name: string): ISystem[] => {
+    switch (name) {
+        case "bay":
+            return (["cargo", "passenger", "troop", "boat", "tender"] as const).map(
+                (type) => ({ name: "bay", type, id: `bay_${type}`, capacity: 1 })
+            );
+        case "decoy":
+            return [
+                { name: "decoy", type: "cruiser", id: "decoy_c" },
+                { name: "decoy", type: "capital", id: "decoy_cap" },
+            ];
+        case "ecm":
+            return [
+                { name: "ecm", id: "ecm" },
+                { name: "ecm", area: true, id: "ecm_area" },
+            ];
+        case "fireControl":
+            return [
+                { name: "fireControl", id: "fc" },
+                { name: "fireControl", advanced: true, id: "fc_adv" },
+            ];
+        case "adfc":
+            return [
+                { name: "adfc", id: "adfc" },
+                { name: "adfc", advanced: true, id: "adfc_adv" },
+            ];
+        case "sensors":
+            return [
+                { name: "sensors", id: "sensors" },
+                { name: "sensors", advanced: true, id: "sensors_adv" },
+            ];
+        case "screen": {
+            const configs: ISystem[] = [];
+            for (const advanced of [false, true]) {
+                for (const area of [false, true]) {
+                    for (const level of [undefined, 1, 2] as const) {
+                        configs.push({
+                            name: "screen",
+                            advanced,
+                            area,
+                            ...(level !== undefined ? { level } : {}),
+                            id: `screen_${advanced}_${area}_${level ?? "u"}`,
+                        });
+                    }
+                }
+            }
+            return configs;
+        }
+        case "magazine":
+            return [
+                { name: "magazine", capacity: 6, id: "mag" },
+                { name: "magazine", capacity: 6, modifier: "er", id: "mag_er" },
+                {
+                    name: "magazine",
+                    capacity: 6,
+                    modifier: "twostage",
+                    id: "mag_ts",
+                },
+            ];
+        case "mineLayer":
+            return [{ name: "mineLayer", capacity: 4, id: "ml" }];
+        default:
+            return [{ name, id: `sys_${name}` }];
+    }
+};
+
+const weaponConfigs = (name: string): ISystem[] => {
+    switch (name) {
+        case "beam":
+        case "emp":
+        case "needle":
+        case "phaser":
+        case "plasmaCannon":
+        case "gravitic":
+        case "pbl":
+        case "transporter":
+            return [1, 2, 3, 4].map((cls) =>
+                defaultArcWeapon(name, { class: cls, id: `${name}_${cls}` })
+            );
+        case "graser": {
+            const configs: ISystem[] = [];
+            for (let cls = 1; cls <= 4; cls++) {
+                for (const heavy of [false, true]) {
+                    if (heavy && cls > 3) {
+                        continue;
+                    }
+                    for (const highIntensity of [false, true]) {
+                        configs.push(
+                            defaultArcWeapon("graser", {
+                                class: cls,
+                                heavy,
+                                highIntensity,
+                                id: `graser_${cls}_${heavy}_${highIntensity}`,
+                            })
+                        );
+                    }
+                }
+            }
+            return configs;
+        }
+        case "kgun": {
+            const configs: ISystem[] = [];
+            for (const cls of [1, 2, 3, 4, 5, 6]) {
+                for (const modifier of ["none", "short", "long"] as const) {
+                    configs.push(
+                        defaultArcWeapon("kgun", {
+                            class: cls,
+                            modifier,
+                            id: `kgun_${cls}_${modifier}`,
+                        })
+                    );
+                }
+            }
+            return configs;
+        }
+        case "torpedoPulse":
+            return (["none", "short", "long"] as const).map((modifier) =>
+                defaultArcWeapon("torpedoPulse", {
+                    modifier,
+                    numArcs: 1,
+                    id: `tp_${modifier}`,
+                })
+            );
+        case "pulser":
+            return [
+                defaultArcWeapon("pulser", { id: "pulser_u" }),
+                defaultArcWeapon("pulser", { id: "pulser_s" }),
+                defaultArcWeapon("pulser", { id: "pulser_m" }),
+                defaultArcWeapon("pulser", { id: "pulser_l" }),
+            ];
+        case "spinalBeam":
+        case "spinalPlasma":
+        case "spinalSingularity":
+            return (["short", "medium", "long"] as const).map((range) => ({
+                name,
+                range,
+                id: `${name}_${range}`,
+            }));
+        case "missile":
+        case "salvo":
+            return [
+                { name, id: `${name}_base` },
+                { name, modifier: "er", id: `${name}_er` },
+                { name, modifier: "twostage", id: `${name}_ts` },
+            ];
+        default:
+            return [defaultArcWeapon(name)];
+    }
+};
+
+const pulserPrepare = (index: number) => (sys: System) => {
+    const ranges = ["undefined", "short", "medium", "long"] as const;
+    (sys as Pulser).range = ranges[index];
+};
+
+const buildCatalog = (ship: FullThrustShip): IconSheetEntry[] => {
+    const builder = new CatalogBuilder(ship);
+
+    const hullGlyphs: { label: string; id: string }[] = [
+        { label: "Armour", id: "svglib_armour" },
+        { label: "Armour (damaged)", id: "svglib_armourDamaged" },
+        { label: "Armour (regenerative)", id: "svglib_armourRegen" },
+        {
+            label: "Armour (regenerative, damaged)",
+            id: "svglib_armourRegenDamaged",
+        },
+        { label: "Armour (regenerative, lost)", id: "svglib_armourRegenLost" },
+        { label: "Hull box", id: "svglib_hull" },
+        { label: "Hull box (crew star)", id: "svglib_hullCrew" },
+        { label: "Hull box (damaged)", id: "svglib_hullDamaged" },
+    ];
+    for (const item of hullGlyphs) {
+        const glyph = svgLib.find((x) => x.id === item.id);
+        builder.addGlyph("Hull and armour", item.label, glyph);
+    }
+
+    builder.addSystem("Propulsion", {
+        name: "drive",
+        thrust: 6,
+        id: "drive",
+    });
+    builder.addSystem("Propulsion", {
+        name: "drive",
+        thrust: 6,
+        advanced: true,
+        id: "drive_adv",
+    });
+    builder.addSystem("Propulsion", { name: "ftl", id: "ftl" });
+    builder.addSystem("Propulsion", {
+        name: "ftl",
+        advanced: true,
+        id: "ftl_adv",
+    });
+
+    for (const name of systemList) {
+        if (SYSTEMS_EXCLUDE.has(name)) {
+            continue;
+        }
+        for (const data of systemConfigs(name)) {
+            builder.addSystem("Systems", data);
+        }
+    }
+
+    for (const name of ordnanceList) {
+        for (const data of weaponConfigs(name)) {
+            builder.addSystem("Ordnance", data);
+        }
+    }
+
+    const mineLayer = getSystem(
+        { name: "mineLayer", capacity: 4, id: "ord_ml" },
+        ship
+    ) as MineLayer;
+    builder.addGlyph("Ordnance", "Mine", mineLayer.individualMine(), false);
+
+    const magazine = getSystem(
+        { name: "magazine", capacity: 6, id: "ord_mag" },
+        ship
+    ) as Magazine;
+    builder.addGlyph(
+        "Ordnance",
+        "Salvo missile",
+        magazine.missileGlyph(),
+        false
+    );
+
+    for (const name of weaponList) {
+        const configs = weaponConfigs(name);
+        configs.forEach((data, index) => {
+            builder.addSystem("Weapons", data, {
+                prepare:
+                    name === "pulser" ? pulserPrepare(index) : undefined,
+            });
+        });
+    }
+
+    builder.addSystem("Fighter bays and wings", {
+        name: "hangar",
+        id: "hangar_rack",
+        isRack: true,
+    });
+    builder.addSystem("Fighter bays and wings", {
+        name: "hangar",
+        id: "hangar_bay",
+    });
+    const fighterTypes = [...type2name.keys()].sort((a, b) =>
+        type2name.get(a)!.localeCompare(type2name.get(b)!)
+    );
+    for (const type of fighterTypes) {
+        const hangar = getSystem(
+            { name: "hangar", id: `hangar_${type}` },
+            ship
+        ) as Hangar;
+        hangar.occupancy = {
+            hangarId: hangar.id,
+            occupied: true,
+            deployed: false,
+            type,
+            number: 6,
+            capacity: 6,
+            isPartial: false,
+            skill: "standard",
+        } satisfies ResolvedHangarOccupancy;
+        builder.addGlyph(
+            "Fighter bays and wings",
+            `Hangar Bay — ${type2name.get(type)}`,
+            hangar.glyph(),
+            false
+        );
+    }
+    builder.addSystem("Fighter bays and wings", {
+        name: "launchTube",
+        id: "lt",
+    });
+    builder.addSystem("Fighter bays and wings", {
+        name: "launchTube",
+        catapult: true,
+        id: "lt_cat",
+    });
+
+    const core = svgLib.find((x) => x.id === "svglib_coreSys");
+    builder.addGlyph("Auxiliary", "Core systems", core);
+
+    builder.addSystem("Auxiliary", { name: "marines", id: "aux_mar" });
+    builder.addSystem("Auxiliary", {
+        name: "damageControl",
+        id: "aux_dcp",
+    });
+    const flawed = new Flawed({ name: "_flawed" }, ship);
+    builder.addGlyph("Auxiliary", flawed.fullName(), flawed.glyph());
+
+    return builder.build();
+};
+
+export const iconSheetEntries = (ship?: FullThrustShip): IconSheetEntry[] => {
+    const entries = buildCatalog(ship ?? stubShip());
+    const sorted: IconSheetEntry[] = [];
+    for (const group of GROUP_ORDER) {
+        const groupEntries = entries
+            .filter((e) => e.group === group)
+            .sort((a, b) => a.label.localeCompare(b.label));
+        sorted.push(...groupEntries);
+    }
+    return sorted;
+};
+
+const namespaceGlyph = (glyph: ISystemSVG, index: number): ISystemSVG => {
+    const newId = `icon_${index}`;
+    const escapedId = glyph.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const svg = glyph.svg
+        .replace(
+            new RegExp(`(<symbol id=")${escapedId}(")`),
+            `$1${newId}$2`
+        )
+        .replace(
+            new RegExp(`(href="#)${escapedId}(")`, "g"),
+            `$1${newId}$2`
+        );
+    return { ...glyph, id: newId, svg };
+};
+
+export const renderIconSheet = (ship?: FullThrustShip): string => {
+    const entries = iconSheetEntries(ship);
+    let body = "";
+    let y = 0;
+    let entryIndex = 0;
+
+    const sheetWidth = COLUMNS * CELL_SIZE + H_PADDING * 2;
+    const defs: string[] = [];
+
+    for (const group of GROUP_ORDER) {
+        const items = entries.filter((e) => e.group === group);
+        if (items.length === 0) {
+            continue;
+        }
+
+        body += `<rect x="0" y="${y}" width="${sheetWidth}" height="${HEADER_HEIGHT}" fill="#c0c0c0"/>`;
+        body += `<text x="${H_PADDING}" y="${y + HEADER_HEIGHT / 2}" dominant-baseline="middle" font-size="18" class="futureFont">${escapeXml(group)}</text>`;
+        y += HEADER_HEIGHT;
+
+        const rowCount = Math.ceil(items.length / COLUMNS);
+        for (let row = 0; row < rowCount; row++) {
+            let maxLines = 1;
+            const rowItems: {
+                item: IconSheetEntry;
+                col: number;
+                lines: string[];
+            }[] = [];
+
+            for (let col = 0; col < COLUMNS; col++) {
+                const i = row * COLUMNS + col;
+                if (i >= items.length) {
+                    break;
+                }
+                const lines = wrapIconSheetLabel(items[i].label);
+                maxLines = Math.max(maxLines, lines.length);
+                rowItems.push({ item: items[i], col, lines });
+            }
+
+            const rowHeight = rowHeightForLines(maxLines);
+            const iconY = y;
+
+            for (const { item, col } of rowItems) {
+                const glyph = namespaceGlyph(item.glyph, entryIndex++);
+                defs.push(glyph.svg);
+
+                const x = H_PADDING + col * CELL_SIZE;
+                const buff = buffInSquare(glyph, CELL_SIZE, item.graded);
+                body += `<use href="#${glyph.id}" x="${x + buff.xOffset}" y="${iconY + buff.yOffset}" width="${buff.width}" height="${buff.height}"/>`;
+                body += renderLabel(x, iconY, item.label).svg;
+            }
+
+            y += rowHeight;
+        }
+    }
+
+    const width = COLUMNS * CELL_SIZE + H_PADDING * 2;
+    let svg = `<?xml version="1.0" encoding="UTF-8"?>`;
+    svg += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${y}" width="${width}" height="${y}">`;
+    svg += `<style type="text/css"><![CDATA[text{font-family:"Roboto",sans-serif}.futureFont{font-family:"Zen Dots","Roboto",sans-serif}]]></style>`;
+    svg += `<defs>${defs.join("")}</defs>`;
+    svg += body;
+    svg += `</svg>`;
+    return svg;
+};
+
+export const iconSheetEntryCount = (ship?: FullThrustShip): number =>
+    iconSheetEntries(ship).length;
