@@ -19,6 +19,9 @@ export class Pulser extends System {
         if (data.hasOwnProperty("numArcs")) {
             this.numArcs = data.numArcs as ArcNum;
         }
+        if (data.hasOwnProperty("range")) {
+            this.range = data.range as Range;
+        }
 
         if (this.numArcs < 1) {
             this.numArcs = 1;

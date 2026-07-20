@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 -   `RenderOpts.deployed` and `RenderOpts.deployedBuiltinDcp` grey absent friendly marines/DCP on the SSD.
 -   Permanently lost regenerative armour renders in red (`svglib_armourRegenLost`). Repairable regenerative damage remains black.
 -   `RenderOpts.ammunition` sets remaining mines or missiles per `mineLayer` or `magazine` system id; the Mines and Magazine SSD sections render fewer icons as ammo is consumed. Omitted ids default to full design capacity. Exported `resolveAmmunitionRemaining()` applies the same clamping logic.
+-   Boarding Torpedo Magazine (`boardingTorpedoMagazine`) and Boarding Torpedo Launcher (`boardingTorpedoLauncher` in `weapons`). Magazine-fed projectile weapon with BT launcher glyph and boarding torpedo ammunition icons. `evaluate()` reports `BadMagazinePairing` when a launcher references the wrong magazine type. Salvo magazines (`magazine`) are unchanged for existing fleet presets.
 
 ### Changed
 

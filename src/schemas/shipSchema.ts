@@ -276,6 +276,22 @@ export default {
                     {
                         "properties": {
                             "name": {
+                                "enum": ["boardingTorpedoMagazine"]
+                            },
+                            "id": {
+                                "description": "A unique identifier used to tie this magazine to one or more boarding torpedo launchers.",
+                                "type": "string"
+                            },
+                            "capacity": {
+                                "type": "integer",
+                                "minimum": 2
+                            }
+                        },
+                        "required": ["name"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
                                 "enum": ["ecm"]
                             },
                             "area": {
@@ -554,6 +570,24 @@ export default {
                             },
                             "numArcs": {
                                 "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["boardingTorpedoLauncher"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "enum": [3]
+                            },
+                            "magazine": {
+                                "description": "The unique ID of a boarding torpedo magazine",
+                                "type": "string"
                             }
                         },
                         "required": ["name", "leftArc", "numArcs"]

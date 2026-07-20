@@ -1,0 +1,6118 @@
+{
+  "generatedAt": "2026-07-20T00:42:50.797Z",
+  "count": 493,
+  "systems": [
+    {
+      "category": "propulsion",
+      "name": "ftl",
+      "baseName": "Faster-Than-Light Drive",
+      "variants": {},
+      "fullName": "Faster-Than-Light Drive"
+    },
+    {
+      "category": "propulsion",
+      "name": "ftl",
+      "baseName": "Faster-Than-Light Drive",
+      "variants": {
+        "advanced": true
+      },
+      "fullName": "Faster-Than-Light Drive - Advanced"
+    },
+    {
+      "category": "propulsion",
+      "name": "drive",
+      "baseName": "Main Drive",
+      "variants": {
+        "thrust": 6
+      },
+      "fullName": "Main Drive"
+    },
+    {
+      "category": "propulsion",
+      "name": "drive",
+      "baseName": "Main Drive",
+      "variants": {
+        "thrust": 6,
+        "advanced": true
+      },
+      "fullName": "Main Drive - Advanced"
+    },
+    {
+      "category": "systems",
+      "name": "sensors",
+      "baseName": "Advanced Sensors",
+      "variants": {},
+      "fullName": "Advanced Sensors"
+    },
+    {
+      "category": "systems",
+      "name": "sensors",
+      "baseName": "Advanced Sensors",
+      "variants": {
+        "advanced": true
+      },
+      "fullName": "Superior Sensors"
+    },
+    {
+      "category": "systems",
+      "name": "suicide",
+      "baseName": "Antimatter Suicide Charge",
+      "variants": {},
+      "fullName": "Antimatter Suicide Charge"
+    },
+    {
+      "category": "systems",
+      "name": "adfc",
+      "baseName": "Area Defense Fire Control",
+      "variants": {
+        "advanced": true
+      },
+      "fullName": "Advanced Area Defense Fire Control"
+    },
+    {
+      "category": "systems",
+      "name": "adfc",
+      "baseName": "Area Defense Fire Control",
+      "variants": {},
+      "fullName": "Area Defense Fire Control"
+    },
+    {
+      "category": "systems",
+      "name": "boardingTorpedoMagazine",
+      "baseName": "Boarding Torpedo Magazine",
+      "variants": {
+        "capacity": 6
+      },
+      "fullName": "Boarding Torpedo Magazine"
+    },
+    {
+      "category": "systems",
+      "name": "cloakDevice",
+      "baseName": "Cloaking Device",
+      "variants": {},
+      "fullName": "Cloaking Device"
+    },
+    {
+      "category": "systems",
+      "name": "cloakField",
+      "baseName": "Cloaking Field",
+      "variants": {},
+      "fullName": "Cloaking Field"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": true,
+        "area": true,
+        "level": 1
+      },
+      "fullName": "Advanced Area Defensive Screen - Level 1"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": true,
+        "area": true,
+        "level": 2
+      },
+      "fullName": "Advanced Area Defensive Screen - Level 2"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": true,
+        "area": true
+      },
+      "fullName": "Advanced Area Defensive Screen (unleveled)"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": true,
+        "area": false,
+        "level": 1
+      },
+      "fullName": "Advanced Defensive Screen - Level 1"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": true,
+        "area": false,
+        "level": 2
+      },
+      "fullName": "Advanced Defensive Screen - Level 2"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": true,
+        "area": false
+      },
+      "fullName": "Advanced Defensive Screen (unleveled)"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": false,
+        "area": true,
+        "level": 1
+      },
+      "fullName": "Area Defensive Screen - Level 1"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": false,
+        "area": true,
+        "level": 2
+      },
+      "fullName": "Area Defensive Screen - Level 2"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": false,
+        "area": true
+      },
+      "fullName": "Area Defensive Screen (unleveled)"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": false,
+        "area": false,
+        "level": 1
+      },
+      "fullName": "Defensive Screen - Level 1"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": false,
+        "area": false,
+        "level": 2
+      },
+      "fullName": "Defensive Screen - Level 2"
+    },
+    {
+      "category": "systems",
+      "name": "screen",
+      "baseName": "Defensive Screen",
+      "variants": {
+        "advanced": false,
+        "area": false
+      },
+      "fullName": "Defensive Screen (unleveled)"
+    },
+    {
+      "category": "systems",
+      "name": "ecm",
+      "baseName": "ECM Device",
+      "variants": {
+        "area": true
+      },
+      "fullName": "Area ECM Device"
+    },
+    {
+      "category": "systems",
+      "name": "ecm",
+      "baseName": "ECM Device",
+      "variants": {},
+      "fullName": "ECM Device"
+    },
+    {
+      "category": "systems",
+      "name": "damageControl",
+      "baseName": "Extra Damage Control",
+      "variants": {},
+      "fullName": "Extra Damage Control"
+    },
+    {
+      "category": "systems",
+      "name": "marines",
+      "baseName": "Extra Marines",
+      "variants": {},
+      "fullName": "Extra Marines"
+    },
+    {
+      "category": "systems",
+      "name": "fireControl",
+      "baseName": "Fire Control",
+      "variants": {
+        "advanced": true
+      },
+      "fullName": "Advanced Fire Control"
+    },
+    {
+      "category": "systems",
+      "name": "fireControl",
+      "baseName": "Fire Control",
+      "variants": {},
+      "fullName": "Fire Control"
+    },
+    {
+      "category": "systems",
+      "name": "bay",
+      "baseName": "Hold or Berth",
+      "variants": {
+        "type": "boat",
+        "capacity": 1
+      },
+      "fullName": "Boat Bay"
+    },
+    {
+      "category": "systems",
+      "name": "bay",
+      "baseName": "Hold or Berth",
+      "variants": {
+        "type": "cargo",
+        "capacity": 1
+      },
+      "fullName": "Cargo Hold"
+    },
+    {
+      "category": "systems",
+      "name": "bay",
+      "baseName": "Hold or Berth",
+      "variants": {
+        "type": "passenger",
+        "capacity": 1
+      },
+      "fullName": "Passenger Berth"
+    },
+    {
+      "category": "systems",
+      "name": "bay",
+      "baseName": "Hold or Berth",
+      "variants": {
+        "type": "tender",
+        "capacity": 1
+      },
+      "fullName": "Tender Bay"
+    },
+    {
+      "category": "systems",
+      "name": "bay",
+      "baseName": "Hold or Berth",
+      "variants": {
+        "type": "troop",
+        "capacity": 1
+      },
+      "fullName": "Troop Berth"
+    },
+    {
+      "category": "systems",
+      "name": "holofield",
+      "baseName": "Holofield Generator",
+      "variants": {},
+      "fullName": "Holofield Generator"
+    },
+    {
+      "category": "systems",
+      "name": "mineLayer",
+      "baseName": "Mine Layer",
+      "variants": {
+        "capacity": 4
+      },
+      "fullName": "Mine Layer"
+    },
+    {
+      "category": "systems",
+      "name": "mineSweeper",
+      "baseName": "Mine Sweeper",
+      "variants": {},
+      "fullName": "Mine Sweeper"
+    },
+    {
+      "category": "systems",
+      "name": "ortillery",
+      "baseName": "Ortillery System",
+      "variants": {},
+      "fullName": "Ortillery System"
+    },
+    {
+      "category": "systems",
+      "name": "reflex",
+      "baseName": "Reflex Field (deprecated)",
+      "variants": {},
+      "fullName": "Reflex Field (deprecated)"
+    },
+    {
+      "category": "systems",
+      "name": "magazine",
+      "baseName": "Salvo Missile Magazine",
+      "variants": {
+        "capacity": 6
+      },
+      "fullName": "Salvo Missile Magazine"
+    },
+    {
+      "category": "systems",
+      "name": "magazine",
+      "baseName": "Salvo Missile Magazine",
+      "variants": {
+        "capacity": 6,
+        "modifier": "er"
+      },
+      "fullName": "Salvo Missile Magazine - Long Range"
+    },
+    {
+      "category": "systems",
+      "name": "magazine",
+      "baseName": "Salvo Missile Magazine",
+      "variants": {
+        "capacity": 6,
+        "modifier": "twostage"
+      },
+      "fullName": "Salvo Missile Magazine - Multistage"
+    },
+    {
+      "category": "systems",
+      "name": "stealthField",
+      "baseName": "Stealth Field Generator",
+      "variants": {},
+      "fullName": "Stealth Field Generator"
+    },
+    {
+      "category": "systems",
+      "name": "shroud",
+      "baseName": "Vapour Shroud",
+      "variants": {},
+      "fullName": "Vapour Shroud"
+    },
+    {
+      "category": "systems",
+      "name": "decoy",
+      "baseName": "Weasel Decoy",
+      "variants": {
+        "type": "capital"
+      },
+      "fullName": "Capital Decoy"
+    },
+    {
+      "category": "systems",
+      "name": "decoy",
+      "baseName": "Weasel Decoy",
+      "variants": {
+        "type": "cruiser"
+      },
+      "fullName": "Cruiser Decoy"
+    },
+    {
+      "category": "ordnance",
+      "name": "amt",
+      "baseName": "Antimatter Missile",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Antimatter Missile"
+    },
+    {
+      "category": "ordnance",
+      "name": "missile",
+      "baseName": "Heavy Missile",
+      "variants": {
+        "leftArc": "FP",
+        "numArcs": 3
+      },
+      "fullName": "Heavy Missile"
+    },
+    {
+      "category": "ordnance",
+      "name": "missile",
+      "baseName": "Heavy Missile",
+      "variants": {
+        "modifier": "er",
+        "leftArc": "FP",
+        "numArcs": 3
+      },
+      "fullName": "Heavy Missile - Long Range"
+    },
+    {
+      "category": "ordnance",
+      "name": "missile",
+      "baseName": "Heavy Missile",
+      "variants": {
+        "modifier": "twostage",
+        "leftArc": "FP",
+        "numArcs": 3
+      },
+      "fullName": "Heavy Missile - Multistage"
+    },
+    {
+      "category": "ordnance",
+      "name": "rocketPod",
+      "baseName": "Rocket Pod",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Rocket Pod"
+    },
+    {
+      "category": "ordnance",
+      "name": "salvoLauncher",
+      "baseName": "Salvo Missile Launcher",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Salvo Missile Launcher"
+    },
+    {
+      "category": "ordnance",
+      "name": "salvo",
+      "baseName": "Salvo Missile Rack (single-use)",
+      "variants": {
+        "leftArc": "FP",
+        "numArcs": 3
+      },
+      "fullName": "Salvo Missile Rack (single-use)"
+    },
+    {
+      "category": "ordnance",
+      "name": "salvo",
+      "baseName": "Salvo Missile Rack (single-use)",
+      "variants": {
+        "modifier": "er",
+        "leftArc": "FP",
+        "numArcs": 3
+      },
+      "fullName": "Salvo Missile Rack (single-use) - Long Range"
+    },
+    {
+      "category": "ordnance",
+      "name": "salvo",
+      "baseName": "Salvo Missile Rack (single-use)",
+      "variants": {
+        "modifier": "twostage",
+        "leftArc": "FP",
+        "numArcs": 3
+      },
+      "fullName": "Salvo Missile Rack (single-use) - Multistage"
+    },
+    {
+      "category": "weapons",
+      "name": "ads",
+      "baseName": "Area Defense System",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Area Defense System"
+    },
+    {
+      "category": "weapons",
+      "name": "beam",
+      "baseName": "Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Class 1 Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "beam",
+      "baseName": "Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2
+      },
+      "fullName": "Class 2 Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "beam",
+      "baseName": "Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3
+      },
+      "fullName": "Class 3 Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "beam",
+      "baseName": "Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 4
+      },
+      "fullName": "Class 4 Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "boardingTorpedoLauncher",
+      "baseName": "Boarding Torpedo Launcher",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Boarding Torpedo Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "boardingTorpedoLauncher",
+      "baseName": "Boarding Torpedo Launcher",
+      "variants": {
+        "leftArc": "FS",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Boarding Torpedo Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "boardingTorpedoLauncher",
+      "baseName": "Boarding Torpedo Launcher",
+      "variants": {
+        "leftArc": "FP",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Boarding Torpedo Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "boardingTorpedoLauncher",
+      "baseName": "Boarding Torpedo Launcher",
+      "variants": {
+        "leftArc": "A",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Boarding Torpedo Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "boardingTorpedoLauncher",
+      "baseName": "Boarding Torpedo Launcher",
+      "variants": {
+        "leftArc": "AS",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Boarding Torpedo Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "boardingTorpedoLauncher",
+      "baseName": "Boarding Torpedo Launcher",
+      "variants": {
+        "leftArc": "AP",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Boarding Torpedo Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "emp",
+      "baseName": "EMP Projector",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Class 1 EMP Projector"
+    },
+    {
+      "category": "weapons",
+      "name": "emp",
+      "baseName": "EMP Projector",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2
+      },
+      "fullName": "Class 2 EMP Projector"
+    },
+    {
+      "category": "weapons",
+      "name": "emp",
+      "baseName": "EMP Projector",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3
+      },
+      "fullName": "Class 3 EMP Projector"
+    },
+    {
+      "category": "weapons",
+      "name": "emp",
+      "baseName": "EMP Projector",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 4
+      },
+      "fullName": "Class 4 EMP Projector"
+    },
+    {
+      "category": "weapons",
+      "name": "fusion",
+      "baseName": "Fusion Array",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Fusion Array"
+    },
+    {
+      "category": "weapons",
+      "name": "gatling",
+      "baseName": "Gatling Battery",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Gatling Battery"
+    },
+    {
+      "category": "weapons",
+      "name": "grapeshot",
+      "baseName": "Grapeshot Launcher",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Grapeshot Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "heavy": false,
+        "highIntensity": false
+      },
+      "fullName": "Class 1 Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "heavy": true,
+        "highIntensity": false
+      },
+      "fullName": "Class 1 Heavy Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "heavy": true,
+        "highIntensity": true
+      },
+      "fullName": "Class 1 Heavy High-Intensity Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "heavy": false,
+        "highIntensity": true
+      },
+      "fullName": "Class 1 High-Intensity Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2,
+        "heavy": false,
+        "highIntensity": false
+      },
+      "fullName": "Class 2 Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2,
+        "heavy": true,
+        "highIntensity": false
+      },
+      "fullName": "Class 2 Heavy Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2,
+        "heavy": true,
+        "highIntensity": true
+      },
+      "fullName": "Class 2 Heavy High-Intensity Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2,
+        "heavy": false,
+        "highIntensity": true
+      },
+      "fullName": "Class 2 High-Intensity Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3,
+        "heavy": false,
+        "highIntensity": false
+      },
+      "fullName": "Class 3 Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3,
+        "heavy": true,
+        "highIntensity": false
+      },
+      "fullName": "Class 3 Heavy Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3,
+        "heavy": true,
+        "highIntensity": true
+      },
+      "fullName": "Class 3 Heavy High-Intensity Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3,
+        "heavy": false,
+        "highIntensity": true
+      },
+      "fullName": "Class 3 High-Intensity Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 4,
+        "heavy": false,
+        "highIntensity": false
+      },
+      "fullName": "Class 4 Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "graser",
+      "baseName": "Graser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 4,
+        "heavy": false,
+        "highIntensity": true
+      },
+      "fullName": "Class 4 High-Intensity Graser"
+    },
+    {
+      "category": "weapons",
+      "name": "gravitic",
+      "baseName": "Gravitic Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Class 1 Gravitic Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "gravitic",
+      "baseName": "Gravitic Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2
+      },
+      "fullName": "Class 2 Gravitic Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "gravitic",
+      "baseName": "Gravitic Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3
+      },
+      "fullName": "Class 3 Gravitic Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Class 1 K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "modifier": "long"
+      },
+      "fullName": "Class 1 Long-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "modifier": "short"
+      },
+      "fullName": "Class 1 Short-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 2,
+        "class": 2
+      },
+      "fullName": "Class 2 K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 2,
+        "class": 2,
+        "modifier": "long"
+      },
+      "fullName": "Class 2 Long-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 2,
+        "class": 2,
+        "modifier": "short"
+      },
+      "fullName": "Class 2 Short-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 3
+      },
+      "fullName": "Class 3 K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 3,
+        "modifier": "long"
+      },
+      "fullName": "Class 3 Long-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 3,
+        "modifier": "short"
+      },
+      "fullName": "Class 3 Short-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 4
+      },
+      "fullName": "Class 4 K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 4,
+        "modifier": "long"
+      },
+      "fullName": "Class 4 Long-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 4,
+        "modifier": "short"
+      },
+      "fullName": "Class 4 Short-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 5
+      },
+      "fullName": "Class 5 K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 5,
+        "modifier": "long"
+      },
+      "fullName": "Class 5 Long-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 5,
+        "modifier": "short"
+      },
+      "fullName": "Class 5 Short-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 6
+      },
+      "fullName": "Class 6 K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 6,
+        "modifier": "long"
+      },
+      "fullName": "Class 6 Long-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "kgun",
+      "baseName": "K-Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 6,
+        "modifier": "short"
+      },
+      "fullName": "Class 6 Short-Range K-Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "meson",
+      "baseName": "Meson Projector",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Meson Projector"
+    },
+    {
+      "category": "weapons",
+      "name": "mkp",
+      "baseName": "Multiple Kinetic Penetrator",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Multiple Kinetic Penetrator"
+    },
+    {
+      "category": "weapons",
+      "name": "needle",
+      "baseName": "Needle Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Class 1 Needle Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "needle",
+      "baseName": "Needle Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 2
+      },
+      "fullName": "Class 2 Needle Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "needle",
+      "baseName": "Needle Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 3
+      },
+      "fullName": "Class 3 Needle Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "needle",
+      "baseName": "Needle Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 4
+      },
+      "fullName": "Class 4 Needle Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "phaser",
+      "baseName": "Phaser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Class 1 Phaser"
+    },
+    {
+      "category": "weapons",
+      "name": "phaser",
+      "baseName": "Phaser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2
+      },
+      "fullName": "Class 2 Phaser"
+    },
+    {
+      "category": "weapons",
+      "name": "phaser",
+      "baseName": "Phaser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3
+      },
+      "fullName": "Class 3 Phaser"
+    },
+    {
+      "category": "weapons",
+      "name": "phaser",
+      "baseName": "Phaser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 4
+      },
+      "fullName": "Class 4 Phaser"
+    },
+    {
+      "category": "weapons",
+      "name": "pbl",
+      "baseName": "Plasma Bolt Launcher",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 1
+      },
+      "fullName": "Class 1 Plasma Bolt Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "pbl",
+      "baseName": "Plasma Bolt Launcher",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 2
+      },
+      "fullName": "Class 2 Plasma Bolt Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "pbl",
+      "baseName": "Plasma Bolt Launcher",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 3
+      },
+      "fullName": "Class 3 Plasma Bolt Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "pbl",
+      "baseName": "Plasma Bolt Launcher",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 4
+      },
+      "fullName": "Class 4 Plasma Bolt Launcher"
+    },
+    {
+      "category": "weapons",
+      "name": "plasmaCannon",
+      "baseName": "Plasma Cannon",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Class 1 Plasma Cannon"
+    },
+    {
+      "category": "weapons",
+      "name": "plasmaCannon",
+      "baseName": "Plasma Cannon",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2
+      },
+      "fullName": "Class 2 Plasma Cannon"
+    },
+    {
+      "category": "weapons",
+      "name": "plasmaCannon",
+      "baseName": "Plasma Cannon",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3
+      },
+      "fullName": "Class 3 Plasma Cannon"
+    },
+    {
+      "category": "weapons",
+      "name": "plasmaCannon",
+      "baseName": "Plasma Cannon",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 4
+      },
+      "fullName": "Class 4 Plasma Cannon"
+    },
+    {
+      "category": "weapons",
+      "name": "pds",
+      "baseName": "Point Defense System",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Point Defense System"
+    },
+    {
+      "category": "weapons",
+      "name": "torpedoPulse",
+      "baseName": "Pulse Torpedos",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 1,
+        "modifier": "long"
+      },
+      "fullName": "Long-Range Pulse Torpedos"
+    },
+    {
+      "category": "weapons",
+      "name": "torpedoPulse",
+      "baseName": "Pulse Torpedos",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 1
+      },
+      "fullName": "Pulse Torpedos"
+    },
+    {
+      "category": "weapons",
+      "name": "torpedoPulse",
+      "baseName": "Pulse Torpedos",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1,
+        "class": 1,
+        "modifier": "short"
+      },
+      "fullName": "Short-Range Pulse Torpedos"
+    },
+    {
+      "category": "weapons",
+      "name": "pulser",
+      "baseName": "Pulser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "range": "long"
+      },
+      "fullName": "Pulser - Long Range"
+    },
+    {
+      "category": "weapons",
+      "name": "pulser",
+      "baseName": "Pulser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "range": "medium"
+      },
+      "fullName": "Pulser - Medium Range"
+    },
+    {
+      "category": "weapons",
+      "name": "pulser",
+      "baseName": "Pulser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "range": "short"
+      },
+      "fullName": "Pulser - Short Range"
+    },
+    {
+      "category": "weapons",
+      "name": "pulser",
+      "baseName": "Pulser",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1,
+        "range": "undefined"
+      },
+      "fullName": "Pulser - Undefined Range"
+    },
+    {
+      "category": "weapons",
+      "name": "scatterGun",
+      "baseName": "Scatter Gun",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Scatter Gun"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalBeam",
+      "baseName": "Spinal Mount - Beam",
+      "variants": {
+        "range": "long"
+      },
+      "fullName": "Spinal Mount - Beam - Long Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalBeam",
+      "baseName": "Spinal Mount - Beam",
+      "variants": {
+        "range": "medium"
+      },
+      "fullName": "Spinal Mount - Beam - Medium Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalBeam",
+      "baseName": "Spinal Mount - Beam",
+      "variants": {
+        "range": "short"
+      },
+      "fullName": "Spinal Mount - Beam - Short Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalNova",
+      "baseName": "Spinal Mount - Nova Cannon (deprecated)",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Spinal Mount - Nova Cannon (deprecated)"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalPlasma",
+      "baseName": "Spinal Mount - Plasma",
+      "variants": {
+        "range": "long"
+      },
+      "fullName": "Spinal Mount - Beam - Long Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalPlasma",
+      "baseName": "Spinal Mount - Plasma",
+      "variants": {
+        "range": "medium"
+      },
+      "fullName": "Spinal Mount - Beam - Medium Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalPlasma",
+      "baseName": "Spinal Mount - Plasma",
+      "variants": {
+        "range": "short"
+      },
+      "fullName": "Spinal Mount - Beam - Short Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalSingularity",
+      "baseName": "Spinal Mount - Point Singularity Projector",
+      "variants": {
+        "range": "long"
+      },
+      "fullName": "Spinal Mount - Beam - Long Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalSingularity",
+      "baseName": "Spinal Mount - Point Singularity Projector",
+      "variants": {
+        "range": "medium"
+      },
+      "fullName": "Spinal Mount - Beam - Medium Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalSingularity",
+      "baseName": "Spinal Mount - Point Singularity Projector",
+      "variants": {
+        "range": "short"
+      },
+      "fullName": "Spinal Mount - Beam - Short Range"
+    },
+    {
+      "category": "weapons",
+      "name": "spinalWave",
+      "baseName": "Spinal Mount - Wave Gun (deprecated)",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Spinal Mount - Wave Gun (deprecated)"
+    },
+    {
+      "category": "weapons",
+      "name": "transporter",
+      "baseName": "Transporter Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Class 1 Transporter Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "transporter",
+      "baseName": "Transporter Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 2
+      },
+      "fullName": "Class 2 Transporter Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "transporter",
+      "baseName": "Transporter Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 3
+      },
+      "fullName": "Class 3 Transporter Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "transporter",
+      "baseName": "Transporter Beam",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 4
+      },
+      "fullName": "Class 4 Transporter Beam"
+    },
+    {
+      "category": "weapons",
+      "name": "submunition",
+      "baseName": "Turreted Submunition Pack",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Turreted Submunitions Pack"
+    },
+    {
+      "category": "weapons",
+      "name": "particle",
+      "baseName": "Twin Particle Array",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 6,
+        "class": 1
+      },
+      "fullName": "Twin Particle Array"
+    },
+    {
+      "category": "fighters",
+      "name": "hangar",
+      "baseName": "Fighter Bay/Rack",
+      "variants": {
+        "isRack": true
+      },
+      "fullName": "Fighter Rack"
+    },
+    {
+      "category": "fighters",
+      "name": "hangar",
+      "baseName": "Fighter Bay/Rack",
+      "variants": {},
+      "fullName": "Hangar Bay"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault"
+      },
+      "fullName": "Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack"
+      },
+      "fullName": "Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Long-Range Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast FTL Heavy Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast FTL Long-Range Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "Fast FTL Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "ftl"
+        ]
+      },
+      "fullName": "Fast FTL Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Heavy Long-Range Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Heavy Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "heavy"
+        ]
+      },
+      "fullName": "Fast Heavy Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "lightAttack",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Light Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "light",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Light Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "lightInterceptor",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Light Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Long-Range Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "longRange"
+        ]
+      },
+      "fullName": "Fast Long-Range Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "lightAttack",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Light Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "light",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Light Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "lightInterceptor",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Light Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast",
+          "robot"
+        ]
+      },
+      "fullName": "Fast Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "fast"
+        ]
+      },
+      "fullName": "Fast Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "ftl",
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Heavy Long-Range Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "ftl",
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Heavy Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "ftl",
+          "heavy"
+        ]
+      },
+      "fullName": "FTL Heavy Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "ftl",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Long-Range Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "ftl",
+          "longRange"
+        ]
+      },
+      "fullName": "FTL Long-Range Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "ftl",
+          "robot"
+        ]
+      },
+      "fullName": "FTL Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser"
+      },
+      "fullName": "Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "heavy",
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Long-Range Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "heavy",
+          "longRange"
+        ]
+      },
+      "fullName": "Heavy Long-Range Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "heavy",
+          "robot"
+        ]
+      },
+      "fullName": "Heavy Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "heavy"
+        ]
+      },
+      "fullName": "Heavy Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor"
+      },
+      "fullName": "Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "lightAttack"
+      },
+      "fullName": "Light Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "light"
+      },
+      "fullName": "Light Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "lightInterceptor"
+      },
+      "fullName": "Light Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "longRange",
+          "robot"
+        ]
+      },
+      "fullName": "Long-Range Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "longRange"
+        ]
+      },
+      "fullName": "Long-Range Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile"
+      },
+      "fullName": "Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP"
+      },
+      "fullName": "MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole"
+      },
+      "fullName": "Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma"
+      },
+      "fullName": "Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "assault",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Assault Shuttles"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "attack",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Graser Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "interceptor",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "lightAttack",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Light Attack Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "light",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Light Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "lightInterceptor",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Light Interceptor"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Missile Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "MKP",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot MKP Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "multiRole",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Multi-Role Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Plasma Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo",
+        "mods": [
+          "robot"
+        ]
+      },
+      "fullName": "Robot Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "standard"
+      },
+      "fullName": "Standard Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "fighters",
+      "baseName": "Fighters",
+      "variants": {
+        "type": "torpedo"
+      },
+      "fullName": "Torpedo Fighter"
+    },
+    {
+      "category": "fighters",
+      "name": "launchTube",
+      "baseName": "Launch Tube",
+      "variants": {},
+      "fullName": "Launch Tube"
+    },
+    {
+      "category": "fighters",
+      "name": "launchTube",
+      "baseName": "Launch Tube",
+      "variants": {
+        "catapult": true
+      },
+      "fullName": "Launch Tube w/ Catapult"
+    },
+    {
+      "category": "fighters",
+      "name": "turret",
+      "baseName": "Turret",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 1
+      },
+      "fullName": "Turret"
+    },
+    {
+      "category": "auxiliary",
+      "name": "damageControl",
+      "baseName": "Extra Damage Control",
+      "variants": {},
+      "fullName": "Extra Damage Control"
+    },
+    {
+      "category": "auxiliary",
+      "name": "marines",
+      "baseName": "Extra Marines",
+      "variants": {},
+      "fullName": "Extra Marines"
+    },
+    {
+      "category": "auxiliary",
+      "name": "flawed",
+      "baseName": "Flawed Design",
+      "variants": {},
+      "fullName": "Flawed Design"
+    }
+  ]
+}

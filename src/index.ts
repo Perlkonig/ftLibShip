@@ -49,6 +49,7 @@ export enum EvalErrorCode {
     DblUID = "DblUID",
     FlawedUnderMass = "FlawedUnderMass",
     UnknownSystem = "UNKNOWNSYSTEM",
+    BadMagazinePairing = "BADMAGAZINEPAIRING",
 }
 
 export enum ValErrorCode {
@@ -204,6 +205,45 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
             }
             if (pbls > maxPbls) {
                 results.errors.push(EvalErrorCode.OverPBL);
+            }
+        }
+
+        const salvoMagazineIds = new Set<string>();
+        const btMagazineIds = new Set<string>();
+        if (ship.systems !== undefined) {
+            for (const sys of ship.systems) {
+                if (sys.id === undefined) {
+                    continue;
+                }
+                if (sys.name === "magazine") {
+                    salvoMagazineIds.add(sys.id as string);
+                } else if (sys.name === "boardingTorpedoMagazine") {
+                    btMagazineIds.add(sys.id as string);
+                }
+            }
+        }
+        if (ship.ordnance !== undefined) {
+            for (const sys of ship.ordnance) {
+                if (
+                    sys.name === "salvoLauncher" &&
+                    sys.magazine !== undefined
+                ) {
+                    if (!salvoMagazineIds.has(sys.magazine as string)) {
+                        results.errors.push(EvalErrorCode.BadMagazinePairing);
+                    }
+                }
+            }
+        }
+        if (ship.weapons !== undefined) {
+            for (const sys of ship.weapons) {
+                if (
+                    sys.name === "boardingTorpedoLauncher" &&
+                    sys.magazine !== undefined
+                ) {
+                    if (!btMagazineIds.has(sys.magazine as string)) {
+                        results.errors.push(EvalErrorCode.BadMagazinePairing);
+                    }
+                }
             }
         }
 

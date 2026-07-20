@@ -20,7 +20,8 @@ import { MineSweeper } from "./mineSweeper.js";
 import { MineLayer } from "./mineLayer.js";
 import { Bay } from "./bay.js";
 import { Magazine } from "./magazine.js";
-export { Screen, MineSweeper, MineLayer, Bay, Magazine };
+import { BoardingTorpedoMagazine } from "./boardingTorpedoMagazine.js";
+export { Screen, MineSweeper, MineLayer, Bay, Magazine, BoardingTorpedoMagazine };
 import { DamageControl } from "./damageControl.js";
 import { Marines } from "./marines.js";
 import { Ecm } from "./ecm.js";
@@ -58,11 +59,12 @@ import { Submunition } from "./submunition.js";
 import { Fusion } from "./fusion.js";
 export { Gatling, Particle, Meson, Submunition, Fusion };
 import { TorpedoPulse } from "./torpedoPulse.js";
+import { BoardingTorpedoLauncher } from "./boardingTorpedoLauncher.js";
 import { Kgun } from "./kgun.js";
 import { Gravitic } from "./gravitic.js";
 import { Pbl } from "./pbl.js";
 import { Hangar } from "./hangar.js";
-export { TorpedoPulse, Kgun, Gravitic, Pbl, Hangar };
+export { TorpedoPulse, BoardingTorpedoLauncher, Kgun, Gravitic, Pbl, Hangar };
 import { LaunchTube } from "./launchTube.js";
 import { Fighters } from "./fighters.js";
 import { Pulser } from "./pulser.js";
@@ -103,6 +105,7 @@ export const sortNames = new Map<string, string>([
     ["mineLayer", "Mine Layer"],
     ["bay", "Hold or Berth"],
     ["magazine", "Salvo Missile Magazine"],
+    ["boardingTorpedoMagazine", "Boarding Torpedo Magazine"],
     ["damageControl", "Extra Damage Control"],
     ["marines", "Extra Marines"],
     ["ecm", "ECM Device"],
@@ -134,6 +137,7 @@ export const sortNames = new Map<string, string>([
     ["submunition", "Turreted Submunition Pack"],
     ["fusion", "Fusion Array"],
     ["torpedoPulse", "Pulse Torpedos"],
+    ["boardingTorpedoLauncher", "Boarding Torpedo Launcher"],
     ["kgun", "K-Gun"],
     ["gravitic", "Gravitic Gun"],
     ["pbl", "Plasma Bolt Launcher"],
@@ -171,6 +175,7 @@ export const systemList: string[] = [
     "damageControl",
     "marines",
     "magazine",
+    "boardingTorpedoMagazine",
     "bay",
     "mineLayer",
     "mineSweeper",
@@ -210,6 +215,7 @@ export const weaponList: string[] = [
     "gravitic",
     "kgun",
     "torpedoPulse",
+    "boardingTorpedoLauncher",
     "fusion",
     "submunition",
     "meson",
@@ -292,6 +298,8 @@ export const getSystem = (
             return new Bay(data, ship);
         case "magazine":
             return new Magazine(data, ship);
+        case "boardingTorpedoMagazine":
+            return new BoardingTorpedoMagazine(data, ship);
         case "damageControl":
             return new DamageControl(data, ship);
         case "marines":
@@ -354,6 +362,8 @@ export const getSystem = (
             return new Fusion(data, ship);
         case "torpedoPulse":
             return new TorpedoPulse(data, ship);
+        case "boardingTorpedoLauncher":
+            return new BoardingTorpedoLauncher(data, ship);
         case "kgun":
             return new Kgun(data, ship);
         case "gravitic":

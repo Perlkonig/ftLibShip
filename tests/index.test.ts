@@ -14,6 +14,9 @@ import { scopeInternalIds } from "../src/lib/scopeInternalIds.js";
 import { Kgun } from "../src/lib/systems/kgun.js";
 import { Phaser } from "../src/lib/systems/phaser.js";
 import { Turret } from "../src/lib/systems/turret.js";
+import { Magazine } from "../src/lib/systems/magazine.js";
+import { BoardingTorpedoMagazine } from "../src/lib/systems/boardingTorpedoMagazine.js";
+import { BoardingTorpedoLauncher } from "../src/lib/systems/boardingTorpedoLauncher.js";
 
 const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":6,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":167,"cpv":142,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","orientation":"alpha"}`;
 const validKonstantin = `{"hull":{"points":72,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":2,"advanced":false,"id":"q7Leg"},{"name":"ftl","advanced":false,"id":"ldkgq"},{"name":"screen","area":false,"advanced":false,"id":"xv2qU"},{"name":"screen","area":false,"advanced":false,"id":"ZqYDP"},{"name":"fireControl","id":"mdpi2"},{"name":"fireControl","id":"IqDbI"},{"name":"hangar","id":"EQ2W6","isRack":false,"critRules":false},{"name":"hangar","id":"sw_ET","isRack":false,"critRules":false},{"name":"hangar","id":"DRonE","isRack":false,"critRules":false},{"name":"hangar","id":"5hxLH","isRack":false,"critRules":false},{"name":"hangar","id":"FJl7X","isRack":false,"critRules":false},{"name":"hangar","id":"I4LWH","isRack":false,"critRules":false}],"weapons":[{"name":"pds","id":"l5LdK"},{"name":"pds","id":"vwGAa"},{"name":"pds","id":"gh3ru"},{"name":"pds","id":"aDMFK"},{"name":"pds","id":"IpY96"},{"name":"pds","id":"25H7F"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"BepZp"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"Ds8zO"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"Vj_AN"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"ERb4o"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Ve2aC"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"C6rZc"},{"name":"beam","class":3,"leftArc":"AP","numArcs":3,"id":"r34r8"},{"name":"beam","class":3,"leftArc":"FP","numArcs":3,"id":"1mABJ"},{"name":"beam","class":3,"leftArc":"FP","numArcs":3,"id":"xjptS"},{"name":"beam","class":3,"leftArc":"F","numArcs":3,"id":"7fLe0"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"standard","id":"lgrLB","mods":[],"hangar":"EQ2W6"},{"name":"fighters","type":"standard","id":"4xXE-","mods":[],"hangar":"sw_ET"},{"name":"fighters","type":"standard","id":"viaG3","mods":[],"hangar":"DRonE"},{"name":"fighters","type":"standard","id":"pdLwG","mods":[],"hangar":"5hxLH"},{"name":"fighters","type":"standard","id":"brJEp","mods":[],"hangar":"FJl7X"},{"name":"fighters","type":"standard","id":"ykKy1","mods":[],"hangar":"I4LWH"}],"orientation":"alpha","points":842,"cpv":840,"mass":240,"class":"Attack Carrier","name":"Konstantin"}`;
@@ -358,6 +361,106 @@ describe("Renderer", () => {
         );
         expect(resolveAmmunitionRemaining(4, "minesA", { minesA: -1 })).to.equal(
             0
+        );
+    });
+
+    it("boarding torpedo magazine and launcher mass/points", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        const mag = new BoardingTorpedoMagazine(
+            { name: "boardingTorpedoMagazine", capacity: 4, id: "btMag" },
+            ship
+        );
+        expect(mag.mass()).to.equal(4);
+        expect(mag.points()).to.equal(12);
+        expect(mag.fullName()).to.equal("Boarding Torpedo Magazine");
+
+        const launcher = new BoardingTorpedoLauncher(
+            {
+                name: "boardingTorpedoLauncher",
+                leftArc: "FS",
+                numArcs: 3,
+                magazine: "btMag",
+                id: "btL1",
+            },
+            ship
+        );
+        expect(launcher.mass()).to.equal(2);
+        expect(launcher.points()).to.equal(6);
+        expect(launcher.glyph().svg).to.include(">BT<");
+    });
+
+    it("boarding torpedo launcher renders in magazine section, not weapons", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.systems!.push({
+            name: "boardingTorpedoMagazine",
+            capacity: 3,
+            id: "btMag1",
+        });
+        ship.weapons!.push({
+            name: "boardingTorpedoLauncher",
+            leftArc: "FS",
+            numArcs: 3,
+            magazine: "btMag1",
+            id: "btL1",
+        });
+        const sectionUseCount = (
+            svg: string,
+            heading: string,
+            nextHeading: string
+        ) => {
+            const start = svg.indexOf(heading);
+            const end = svg.indexOf(nextHeading, start + 1);
+            const section = svg.slice(start, end > start ? end : undefined);
+            return (section.match(/<use /g) ?? []).length;
+        };
+        const full = renderSvg(ship)!;
+        const partial = renderSvg(ship, { ammunition: { btMag1: 1 } })!;
+        expect(sectionUseCount(full, ">Magazine<", ">Weapons<")).to.equal(4);
+        expect(sectionUseCount(partial, ">Magazine<", ">Weapons<")).to.equal(2);
+        expect(full).to.include('id="btL1"');
+    });
+
+    it("BadMagazinePairing when launcher and magazine ammo types mismatch", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.systems!.push(
+            {
+                name: "boardingTorpedoMagazine",
+                capacity: 6,
+                id: "btMag1",
+            },
+            { name: "magazine", capacity: 6, id: "mag1" }
+        );
+        ship.ordnance = [
+            {
+                name: "salvoLauncher",
+                leftArc: "FP",
+                numArcs: 3,
+                magazine: "btMag1",
+                id: "salvoL1",
+            },
+        ];
+        ship.weapons!.push({
+            name: "boardingTorpedoLauncher",
+            leftArc: "FP",
+            numArcs: 3,
+            magazine: "mag1",
+            id: "btL1",
+        });
+        const evaluation = evaluate(ship);
+        expect(evaluation.errors).to.include(EvalErrorCode.BadMagazinePairing);
+        expect(
+            evaluation.errors.filter(
+                (e) => e === EvalErrorCode.BadMagazinePairing
+            ).length
+        ).to.equal(2);
+    });
+
+    it("plain salvo magazine evaluates without errors", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+        ship.systems!.push({ name: "magazine", capacity: 6, id: "mag1" });
+        const evaluation = evaluate(ship);
+        expect(evaluation.errors).to.not.include(
+            EvalErrorCode.BadMagazinePairing
         );
     });
 

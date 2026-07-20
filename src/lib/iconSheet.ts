@@ -3,18 +3,18 @@ import type { ISystemSVG } from "./svgLib.js";
 import { svgLib } from "./svgLib.js";
 import { type2name } from "./systems/fighters.js";
 import { Hangar } from "./systems/hangar.js";
-import {
-    getSystem,
-    ordnanceList,
-    systemList,
-    weaponList,
-} from "./systems/index.js";
+import { getSystem, ordnanceList, systemList, weaponList } from "./systems/index.js";
 import type { ISystem, System } from "./systems/_base.js";
 import { Flawed } from "./systems/flawed.js";
 import { MineLayer } from "./systems/mineLayer.js";
 import { Magazine } from "./systems/magazine.js";
-import { Pulser } from "./systems/pulser.js";
+import { BoardingTorpedoMagazine } from "./systems/boardingTorpedoMagazine.js";
 import type { ResolvedHangarOccupancy } from "./fighters.js";
+import {
+    catalogStubShip,
+    systemConfigs,
+    weaponConfigs,
+} from "./systemCatalog.js";
 
 export type IconSheetGroup =
     | "Hull and armour"
@@ -125,20 +125,6 @@ const renderLabel = (
     return { svg, lines };
 };
 
-const stubShip = (): FullThrustShip =>
-    ({
-        mass: 50,
-        hashseed: "icon-sheet",
-        hull: { points: 15, rows: 4, stealth: "0", streamlining: "none" },
-        armour: [],
-        systems: [],
-        weapons: [],
-        ordnance: [],
-        points: 100,
-        cpv: 80,
-        name: "Icon Sheet Stub",
-    }) as FullThrustShip;
-
 const buffInSquare = (
     glyph: ISystemSVG,
     size: number,
@@ -205,173 +191,6 @@ class CatalogBuilder {
         return this.entries;
     }
 }
-
-const defaultArcWeapon = (
-    name: string,
-    extra: Record<string, unknown> = {}
-): ISystem => ({
-    name,
-    id: `icon_${name}`,
-    leftArc: "F",
-    numArcs: 6,
-    class: 1,
-    ...extra,
-});
-
-const systemConfigs = (name: string): ISystem[] => {
-    switch (name) {
-        case "bay":
-            return (["cargo", "passenger", "troop", "boat", "tender"] as const).map(
-                (type) => ({ name: "bay", type, id: `bay_${type}`, capacity: 1 })
-            );
-        case "decoy":
-            return [
-                { name: "decoy", type: "cruiser", id: "decoy_c" },
-                { name: "decoy", type: "capital", id: "decoy_cap" },
-            ];
-        case "ecm":
-            return [
-                { name: "ecm", id: "ecm" },
-                { name: "ecm", area: true, id: "ecm_area" },
-            ];
-        case "fireControl":
-            return [
-                { name: "fireControl", id: "fc" },
-                { name: "fireControl", advanced: true, id: "fc_adv" },
-            ];
-        case "adfc":
-            return [
-                { name: "adfc", id: "adfc" },
-                { name: "adfc", advanced: true, id: "adfc_adv" },
-            ];
-        case "sensors":
-            return [
-                { name: "sensors", id: "sensors" },
-                { name: "sensors", advanced: true, id: "sensors_adv" },
-            ];
-        case "screen": {
-            const configs: ISystem[] = [];
-            for (const advanced of [false, true]) {
-                for (const area of [false, true]) {
-                    for (const level of [undefined, 1, 2] as const) {
-                        configs.push({
-                            name: "screen",
-                            advanced,
-                            area,
-                            ...(level !== undefined ? { level } : {}),
-                            id: `screen_${advanced}_${area}_${level ?? "u"}`,
-                        });
-                    }
-                }
-            }
-            return configs;
-        }
-        case "magazine":
-            return [
-                { name: "magazine", capacity: 6, id: "mag" },
-                { name: "magazine", capacity: 6, modifier: "er", id: "mag_er" },
-                {
-                    name: "magazine",
-                    capacity: 6,
-                    modifier: "twostage",
-                    id: "mag_ts",
-                },
-            ];
-        case "mineLayer":
-            return [{ name: "mineLayer", capacity: 4, id: "ml" }];
-        default:
-            return [{ name, id: `sys_${name}` }];
-    }
-};
-
-const weaponConfigs = (name: string): ISystem[] => {
-    switch (name) {
-        case "beam":
-        case "emp":
-        case "needle":
-        case "phaser":
-        case "plasmaCannon":
-        case "gravitic":
-        case "pbl":
-        case "transporter":
-            return [1, 2, 3, 4].map((cls) =>
-                defaultArcWeapon(name, { class: cls, id: `${name}_${cls}` })
-            );
-        case "graser": {
-            const configs: ISystem[] = [];
-            for (let cls = 1; cls <= 4; cls++) {
-                for (const heavy of [false, true]) {
-                    if (heavy && cls > 3) {
-                        continue;
-                    }
-                    for (const highIntensity of [false, true]) {
-                        configs.push(
-                            defaultArcWeapon("graser", {
-                                class: cls,
-                                heavy,
-                                highIntensity,
-                                id: `graser_${cls}_${heavy}_${highIntensity}`,
-                            })
-                        );
-                    }
-                }
-            }
-            return configs;
-        }
-        case "kgun": {
-            const configs: ISystem[] = [];
-            for (const cls of [1, 2, 3, 4, 5, 6]) {
-                for (const modifier of ["none", "short", "long"] as const) {
-                    configs.push(
-                        defaultArcWeapon("kgun", {
-                            class: cls,
-                            modifier,
-                            id: `kgun_${cls}_${modifier}`,
-                        })
-                    );
-                }
-            }
-            return configs;
-        }
-        case "torpedoPulse":
-            return (["none", "short", "long"] as const).map((modifier) =>
-                defaultArcWeapon("torpedoPulse", {
-                    modifier,
-                    numArcs: 1,
-                    id: `tp_${modifier}`,
-                })
-            );
-        case "pulser":
-            return [
-                defaultArcWeapon("pulser", { id: "pulser_u" }),
-                defaultArcWeapon("pulser", { id: "pulser_s" }),
-                defaultArcWeapon("pulser", { id: "pulser_m" }),
-                defaultArcWeapon("pulser", { id: "pulser_l" }),
-            ];
-        case "spinalBeam":
-        case "spinalPlasma":
-        case "spinalSingularity":
-            return (["short", "medium", "long"] as const).map((range) => ({
-                name,
-                range,
-                id: `${name}_${range}`,
-            }));
-        case "missile":
-        case "salvo":
-            return [
-                { name, id: `${name}_base` },
-                { name, modifier: "er", id: `${name}_er` },
-                { name, modifier: "twostage", id: `${name}_ts` },
-            ];
-        default:
-            return [defaultArcWeapon(name)];
-    }
-};
-
-const pulserPrepare = (index: number) => (sys: System) => {
-    const ranges = ["undefined", "short", "medium", "long"] as const;
-    (sys as Pulser).range = ranges[index];
-};
 
 const buildCatalog = (ship: FullThrustShip): IconSheetEntry[] => {
     const builder = new CatalogBuilder(ship);
@@ -444,14 +263,25 @@ const buildCatalog = (ship: FullThrustShip): IconSheetEntry[] => {
         false
     );
 
+    const boardingMagazine = getSystem(
+        {
+            name: "boardingTorpedoMagazine",
+            capacity: 6,
+            id: "ord_mag_bt",
+        },
+        ship
+    ) as BoardingTorpedoMagazine;
+    builder.addGlyph(
+        "Ordnance",
+        "Boarding torpedo",
+        boardingMagazine.missileGlyph(),
+        false
+    );
+
     for (const name of weaponList) {
-        const configs = weaponConfigs(name);
-        configs.forEach((data, index) => {
-            builder.addSystem("Weapons", data, {
-                prepare:
-                    name === "pulser" ? pulserPrepare(index) : undefined,
-            });
-        });
+        for (const data of weaponConfigs(name)) {
+            builder.addSystem("Weapons", data);
+        }
     }
 
     builder.addSystem("Fighter bays and wings", {
@@ -513,7 +343,7 @@ const buildCatalog = (ship: FullThrustShip): IconSheetEntry[] => {
 };
 
 export const iconSheetEntries = (ship?: FullThrustShip): IconSheetEntry[] => {
-    const entries = buildCatalog(ship ?? stubShip());
+    const entries = buildCatalog(ship ?? catalogStubShip());
     const sorted: IconSheetEntry[] = [];
     for (const group of GROUP_ORDER) {
         const groupEntries = entries

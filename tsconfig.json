@@ -4,12 +4,13 @@
         "target": "es2018",
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
-        "declaration": true, // generate .d.ts files
+        "declaration": true,
         "sourceMap": false,
-        "outDir": "dist", // output compiled js, d.ts, and source map to dist folder
+        "outDir": "dist",
         "strict": true,
         "esModuleInterop": true,
         "strictNullChecks": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "skipLibCheck": true
     }
 }

@@ -132,6 +132,15 @@ export interface FullThrustShip {
         [k: string]: unknown;
       }
     | {
+        name: "boardingTorpedoMagazine";
+        /**
+         * A unique identifier used to tie this magazine to one or more boarding torpedo launchers.
+         */
+        id?: string;
+        capacity?: number;
+        [k: string]: unknown;
+      }
+    | {
         name: "ecm";
         area?: boolean;
         [k: string]: unknown;
@@ -242,6 +251,16 @@ export interface FullThrustShip {
         modifier?: "short" | "long";
         leftArc: Arcs;
         numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "boardingTorpedoLauncher";
+        leftArc: Arcs;
+        numArcs: 3;
+        /**
+         * The unique ID of a boarding torpedo magazine
+         */
+        magazine?: string;
         [k: string]: unknown;
       }
     | {
