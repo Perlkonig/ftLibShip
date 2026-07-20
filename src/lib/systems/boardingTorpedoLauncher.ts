@@ -45,7 +45,7 @@ export class BoardingTorpedoLauncher extends System {
             fnv.seed(this.ship.hashseed);
             id = fnv.hash(id).hex();
         }
-        const insert = `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="140" stroke="black" fill="black">BT</text>`;
+        const insert = `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="200" stroke="black" fill="black">BT</text>`;
         const svg = genArcs(
             this.ship.orientation,
             id,
