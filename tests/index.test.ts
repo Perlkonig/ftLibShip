@@ -17,6 +17,7 @@ import { Turret } from "../src/lib/systems/turret.js";
 import { Magazine } from "../src/lib/systems/magazine.js";
 import { BoardingTorpedoMagazine } from "../src/lib/systems/boardingTorpedoMagazine.js";
 import { BoardingTorpedoLauncher } from "../src/lib/systems/boardingTorpedoLauncher.js";
+import { Fusion } from "../src/lib/systems/fusion.js";
 
 const validTacoma = `{"hull":{"points":15,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":6,"advanced":false,"id":"CX-A9"},{"name":"ftl","advanced":false,"id":"O_hFB"},{"name":"fireControl","id":"1lIra"},{"name":"fireControl","id":"z8Ahb"},{"name":"screen","id":"xJc7e"}],"weapons":[{"name":"pds","id":"zkCHa"},{"name":"pds","id":"kRzGt"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"U66Pl"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"rnlPA"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"pxn5M"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Y174V"},{"name":"beam","class":2,"leftArc":"FP","numArcs":3,"id":"eySY3"}],"ordnance":[],"extras":[],"fighters":[],"mass":50,"class":"Tacoma Class Light Cruiser","name":"Aaron","points":167,"cpv":142,"notes":"The *Huron* is a rebuild of the earlier Hoshino class hulls that were built between 2157 and 2165; the lack of a suitable replacement CL design in the mid-2170s caused the Admiralty to look at ways of extending the service life of the obsolescent **Hoshinos**, and the Huron was the outcome of the project study. Projected operational life of the totally-refitted ships is now well into the 2190s, and there are even a handful of new hulls being built to the updated design.","orientation":"alpha"}`;
 const validKonstantin = `{"hull":{"points":72,"rows":4,"stealth":"0","streamlining":"none"},"armour":[],"systems":[{"name":"drive","thrust":2,"advanced":false,"id":"q7Leg"},{"name":"ftl","advanced":false,"id":"ldkgq"},{"name":"screen","area":false,"advanced":false,"id":"xv2qU"},{"name":"screen","area":false,"advanced":false,"id":"ZqYDP"},{"name":"fireControl","id":"mdpi2"},{"name":"fireControl","id":"IqDbI"},{"name":"hangar","id":"EQ2W6","isRack":false,"critRules":false},{"name":"hangar","id":"sw_ET","isRack":false,"critRules":false},{"name":"hangar","id":"DRonE","isRack":false,"critRules":false},{"name":"hangar","id":"5hxLH","isRack":false,"critRules":false},{"name":"hangar","id":"FJl7X","isRack":false,"critRules":false},{"name":"hangar","id":"I4LWH","isRack":false,"critRules":false}],"weapons":[{"name":"pds","id":"l5LdK"},{"name":"pds","id":"vwGAa"},{"name":"pds","id":"gh3ru"},{"name":"pds","id":"aDMFK"},{"name":"pds","id":"IpY96"},{"name":"pds","id":"25H7F"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"BepZp"},{"name":"beam","class":1,"leftArc":"F","numArcs":6,"id":"Ds8zO"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"Vj_AN"},{"name":"beam","class":2,"leftArc":"AP","numArcs":3,"id":"ERb4o"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"Ve2aC"},{"name":"beam","class":2,"leftArc":"F","numArcs":3,"id":"C6rZc"},{"name":"beam","class":3,"leftArc":"AP","numArcs":3,"id":"r34r8"},{"name":"beam","class":3,"leftArc":"FP","numArcs":3,"id":"1mABJ"},{"name":"beam","class":3,"leftArc":"FP","numArcs":3,"id":"xjptS"},{"name":"beam","class":3,"leftArc":"F","numArcs":3,"id":"7fLe0"}],"ordnance":[],"extras":[],"fighters":[{"name":"fighters","type":"standard","id":"lgrLB","mods":[],"hangar":"EQ2W6"},{"name":"fighters","type":"standard","id":"4xXE-","mods":[],"hangar":"sw_ET"},{"name":"fighters","type":"standard","id":"viaG3","mods":[],"hangar":"DRonE"},{"name":"fighters","type":"standard","id":"pdLwG","mods":[],"hangar":"5hxLH"},{"name":"fighters","type":"standard","id":"brJEp","mods":[],"hangar":"FJl7X"},{"name":"fighters","type":"standard","id":"ykKy1","mods":[],"hangar":"I4LWH"}],"orientation":"alpha","points":842,"cpv":840,"mass":240,"class":"Attack Carrier","name":"Konstantin"}`;
@@ -362,6 +363,50 @@ describe("Renderer", () => {
         expect(resolveAmmunitionRemaining(4, "minesA", { minesA: -1 })).to.equal(
             0
         );
+    });
+
+    it("fusion array modes share cost and label glyph", () => {
+        const ship = JSON.parse(validTacoma) as FullThrustShip;
+
+        const defaultFusion = new Fusion(
+            { name: "fusion", leftArc: "F", numArcs: 3, id: "f1" },
+            ship
+        );
+        expect(defaultFusion.mass()).to.equal(5);
+        expect(defaultFusion.points()).to.equal(15);
+        expect(defaultFusion.fullName()).to.equal("Fusion Array");
+        expect(defaultFusion.glyph().svg).to.not.include(">F<");
+        expect(defaultFusion.glyph().svg).to.not.include(">T<");
+
+        const flareFusion = new Fusion(
+            {
+                name: "fusion",
+                leftArc: "F",
+                numArcs: 3,
+                mode: "flare",
+                id: "f2",
+            },
+            ship
+        );
+        expect(flareFusion.mass()).to.equal(5);
+        expect(flareFusion.points()).to.equal(15);
+        expect(flareFusion.fullName()).to.equal("Fusion Array - Flare");
+        expect(flareFusion.glyph().svg).to.include(">F<");
+
+        const torpedoFusion = new Fusion(
+            {
+                name: "fusion",
+                leftArc: "F",
+                numArcs: 3,
+                mode: "torpedo",
+                id: "f3",
+            },
+            ship
+        );
+        expect(torpedoFusion.mass()).to.equal(5);
+        expect(torpedoFusion.points()).to.equal(15);
+        expect(torpedoFusion.fullName()).to.equal("Fusion Array - Torpedo");
+        expect(torpedoFusion.glyph().svg).to.include(">T<");
     });
 
     it("boarding torpedo magazine and launcher mass/points", () => {

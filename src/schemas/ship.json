@@ -540,18 +540,31 @@
                     {
                         "properties": {
                             "name": {
-                                "enum": [
-                                    "gatling",
-                                    "particle",
-                                    "meson",
-                                    "fusion"
-                                ]
+                                "enum": ["gatling", "particle", "meson"]
                             },
                             "leftArc": {
                                 "$ref": "#/definitions/arcs"
                             },
                             "numArcs": {
                                 "$ref": "#/definitions/numarcs"
+                            }
+                        },
+                        "required": ["name", "leftArc", "numArcs"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "enum": ["fusion"]
+                            },
+                            "leftArc": {
+                                "$ref": "#/definitions/arcs"
+                            },
+                            "numArcs": {
+                                "$ref": "#/definitions/numarcs"
+                            },
+                            "mode": {
+                                "enum": ["undefined", "flare", "torpedo"],
+                                "default": "undefined"
                             }
                         },
                         "required": ["name", "leftArc", "numArcs"]

@@ -241,9 +241,16 @@ export interface FullThrustShip {
         [k: string]: unknown;
       }
     | {
-        name: "gatling" | "particle" | "meson" | "fusion";
+        name: "gatling" | "particle" | "meson";
         leftArc: Arcs;
         numArcs: Numarcs;
+        [k: string]: unknown;
+      }
+    | {
+        name: "fusion";
+        leftArc: Arcs;
+        numArcs: Numarcs;
+        mode?: "undefined" | "flare" | "torpedo";
         [k: string]: unknown;
       }
     | {

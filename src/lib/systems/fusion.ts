@@ -4,9 +4,12 @@ import type { ISystem, Arc, ArcNum } from "./_base.js";
 import { genArcs } from "../genArcs.js";
 import fnv from "fnv-plus";
 
+type Mode = "undefined" | "flare" | "torpedo";
+
 export class Fusion extends System {
     public leftArc: Arc = "F";
     public numArcs: ArcNum = 1;
+    public mode: Mode = "undefined";
 
     constructor(data: ISystem, ship: FullThrustShip) {
         super(data, ship);
@@ -16,6 +19,9 @@ export class Fusion extends System {
         if (data.hasOwnProperty("numArcs")) {
             this.numArcs = data.numArcs as ArcNum;
         }
+        if (data.hasOwnProperty("mode")) {
+            this.mode = data.mode as Mode;
+        }
 
         if (this.numArcs > 3) {
             this.numArcs = 3;
@@ -24,7 +30,14 @@ export class Fusion extends System {
     }
 
     fullName() {
-        return `Fusion Array`;
+        switch (this.mode) {
+            case "flare":
+                return "Fusion Array - Flare";
+            case "torpedo":
+                return "Fusion Array - Torpedo";
+            default:
+                return "Fusion Array";
+        }
     }
 
     mass() {
@@ -36,12 +49,21 @@ export class Fusion extends System {
     }
 
     glyph() {
-        let id = `fusion${this.leftArc}${this.numArcs}`;
+        let id = `fusion${this.mode}${this.leftArc}${this.numArcs}`;
         if (this.ship.hashseed !== undefined) {
             fnv.seed(this.ship.hashseed);
             id = fnv.hash(id).hex();
         }
-        const insert = `<use href="#_internalFusion" x="162.5" y="162.5" width="275" height="275" />`;
+        let modeLabel = "";
+        if (this.mode === "flare") {
+            modeLabel = "F";
+        } else if (this.mode === "torpedo") {
+            modeLabel = "T";
+        }
+        const modeText = modeLabel
+            ? `<text x="300" y="325" dominant-baseline="middle" text-anchor="middle" font-size="200" stroke="black" fill="black">${modeLabel}</text>`
+            : "";
+        const insert = `<use href="#_internalFusion" x="162.5" y="162.5" width="275" height="275" />${modeText}`;
         const defs = `<symbol id="_internalFusion" viewBox="372 191 221 179"><path fill="white" stroke="#000000" stroke-width="9" stroke-miterlimit="10" d="M587.5,210.3c0-7.6-6.2-13.8-13.8-13.8H391.3c-7.6,0-13.8,6.2-13.8,13.8v140.4c0,7.6,6.2,13.8,13.8,13.8h182.4c7.6,0,13.8-6.2,13.8-13.8V210.3z"/><path fill="white" stroke="#000000" stroke-width="9" stroke-miterlimit="10" d="M568.5,222.8c0-6.2-5-11.3-11.3-11.3H407.8c-6.2,0-11.3,5-11.3,11.3v115.5c0,6.2,5,11.3,11.3,11.3h149.5c6.2,0,11.3-5,11.3-11.3V222.8z"/></symbol>`;
         let svg = genArcs(
             this.ship.orientation,

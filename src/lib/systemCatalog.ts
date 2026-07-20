@@ -11,6 +11,7 @@ import {
 } from "./systems/index.js";
 import type { ISystem, System } from "./systems/_base.js";
 import { Pulser } from "./systems/pulser.js";
+import { Fusion } from "./systems/fusion.js";
 
 export type SystemCatalogCategory =
     | "propulsion"
@@ -228,6 +229,13 @@ export const weaponConfigs = (name: string): ISystem[] => {
                         id: `pulser_${range}`,
                     })
             );
+        case "fusion":
+            return (["undefined", "flare", "torpedo"] as const).map((mode) =>
+                defaultArcWeapon("fusion", {
+                    mode,
+                    id: `fusion_${mode}`,
+                })
+            );
         case "spinalBeam":
         case "spinalPlasma":
         case "spinalSingularity":
@@ -311,6 +319,9 @@ const addCatalogEntry = (
     let variants = stripMeta(data);
     if (sys.name === "pulser" && variants.range === undefined) {
         variants = { ...variants, range: (sys as Pulser).range };
+    }
+    if (sys.name === "fusion" && variants.mode === undefined) {
+        variants = { ...variants, mode: (sys as Fusion).mode };
     }
 
     const entry: SystemCatalogEntry = {

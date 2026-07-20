@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T00:42:50.797Z",
-  "count": 493,
+  "generatedAt": "2026-07-20T04:10:15.057Z",
+  "count": 495,
   "systems": [
     {
       "category": "propulsion",
@@ -690,9 +690,34 @@
       "variants": {
         "leftArc": "F",
         "numArcs": 3,
-        "class": 1
+        "class": 1,
+        "mode": "undefined"
       },
       "fullName": "Fusion Array"
+    },
+    {
+      "category": "weapons",
+      "name": "fusion",
+      "baseName": "Fusion Array",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 1,
+        "mode": "flare"
+      },
+      "fullName": "Fusion Array - Flare"
+    },
+    {
+      "category": "weapons",
+      "name": "fusion",
+      "baseName": "Fusion Array",
+      "variants": {
+        "leftArc": "F",
+        "numArcs": 3,
+        "class": 1,
+        "mode": "torpedo"
+      },
+      "fullName": "Fusion Array - Torpedo"
     },
     {
       "category": "weapons",
