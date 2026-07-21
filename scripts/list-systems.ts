@@ -3,7 +3,7 @@ import { dirname, resolve } from "node:path";
 
 import { buildSystemCatalog } from "../src/lib/systemCatalog.js";
 
-const outPath = resolve(process.argv[2] ?? "systems-catalog.json");
+const outPath = resolve(process.argv[2] ?? "scripts/systems-catalog.json");
 
 const catalog = buildSystemCatalog();
 const output = {

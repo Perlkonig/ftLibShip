@@ -7,7 +7,7 @@ import { gunboatSquadronInsertSvg } from "./gunboats.js";
 import fnv from "fnv-plus";
 
 const BAY_FRAME = `<rect x="329.4" y="21" fill="white" stroke="#000000" stroke-width="6.282" stroke-miterlimit="10" width="301.2" height="518.1"/>`;
-const GUN_LABEL = `<text x="480" y="95" dominant-baseline="middle" text-anchor="middle" font-size="72" font-family="Roboto">Gun</text>`;
+const GUN_LABEL = `<text x="480" y="88" dominant-baseline="middle" text-anchor="middle" font-size="112" font-family="Roboto" font-weight="bold">Gun</text>`;
 
 export class GunboatRack extends System {
     public id!: string;

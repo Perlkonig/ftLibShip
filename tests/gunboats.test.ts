@@ -138,9 +138,10 @@ describe("renderSvg gunboats", () => {
             JSON.parse(minimalGunboatCarrier) as FullThrustShip
         );
         const svg = renderSvg(ship, { minimal: true })!;
-        expect(svg).to.include(">Bm</text>");
+        expect(svg).to.include(">B</text>");
         expect(svg).to.include(">Gr</text>");
-        expect(svg).to.include(">K2</text>");
+        expect(svg).to.include(">PDS</text>");
+        expect(svg).to.include(">K</text>");
     });
 
     it("renders gunboats in boat bay overlay", () => {
@@ -151,6 +152,6 @@ describe("renderSvg gunboats", () => {
             minimal: true,
             boatBays: { bay1: { squadron: "rackA" } },
         })!;
-        expect(svg).to.include(">Ms</text>");
+        expect(svg).to.include(">M</text>");
     });
 });

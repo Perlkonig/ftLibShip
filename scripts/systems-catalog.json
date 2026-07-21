@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-20T04:10:15.057Z",
-  "count": 495,
+  "generatedAt": "2026-07-21T18:34:15.618Z",
+  "count": 496,
   "systems": [
     {
       "category": "propulsion",
@@ -272,6 +272,13 @@
       "baseName": "Fire Control",
       "variants": {},
       "fullName": "Fire Control"
+    },
+    {
+      "category": "systems",
+      "name": "gunboatRack",
+      "baseName": "Gunboat Rack",
+      "variants": {},
+      "fullName": "Gunboat Rack"
     },
     {
       "category": "systems",
