@@ -773,6 +773,12 @@ export default {
                         "maximum": 3,
                         "default": 0
                     },
+                    "endurance": {
+                        "description": "Gameplay only; default 6 combat endurance for the squadron.",
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 6
+                    },
                     "boats": {
                         "type": "array",
                         "minItems": 1,
@@ -801,12 +807,6 @@ export default {
                                 },
                                 "id": {
                                     "type": "string"
-                                },
-                                "endurance": {
-                                    "description": "Gameplay only; default 6 combat endurance.",
-                                    "type": "integer",
-                                    "minimum": 0,
-                                    "maximum": 6
                                 }
                             },
                             "required": ["type"]

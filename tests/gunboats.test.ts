@@ -81,6 +81,7 @@ describe("resolveRackOccupancy", () => {
         expect(occ.boats).to.have.length(6);
         expect(occ.boats[0].type).to.equal("beam");
         expect(occ.protection).to.equal("heavy");
+        expect(occ.endurance).to.equal(6);
     });
 
     it("treats null overlay as deployed empty rack", () => {
@@ -101,6 +102,22 @@ describe("resolveRackOccupancy", () => {
         expect(spare.occupied).to.equal(true);
         expect(spare.boats).to.have.length(6);
     });
+
+    it("uses design endurance when set", () => {
+        const ship = JSON.parse(minimalGunboatCarrier) as FullThrustShip;
+        ship.gunboatSquadrons![0].endurance = 4;
+        const occ = resolveRackOccupancy("rackA", ship);
+        expect(occ.endurance).to.equal(4);
+    });
+
+    it("allows overlay endurance override", () => {
+        const ship = JSON.parse(minimalGunboatCarrier) as FullThrustShip;
+        ship.gunboatSquadrons![0].endurance = 4;
+        const occ = resolveRackOccupancy("rackA", ship, {
+            rackA: { squadron: "rackA", endurance: 2 },
+        });
+        expect(occ.endurance).to.equal(2);
+    });
 });
 
 describe("boat bay recovery", () => {
@@ -110,6 +127,17 @@ describe("boat bay recovery", () => {
         const occ = resolveBoatBayOccupancy("bay1", ship, bays);
         expect(occ.occupied).to.equal(true);
         expect(occ.boats[1].type).to.equal("graser");
+        expect(occ.endurance).to.equal(6);
+    });
+
+    it("allows boat bay overlay endurance override", () => {
+        const ship = JSON.parse(minimalGunboatCarrier) as FullThrustShip;
+        const bays = recoverSquadronInBoatBay(ship, {}, "bay1", "rackA");
+        const occ = resolveBoatBayOccupancy("bay1", ship, {
+            ...bays,
+            bay1: { squadron: "rackA", endurance: 3 },
+        });
+        expect(occ.endurance).to.equal(3);
     });
 
     it("throws when bay occupied", () => {

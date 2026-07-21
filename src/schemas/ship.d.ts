@@ -364,6 +364,10 @@ export interface FullThrustShip {
     protection?: "heavy" | "screened";
     ecm?: number;
     /**
+     * Gameplay only; default 6 combat endurance for the squadron.
+     */
+    endurance?: number;
+    /**
      * @minItems 1
      * @maxItems 6
      */
@@ -387,10 +391,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           }
         ]
@@ -413,10 +413,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -437,10 +433,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           }
         ]
@@ -463,10 +455,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -487,10 +475,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -511,10 +495,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           }
         ]
@@ -537,10 +517,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -561,10 +537,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -585,10 +557,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -609,10 +577,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           }
         ]
@@ -635,10 +599,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -659,10 +619,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -683,10 +639,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -707,10 +659,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -731,10 +679,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           }
         ]
@@ -757,10 +701,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -781,10 +721,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -805,10 +741,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -829,10 +761,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -853,10 +781,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           },
           {
@@ -877,10 +801,6 @@ export interface FullThrustShip {
               | "scatterpack"
               | "plasmaBomber";
             id?: string;
-            /**
-             * Gameplay only; default 6 combat endurance.
-             */
-            endurance?: number;
             [k: string]: unknown;
           }
         ];

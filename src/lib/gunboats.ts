@@ -6,7 +6,6 @@ export type { GunboatType };
 export interface ResolvedBoat {
     type: GunboatType;
     id?: string;
-    endurance?: number;
 }
 
 /** Per-rack runtime state. Key = gunboatRack system id. */
@@ -15,6 +14,7 @@ export type GunboatRackOccupancy =
     | {
           squadron?: string;
           boats?: ResolvedBoat[];
+          endurance?: number;
       };
 
 export type GunboatRackState = Partial<Record<string, GunboatRackOccupancy>>;
@@ -25,6 +25,7 @@ export type BoatBayOccupancy =
     | {
           squadron: string;
           boats?: ResolvedBoat[];
+          endurance?: number;
       };
 
 export type BoatBayState = Partial<Record<string, BoatBayOccupancy>>;
@@ -38,6 +39,7 @@ export interface ResolvedRackOccupancy {
     protection?: "heavy" | "screened";
     ecm: number;
     ftl: boolean;
+    endurance: number;
 }
 
 export interface ResolvedBoatBayOccupancy {
@@ -48,6 +50,7 @@ export interface ResolvedBoatBayOccupancy {
     protection?: "heavy" | "screened";
     ecm: number;
     ftl: boolean;
+    endurance: number;
 }
 
 export class GunboatRackError extends Error {
@@ -113,7 +116,6 @@ const boatsFromDesign = (squadron: GunboatSquadronDesign): ResolvedBoat[] =>
     squadron.boats.map((b) => ({
         type: b.type,
         ...(b.id !== undefined ? { id: b.id } : {}),
-        ...(b.endurance !== undefined ? { endurance: b.endurance } : {}),
     }));
 
 const mergeBoats = (
@@ -121,10 +123,22 @@ const mergeBoats = (
     override?: ResolvedBoat[]
 ): ResolvedBoat[] => (override !== undefined ? override : design);
 
-const squadronMeta = (squadron: GunboatSquadronDesign) => ({
+const resolveEndurance = (
+    squadron: GunboatSquadronDesign,
+    override?: number
+): number => {
+    const raw = override ?? squadron.endurance ?? 6;
+    return Math.max(0, Math.min(6, raw));
+};
+
+const squadronMeta = (
+    squadron: GunboatSquadronDesign,
+    enduranceOverride?: number
+) => ({
     protection: squadron.protection,
     ecm: squadron.ecm ?? 0,
     ftl: squadron.mods?.includes("ftl") ?? false,
+    endurance: resolveEndurance(squadron, enduranceOverride),
 });
 
 const emptyRack = (rackId: string): ResolvedRackOccupancy => ({
@@ -134,20 +148,22 @@ const emptyRack = (rackId: string): ResolvedRackOccupancy => ({
     boats: [],
     ecm: 0,
     ftl: false,
+    endurance: 0,
 });
 
 const occupiedRack = (
     rackId: string,
     squadronKey: string,
     squadron: GunboatSquadronDesign,
-    boats: ResolvedBoat[]
+    boats: ResolvedBoat[],
+    enduranceOverride?: number
 ): ResolvedRackOccupancy => ({
     rackId,
     occupied: true,
     deployed: false,
     squadronKey,
     boats,
-    ...squadronMeta(squadron),
+    ...squadronMeta(squadron, enduranceOverride),
 });
 
 export const resolveRackOccupancy = (
@@ -179,7 +195,8 @@ export const resolveRackOccupancy = (
             rackId,
             key,
             squadron,
-            mergeBoats(designBoats, overlay.boats)
+            mergeBoats(designBoats, overlay.boats),
+            overlay.endurance
         );
     }
 
@@ -258,6 +275,7 @@ export const resolveBoatBayOccupancy = (
         boats: [],
         ecm: 0,
         ftl: false,
+        endurance: 0,
     };
 
     const overlay = boatBays?.[bayId];
@@ -276,7 +294,7 @@ export const resolveBoatBayOccupancy = (
         occupied: true,
         squadronKey: overlay.squadron,
         boats: mergeBoats(designBoats, overlay.boats),
-        ...squadronMeta(squadron),
+        ...squadronMeta(squadron, overlay.endurance),
     };
 };
 

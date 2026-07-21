@@ -356,6 +356,7 @@ const buildCatalog = (ship: FullThrustShip): IconSheetEntry[] => {
         boats: sampleTypes.map((type) => ({ type })),
         ecm: 0,
         ftl: false,
+        endurance: 6,
     };
     builder.addGlyph(
         "Gunboats",
