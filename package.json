@@ -2,7 +2,10 @@
     "name": "ftlibship",
     "version": "5.0.0",
     "description": "Library representing the schema/type for a Full Thrust ship description along with utilities for validating and graphically rendering it",
-    "exports": "./dist/index.js",
+    "exports": {
+        ".": "./dist/index.js",
+        "./preset-fleets.json": "./scripts/preset-fleets.json"
+    },
     "engines": {
         "node": ">=14.16"
     },
@@ -10,7 +13,8 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [
-        "dist"
+        "dist",
+        "scripts/preset-fleets.json"
     ],
     "scripts": {
         "clean": "rimraf dist",

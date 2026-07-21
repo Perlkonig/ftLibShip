@@ -81,7 +81,6 @@ export enum EvalErrorCode {
     UnknownSystem = "UNKNOWNSYSTEM",
     BadMagazinePairing = "BADMAGAZINEPAIRING",
     UnknownGunboatRack = "UNKNOWNGUNBOATRACK",
-    OrphanGunboatRack = "ORPHANGUNBOATRACK",
     FtlOnRack = "FTLONRACK",
     OverGunboats = "OVERGUNBOATS",
     GunboatSquadronNoRack = "GUNBOATSQUADRONNORACK",
@@ -353,12 +352,6 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
                         squadronsLinkedToRack.add(squadron.rack);
                     }
                 }
-            }
-        }
-
-        for (const rackId of gunboatRackIds) {
-            if (!squadronsLinkedToRack.has(rackId)) {
-                results.errors.push(EvalErrorCode.OrphanGunboatRack);
             }
         }
 

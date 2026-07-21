@@ -57,11 +57,12 @@ describe("evaluate gunboats", () => {
         expect(ev.errors).to.include(EvalErrorCode.FtlOnRack);
     });
 
-    it("flags orphan rack", () => {
+    it("allows empty gunboat rack without a squadron", () => {
         const ship = JSON.parse(minimalGunboatCarrier) as FullThrustShip;
         ship.systems!.push({ name: "gunboatRack", id: "orphan" });
+        ship.mass = 120;
         const ev = evaluate(ship);
-        expect(ev.errors).to.include(EvalErrorCode.OrphanGunboatRack);
+        expect(ev.errors).to.deep.equal([]);
     });
 
     it("flags unknown rack reference", () => {
