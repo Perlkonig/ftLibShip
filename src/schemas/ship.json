@@ -152,6 +152,18 @@
                     {
                         "properties": {
                             "name": {
+                                "enum": ["gunboatRack"]
+                            },
+                            "id": {
+                                "description": "A unique identifier used to target this rack in orders and in the `gunboatSquadrons` property.",
+                                "type": "string"
+                            }
+                        },
+                        "required": ["name", "id"]
+                    },
+                    {
+                        "properties": {
+                            "name": {
                                 "enum": ["launchTube"]
                             },
                             "catapult": {
@@ -729,6 +741,78 @@
                     }
                 },
                 "required": ["type"]
+            }
+        },
+        "gunboatSquadrons": {
+            "description": "Gunboat squadrons carried on gunboat racks. Each rack may have at most one squadron.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "rack": {
+                        "description": "Must match a gunboatRack id. Omitted for FTL squadrons that cannot use racks.",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Stable id for squadrons without a rack (e.g. FTL). Used by runtime overlays.",
+                        "type": "string"
+                    },
+                    "mods": {
+                        "type": "array",
+                        "items": {
+                            "enum": ["ftl"]
+                        }
+                    },
+                    "protection": {
+                        "enum": ["heavy", "screened"]
+                    },
+                    "ecm": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 3,
+                        "default": 0
+                    },
+                    "boats": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 6,
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "beam",
+                                        "plasma",
+                                        "graser",
+                                        "needle",
+                                        "pointDefense",
+                                        "pulseTorpedo",
+                                        "submunition",
+                                        "kGun",
+                                        "missile",
+                                        "rocket",
+                                        "ads",
+                                        "gatling",
+                                        "mkp",
+                                        "scatterpack",
+                                        "plasmaBomber"
+                                    ]
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "endurance": {
+                                    "description": "Gameplay only; default 6 combat endurance.",
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 6
+                                }
+                            },
+                            "required": ["type"]
+                        }
+                    }
+                },
+                "required": ["boats"]
             }
         },
         "class": {

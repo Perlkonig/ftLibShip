@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0] - 2026-07-21
+
+### Added
+
+-   **Gunboats:** `gunboatRack` system (18 mass, 0 points), top-level `gunboatSquadrons` with heterogeneous per-boat types and squadron mods (FTL, heavy/screened, ECM). `evaluate()` sums gunboat points and validates rack/squadron linkage.
+-   Runtime overlays `RenderOpts.gunboatRacks` and `RenderOpts.boatBays` with helpers (`resolveRackOccupancy`, `recoverSquadronOnRack`, `recoverSquadronInBoatBay`, etc.) for deployment, recovery on vacant racks, and recovery in boat/tender bays.
+-   Gunboat rack SSD glyph (rectangular bay-style frame with **Gun** header) and squadron type abbreviations when occupied.
+-   `fighterWingTotals()` and preset refresh script `npm run refresh-preset-fleet-totals` with a guard that updated `points`/`cpv` differ from prior JSON only by equipped wing costs.
+-   [`scripts/PRESET-FLEETS.md`](scripts/PRESET-FLEETS.md) documenting preset provenance vs fleet books.
+
+### Changed
+
+-   **Breaking:** `evaluate()` and `validate()` now include **`fighters[]` wing type/mod points and CPV** (hangar bays/racks in `systems` were already counted). Designs that only stored wing data in `fighters[]` previously under-reported totals.
+-   **Breaking:** [`scripts/preset-fleets.json`](scripts/preset-fleets.json) `points`/`cpv` updated to book totals plus equipped standard (or other) wings; they no longer match printed fleet book NPV when books omit hangar loadouts.
+
+### Fixed
+
+-   `multiRole` fighter point/CPV calculation (missing `break` before `torpedo`/`MKP` cases).
+
 ## [4.0.0] - 2026-07-20
 
 ### Added

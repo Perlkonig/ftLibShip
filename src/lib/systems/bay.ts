@@ -1,6 +1,9 @@
 import type { FullThrustShip } from "../../schemas/ship.js";
+import type { ResolvedBoatBayOccupancy } from "../gunboats.js";
+import { resolveBoatBayOccupancy } from "../gunboats.js";
 import { System } from "./_base.js";
 import type { ISystem } from "./_base.js";
+import { gunboatSquadronInsertSvg } from "./gunboats.js";
 import fnv from "fnv-plus";
 
 export class Bay extends System {
@@ -8,6 +11,7 @@ export class Bay extends System {
     public capacity = 1;
     public id!: string;
     public ratio?: number;
+    public gunboatOccupancy?: ResolvedBoatBayOccupancy;
 
     constructor(data: ISystem, ship: FullThrustShip) {
         super(data, ship);
@@ -114,27 +118,55 @@ export class Bay extends System {
                     width: 2,
                 };
             case "boat":
-                id =
-                    this.ship.hashseed === undefined
-                        ? `bayBoat${this.capacity}`
-                        : fnv.hash(`bayBoat${this.capacity}`).hex();
-                return {
-                    id,
-                    svg: `<symbol id="${id}" viewBox="321.333 40 315.333 473"><g><rect x="415.5" y="222.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="128" height="192"/><polygon fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="479.8,56.8 372.5,199.3 372.5,438.3 449,503.5 511,503.5 586.5,438.3 586.5,199.3"/></g>${insert}</symbol>`,
-                    height: 3,
-                    width: 2,
-                };
+                {
+                    const occ =
+                        this.gunboatOccupancy ??
+                        resolveBoatBayOccupancy(this.id, this.ship);
+                    let gunboatInsert = "";
+                    let suffix = "";
+                    if (occ.occupied && occ.boats.length > 0) {
+                        const types = occ.boats.map((b) => b.type);
+                        suffix = `_gb_${types.join("_")}`;
+                        gunboatInsert = `<g opacity="0.9">${gunboatSquadronInsertSvg(types)}</g>`;
+                    }
+                    id =
+                        this.ship.hashseed === undefined
+                            ? `bayBoat${this.capacity}${suffix}`
+                            : fnv
+                                  .hash(`bayBoat${this.capacity}${suffix}`)
+                                  .hex();
+                    return {
+                        id,
+                        svg: `<symbol id="${id}" viewBox="321.333 40 315.333 473"><g><rect x="415.5" y="222.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="128" height="192"/><polygon fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="479.8,56.8 372.5,199.3 372.5,438.3 449,503.5 511,503.5 586.5,438.3 586.5,199.3"/></g>${insert}${gunboatInsert}</symbol>`,
+                        height: 3,
+                        width: 2,
+                    };
+                }
             case "tender":
-                id =
-                    this.ship.hashseed === undefined
-                        ? `bayTender${this.capacity}`
-                        : fnv.hash(`bayTender${this.capacity}`).hex();
-                return {
-                    id,
-                    svg: `<symbol id="${id}" viewBox="321.333 40 315.333 473"><g><rect x="415.5" y="222.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="128" height="192"/><polygon fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="479.8,56.8 372.5,199.3 372.5,438.3 449,503.5 511,503.5 586.5,438.3 586.5,199.3"/></g>${insert}</symbol>`,
-                    height: 3,
-                    width: 2,
-                };
+                {
+                    const occ =
+                        this.gunboatOccupancy ??
+                        resolveBoatBayOccupancy(this.id, this.ship);
+                    let gunboatInsert = "";
+                    let suffix = "";
+                    if (occ.occupied && occ.boats.length > 0) {
+                        const types = occ.boats.map((b) => b.type);
+                        suffix = `_gb_${types.join("_")}`;
+                        gunboatInsert = `<g opacity="0.9">${gunboatSquadronInsertSvg(types)}</g>`;
+                    }
+                    id =
+                        this.ship.hashseed === undefined
+                            ? `bayTender${this.capacity}${suffix}`
+                            : fnv
+                                  .hash(`bayTender${this.capacity}${suffix}`)
+                                  .hex();
+                    return {
+                        id,
+                        svg: `<symbol id="${id}" viewBox="321.333 40 315.333 473"><g><rect x="415.5" y="222.5" fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" width="128" height="192"/><polygon fill="none" stroke="#000000" stroke-width="13" stroke-miterlimit="10" points="479.8,56.8 372.5,199.3 372.5,438.3 449,503.5 511,503.5 586.5,438.3 586.5,199.3"/></g>${insert}${gunboatInsert}</symbol>`,
+                        height: 3,
+                        width: 2,
+                    };
+                }
         }
     }
 }

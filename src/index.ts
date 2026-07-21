@@ -24,6 +24,34 @@ export {
     type FighterSkill,
     type FighterType,
 } from "./lib/fighters.js";
+export {
+    resolveRackOccupancy,
+    deploySquadronFromRack,
+    recoverSquadronOnRack,
+    gunboatSquadronsOnRacks,
+    resolveBoatBayOccupancy,
+    recoverSquadronInBoatBay,
+    clearBoatBay,
+    gunboatsInBoatBays,
+    findSquadronByKey,
+    squadronKey,
+    GunboatRackError,
+    type GunboatRackState,
+    type GunboatRackOccupancy,
+    type BoatBayState,
+    type BoatBayOccupancy,
+    type ResolvedRackOccupancy,
+    type ResolvedBoatBayOccupancy,
+    type ResolvedBoat,
+    type GunboatType,
+} from "./lib/gunboats.js";
+export {
+    gunboatTypePoints,
+    squadronPoints,
+    type2name as gunboatType2Name,
+    type2abbrev as gunboatType2Abbrev,
+} from "./lib/systems/gunboats.js";
+export { fighterWingTotals, type FighterWingTotals } from "./lib/fighterWings.js";
 export type { FullThrustShip } from "./schemas/ship.js";
 
 import type { FullThrustShip } from "./index.js";
@@ -34,6 +62,8 @@ import {
     ISystem,
 } from "./lib/systems/index.js";
 import { crewFactor } from "./lib/crew.js";
+import { squadronPoints } from "./lib/systems/gunboats.js";
+import { fighterWingTotals, wingToSystem } from "./lib/fighterWings.js";
 
 export enum EvalErrorCode {
     NoMass = "NOMASS",
@@ -50,6 +80,15 @@ export enum EvalErrorCode {
     FlawedUnderMass = "FlawedUnderMass",
     UnknownSystem = "UNKNOWNSYSTEM",
     BadMagazinePairing = "BADMAGAZINEPAIRING",
+    UnknownGunboatRack = "UNKNOWNGUNBOATRACK",
+    OrphanGunboatRack = "ORPHANGUNBOATRACK",
+    FtlOnRack = "FTLONRACK",
+    OverGunboats = "OVERGUNBOATS",
+    GunboatSquadronNoRack = "GUNBOATSQUADRONNORACK",
+    DuplicateGunboatRack = "DUPLICATEGUNBOATRACK",
+    UnknownFighterHangar = "UNKNOWNFIGHTERHANGAR",
+    DuplicateFighterHangar = "DUPLICATEFIGHTERHANGAR",
+    OverFighters = "OVERFIGHTERS",
 }
 
 export enum ValErrorCode {
@@ -244,6 +283,82 @@ export const evaluate = (ship: FullThrustShip): IEvaluation => {
                         results.errors.push(EvalErrorCode.BadMagazinePairing);
                     }
                 }
+            }
+        }
+
+        const hangarIds = new Set<string>();
+        let hangarCount = 0;
+        if (ship.systems !== undefined) {
+            for (const sys of ship.systems) {
+                if (sys.name === "hangar" && sys.id !== undefined) {
+                    hangarIds.add(sys.id as string);
+                    hangarCount++;
+                }
+            }
+        }
+        if (ship.fighters !== undefined) {
+            if (ship.fighters.length > hangarCount) {
+                results.errors.push(EvalErrorCode.OverFighters);
+            }
+            const usedHangars = new Set<string>();
+            for (const wing of ship.fighters) {
+                if (wing.hangar !== undefined) {
+                    if (!hangarIds.has(wing.hangar)) {
+                        results.errors.push(EvalErrorCode.UnknownFighterHangar);
+                    } else if (usedHangars.has(wing.hangar)) {
+                        results.errors.push(
+                            EvalErrorCode.DuplicateFighterHangar
+                        );
+                    } else {
+                        usedHangars.add(wing.hangar);
+                    }
+                }
+                const obj = getSystem(wingToSystem(wing), ship);
+                if (obj !== undefined) {
+                    results.points += obj.points();
+                    results.cpv += obj.cpv();
+                }
+            }
+        }
+
+        const gunboatRackIds = new Set<string>();
+        if (ship.systems !== undefined) {
+            for (const sys of ship.systems) {
+                if (sys.name === "gunboatRack" && sys.id !== undefined) {
+                    gunboatRackIds.add(sys.id as string);
+                }
+            }
+        }
+
+        const squadronsLinkedToRack = new Set<string>();
+        if (ship.gunboatSquadrons !== undefined) {
+            for (const squadron of ship.gunboatSquadrons) {
+                results.points += squadronPoints(squadron);
+                if (squadron.boats.length > 6) {
+                    results.errors.push(EvalErrorCode.OverGunboats);
+                }
+                const isFtl = squadron.mods?.includes("ftl") ?? false;
+                if (isFtl && squadron.rack !== undefined) {
+                    results.errors.push(EvalErrorCode.FtlOnRack);
+                }
+                if (!isFtl && squadron.rack === undefined) {
+                    results.errors.push(EvalErrorCode.GunboatSquadronNoRack);
+                }
+                if (squadron.rack !== undefined) {
+                    if (!gunboatRackIds.has(squadron.rack)) {
+                        results.errors.push(EvalErrorCode.UnknownGunboatRack);
+                    } else if (squadronsLinkedToRack.has(squadron.rack)) {
+                        results.errors.push(EvalErrorCode.DuplicateGunboatRack);
+                    } else {
+                        squadronsLinkedToRack.add(squadron.rack);
+                    }
+                }
+            }
+        }
+
+        for (const rackId of gunboatRackIds) {
+            if (!squadronsLinkedToRack.has(rackId)) {
+                results.errors.push(EvalErrorCode.OrphanGunboatRack);
             }
         }
 

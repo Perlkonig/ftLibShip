@@ -17,8 +17,15 @@
                         "advanced": false,
                         "id": "MmlSY"
                     },
-                    { "name": "ftl", "advanced": false, "id": "EGhZS" },
-                    { "name": "fireControl", "id": "dqDWq" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "EGhZS"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "dqDWq"
+                    }
                 ],
                 "weapons": [
                     {
@@ -46,7 +53,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[1, 0]],
+                "armour": [
+                    [
+                        1,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -54,11 +66,21 @@
                         "advanced": false,
                         "id": "1zfvj"
                     },
-                    { "name": "ftl", "advanced": false, "id": "RshDj" },
-                    { "name": "fireControl", "id": "ZHfb7" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "RshDj"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ZHfb7"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "uJDZW" },
+                    {
+                        "name": "pds",
+                        "id": "uJDZW"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -99,11 +121,21 @@
                         "advanced": false,
                         "id": "zf9y8"
                     },
-                    { "name": "ftl", "advanced": false, "id": "Qr9PQ" },
-                    { "name": "fireControl", "id": "JTGf2" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "Qr9PQ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "JTGf2"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "Hs4O-" },
+                    {
+                        "name": "pds",
+                        "id": "Hs4O-"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -151,11 +183,21 @@
                         "advanced": false,
                         "id": "DwUcR"
                     },
-                    { "name": "ftl", "advanced": false, "id": "WVQVf" },
-                    { "name": "fireControl", "id": "ZM92p" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "WVQVf"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ZM92p"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "VYLpj" },
+                    {
+                        "name": "pds",
+                        "id": "VYLpj"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -210,12 +252,25 @@
                         "advanced": false,
                         "id": "R5kU_"
                     },
-                    { "name": "ftl", "advanced": false, "id": "Te_Uq" },
-                    { "name": "fireControl", "id": "BzLZ9" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "Te_Uq"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "BzLZ9"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "CPrQH" },
-                    { "name": "pds", "id": "PAqSO" },
+                    {
+                        "name": "pds",
+                        "id": "CPrQH"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "PAqSO"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -270,9 +325,19 @@
                         "advanced": false,
                         "id": "Aelkh"
                     },
-                    { "name": "ftl", "advanced": false, "id": "ARMh6" },
-                    { "name": "fireControl", "id": "b6wSX" },
-                    { "name": "fireControl", "id": "uqBd0" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "ARMh6"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "b6wSX"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "uqBd0"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -281,8 +346,14 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "mJ1LG" },
-                    { "name": "pds", "id": "JVtOh" },
+                    {
+                        "name": "pds",
+                        "id": "mJ1LG"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "JVtOh"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -336,7 +407,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[3, 0]],
+                "armour": [
+                    [
+                        3,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -344,10 +420,23 @@
                         "advanced": false,
                         "id": "m5PBF"
                     },
-                    { "name": "ftl", "advanced": false, "id": "3i5wC" },
-                    { "name": "fireControl", "id": "zIST4" },
-                    { "name": "fireControl", "id": "rRJ7q" },
-                    { "name": "adfc", "id": "wHWH0" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "3i5wC"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "zIST4"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "rRJ7q"
+                    },
+                    {
+                        "name": "adfc",
+                        "id": "wHWH0"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -362,9 +451,18 @@
                         "numArcs": 1,
                         "id": "8PMyf"
                     },
-                    { "name": "pds", "id": "gW9DZ" },
-                    { "name": "pds", "id": "lOWFz" },
-                    { "name": "pds", "id": "k8huo" },
+                    {
+                        "name": "pds",
+                        "id": "gW9DZ"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "lOWFz"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "k8huo"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -411,7 +509,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[5, 0]],
+                "armour": [
+                    [
+                        5,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -419,9 +522,19 @@
                         "advanced": false,
                         "id": "m1bLU"
                     },
-                    { "name": "ftl", "advanced": false, "id": "FQ85U" },
-                    { "name": "fireControl", "id": "0oUe8" },
-                    { "name": "fireControl", "id": "Mvn94" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "FQ85U"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "0oUe8"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Mvn94"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -430,8 +543,14 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "mgNfc" },
-                    { "name": "pds", "id": "dd3Gp" },
+                    {
+                        "name": "pds",
+                        "id": "mgNfc"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "dd3Gp"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -478,7 +597,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[5, 0]],
+                "armour": [
+                    [
+                        5,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -486,22 +610,48 @@
                         "advanced": false,
                         "id": "cEt8m"
                     },
-                    { "name": "ftl", "advanced": false, "id": "skMOm" },
-                    { "name": "fireControl", "id": "BfQ1D" },
-                    { "name": "fireControl", "id": "vX0wR" },
-                    { "name": "fireControl", "id": "b2CpD" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "skMOm"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "BfQ1D"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "vX0wR"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "b2CpD"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "S2V3k"
                     },
-                    { "name": "magazine", "capacity": 3, "id": "X7AaO" }
+                    {
+                        "name": "magazine",
+                        "capacity": 3,
+                        "id": "X7AaO"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "Yw2J-" },
-                    { "name": "pds", "id": "ygrA2" },
-                    { "name": "pds", "id": "peMHO" },
+                    {
+                        "name": "pds",
+                        "id": "Yw2J-"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "ygrA2"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "peMHO"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -563,7 +713,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[5, 0]],
+                "armour": [
+                    [
+                        5,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -571,10 +726,23 @@
                         "advanced": false,
                         "id": "etkut"
                     },
-                    { "name": "ftl", "advanced": false, "id": "cv0WF" },
-                    { "name": "fireControl", "id": "8vzMJ" },
-                    { "name": "fireControl", "id": "oQwdG" },
-                    { "name": "fireControl", "id": "EpKxp" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "cv0WF"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "8vzMJ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "oQwdG"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "EpKxp"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -583,9 +751,18 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "EQS56" },
-                    { "name": "pds", "id": "3Gmc0" },
-                    { "name": "pds", "id": "DBUW_" },
+                    {
+                        "name": "pds",
+                        "id": "EQS56"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "3Gmc0"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "DBUW_"
+                    },
                     {
                         "name": "torpedoPulse",
                         "leftArc": "F",
@@ -658,7 +835,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[7, 0]],
+                "armour": [
+                    [
+                        7,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -666,10 +848,23 @@
                         "advanced": false,
                         "id": "eL6rL"
                     },
-                    { "name": "ftl", "advanced": false, "id": "028Nj" },
-                    { "name": "fireControl", "id": "EISzu" },
-                    { "name": "fireControl", "id": "J-lkC" },
-                    { "name": "fireControl", "id": "EEI6Q" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "028Nj"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "EISzu"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "J-lkC"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "EEI6Q"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -684,9 +879,18 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "rvufi" },
-                    { "name": "pds", "id": "kZ-qO" },
-                    { "name": "pds", "id": "brQsS" },
+                    {
+                        "name": "pds",
+                        "id": "rvufi"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "kZ-qO"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "brQsS"
+                    },
                     {
                         "name": "torpedoPulse",
                         "leftArc": "F",
@@ -748,8 +952,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 472,
-                "cpv": 486,
+                "points": 490,
+                "cpv": 534,
                 "mass": 140,
                 "class": "Battledreadnought",
                 "name": "Excalibur"
@@ -761,7 +965,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[7, 0]],
+                "armour": [
+                    [
+                        7,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -769,10 +978,23 @@
                         "advanced": false,
                         "id": "k5-fR"
                     },
-                    { "name": "ftl", "advanced": false, "id": "FBbFx" },
-                    { "name": "fireControl", "id": "OUPYJ" },
-                    { "name": "fireControl", "id": "l2K4o" },
-                    { "name": "fireControl", "id": "niQ-g" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "FBbFx"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "OUPYJ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "l2K4o"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "niQ-g"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -793,10 +1015,22 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "89Azz" },
-                    { "name": "pds", "id": "BwDIk" },
-                    { "name": "pds", "id": "_Fhc-" },
-                    { "name": "pds", "id": "J35yb" },
+                    {
+                        "name": "pds",
+                        "id": "89Azz"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "BwDIk"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "_Fhc-"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "J35yb"
+                    },
                     {
                         "name": "torpedoPulse",
                         "leftArc": "F",
@@ -878,8 +1112,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 642,
-                "cpv": 712,
+                "points": 678,
+                "cpv": 808,
                 "mass": 190,
                 "class": "Superdreadnought",
                 "name": "Valley Forge"
@@ -891,7 +1125,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[9, 0]],
+                "armour": [
+                    [
+                        9,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -899,9 +1138,19 @@
                         "advanced": false,
                         "id": "9q-lH"
                     },
-                    { "name": "ftl", "advanced": false, "id": "llpza" },
-                    { "name": "fireControl", "id": "lwHJf" },
-                    { "name": "fireControl", "id": "Fa6jl" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "llpza"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "lwHJf"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Fa6jl"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -940,10 +1189,22 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "SR7EN" },
-                    { "name": "pds", "id": "ssxp6" },
-                    { "name": "pds", "id": "Vuic4" },
-                    { "name": "pds", "id": "rurC1" },
+                    {
+                        "name": "pds",
+                        "id": "SR7EN"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "ssxp6"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "Vuic4"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "rurC1"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -999,8 +1260,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 483,
-                "cpv": 379,
+                "points": 555,
+                "cpv": 571,
                 "mass": 140,
                 "class": "Light Fleet Carrier",
                 "name": "Inflexible"
@@ -1012,7 +1273,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[12, 0]],
+                "armour": [
+                    [
+                        12,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1020,7 +1286,11 @@
                         "advanced": false,
                         "id": "ZMeG4"
                     },
-                    { "name": "ftl", "advanced": false, "id": "xkeiI" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "xkeiI"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -1033,8 +1303,14 @@
                         "advanced": false,
                         "id": "dliEP"
                     },
-                    { "name": "fireControl", "id": "yhsgC" },
-                    { "name": "fireControl", "id": "1wgP5" },
+                    {
+                        "name": "fireControl",
+                        "id": "yhsgC"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "1wgP5"
+                    },
                     {
                         "name": "hangar",
                         "id": "UuT4x",
@@ -1073,10 +1349,22 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "z86NW" },
-                    { "name": "pds", "id": "D7OZY" },
-                    { "name": "pds", "id": "e-k9s" },
-                    { "name": "pds", "id": "CMgAl" },
+                    {
+                        "name": "pds",
+                        "id": "z86NW"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "D7OZY"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "e-k9s"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "CMgAl"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1153,8 +1441,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 690,
-                "cpv": 595,
+                "points": 798,
+                "cpv": 883,
                 "mass": 200,
                 "class": "Fleet Supercarrier",
                 "name": "Ark Royal"
@@ -1171,7 +1459,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[1, 0]],
+                "armour": [
+                    [
+                        1,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1179,8 +1472,15 @@
                         "advanced": false,
                         "id": "qm5Fg"
                     },
-                    { "name": "ftl", "advanced": false, "id": "mbE3_" },
-                    { "name": "fireControl", "id": "Yr-Ab" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "mbE3_"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Yr-Ab"
+                    }
                 ],
                 "weapons": [
                     {
@@ -1208,7 +1508,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[2, 0]],
+                "armour": [
+                    [
+                        2,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1216,11 +1521,21 @@
                         "advanced": false,
                         "id": "QR2hR"
                     },
-                    { "name": "ftl", "advanced": false, "id": "6GgDp" },
-                    { "name": "fireControl", "id": "Hl94d" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "6GgDp"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Hl94d"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "OdDN-" },
+                    {
+                        "name": "pds",
+                        "id": "OdDN-"
+                    },
                     {
                         "name": "beam",
                         "class": 2,
@@ -1246,7 +1561,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[2, 0]],
+                "armour": [
+                    [
+                        2,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1254,11 +1574,21 @@
                         "advanced": false,
                         "id": "_cGQs"
                     },
-                    { "name": "ftl", "advanced": false, "id": "N2A2P" },
-                    { "name": "fireControl", "id": "KH2IA" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "N2A2P"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "KH2IA"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "IWbZY" },
+                    {
+                        "name": "pds",
+                        "id": "IWbZY"
+                    },
                     {
                         "name": "beam",
                         "class": 2,
@@ -1291,7 +1621,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[3, 0]],
+                "armour": [
+                    [
+                        3,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1299,12 +1634,25 @@
                         "advanced": false,
                         "id": "qwuOm"
                     },
-                    { "name": "ftl", "advanced": false, "id": "wtPF9" },
-                    { "name": "fireControl", "id": "TWe9h" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "wtPF9"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "TWe9h"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "WWanv" },
-                    { "name": "pds", "id": "FSodn" },
+                    {
+                        "name": "pds",
+                        "id": "WWanv"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "FSodn"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1351,7 +1699,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[2, 0]],
+                "armour": [
+                    [
+                        2,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1359,12 +1712,26 @@
                         "advanced": false,
                         "id": "rVnsz"
                     },
-                    { "name": "ftl", "advanced": false, "id": "U3DYm" },
-                    { "name": "magazine", "capacity": 2, "id": "UbItG" },
-                    { "name": "fireControl", "id": "FPyeA" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "U3DYm"
+                    },
+                    {
+                        "name": "magazine",
+                        "capacity": 2,
+                        "id": "UbItG"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "FPyeA"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "Oa7Cj" },
+                    {
+                        "name": "pds",
+                        "id": "Oa7Cj"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1398,7 +1765,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[5, 0]],
+                "armour": [
+                    [
+                        5,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1406,14 +1778,33 @@
                         "advanced": false,
                         "id": "QtyMK"
                     },
-                    { "name": "ftl", "advanced": false, "id": "u0pAR" },
-                    { "name": "adfc", "id": "a41E_" },
-                    { "name": "fireControl", "id": "8zgwk" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "u0pAR"
+                    },
+                    {
+                        "name": "adfc",
+                        "id": "a41E_"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "8zgwk"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "jbrT_" },
-                    { "name": "pds", "id": "o0RJX" },
-                    { "name": "pds", "id": "9yL6A" },
+                    {
+                        "name": "pds",
+                        "id": "jbrT_"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "o0RJX"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "9yL6A"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1467,7 +1858,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[6, 0]],
+                "armour": [
+                    [
+                        6,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1475,15 +1871,37 @@
                         "advanced": false,
                         "id": "XyyQ_"
                     },
-                    { "name": "ftl", "advanced": false, "id": "gwHF5" },
-                    { "name": "adfc", "id": "abht4" },
-                    { "name": "fireControl", "id": "KAAWz" },
-                    { "name": "fireControl", "id": "oF_Ll" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "gwHF5"
+                    },
+                    {
+                        "name": "adfc",
+                        "id": "abht4"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "KAAWz"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "oF_Ll"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "RVkNA" },
-                    { "name": "pds", "id": "kVwRv" },
-                    { "name": "pds", "id": "Bpsse" },
+                    {
+                        "name": "pds",
+                        "id": "RVkNA"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "kVwRv"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "Bpsse"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1544,7 +1962,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[10, 0]],
+                "armour": [
+                    [
+                        10,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1552,14 +1975,33 @@
                         "advanced": false,
                         "id": "qsE53"
                     },
-                    { "name": "ftl", "advanced": false, "id": "pgZjU" },
-                    { "name": "fireControl", "id": "jeKEW" },
-                    { "name": "fireControl", "id": "lcci6" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "pgZjU"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "jeKEW"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "lcci6"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "Z5pSs" },
-                    { "name": "pds", "id": "xxjZV" },
-                    { "name": "pds", "id": "XVyJ8" },
+                    {
+                        "name": "pds",
+                        "id": "Z5pSs"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "xxjZV"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "XVyJ8"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1620,7 +2062,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[10, 0]],
+                "armour": [
+                    [
+                        10,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1628,15 +2075,37 @@
                         "advanced": false,
                         "id": "3_zS2"
                     },
-                    { "name": "ftl", "advanced": false, "id": "IBmsr" },
-                    { "name": "fireControl", "id": "pCZi5" },
-                    { "name": "fireControl", "id": "h0afr" },
-                    { "name": "fireControl", "id": "mVVM3" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "IBmsr"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "pCZi5"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "h0afr"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "mVVM3"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "7jbiz" },
-                    { "name": "pds", "id": "g0N84" },
-                    { "name": "pds", "id": "o8iK8" },
+                    {
+                        "name": "pds",
+                        "id": "7jbiz"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "g0N84"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "o8iK8"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1704,7 +2173,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[6, 0]],
+                "armour": [
+                    [
+                        6,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1712,15 +2186,37 @@
                         "advanced": false,
                         "id": "x2TZk"
                     },
-                    { "name": "ftl", "advanced": false, "id": "FPqV4" },
-                    { "name": "fireControl", "id": "zaGbm" },
-                    { "name": "fireControl", "id": "qnP3d" },
-                    { "name": "fireControl", "id": "ihO1w" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "FPqV4"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "zaGbm"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "qnP3d"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ihO1w"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "nMXwR" },
-                    { "name": "pds", "id": "6nJ65" },
-                    { "name": "pds", "id": "qoX2G" },
+                    {
+                        "name": "pds",
+                        "id": "nMXwR"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "6nJ65"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "qoX2G"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1795,7 +2291,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[10, 0]],
+                "armour": [
+                    [
+                        10,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1803,17 +2304,45 @@
                         "advanced": false,
                         "id": "ZM1Ef"
                     },
-                    { "name": "ftl", "advanced": false, "id": "qypc9" },
-                    { "name": "fireControl", "id": "8U5ZA" },
-                    { "name": "fireControl", "id": "ekvqS" },
-                    { "name": "fireControl", "id": "6vPGb" },
-                    { "name": "fireControl", "id": "f7jv_" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "qypc9"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "8U5ZA"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ekvqS"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "6vPGb"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "f7jv_"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "5i9Mk" },
-                    { "name": "pds", "id": "amDKe" },
-                    { "name": "pds", "id": "n9nFL" },
-                    { "name": "pds", "id": "cepJ8" },
+                    {
+                        "name": "pds",
+                        "id": "5i9Mk"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "amDKe"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "n9nFL"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "cepJ8"
+                    },
                     {
                         "name": "torpedoPulse",
                         "leftArc": "FP",
@@ -1901,7 +2430,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[14, 0]],
+                "armour": [
+                    [
+                        14,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -1909,23 +2443,51 @@
                         "advanced": false,
                         "id": "2fUrF"
                     },
-                    { "name": "ftl", "advanced": false, "id": "6eTF7" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "6eTF7"
+                    },
                     {
                         "name": "hangar",
                         "id": "XmKnO",
                         "isRack": false,
                         "critRules": false
                     },
-                    { "name": "fireControl", "id": "LnBgu" },
-                    { "name": "fireControl", "id": "8__9g" },
-                    { "name": "fireControl", "id": "TVOFm" },
-                    { "name": "fireControl", "id": "CQZY8" }
+                    {
+                        "name": "fireControl",
+                        "id": "LnBgu"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "8__9g"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "TVOFm"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "CQZY8"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "y0HqO" },
-                    { "name": "pds", "id": "7-coh" },
-                    { "name": "pds", "id": "zziXT" },
-                    { "name": "pds", "id": "U4OES" },
+                    {
+                        "name": "pds",
+                        "id": "y0HqO"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "7-coh"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "zziXT"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "U4OES"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -1988,8 +2550,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 500,
-                "cpv": 531,
+                "points": 518,
+                "cpv": 579,
                 "mass": 150,
                 "class": "Battledreadnought",
                 "name": "Szent Istvan"
@@ -2001,7 +2563,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[14, 0]],
+                "armour": [
+                    [
+                        14,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -2009,24 +2576,56 @@
                         "advanced": false,
                         "id": "pdXfe"
                     },
-                    { "name": "ftl", "advanced": false, "id": "HWHMm" },
-                    { "name": "fireControl", "id": "BwmbB" },
-                    { "name": "fireControl", "id": "bNDW_" },
-                    { "name": "fireControl", "id": "x3KBj" },
-                    { "name": "fireControl", "id": "gKZQI" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "HWHMm"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "BwmbB"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "bNDW_"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "x3KBj"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "gKZQI"
+                    },
                     {
                         "name": "hangar",
                         "id": "UBHuV",
                         "isRack": false,
                         "critRules": false
                     },
-                    { "name": "magazine", "capacity": 4, "id": "sFRCT" }
+                    {
+                        "name": "magazine",
+                        "capacity": 4,
+                        "id": "sFRCT"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "uNEbk" },
-                    { "name": "pds", "id": "0GZD8" },
-                    { "name": "pds", "id": "BsxEP" },
-                    { "name": "pds", "id": "9TL-E" },
+                    {
+                        "name": "pds",
+                        "id": "uNEbk"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "0GZD8"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "BsxEP"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "9TL-E"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -2118,8 +2717,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 670,
-                "cpv": 817,
+                "points": 688,
+                "cpv": 865,
                 "mass": 200,
                 "class": "Superdreadnought",
                 "name": "Von Tegetthoff"
@@ -2131,7 +2730,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[14, 0]],
+                "armour": [
+                    [
+                        14,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -2139,10 +2743,23 @@
                         "advanced": false,
                         "id": "2-tO4"
                     },
-                    { "name": "ftl", "advanced": false, "id": "vPvno" },
-                    { "name": "fireControl", "id": "lwmoa" },
-                    { "name": "fireControl", "id": "Sucov" },
-                    { "name": "fireControl", "id": "gxULr" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "vPvno"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "lwmoa"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Sucov"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "gxULr"
+                    },
                     {
                         "name": "hangar",
                         "id": "kjP5u",
@@ -2225,12 +2842,30 @@
                         "numArcs": 3,
                         "id": "dqUtl"
                     },
-                    { "name": "pds", "id": "oE3UG" },
-                    { "name": "pds", "id": "Oy01s" },
-                    { "name": "pds", "id": "n3xhU" },
-                    { "name": "pds", "id": "t_UHw" },
-                    { "name": "pds", "id": "d0eqO" },
-                    { "name": "pds", "id": "_zxM-" }
+                    {
+                        "name": "pds",
+                        "id": "oE3UG"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "Oy01s"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "n3xhU"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "t_UHw"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "d0eqO"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "_zxM-"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -2265,8 +2900,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 737,
-                "cpv": 784,
+                "points": 809,
+                "cpv": 976,
                 "mass": 220,
                 "class": "Fighter Carrier",
                 "name": "Der Theuerdank"
@@ -2291,8 +2926,15 @@
                         "advanced": false,
                         "id": "Yz8FQ"
                     },
-                    { "name": "ftl", "advanced": false, "id": "jMcSQ" },
-                    { "name": "fireControl", "id": "US3q-" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "jMcSQ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "US3q-"
+                    }
                 ],
                 "weapons": [
                     {
@@ -2335,11 +2977,21 @@
                         "advanced": false,
                         "id": "XeLFe"
                     },
-                    { "name": "ftl", "advanced": false, "id": "kYJ98" },
-                    { "name": "fireControl", "id": "38xaN" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "kYJ98"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "38xaN"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "CKwir" },
+                    {
+                        "name": "pds",
+                        "id": "CKwir"
+                    },
                     {
                         "name": "submunition",
                         "leftArc": "FP",
@@ -2386,8 +3038,15 @@
                         "advanced": false,
                         "id": "fqptY"
                     },
-                    { "name": "ftl", "advanced": false, "id": "W_XJq" },
-                    { "name": "fireControl", "id": "dlR4I" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "W_XJq"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "dlR4I"
+                    }
                 ],
                 "weapons": [
                     {
@@ -2402,7 +3061,10 @@
                         "numArcs": 3,
                         "id": "4TCsi"
                     },
-                    { "name": "pds", "id": "BIAgc" },
+                    {
+                        "name": "pds",
+                        "id": "BIAgc"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -2435,7 +3097,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[2, 0]],
+                "armour": [
+                    [
+                        2,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -2443,12 +3110,25 @@
                         "advanced": false,
                         "id": "CPRVM"
                     },
-                    { "name": "ftl", "advanced": false, "id": "bieYi" },
-                    { "name": "fireControl", "id": "jzot2" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "bieYi"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "jzot2"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "ytc3d" },
-                    { "name": "pds", "id": "1ACMa" },
+                    {
+                        "name": "pds",
+                        "id": "ytc3d"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "1ACMa"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -2503,12 +3183,26 @@
                         "advanced": false,
                         "id": "_Fy-1"
                     },
-                    { "name": "ftl", "advanced": false, "id": "fX2WB" },
-                    { "name": "fireControl", "id": "2m86Y" },
-                    { "name": "magazine", "capacity": 2, "id": "zUNTL" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "fX2WB"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "2m86Y"
+                    },
+                    {
+                        "name": "magazine",
+                        "capacity": 2,
+                        "id": "zUNTL"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "hUqM1" },
+                    {
+                        "name": "pds",
+                        "id": "hUqM1"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -2557,14 +3251,34 @@
                         "advanced": false,
                         "id": "nfcU_"
                     },
-                    { "name": "ftl", "advanced": false, "id": "rVd5N" },
-                    { "name": "fireControl", "id": "RcIjT" },
-                    { "name": "fireControl", "id": "nGv7z" },
-                    { "name": "magazine", "capacity": 3, "id": "g9yla" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "rVd5N"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "RcIjT"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "nGv7z"
+                    },
+                    {
+                        "name": "magazine",
+                        "capacity": 3,
+                        "id": "g9yla"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "tUmd6" },
-                    { "name": "pds", "id": "8TF_d" },
+                    {
+                        "name": "pds",
+                        "id": "tUmd6"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "8TF_d"
+                    },
                     {
                         "name": "beam",
                         "class": 2,
@@ -2613,14 +3327,34 @@
                         "advanced": false,
                         "id": "beo-M"
                     },
-                    { "name": "ftl", "advanced": false, "id": "fEDX7" },
-                    { "name": "fireControl", "id": "mx4BY" },
-                    { "name": "fireControl", "id": "XUBXz" },
-                    { "name": "magazine", "capacity": 3, "id": "4CE3H" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "fEDX7"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "mx4BY"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "XUBXz"
+                    },
+                    {
+                        "name": "magazine",
+                        "capacity": 3,
+                        "id": "4CE3H"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "tY55x" },
-                    { "name": "pds", "id": "1JuZZ" },
+                    {
+                        "name": "pds",
+                        "id": "tY55x"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "1JuZZ"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -2676,14 +3410,34 @@
                         "advanced": false,
                         "id": "1WDhS"
                     },
-                    { "name": "ftl", "advanced": false, "id": "wXd4D" },
-                    { "name": "fireControl", "id": "t_3n3" },
-                    { "name": "fireControl", "id": "X4H2q" },
-                    { "name": "magazine", "capacity": 4, "id": "4WuU_" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "wXd4D"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "t_3n3"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "X4H2q"
+                    },
+                    {
+                        "name": "magazine",
+                        "capacity": 4,
+                        "id": "4WuU_"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "mC62p" },
-                    { "name": "pds", "id": "wI_I8" },
+                    {
+                        "name": "pds",
+                        "id": "mC62p"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "wI_I8"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -2760,21 +3514,44 @@
                         "advanced": false,
                         "id": "_XD8W"
                     },
-                    { "name": "ftl", "advanced": false, "id": "gvNrm" },
-                    { "name": "fireControl", "id": "yaNag" },
-                    { "name": "fireControl", "id": "wW2cJ" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "gvNrm"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "yaNag"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "wW2cJ"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "I3CwG"
                     },
-                    { "name": "magazine", "capacity": 3, "id": "yA27U" }
+                    {
+                        "name": "magazine",
+                        "capacity": 3,
+                        "id": "yA27U"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "nyLyp" },
-                    { "name": "pds", "id": "u4-h7" },
-                    { "name": "pds", "id": "plTo1" },
+                    {
+                        "name": "pds",
+                        "id": "nyLyp"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "u4-h7"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "plTo1"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -2844,11 +3621,28 @@
                         "advanced": false,
                         "id": "i8stG"
                     },
-                    { "name": "ftl", "advanced": false, "id": "LBP-E" },
-                    { "name": "fireControl", "id": "aiHlx" },
-                    { "name": "fireControl", "id": "2gpvq" },
-                    { "name": "fireControl", "id": "rwjVU" },
-                    { "name": "magazine", "capacity": 6, "id": "3FcxX" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "LBP-E"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "aiHlx"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "2gpvq"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "rwjVU"
+                    },
+                    {
+                        "name": "magazine",
+                        "capacity": 6,
+                        "id": "3FcxX"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -2857,10 +3651,22 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "mggMh" },
-                    { "name": "pds", "id": "huKiO" },
-                    { "name": "pds", "id": "1ft3L" },
-                    { "name": "pds", "id": "-4zMD" },
+                    {
+                        "name": "pds",
+                        "id": "mggMh"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "huKiO"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "1ft3L"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "-4zMD"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -2951,10 +3757,23 @@
                         "advanced": false,
                         "id": "szjMP"
                     },
-                    { "name": "ftl", "advanced": false, "id": "jVTzJ" },
-                    { "name": "fireControl", "id": "ariG-" },
-                    { "name": "fireControl", "id": "-sBNf" },
-                    { "name": "fireControl", "id": "VNmyn" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "jVTzJ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ariG-"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "-sBNf"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "VNmyn"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -2967,13 +3786,29 @@
                         "isRack": false,
                         "critRules": false
                     },
-                    { "name": "magazine", "capacity": 4, "id": "F1EtI" }
+                    {
+                        "name": "magazine",
+                        "capacity": 4,
+                        "id": "F1EtI"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "8t67W" },
-                    { "name": "pds", "id": "cuHqH" },
-                    { "name": "pds", "id": "mQooO" },
-                    { "name": "pds", "id": "JB0Mc" },
+                    {
+                        "name": "pds",
+                        "id": "8t67W"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "cuHqH"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "mQooO"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "JB0Mc"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3037,8 +3872,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 531,
-                "cpv": 581,
+                "points": 549,
+                "cpv": 629,
                 "mass": 160,
                 "class": "Battledreadnought",
                 "name": "Bonaparte"
@@ -3058,12 +3893,31 @@
                         "advanced": false,
                         "id": "eH_JB"
                     },
-                    { "name": "ftl", "advanced": false, "id": "ET89M" },
-                    { "name": "fireControl", "id": "G-7TD" },
-                    { "name": "fireControl", "id": "ojJhx" },
-                    { "name": "fireControl", "id": "9VlFj" },
-                    { "name": "fireControl", "id": "a7nTe" },
-                    { "name": "fireControl", "id": "kI1gG" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "ET89M"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "G-7TD"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ojJhx"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "9VlFj"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "a7nTe"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "kI1gG"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -3088,15 +3942,37 @@
                         "isRack": false,
                         "critRules": false
                     },
-                    { "name": "magazine", "capacity": 9, "id": "WBYMi" }
+                    {
+                        "name": "magazine",
+                        "capacity": 9,
+                        "id": "WBYMi"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "KoLl-" },
-                    { "name": "pds", "id": "N5Uqp" },
-                    { "name": "pds", "id": "94Uji" },
-                    { "name": "pds", "id": "QEd_B" },
-                    { "name": "pds", "id": "yh1Pv" },
-                    { "name": "pds", "id": "yAaTe" },
+                    {
+                        "name": "pds",
+                        "id": "KoLl-"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "N5Uqp"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "94Uji"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "QEd_B"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "yh1Pv"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "yAaTe"
+                    },
                     {
                         "name": "beam",
                         "class": 2,
@@ -3188,8 +4064,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 855,
-                "cpv": 1048,
+                "points": 909,
+                "cpv": 1192,
                 "mass": 250,
                 "class": "Superdreadnought",
                 "name": "Foch"
@@ -3209,16 +4085,30 @@
                         "advanced": false,
                         "id": "IIYt1"
                     },
-                    { "name": "ftl", "advanced": false, "id": "4-XIq" },
-                    { "name": "fireControl", "id": "uSzVj" },
-                    { "name": "fireControl", "id": "ErllU" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "4-XIq"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "uSzVj"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ErllU"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "NCrkK"
                     },
-                    { "name": "magazine", "capacity": 3, "id": "D_nSJ" },
+                    {
+                        "name": "magazine",
+                        "capacity": 3,
+                        "id": "D_nSJ"
+                    },
                     {
                         "name": "hangar",
                         "id": "e66d7",
@@ -3245,10 +4135,22 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "Coe2u" },
-                    { "name": "pds", "id": "S0oaV" },
-                    { "name": "pds", "id": "R4Sux" },
-                    { "name": "pds", "id": "lvJmK" },
+                    {
+                        "name": "pds",
+                        "id": "Coe2u"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "S0oaV"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "R4Sux"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "lvJmK"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3319,8 +4221,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 580,
-                "cpv": 518,
+                "points": 652,
+                "cpv": 710,
                 "mass": 170,
                 "class": "Light Carrier",
                 "name": "Bologna"
@@ -3340,11 +4242,28 @@
                         "advanced": false,
                         "id": "65oYF"
                     },
-                    { "name": "ftl", "advanced": false, "id": "uLrB-" },
-                    { "name": "fireControl", "id": "8lzkR" },
-                    { "name": "fireControl", "id": "SVO3b" },
-                    { "name": "fireControl", "id": "_CXcS" },
-                    { "name": "magazine", "capacity": 3, "id": "2OHGI" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "uLrB-"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "8lzkR"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "SVO3b"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "_CXcS"
+                    },
+                    {
+                        "name": "magazine",
+                        "capacity": 3,
+                        "id": "2OHGI"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -3395,12 +4314,30 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "GJXy9" },
-                    { "name": "pds", "id": "7VXCH" },
-                    { "name": "pds", "id": "0bBR0" },
-                    { "name": "pds", "id": "kmxua" },
-                    { "name": "pds", "id": "whL-d" },
-                    { "name": "pds", "id": "nvuab" },
+                    {
+                        "name": "pds",
+                        "id": "GJXy9"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "7VXCH"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "0bBR0"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "kmxua"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "whL-d"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "nvuab"
+                    },
                     {
                         "name": "beam",
                         "class": 2,
@@ -3492,8 +4429,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 955,
-                "cpv": 1020,
+                "points": 1081,
+                "cpv": 1356,
                 "mass": 280,
                 "class": "Fleet Carrier",
                 "name": "Jeanne D'Arc"
@@ -3518,8 +4455,15 @@
                         "advanced": false,
                         "id": "p16c1"
                     },
-                    { "name": "ftl", "advanced": false, "id": "5EpIZ" },
-                    { "name": "fireControl", "id": "3x3BK" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "5EpIZ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "3x3BK"
+                    }
                 ],
                 "weapons": [
                     {
@@ -3555,11 +4499,21 @@
                         "advanced": false,
                         "id": "cxPNI"
                     },
-                    { "name": "ftl", "advanced": false, "id": "Xr-c4" },
-                    { "name": "fireControl", "id": "0WS6X" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "Xr-c4"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "0WS6X"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "gONq-" },
+                    {
+                        "name": "pds",
+                        "id": "gONq-"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3600,11 +4554,21 @@
                         "advanced": false,
                         "id": "7FRtN"
                     },
-                    { "name": "ftl", "advanced": false, "id": "I_8zf" },
-                    { "name": "fireControl", "id": "AflQN" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "I_8zf"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "AflQN"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "oQPjU" },
+                    {
+                        "name": "pds",
+                        "id": "oQPjU"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3644,7 +4608,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[3, 0]],
+                "armour": [
+                    [
+                        3,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -3652,11 +4621,21 @@
                         "advanced": false,
                         "id": "vSTzW"
                     },
-                    { "name": "ftl", "advanced": false, "id": "SxEFP" },
-                    { "name": "fireControl", "id": "PRP4O" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "SxEFP"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "PRP4O"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "4wEox" },
+                    {
+                        "name": "pds",
+                        "id": "4wEox"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3703,7 +4682,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[2, 0]],
+                "armour": [
+                    [
+                        2,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -3711,11 +4695,21 @@
                         "advanced": false,
                         "id": "hLFIt"
                     },
-                    { "name": "ftl", "advanced": false, "id": "xbvEm" },
-                    { "name": "fireControl", "id": "ARRol" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "xbvEm"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ARRol"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "H-rW5" },
+                    {
+                        "name": "pds",
+                        "id": "H-rW5"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3751,7 +4745,10 @@
                         "numArcs": 3,
                         "id": "tKmNB"
                     },
-                    { "name": "pds", "id": "CdCln" }
+                    {
+                        "name": "pds",
+                        "id": "CdCln"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -3770,7 +4767,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[3, 0]],
+                "armour": [
+                    [
+                        3,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -3778,19 +4780,35 @@
                         "advanced": false,
                         "id": "HfeuQ"
                     },
-                    { "name": "ftl", "advanced": false, "id": "Tba6C" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "Tba6C"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "7yNJZ"
                     },
-                    { "name": "fireControl", "id": "6vzn5" },
-                    { "name": "fireControl", "id": "UvAtA" }
+                    {
+                        "name": "fireControl",
+                        "id": "6vzn5"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "UvAtA"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "unlYz" },
-                    { "name": "pds", "id": "4WKtE" },
+                    {
+                        "name": "pds",
+                        "id": "unlYz"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "4WKtE"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3844,7 +4862,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[5, 0]],
+                "armour": [
+                    [
+                        5,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -3852,9 +4875,19 @@
                         "advanced": false,
                         "id": "Amjp8"
                     },
-                    { "name": "ftl", "advanced": false, "id": "ozZru" },
-                    { "name": "fireControl", "id": "djA7V" },
-                    { "name": "fireControl", "id": "fc3BL" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "ozZru"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "djA7V"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "fc3BL"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -3863,8 +4896,14 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "TEtmk" },
-                    { "name": "pds", "id": "B7JIl" },
+                    {
+                        "name": "pds",
+                        "id": "TEtmk"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "B7JIl"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3926,19 +4965,35 @@
                         "advanced": false,
                         "id": "A23Cy"
                     },
-                    { "name": "ftl", "advanced": false, "id": "lWfGl" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "lWfGl"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "PUS2D"
                     },
-                    { "name": "fireControl", "id": "369Vg" },
-                    { "name": "fireControl", "id": "e0gye" }
+                    {
+                        "name": "fireControl",
+                        "id": "369Vg"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "e0gye"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "je4wj" },
-                    { "name": "pds", "id": "VUfwp" },
+                    {
+                        "name": "pds",
+                        "id": "je4wj"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "VUfwp"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -3976,8 +5031,18 @@
                     }
                 ],
                 "ordnance": [
-                    { "name": "salvo", "id": "hde0C" },
-                    { "name": "salvo", "id": "F6QLY" }
+                    {
+                        "name": "salvo",
+                        "id": "hde0C",
+                        "leftArc": "FP",
+                        "numArcs": 3
+                    },
+                    {
+                        "name": "salvo",
+                        "id": "F6QLY",
+                        "leftArc": "FP",
+                        "numArcs": 3
+                    }
                 ],
                 "extras": [],
                 "fighters": [],
@@ -3995,7 +5060,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[5, 0]],
+                "armour": [
+                    [
+                        5,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -4003,19 +5073,35 @@
                         "advanced": false,
                         "id": "vE7zD"
                     },
-                    { "name": "ftl", "advanced": false, "id": "hlsaH" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "hlsaH"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "a7F5d"
                     },
-                    { "name": "fireControl", "id": "PVK1_" },
-                    { "name": "fireControl", "id": "gGfql" }
+                    {
+                        "name": "fireControl",
+                        "id": "PVK1_"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "gGfql"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "9h8tr" },
-                    { "name": "pds", "id": "Eq2ip" },
+                    {
+                        "name": "pds",
+                        "id": "9h8tr"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "Eq2ip"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -4084,19 +5170,35 @@
                         "advanced": false,
                         "id": "NCTIg"
                     },
-                    { "name": "ftl", "advanced": false, "id": "f40_N" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "f40_N"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "Xtn5M"
                     },
-                    { "name": "fireControl", "id": "feje3" },
-                    { "name": "fireControl", "id": "ePSuJ" }
+                    {
+                        "name": "fireControl",
+                        "id": "feje3"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ePSuJ"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "jjT5e" },
-                    { "name": "pds", "id": "4Ha2x" },
+                    {
+                        "name": "pds",
+                        "id": "jjT5e"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "4Ha2x"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -4165,21 +5267,43 @@
                         "advanced": false,
                         "id": "2eFIk"
                     },
-                    { "name": "ftl", "advanced": false, "id": "cIAcL" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "cIAcL"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "oadD4"
                     },
-                    { "name": "fireControl", "id": "2y17P" },
-                    { "name": "fireControl", "id": "korqi" },
-                    { "name": "fireControl", "id": "Jg3Ev" }
+                    {
+                        "name": "fireControl",
+                        "id": "2y17P"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "korqi"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Jg3Ev"
+                    }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "CDjHj" },
-                    { "name": "pds", "id": "7A2d3" },
-                    { "name": "pds", "id": "mGCQ_" },
+                    {
+                        "name": "pds",
+                        "id": "CDjHj"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "7A2d3"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "mGCQ_"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -4269,16 +5393,29 @@
                         "advanced": false,
                         "id": "FwPjE"
                     },
-                    { "name": "ftl", "advanced": false, "id": "3M4Ck" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "3M4Ck"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "daTcH"
                     },
-                    { "name": "fireControl", "id": "jp83p" },
-                    { "name": "fireControl", "id": "XE56o" },
-                    { "name": "fireControl", "id": "ZzWd-" },
+                    {
+                        "name": "fireControl",
+                        "id": "jp83p"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "XE56o"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ZzWd-"
+                    },
                     {
                         "name": "hangar",
                         "id": "XMhLh",
@@ -4287,9 +5424,18 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "gnsfO" },
-                    { "name": "pds", "id": "NCAZl" },
-                    { "name": "pds", "id": "Ru08T" },
+                    {
+                        "name": "pds",
+                        "id": "gnsfO"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "NCAZl"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "Ru08T"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -4358,15 +5504,25 @@
                         "advanced": false,
                         "id": "JRFf7"
                     },
-                    { "name": "ftl", "advanced": false, "id": "EOkiJ" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "EOkiJ"
+                    },
                     {
                         "name": "screen",
                         "area": false,
                         "advanced": false,
                         "id": "i-1nB"
                     },
-                    { "name": "fireControl", "id": "qbXOu" },
-                    { "name": "fireControl", "id": "naPGW" },
+                    {
+                        "name": "fireControl",
+                        "id": "qbXOu"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "naPGW"
+                    },
                     {
                         "name": "hangar",
                         "id": "oAqxC",
@@ -4393,10 +5549,22 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "cNWAH" },
-                    { "name": "pds", "id": "EfH9j" },
-                    { "name": "pds", "id": "nWvdk" },
-                    { "name": "pds", "id": "z0Bjy" },
+                    {
+                        "name": "pds",
+                        "id": "cNWAH"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "EfH9j"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "nWvdk"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "z0Bjy"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -4473,8 +5641,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 512,
-                "cpv": 420,
+                "points": 584,
+                "cpv": 612,
                 "mass": 150,
                 "class": "Light Carrier",
                 "name": "Tsiolkovsky"
@@ -4494,7 +5662,11 @@
                         "advanced": false,
                         "id": "b0Txi"
                     },
-                    { "name": "ftl", "advanced": false, "id": "uupO_" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "uupO_"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -4507,9 +5679,18 @@
                         "advanced": false,
                         "id": "cjqwy"
                     },
-                    { "name": "fireControl", "id": "MvjD7" },
-                    { "name": "fireControl", "id": "M4qe4" },
-                    { "name": "fireControl", "id": "WAbnT" },
+                    {
+                        "name": "fireControl",
+                        "id": "MvjD7"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "M4qe4"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "WAbnT"
+                    },
                     {
                         "name": "hangar",
                         "id": "WD304",
@@ -4518,10 +5699,22 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "Sc22X" },
-                    { "name": "pds", "id": "x8k9q" },
-                    { "name": "pds", "id": "apSP_" },
-                    { "name": "pds", "id": "LVPoh" },
+                    {
+                        "name": "pds",
+                        "id": "Sc22X"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "x8k9q"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "apSP_"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "LVPoh"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -4605,8 +5798,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 751,
-                "cpv": 958,
+                "points": 769,
+                "cpv": 1006,
                 "mass": 220,
                 "class": "Superdreadnought",
                 "name": "Komarov"
@@ -4626,7 +5819,11 @@
                         "advanced": false,
                         "id": "q7Leg"
                     },
-                    { "name": "ftl", "advanced": false, "id": "ldkgq" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "ldkgq"
+                    },
                     {
                         "name": "screen",
                         "area": false,
@@ -4639,8 +5836,14 @@
                         "advanced": false,
                         "id": "ZqYDP"
                     },
-                    { "name": "fireControl", "id": "mdpi2" },
-                    { "name": "fireControl", "id": "IqDbI" },
+                    {
+                        "name": "fireControl",
+                        "id": "mdpi2"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "IqDbI"
+                    },
                     {
                         "name": "hangar",
                         "id": "EQ2W6",
@@ -4679,12 +5882,30 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "l5LdK" },
-                    { "name": "pds", "id": "vwGAa" },
-                    { "name": "pds", "id": "gh3ru" },
-                    { "name": "pds", "id": "aDMFK" },
-                    { "name": "pds", "id": "IpY96" },
-                    { "name": "pds", "id": "25H7F" },
+                    {
+                        "name": "pds",
+                        "id": "l5LdK"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "vwGAa"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "gh3ru"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "aDMFK"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "IpY96"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "25H7F"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -4803,8 +6024,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 842,
-                "cpv": 840,
+                "points": 950,
+                "cpv": 1128,
                 "mass": 240,
                 "class": "Attack Carrier",
                 "name": "Konstantin"
@@ -4829,7 +6050,11 @@
                         "advanced": false,
                         "id": "DpPj8"
                     },
-                    { "name": "ftl", "advanced": false, "id": "WfKq9" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "WfKq9"
+                    },
                     {
                         "name": "bay",
                         "id": "h7KwX",
@@ -4855,7 +6080,12 @@
                         "type": "cargo"
                     }
                 ],
-                "weapons": [{ "name": "pds", "id": "agfdD" }],
+                "weapons": [
+                    {
+                        "name": "pds",
+                        "id": "agfdD"
+                    }
+                ],
                 "ordnance": [],
                 "extras": [],
                 "fighters": [],
@@ -4882,7 +6112,11 @@
                         "advanced": false,
                         "id": "QKCM6"
                     },
-                    { "name": "ftl", "advanced": false, "id": "KhFzo" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "KhFzo"
+                    },
                     {
                         "name": "bay",
                         "id": "Z9FCQ",
@@ -4908,7 +6142,12 @@
                         "type": "cargo"
                     }
                 ],
-                "weapons": [{ "name": "pds", "id": "qoKgr" }],
+                "weapons": [
+                    {
+                        "name": "pds",
+                        "id": "qoKgr"
+                    }
+                ],
                 "ordnance": [],
                 "extras": [],
                 "fighters": [],
@@ -4935,7 +6174,11 @@
                         "advanced": false,
                         "id": "X2EtC"
                     },
-                    { "name": "ftl", "advanced": false, "id": "4QATK" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "4QATK"
+                    },
                     {
                         "name": "bay",
                         "id": "pstid",
@@ -4961,7 +6204,12 @@
                         "type": "cargo"
                     }
                 ],
-                "weapons": [{ "name": "pds", "id": "10yfT" }],
+                "weapons": [
+                    {
+                        "name": "pds",
+                        "id": "10yfT"
+                    }
+                ],
                 "ordnance": [],
                 "extras": [],
                 "fighters": [],
@@ -4988,7 +6236,11 @@
                         "advanced": false,
                         "id": "IQKjC"
                     },
-                    { "name": "ftl", "advanced": false, "id": "JaGD6" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "JaGD6"
+                    },
                     {
                         "name": "bay",
                         "id": "qV0p8",
@@ -5013,7 +6265,10 @@
                         "capacity": 2,
                         "type": "cargo"
                     },
-                    { "name": "fireControl", "id": "jMrUq" }
+                    {
+                        "name": "fireControl",
+                        "id": "jMrUq"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5050,8 +6305,15 @@
                         "advanced": false,
                         "id": "baTvv"
                     },
-                    { "name": "ftl", "advanced": false, "id": "F9zZZ" },
-                    { "name": "fireControl", "id": "venOJ" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "F9zZZ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "venOJ"
+                    },
                     {
                         "name": "bay",
                         "id": "ytJiG",
@@ -5078,8 +6340,14 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "uUyQL" },
-                    { "name": "pds", "id": "nST0l" },
+                    {
+                        "name": "pds",
+                        "id": "uUyQL"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "nST0l"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -5114,7 +6382,11 @@
                         "advanced": false,
                         "id": "DBn5b"
                     },
-                    { "name": "ftl", "advanced": false, "id": "NyYdV" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "NyYdV"
+                    },
                     {
                         "name": "bay",
                         "id": "BX_K9",
@@ -5140,7 +6412,12 @@
                         "type": "cargo"
                     }
                 ],
-                "weapons": [{ "name": "pds", "id": "iQndC" }],
+                "weapons": [
+                    {
+                        "name": "pds",
+                        "id": "iQndC"
+                    }
+                ],
                 "ordnance": [],
                 "extras": [],
                 "fighters": [],
@@ -5167,8 +6444,15 @@
                         "advanced": false,
                         "id": "1o8TS"
                     },
-                    { "name": "ftl", "advanced": false, "id": "JJda2" },
-                    { "name": "fireControl", "id": "lKUi9" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "JJda2"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "lKUi9"
+                    },
                     {
                         "name": "bay",
                         "id": "j3HW8",
@@ -5195,8 +6479,14 @@
                     }
                 ],
                 "weapons": [
-                    { "name": "pds", "id": "Ihx9E" },
-                    { "name": "pds", "id": "ATq0M" },
+                    {
+                        "name": "pds",
+                        "id": "Ihx9E"
+                    },
+                    {
+                        "name": "pds",
+                        "id": "ATq0M"
+                    },
                     {
                         "name": "beam",
                         "class": 1,
@@ -5236,8 +6526,15 @@
                         "advanced": true,
                         "id": "eEIDI"
                     },
-                    { "name": "ftl", "advanced": false, "id": "EZkRs" },
-                    { "name": "fireControl", "id": "elXoM" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "EZkRs"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "elXoM"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5247,7 +6544,11 @@
                         "numArcs": 6,
                         "id": "Fh3-H"
                     },
-                    { "name": "mkp", "arc": "F", "id": "77tit" }
+                    {
+                        "name": "mkp",
+                        "arc": "F",
+                        "id": "77tit"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5274,8 +6575,15 @@
                         "advanced": true,
                         "id": "V3W1L"
                     },
-                    { "name": "ftl", "advanced": false, "id": "9t0su" },
-                    { "name": "fireControl", "id": "GUOv8" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "9t0su"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "GUOv8"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5285,9 +6593,20 @@
                         "numArcs": 6,
                         "id": "XUdx2"
                     },
-                    { "name": "mkp", "arc": "F", "id": "7dRMR" },
-                    { "name": "mkp", "arc": "F", "id": "LeXG0" },
-                    { "name": "scatterGun", "id": "EfB8j" }
+                    {
+                        "name": "mkp",
+                        "arc": "F",
+                        "id": "7dRMR"
+                    },
+                    {
+                        "name": "mkp",
+                        "arc": "F",
+                        "id": "LeXG0"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "EfB8j"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5314,8 +6633,15 @@
                         "advanced": true,
                         "id": "wuObM"
                     },
-                    { "name": "ftl", "advanced": false, "id": "U37SJ" },
-                    { "name": "fireControl", "id": "IbY3R" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "U37SJ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "IbY3R"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5332,8 +6658,14 @@
                         "numArcs": 1,
                         "id": "oA0dj"
                     },
-                    { "name": "scatterGun", "id": "OuZGw" },
-                    { "name": "scatterGun", "id": "_O5_z" }
+                    {
+                        "name": "scatterGun",
+                        "id": "OuZGw"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "_O5_z"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5360,13 +6692,29 @@
                         "advanced": true,
                         "id": "16vks"
                     },
-                    { "name": "ftl", "advanced": false, "id": "l9WtA" },
-                    { "name": "fireControl", "id": "ofPNT" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "l9WtA"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ofPNT"
+                    }
                 ],
                 "weapons": [
-                    { "name": "scatterGun", "id": "M1QeV" },
-                    { "name": "scatterGun", "id": "oqFB9" },
-                    { "name": "scatterGun", "id": "bb_R_" },
+                    {
+                        "name": "scatterGun",
+                        "id": "M1QeV"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "oqFB9"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "bb_R_"
+                    },
                     {
                         "name": "kgun",
                         "class": 1,
@@ -5414,9 +6762,19 @@
                         "advanced": true,
                         "id": "bY8uw"
                     },
-                    { "name": "ftl", "advanced": false, "id": "0chbT" },
-                    { "name": "fireControl", "id": "Kzx4v" },
-                    { "name": "fireControl", "id": "tTd3_" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "0chbT"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Kzx4v"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "tTd3_"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5440,10 +6798,22 @@
                         "numArcs": 1,
                         "id": "kKXby"
                     },
-                    { "name": "scatterGun", "id": "k9pCs" },
-                    { "name": "scatterGun", "id": "RB9yG" },
-                    { "name": "scatterGun", "id": "t8vPy" },
-                    { "name": "scatterGun", "id": "hIPGL" }
+                    {
+                        "name": "scatterGun",
+                        "id": "k9pCs"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "RB9yG"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "t8vPy"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "hIPGL"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5470,9 +6840,19 @@
                         "advanced": true,
                         "id": "EAnEQ"
                     },
-                    { "name": "ftl", "advanced": false, "id": "ehnhg" },
-                    { "name": "fireControl", "id": "5U6KV" },
-                    { "name": "fireControl", "id": "vKZ49" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "ehnhg"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "5U6KV"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "vKZ49"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5503,11 +6883,26 @@
                         "numArcs": 1,
                         "id": "n2Z_f"
                     },
-                    { "name": "scatterGun", "id": "zCUHb" },
-                    { "name": "scatterGun", "id": "slwIS" },
-                    { "name": "scatterGun", "id": "6l9F2" },
-                    { "name": "scatterGun", "id": "u3Nao" },
-                    { "name": "scatterGun", "id": "Lzv91" }
+                    {
+                        "name": "scatterGun",
+                        "id": "zCUHb"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "slwIS"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "6l9F2"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "u3Nao"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "Lzv91"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5534,9 +6929,19 @@
                         "advanced": true,
                         "id": "Sarvn"
                     },
-                    { "name": "ftl", "advanced": false, "id": "9-B9z" },
-                    { "name": "fireControl", "id": "mNBI5" },
-                    { "name": "fireControl", "id": "3k0Xu" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "9-B9z"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "mNBI5"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "3k0Xu"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5567,8 +6972,14 @@
                         "numArcs": 1,
                         "id": "2gvqE"
                     },
-                    { "name": "scatterGun", "id": "YkXNC" },
-                    { "name": "scatterGun", "id": "nXLoM" }
+                    {
+                        "name": "scatterGun",
+                        "id": "YkXNC"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "nXLoM"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5595,9 +7006,19 @@
                         "advanced": true,
                         "id": "FJoT4"
                     },
-                    { "name": "ftl", "advanced": false, "id": "1ItxX" },
-                    { "name": "fireControl", "id": "xDSR_" },
-                    { "name": "fireControl", "id": "psiPv" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "1ItxX"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "xDSR_"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "psiPv"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5621,10 +7042,22 @@
                         "numArcs": 1,
                         "id": "VQe-S"
                     },
-                    { "name": "scatterGun", "id": "n5wX9" },
-                    { "name": "scatterGun", "id": "la1N9" },
-                    { "name": "scatterGun", "id": "JCCrW" },
-                    { "name": "scatterGun", "id": "j1wcr" }
+                    {
+                        "name": "scatterGun",
+                        "id": "n5wX9"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "la1N9"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "JCCrW"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "j1wcr"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5651,10 +7084,23 @@
                         "advanced": true,
                         "id": "nd093"
                     },
-                    { "name": "ftl", "advanced": false, "id": "p64k0" },
-                    { "name": "fireControl", "id": "ycT9X" },
-                    { "name": "fireControl", "id": "gSFBm" },
-                    { "name": "fireControl", "id": "4Uvxu" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "p64k0"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ycT9X"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "gSFBm"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "4Uvxu"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5685,11 +7131,26 @@
                         "numArcs": 1,
                         "id": "uFI-H"
                     },
-                    { "name": "scatterGun", "id": "Tr4aV" },
-                    { "name": "scatterGun", "id": "ghLRI" },
-                    { "name": "scatterGun", "id": "44DXn" },
-                    { "name": "scatterGun", "id": "xMbFJ" },
-                    { "name": "scatterGun", "id": "27Le6" }
+                    {
+                        "name": "scatterGun",
+                        "id": "Tr4aV"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "ghLRI"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "44DXn"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "xMbFJ"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "27Le6"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5716,10 +7177,23 @@
                         "advanced": true,
                         "id": "tJfZg"
                     },
-                    { "name": "ftl", "advanced": false, "id": "Qykci" },
-                    { "name": "fireControl", "id": "XhFow" },
-                    { "name": "fireControl", "id": "VBSoY" },
-                    { "name": "fireControl", "id": "uZVwh" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "Qykci"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "XhFow"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "VBSoY"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "uZVwh"
+                    }
                 ],
                 "weapons": [
                     {
@@ -5757,12 +7231,30 @@
                         "numArcs": 1,
                         "id": "Balgw"
                     },
-                    { "name": "scatterGun", "id": "xPNru" },
-                    { "name": "scatterGun", "id": "MRiW1" },
-                    { "name": "scatterGun", "id": "2hXEC" },
-                    { "name": "scatterGun", "id": "8jrLc" },
-                    { "name": "scatterGun", "id": "Ylr7i" },
-                    { "name": "scatterGun", "id": "M27dv" }
+                    {
+                        "name": "scatterGun",
+                        "id": "xPNru"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "MRiW1"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "2hXEC"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "8jrLc"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "Ylr7i"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "M27dv"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5789,11 +7281,27 @@
                         "advanced": true,
                         "id": "q_QxF"
                     },
-                    { "name": "ftl", "advanced": false, "id": "bOTs5" },
-                    { "name": "fireControl", "id": "ZX6D7" },
-                    { "name": "fireControl", "id": "hYrQ_" },
-                    { "name": "fireControl", "id": "oY9Cl" },
-                    { "name": "fireControl", "id": "A7qq0" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "bOTs5"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ZX6D7"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "hYrQ_"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "oY9Cl"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "A7qq0"
+                    },
                     {
                         "name": "hangar",
                         "id": "5ngOD",
@@ -5851,13 +7359,34 @@
                         "numArcs": 1,
                         "id": "DOcL0"
                     },
-                    { "name": "scatterGun", "id": "UMfMJ" },
-                    { "name": "scatterGun", "id": "LKB2t" },
-                    { "name": "scatterGun", "id": "N6ALU" },
-                    { "name": "scatterGun", "id": "OJgsX" },
-                    { "name": "scatterGun", "id": "lwWyZ" },
-                    { "name": "scatterGun", "id": "CzW5f" },
-                    { "name": "scatterGun", "id": "2WU1x" }
+                    {
+                        "name": "scatterGun",
+                        "id": "UMfMJ"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "LKB2t"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "N6ALU"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "OJgsX"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "lwWyZ"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "CzW5f"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "2WU1x"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5871,8 +7400,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 626,
-                "cpv": 676,
+                "points": 644,
+                "cpv": 724,
                 "mass": 160,
                 "class": "Great Death Sorrow Ship",
                 "name": "Lo'Vok"
@@ -5892,12 +7421,31 @@
                         "advanced": true,
                         "id": "fFiA2"
                     },
-                    { "name": "ftl", "advanced": false, "id": "g1pAo" },
-                    { "name": "fireControl", "id": "r6WVC" },
-                    { "name": "fireControl", "id": "Fii_q" },
-                    { "name": "fireControl", "id": "TFv4W" },
-                    { "name": "fireControl", "id": "khFnR" },
-                    { "name": "fireControl", "id": "LegD-" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "g1pAo"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "r6WVC"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Fii_q"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "TFv4W"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "khFnR"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "LegD-"
+                    },
                     {
                         "name": "hangar",
                         "id": "JhdF4",
@@ -5969,19 +7517,58 @@
                         "numArcs": 1,
                         "id": "DpGQV"
                     },
-                    { "name": "scatterGun", "id": "dnH4S" },
-                    { "name": "scatterGun", "id": "DsmXo" },
-                    { "name": "scatterGun", "id": "w4atG" },
-                    { "name": "scatterGun", "id": "Myavs" },
-                    { "name": "scatterGun", "id": "LRTN6" },
-                    { "name": "scatterGun", "id": "wG6CB" },
-                    { "name": "scatterGun", "id": "EOq1f" },
-                    { "name": "scatterGun", "id": "1LwHR" },
-                    { "name": "scatterGun", "id": "aVqZN" },
-                    { "name": "scatterGun", "id": "i5q9_" },
-                    { "name": "scatterGun", "id": "7e6pt" },
-                    { "name": "scatterGun", "id": "e0NPD" },
-                    { "name": "scatterGun", "id": "aBrY1" }
+                    {
+                        "name": "scatterGun",
+                        "id": "dnH4S"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "DsmXo"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "w4atG"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "Myavs"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "LRTN6"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "wG6CB"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "EOq1f"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "1LwHR"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "aVqZN"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "i5q9_"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "7e6pt"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "e0NPD"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "aBrY1"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -5995,8 +7582,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 883,
-                "cpv": 1090,
+                "points": 901,
+                "cpv": 1138,
                 "mass": 220,
                 "class": "Ruler War Mountain",
                 "name": "Yu'Kas"
@@ -6016,10 +7603,23 @@
                         "advanced": true,
                         "id": "oKLzo"
                     },
-                    { "name": "ftl", "advanced": false, "id": "0Vquk" },
-                    { "name": "fireControl", "id": "FW1P_" },
-                    { "name": "fireControl", "id": "7DwoO" },
-                    { "name": "fireControl", "id": "Mgwse" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "0Vquk"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "FW1P_"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "7DwoO"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Mgwse"
+                    },
                     {
                         "name": "hangar",
                         "id": "fxZqd",
@@ -6095,13 +7695,34 @@
                         "numArcs": 1,
                         "id": "0xq9P"
                     },
-                    { "name": "scatterGun", "id": "IEhrf" },
-                    { "name": "scatterGun", "id": "PyzhI" },
-                    { "name": "scatterGun", "id": "5zaOm" },
-                    { "name": "scatterGun", "id": "1Kn2K" },
-                    { "name": "scatterGun", "id": "Uhqcf" },
-                    { "name": "scatterGun", "id": "Ig3Nz" },
-                    { "name": "scatterGun", "id": "fyAOW" }
+                    {
+                        "name": "scatterGun",
+                        "id": "IEhrf"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "PyzhI"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "5zaOm"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "1Kn2K"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "Uhqcf"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "Ig3Nz"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "fyAOW"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -6136,8 +7757,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 691,
-                "cpv": 646,
+                "points": 763,
+                "cpv": 838,
                 "mass": 180,
                 "class": "Follower Sliver Mother",
                 "name": "Do'San"
@@ -6157,10 +7778,23 @@
                         "advanced": true,
                         "id": "R9pS8"
                     },
-                    { "name": "ftl", "advanced": false, "id": "vAaf8" },
-                    { "name": "fireControl", "id": "jrNHJ" },
-                    { "name": "fireControl", "id": "s3Z9U" },
-                    { "name": "fireControl", "id": "3l0sk" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "vAaf8"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "jrNHJ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "s3Z9U"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "3l0sk"
+                    },
                     {
                         "name": "hangar",
                         "id": "VaiC_",
@@ -6255,17 +7889,50 @@
                         "numArcs": 1,
                         "id": "IFJYc"
                     },
-                    { "name": "scatterGun", "id": "Edigb" },
-                    { "name": "scatterGun", "id": "Wdr9b" },
-                    { "name": "scatterGun", "id": "THMMD" },
-                    { "name": "scatterGun", "id": "8ZFiz" },
-                    { "name": "scatterGun", "id": "idyjT" },
-                    { "name": "scatterGun", "id": "5Y8qB" },
-                    { "name": "scatterGun", "id": "ve_lm" },
-                    { "name": "scatterGun", "id": "YsdFc" },
-                    { "name": "scatterGun", "id": "oRjs_" },
-                    { "name": "scatterGun", "id": "W75A8" },
-                    { "name": "scatterGun", "id": "iMYjk" }
+                    {
+                        "name": "scatterGun",
+                        "id": "Edigb"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "Wdr9b"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "THMMD"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "8ZFiz"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "idyjT"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "5Y8qB"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "ve_lm"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "YsdFc"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "oRjs_"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "W75A8"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "iMYjk"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -6314,8 +7981,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 917,
-                "cpv": 915,
+                "points": 1025,
+                "cpv": 1203,
                 "mass": 240,
                 "class": "Attack Sliver Mother",
                 "name": "Ko'San"
@@ -6335,8 +8002,15 @@
                         "advanced": true,
                         "id": "f_OD0"
                     },
-                    { "name": "ftl", "advanced": false, "id": "JyQaC" },
-                    { "name": "fireControl", "id": "i1JQA" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "JyQaC"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "i1JQA"
+                    },
                     {
                         "name": "bay",
                         "id": "wj_Lt",
@@ -6370,7 +8044,10 @@
                         "numArcs": 6,
                         "id": "lBVae"
                     },
-                    { "name": "scatterGun", "id": "e-xE1" }
+                    {
+                        "name": "scatterGun",
+                        "id": "e-xE1"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -6398,8 +8075,15 @@
                         "advanced": true,
                         "id": "-XSOU"
                     },
-                    { "name": "ftl", "advanced": false, "id": "ct2js" },
-                    { "name": "fireControl", "id": "d77W_" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "ct2js"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "d77W_"
+                    },
                     {
                         "name": "bay",
                         "id": "um42S",
@@ -6446,8 +8130,14 @@
                         "numArcs": 1,
                         "id": "FvhLD"
                     },
-                    { "name": "scatterGun", "id": "q9Vsb" },
-                    { "name": "scatterGun", "id": "U-0Ae" }
+                    {
+                        "name": "scatterGun",
+                        "id": "q9Vsb"
+                    },
+                    {
+                        "name": "scatterGun",
+                        "id": "U-0Ae"
+                    }
                 ],
                 "ordnance": [],
                 "extras": [],
@@ -6472,7 +8162,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[2, 0]],
+                "armour": [
+                    [
+                        2,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -6480,9 +8175,19 @@
                         "advanced": false,
                         "id": "F-wFJ"
                     },
-                    { "name": "ftl", "advanced": false, "id": "WGZuu" },
-                    { "name": "shroud", "id": "Mjy9e" },
-                    { "name": "fireControl", "id": "DLsVc" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "WGZuu"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "Mjy9e"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "DLsVc"
+                    }
                 ],
                 "weapons": [
                     {
@@ -6516,7 +8221,12 @@
                     "stealth": "0",
                     "streamlining": "none"
                 },
-                "armour": [[4, 0]],
+                "armour": [
+                    [
+                        4,
+                        0
+                    ]
+                ],
                 "systems": [
                     {
                         "name": "drive",
@@ -6524,9 +8234,19 @@
                         "advanced": false,
                         "id": "v52rj"
                     },
-                    { "name": "ftl", "advanced": false, "id": "LQBxt" },
-                    { "name": "fireControl", "id": "X5LQy" },
-                    { "name": "shroud", "id": "mvDIZ" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "LQBxt"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "X5LQy"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "mvDIZ"
+                    }
                 ],
                 "weapons": [
                     {
@@ -6567,8 +8287,14 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [3, 0],
-                    [2, 0]
+                    [
+                        3,
+                        0
+                    ],
+                    [
+                        2,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -6577,10 +8303,23 @@
                         "advanced": false,
                         "id": "yEWd7"
                     },
-                    { "name": "ftl", "advanced": false, "id": "UP7fb" },
-                    { "name": "fireControl", "id": "NH_Eb" },
-                    { "name": "fireControl", "id": "-IaAr" },
-                    { "name": "shroud", "id": "zqJ8u" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "UP7fb"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "NH_Eb"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "-IaAr"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "zqJ8u"
+                    }
                 ],
                 "weapons": [
                     {
@@ -6627,8 +8366,14 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [4, 0],
-                    [3, 0]
+                    [
+                        4,
+                        0
+                    ],
+                    [
+                        3,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -6637,10 +8382,23 @@
                         "advanced": false,
                         "id": "5zf_p"
                     },
-                    { "name": "ftl", "advanced": false, "id": "6wYWi" },
-                    { "name": "fireControl", "id": "TGN9r" },
-                    { "name": "fireControl", "id": "HBfYS" },
-                    { "name": "shroud", "id": "xFOJ9" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "6wYWi"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "TGN9r"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "HBfYS"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "xFOJ9"
+                    }
                 ],
                 "weapons": [
                     {
@@ -6693,8 +8451,14 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [6, 0],
-                    [3, 0]
+                    [
+                        6,
+                        0
+                    ],
+                    [
+                        3,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -6703,10 +8467,23 @@
                         "advanced": false,
                         "id": "FF6by"
                     },
-                    { "name": "ftl", "advanced": false, "id": "8HJrd" },
-                    { "name": "fireControl", "id": "SRS_i" },
-                    { "name": "fireControl", "id": "ZYwTo" },
-                    { "name": "shroud", "id": "XvSZz" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "8HJrd"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "SRS_i"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "ZYwTo"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "XvSZz"
+                    }
                 ],
                 "weapons": [
                     {
@@ -6753,8 +8530,14 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [8, 0],
-                    [4, 0]
+                    [
+                        8,
+                        0
+                    ],
+                    [
+                        4,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -6763,12 +8546,31 @@
                         "advanced": false,
                         "id": "s4dy9"
                     },
-                    { "name": "ftl", "advanced": false, "id": "HojMe" },
-                    { "name": "adfc", "id": "8--9y" },
-                    { "name": "fireControl", "id": "9oLTD" },
-                    { "name": "fireControl", "id": "AyFjQ" },
-                    { "name": "fireControl", "id": "YBX4v" },
-                    { "name": "shroud", "id": "-6ZQ-" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "HojMe"
+                    },
+                    {
+                        "name": "adfc",
+                        "id": "8--9y"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "9oLTD"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "AyFjQ"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "YBX4v"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "-6ZQ-"
+                    }
                 ],
                 "weapons": [
                     {
@@ -6827,9 +8629,18 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [8, 0],
-                    [4, 0],
-                    [4, 0]
+                    [
+                        8,
+                        0
+                    ],
+                    [
+                        4,
+                        0
+                    ],
+                    [
+                        4,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -6838,11 +8649,27 @@
                         "advanced": false,
                         "id": "fpjAn"
                     },
-                    { "name": "ftl", "advanced": false, "id": "4b3Q3" },
-                    { "name": "fireControl", "id": "tACNh" },
-                    { "name": "fireControl", "id": "WuJ-y" },
-                    { "name": "fireControl", "id": "_nFWy" },
-                    { "name": "shroud", "id": "L4LA5" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "4b3Q3"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "tACNh"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "WuJ-y"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "_nFWy"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "L4LA5"
+                    }
                 ],
                 "weapons": [
                     {
@@ -6913,9 +8740,18 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [9, 0],
-                    [5, 0],
-                    [4, 0]
+                    [
+                        9,
+                        0
+                    ],
+                    [
+                        5,
+                        0
+                    ],
+                    [
+                        4,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -6924,11 +8760,27 @@
                         "advanced": false,
                         "id": "KVfM9"
                     },
-                    { "name": "ftl", "advanced": false, "id": "ehl68" },
-                    { "name": "fireControl", "id": "JgHAe" },
-                    { "name": "fireControl", "id": "Q34me" },
-                    { "name": "fireControl", "id": "GctKx" },
-                    { "name": "shroud", "id": "Z5uxr" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "ehl68"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "JgHAe"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "Q34me"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "GctKx"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "Z5uxr"
+                    }
                 ],
                 "weapons": [
                     {
@@ -7006,10 +8858,22 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [16, 0],
-                    [10, 0],
-                    [8, 0],
-                    [6, 0]
+                    [
+                        16,
+                        0
+                    ],
+                    [
+                        10,
+                        0
+                    ],
+                    [
+                        8,
+                        0
+                    ],
+                    [
+                        6,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -7018,13 +8882,35 @@
                         "advanced": false,
                         "id": "As4ka"
                     },
-                    { "name": "ftl", "advanced": false, "id": "fTxwk" },
-                    { "name": "fireControl", "id": "7_m7c" },
-                    { "name": "fireControl", "id": "-1dPT" },
-                    { "name": "fireControl", "id": "VaMD_" },
-                    { "name": "fireControl", "id": "b7sZw" },
-                    { "name": "fireControl", "id": "FF-5O" },
-                    { "name": "shroud", "id": "qwFtv" }
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "fTxwk"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "7_m7c"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "-1dPT"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "VaMD_"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "b7sZw"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "FF-5O"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "qwFtv"
+                    }
                 ],
                 "weapons": [
                     {
@@ -7133,9 +9019,18 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [8, 0],
-                    [4, 0],
-                    [4, 0]
+                    [
+                        8,
+                        0
+                    ],
+                    [
+                        4,
+                        0
+                    ],
+                    [
+                        4,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -7144,10 +9039,23 @@
                         "advanced": false,
                         "id": "Ln5xn"
                     },
-                    { "name": "ftl", "advanced": false, "id": "Jt2K3" },
-                    { "name": "fireControl", "id": "4okKl" },
-                    { "name": "fireControl", "id": "8GIRP" },
-                    { "name": "shroud", "id": "bJFdq" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "Jt2K3"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "4okKl"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "8GIRP"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "bJFdq"
+                    },
                     {
                         "name": "hangar",
                         "id": "y6T8x",
@@ -7245,8 +9153,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 641,
-                "cpv": 579,
+                "points": 713,
+                "cpv": 771,
                 "mass": 170,
                 "class": "Mothership",
                 "name": "Taanis"
@@ -7259,10 +9167,22 @@
                     "streamlining": "none"
                 },
                 "armour": [
-                    [12, 0],
-                    [8, 0],
-                    [6, 0],
-                    [4, 0]
+                    [
+                        12,
+                        0
+                    ],
+                    [
+                        8,
+                        0
+                    ],
+                    [
+                        6,
+                        0
+                    ],
+                    [
+                        4,
+                        0
+                    ]
                 ],
                 "systems": [
                     {
@@ -7271,10 +9191,23 @@
                         "advanced": false,
                         "id": "4Xx71"
                     },
-                    { "name": "ftl", "advanced": false, "id": "MR7vK" },
-                    { "name": "fireControl", "id": "pwW5p" },
-                    { "name": "fireControl", "id": "-KUK2" },
-                    { "name": "shroud", "id": "E3_6s" },
+                    {
+                        "name": "ftl",
+                        "advanced": false,
+                        "id": "MR7vK"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "pwW5p"
+                    },
+                    {
+                        "name": "fireControl",
+                        "id": "-KUK2"
+                    },
+                    {
+                        "name": "shroud",
+                        "id": "E3_6s"
+                    },
                     {
                         "name": "hangar",
                         "id": "GtPdx",
@@ -7442,8 +9375,8 @@
                     }
                 ],
                 "orientation": "alpha",
-                "points": 1002,
-                "cpv": 925,
+                "points": 1146,
+                "cpv": 1309,
                 "mass": 250,
                 "class": "Mothership",
                 "name": "Draath"

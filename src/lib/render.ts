@@ -7,8 +7,12 @@ import fnv from "fnv-plus";
 import { scopeInternalIds } from "./scopeInternalIds.js";
 import { buildEmbeddedResizeScript } from "./resizeSsdTitles.js";
 import { Hangar } from "./systems/hangar.js";
+import { GunboatRack } from "./systems/gunboatRack.js";
+import { Bay } from "./systems/bay.js";
 import { resolveHangarOccupancy } from "./fighters.js";
 import type { HangarState } from "./fighters.js";
+import type { BoatBayState, GunboatRackState } from "./gunboats.js";
+import { resolveBoatBayOccupancy, resolveRackOccupancy } from "./gunboats.js";
 
 export {
     resizeSsdTitles,
@@ -77,6 +81,10 @@ export interface RenderOpts {
     ammunition?: AmmunitionRemaining;
     /** Per-hangar fighter occupancy overriding design-time `fighters[].hangar` linkage. */
     hangars?: HangarState;
+    /** Per-gunboat-rack occupancy (deployment, recovery on spare racks). */
+    gunboatRacks?: GunboatRackState;
+    /** Recovered gunboat squadrons in boat/tender bays. */
+    boatBays?: BoatBayState;
     // if provided, gives absolute position in svg tag itself
     x?: number;
     y?: number;
@@ -489,6 +497,21 @@ export const renderSvg = (
                     ship,
                     opts.hangars
                 );
+            } else if (sys.name === "gunboatRack") {
+                (sys as GunboatRack).occupancy = resolveRackOccupancy(
+                    sys.uid,
+                    ship,
+                    opts.gunboatRacks
+                );
+            } else if (sys.name === "bay") {
+                const bay = sys as Bay;
+                if (bay.type === "boat" || bay.type === "tender") {
+                    bay.gunboatOccupancy = resolveBoatBayOccupancy(
+                        sys.uid,
+                        ship,
+                        opts.boatBays
+                    );
+                }
             }
         }
 

@@ -143,6 +143,7 @@ export class Fighters extends System {
                 break;
             case "multiRole":
                 base += 30;
+                break;
             case "torpedo":
             case "MKP":
                 base += 36;

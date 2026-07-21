@@ -64,7 +64,8 @@ import { Kgun } from "./kgun.js";
 import { Gravitic } from "./gravitic.js";
 import { Pbl } from "./pbl.js";
 import { Hangar } from "./hangar.js";
-export { TorpedoPulse, BoardingTorpedoLauncher, Kgun, Gravitic, Pbl, Hangar };
+import { GunboatRack } from "./gunboatRack.js";
+export { TorpedoPulse, BoardingTorpedoLauncher, Kgun, Gravitic, Pbl, Hangar, GunboatRack };
 import { LaunchTube } from "./launchTube.js";
 import { Fighters } from "./fighters.js";
 import { Pulser } from "./pulser.js";
@@ -142,6 +143,7 @@ export const sortNames = new Map<string, string>([
     ["gravitic", "Gravitic Gun"],
     ["pbl", "Plasma Bolt Launcher"],
     ["hangar", "Fighter Bay/Rack"],
+    ["gunboatRack", "Gunboat Rack"],
     ["launchTube", "Launch Tube"],
     ["fighters", "Fighters"],
     ["pulser", "Pulser"],
@@ -169,6 +171,7 @@ export const systemList: string[] = [
     "turret",
     "launchTube",
     "hangar",
+    "gunboatRack",
     "holofield",
     "stealthField",
     "ecm",
@@ -372,6 +375,8 @@ export const getSystem = (
             return new Pbl(data, ship);
         case "hangar":
             return new Hangar(data, ship);
+        case "gunboatRack":
+            return new GunboatRack(data, ship);
         case "launchTube":
             return new LaunchTube(data, ship);
         case "fighters":

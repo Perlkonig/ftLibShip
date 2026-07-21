@@ -71,6 +71,14 @@ export interface FullThrustShip {
         [k: string]: unknown;
       }
     | {
+        name: "gunboatRack";
+        /**
+         * A unique identifier used to target this rack in orders and in the `gunboatSquadrons` property.
+         */
+        id: string;
+        [k: string]: unknown;
+      }
+    | {
         name: "launchTube";
         catapult?: boolean;
         [k: string]: unknown;
@@ -338,6 +346,544 @@ export interface FullThrustShip {
      * Only needed during game play and only if you are playing with ace/turkey rules
      */
     skill?: "standard" | "ace" | "turkey";
+    [k: string]: unknown;
+  }[];
+  /**
+   * Gunboat squadrons carried on gunboat racks. Each rack may have at most one squadron.
+   */
+  gunboatSquadrons?: {
+    /**
+     * Must match a gunboatRack id. Omitted for FTL squadrons that cannot use racks.
+     */
+    rack?: string;
+    /**
+     * Stable id for squadrons without a rack (e.g. FTL). Used by runtime overlays.
+     */
+    id?: string;
+    mods?: "ftl"[];
+    protection?: "heavy" | "screened";
+    ecm?: number;
+    /**
+     * @minItems 1
+     * @maxItems 6
+     */
+    boats:
+      | [
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          }
+        ]
+      | [
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          }
+        ]
+      | [
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          }
+        ]
+      | [
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          }
+        ]
+      | [
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          }
+        ]
+      | [
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          },
+          {
+            type:
+              | "beam"
+              | "plasma"
+              | "graser"
+              | "needle"
+              | "pointDefense"
+              | "pulseTorpedo"
+              | "submunition"
+              | "kGun"
+              | "missile"
+              | "rocket"
+              | "ads"
+              | "gatling"
+              | "mkp"
+              | "scatterpack"
+              | "plasmaBomber";
+            id?: string;
+            /**
+             * Gameplay only; default 6 combat endurance.
+             */
+            endurance?: number;
+            [k: string]: unknown;
+          }
+        ];
     [k: string]: unknown;
   }[];
   class?: string;

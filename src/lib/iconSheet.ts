@@ -3,6 +3,8 @@ import type { ISystemSVG } from "./svgLib.js";
 import { svgLib } from "./svgLib.js";
 import { type2name } from "./systems/fighters.js";
 import { Hangar } from "./systems/hangar.js";
+import { GunboatRack } from "./systems/gunboatRack.js";
+import type { GunboatType } from "./systems/gunboats.js";
 import { getSystem, ordnanceList, systemList, weaponList } from "./systems/index.js";
 import type { ISystem, System } from "./systems/_base.js";
 import { Flawed } from "./systems/flawed.js";
@@ -23,6 +25,7 @@ export type IconSheetGroup =
     | "Ordnance"
     | "Weapons"
     | "Fighter bays and wings"
+    | "Gunboats"
     | "Auxiliary";
 
 export const GROUP_ORDER: IconSheetGroup[] = [
@@ -32,6 +35,7 @@ export const GROUP_ORDER: IconSheetGroup[] = [
     "Ordnance",
     "Weapons",
     "Fighter bays and wings",
+    "Gunboats",
     "Auxiliary",
 ];
 
@@ -327,6 +331,38 @@ const buildCatalog = (ship: FullThrustShip): IconSheetEntry[] => {
         catapult: true,
         id: "lt_cat",
     });
+
+    builder.addSystem("Gunboats", {
+        name: "gunboatRack",
+        id: "gb_rack_empty",
+    });
+    const sampleTypes: GunboatType[] = [
+        "beam",
+        "graser",
+        "plasma",
+        "missile",
+        "pointDefense",
+        "kGun",
+    ];
+    const occupiedRack = getSystem(
+        { name: "gunboatRack", id: "gb_rack_occupied" },
+        ship
+    ) as GunboatRack;
+    occupiedRack.occupancy = {
+        rackId: occupiedRack.id,
+        occupied: true,
+        deployed: false,
+        squadronKey: "gb_rack_occupied",
+        boats: sampleTypes.map((type) => ({ type })),
+        ecm: 0,
+        ftl: false,
+    };
+    builder.addGlyph(
+        "Gunboats",
+        "Gunboat Rack (occupied sample)",
+        occupiedRack.glyph(),
+        false
+    );
 
     const core = svgLib.find((x) => x.id === "svglib_coreSys");
     builder.addGlyph("Auxiliary", "Core systems", core);

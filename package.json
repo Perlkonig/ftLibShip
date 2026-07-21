@@ -1,6 +1,6 @@
 {
     "name": "ftlibship",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "description": "Library representing the schema/type for a Full Thrust ship description along with utilities for validating and graphically rendering it",
     "exports": "./dist/index.js",
     "engines": {
@@ -24,7 +24,8 @@
         "render-demo": "node --loader ts-node/esm scripts/render-demo.ts",
         "icon-sheet": "npx tsx scripts/generate-icon-sheet.ts",
         "list-systems": "npx tsx scripts/list-systems.ts",
-        "validate-preset-fleets": "npx tsx scripts/validate-preset-fleets.ts"
+        "validate-preset-fleets": "npx tsx scripts/validate-preset-fleets.ts",
+        "refresh-preset-fleet-totals": "npx tsx scripts/refresh-preset-fleet-totals.ts"
     },
     "author": "Aaron Dalton <aaron@daltons.ca> (https://www.perlkonig.com/)",
     "license": "MIT",
