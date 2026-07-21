@@ -1,7 +1,10 @@
 import type { FullThrustShip } from "../schemas/ship.js";
 import type { FighterType } from "./systems/fighters.js";
 import { type2name } from "./systems/fighters.js";
-import { type2name as gunboatType2name } from "./systems/gunboats.js";
+import {
+    catalogFullName as gunboatCatalogFullName,
+    type2name as gunboatType2name,
+} from "./systems/gunboats.js";
 import { Flawed } from "./systems/flawed.js";
 import {
     getSystem,
@@ -291,16 +294,41 @@ const fighterConfigs = (): ISystem[] => {
     return configs;
 };
 
-const gunboatBoatCatalogEntries = (): SystemCatalogEntry[] => {
+const gunboatSquadronCatalogEntries = (): SystemCatalogEntry[] => {
     const entries: SystemCatalogEntry[] = [];
-    for (const [type, fullName] of gunboatType2name) {
-        entries.push({
-            category: "gunboats",
-            name: "gunboat",
-            baseName: "Gunboats",
-            variants: { type },
-            fullName,
-        });
+    const protections: ("heavy" | "screened" | undefined)[] = [
+        undefined,
+        "heavy",
+        "screened",
+    ];
+    for (const type of gunboatType2name.keys()) {
+        for (const ftl of [false, true] as const) {
+            for (const protection of protections) {
+                for (const ecm of [0, 1, 2, 3] as const) {
+                    const variants: Record<string, unknown> = { type };
+                    if (ftl) {
+                        variants.mods = ["ftl"];
+                    }
+                    if (protection !== undefined) {
+                        variants.protection = protection;
+                    }
+                    if (ecm > 0) {
+                        variants.ecm = ecm;
+                    }
+                    entries.push({
+                        category: "gunboats",
+                        name: "gunboat",
+                        baseName: "Gunboats",
+                        variants,
+                        fullName: gunboatCatalogFullName(type, {
+                            ftl,
+                            protection,
+                            ecm,
+                        }),
+                    });
+                }
+            }
+        }
     }
     return entries;
 };
@@ -447,7 +475,7 @@ export const buildSystemCatalog = (
         addCatalogEntry(entries, seen, "fighters", data, ship);
     }
 
-    for (const entry of gunboatBoatCatalogEntries()) {
+    for (const entry of gunboatSquadronCatalogEntries()) {
         const key = catalogKey(entry);
         if (seen.has(key)) {
             continue;

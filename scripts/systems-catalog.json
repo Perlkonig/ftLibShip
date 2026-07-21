@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T19:55:41.890Z",
-  "count": 511,
+  "generatedAt": "2026-07-21T19:57:26.479Z",
+  "count": 856,
   "systems": [
     {
       "category": "propulsion",
@@ -6148,6 +6148,2871 @@
       "name": "gunboat",
       "baseName": "Gunboats",
       "variants": {
+        "type": "ads",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "ecm": 2
+      },
+      "fullName": "ECM 2 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "ecm": 3
+      },
+      "fullName": "ECM 3 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "ecm": 1
+      },
+      "fullName": "ECM Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "ecm": 1
+      },
+      "fullName": "ECM Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "ecm": 1
+      },
+      "fullName": "ECM Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "ecm": 1
+      },
+      "fullName": "ECM Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "ecm": 1
+      },
+      "fullName": "ECM K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "ecm": 1
+      },
+      "fullName": "ECM Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "ecm": 1
+      },
+      "fullName": "ECM MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "ecm": 1
+      },
+      "fullName": "ECM Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "ecm": 1
+      },
+      "fullName": "ECM Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "ecm": 1
+      },
+      "fullName": "ECM Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "ecm": 1
+      },
+      "fullName": "ECM Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "ecm": 1
+      },
+      "fullName": "ECM Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "ecm": 1
+      },
+      "fullName": "ECM Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "ecm": 1
+      },
+      "fullName": "ECM Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "ecm": 1
+      },
+      "fullName": "ECM Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 2
+      },
+      "fullName": "FTL ECM 2 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 3
+      },
+      "fullName": "FTL ECM 3 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "ecm": 1
+      },
+      "fullName": "FTL ECM Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "FTL Heavy ECM 2 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "FTL Heavy ECM 3 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "FTL Heavy ECM Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "heavy"
+      },
+      "fullName": "FTL Heavy Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "FTL Screened ECM 2 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "FTL Screened ECM 3 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "FTL Screened ECM Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ],
+        "protection": "screened"
+      },
+      "fullName": "FTL Screened Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "mods": [
+          "ftl"
+        ]
+      },
+      "fullName": "FTL Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
         "type": "gatling"
       },
       "fullName": "Gatling Gunboat"
@@ -6160,6 +9025,651 @@
         "type": "graser"
       },
       "fullName": "Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "protection": "heavy",
+        "ecm": 2
+      },
+      "fullName": "Heavy ECM 2 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "protection": "heavy",
+        "ecm": 3
+      },
+      "fullName": "Heavy ECM 3 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "protection": "heavy",
+        "ecm": 1
+      },
+      "fullName": "Heavy ECM Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "protection": "heavy"
+      },
+      "fullName": "Heavy Submunition Gunboat"
     },
     {
       "category": "gunboats",
@@ -6250,6 +9760,651 @@
         "type": "scatterpack"
       },
       "fullName": "Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "protection": "screened"
+      },
+      "fullName": "Screened Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "protection": "screened"
+      },
+      "fullName": "Screened Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "protection": "screened",
+        "ecm": 2
+      },
+      "fullName": "Screened ECM 2 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "protection": "screened",
+        "ecm": 3
+      },
+      "fullName": "Screened ECM 3 Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "protection": "screened",
+        "ecm": 1
+      },
+      "fullName": "Screened ECM Submunition Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling",
+        "protection": "screened"
+      },
+      "fullName": "Screened Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser",
+        "protection": "screened"
+      },
+      "fullName": "Screened Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun",
+        "protection": "screened"
+      },
+      "fullName": "Screened K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile",
+        "protection": "screened"
+      },
+      "fullName": "Screened Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp",
+        "protection": "screened"
+      },
+      "fullName": "Screened MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle",
+        "protection": "screened"
+      },
+      "fullName": "Screened Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber",
+        "protection": "screened"
+      },
+      "fullName": "Screened Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma",
+        "protection": "screened"
+      },
+      "fullName": "Screened Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense",
+        "protection": "screened"
+      },
+      "fullName": "Screened Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo",
+        "protection": "screened"
+      },
+      "fullName": "Screened Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket",
+        "protection": "screened"
+      },
+      "fullName": "Screened Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack",
+        "protection": "screened"
+      },
+      "fullName": "Screened Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition",
+        "protection": "screened"
+      },
+      "fullName": "Screened Submunition Gunboat"
     },
     {
       "category": "gunboats",

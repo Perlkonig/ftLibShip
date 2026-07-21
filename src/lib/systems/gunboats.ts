@@ -26,6 +26,35 @@ export const type2name: Map<GunboatType, string> = new Map([
     ["plasmaBomber", "Plasma Bomber Gunboat"],
 ]);
 
+export const protection2name = new Map<"heavy" | "screened", string>([
+    ["heavy", "Heavy"],
+    ["screened", "Screened"],
+]);
+
+/** Display name for a gunboat type plus optional squadron-level upgrades (catalog, UI). */
+export const catalogFullName = (
+    type: GunboatType,
+    squadron: {
+        ftl?: boolean;
+        protection?: "heavy" | "screened";
+        ecm?: number;
+    } = {}
+): string => {
+    const parts: string[] = [];
+    if (squadron.ftl) {
+        parts.push("FTL");
+    }
+    if (squadron.protection !== undefined) {
+        parts.push(protection2name.get(squadron.protection)!);
+    }
+    const ecm = squadron.ecm ?? 0;
+    if (ecm > 0) {
+        parts.push(ecm === 1 ? "ECM" : `ECM ${ecm}`);
+    }
+    parts.push(type2name.get(type)!);
+    return parts.join(" ");
+};
+
 /** Short labels for SSD squadron inserts (max ~3 chars). */
 export const type2abbrev: Map<GunboatType, string> = new Map([
     ["beam", "Bm"],
