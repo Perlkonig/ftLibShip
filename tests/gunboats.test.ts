@@ -152,6 +152,6 @@ describe("renderSvg gunboats", () => {
             minimal: true,
             boatBays: { bay1: { squadron: "rackA" } },
         })!;
-        expect(svg).to.include(">M</text>");
+        expect(svg).to.include(">Ms</text>");
     });
 });
