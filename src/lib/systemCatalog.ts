@@ -1,6 +1,7 @@
 import type { FullThrustShip } from "../schemas/ship.js";
 import type { FighterType } from "./systems/fighters.js";
 import { type2name } from "./systems/fighters.js";
+import { type2name as gunboatType2name } from "./systems/gunboats.js";
 import { Flawed } from "./systems/flawed.js";
 import {
     getSystem,
@@ -19,6 +20,7 @@ export type SystemCatalogCategory =
     | "ordnance"
     | "weapons"
     | "fighters"
+    | "gunboats"
     | "auxiliary";
 
 export interface SystemCatalogEntry {
@@ -289,6 +291,20 @@ const fighterConfigs = (): ISystem[] => {
     return configs;
 };
 
+const gunboatBoatCatalogEntries = (): SystemCatalogEntry[] => {
+    const entries: SystemCatalogEntry[] = [];
+    for (const [type, fullName] of gunboatType2name) {
+        entries.push({
+            category: "gunboats",
+            name: "gunboat",
+            baseName: "Gunboats",
+            variants: { type },
+            fullName,
+        });
+    }
+    return entries;
+};
+
 const stripMeta = (data: ISystem): Record<string, unknown> => {
     const { name, id, ...rest } = data;
     return Object.fromEntries(
@@ -431,6 +447,15 @@ export const buildSystemCatalog = (
         addCatalogEntry(entries, seen, "fighters", data, ship);
     }
 
+    for (const entry of gunboatBoatCatalogEntries()) {
+        const key = catalogKey(entry);
+        if (seen.has(key)) {
+            continue;
+        }
+        seen.add(key);
+        entries.push(entry);
+    }
+
     addCatalogEntry(
         entries,
         seen,
@@ -466,6 +491,7 @@ export const buildSystemCatalog = (
         "ordnance",
         "weapons",
         "fighters",
+        "gunboats",
         "auxiliary",
     ];
 

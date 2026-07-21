@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-21T18:34:15.618Z",
-  "count": 496,
+  "generatedAt": "2026-07-21T19:55:41.890Z",
+  "count": 511,
   "systems": [
     {
       "category": "propulsion",
@@ -6124,6 +6124,141 @@
         "numArcs": 1
       },
       "fullName": "Turret"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "ads"
+      },
+      "fullName": "Area Defense System Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "beam"
+      },
+      "fullName": "Beam Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "gatling"
+      },
+      "fullName": "Gatling Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "graser"
+      },
+      "fullName": "Graser Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "kGun"
+      },
+      "fullName": "K-Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "missile"
+      },
+      "fullName": "Missile Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "mkp"
+      },
+      "fullName": "MKP Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "needle"
+      },
+      "fullName": "Needle Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasmaBomber"
+      },
+      "fullName": "Plasma Bomber Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "plasma"
+      },
+      "fullName": "Plasma Gun Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pointDefense"
+      },
+      "fullName": "Point Defense Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "pulseTorpedo"
+      },
+      "fullName": "Pulse Torpedo Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "rocket"
+      },
+      "fullName": "Rocket Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "scatterpack"
+      },
+      "fullName": "Scatterpack Gunboat"
+    },
+    {
+      "category": "gunboats",
+      "name": "gunboat",
+      "baseName": "Gunboats",
+      "variants": {
+        "type": "submunition"
+      },
+      "fullName": "Submunition Gunboat"
     },
     {
       "category": "auxiliary",
